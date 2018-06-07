@@ -1,0 +1,50 @@
+﻿@using TownUtilityBillSystemV2.Resources
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+	<div id="newsSlidesCanvas" class="container">
+		<h4 id="newsHeader" class="header-bold">@Localization.News</h4>
+		<div id="newsCarousel" class="carousel slide" data-ride="carousel">
+			<!-- Indicators -->
+			<ol class="carousel-indicators">
+				@{
+					for (int i = 0; i < Model.NewsList.Count; i++)
+					{
+						<li id="indicator-@i" data-target="#newsCarousel" data-slide-to=@i></li>
+					}
+				}
+			</ol>
+			<!-- Wrapper for slides -->
+			<div class="carousel-inner">
+				@{
+					for (int i = 0; i < Model.NewsList.Count; i++)
+					{
+						<div id="slide-@i" class="item">
+							<img src=@Model.NewsList[i].ImagePath />
+							<div class="carousel-caption">
+								<p class="paragraph-wight" id="newsTitle"><strong>@Model.NewsList[i].Title</strong></p>
+								<a style="color: white; font-size: 14px;" href="@Url.Action("ShowSingleNews", "Home", new { newsId = @Model.NewsList[i].Id}, null)">
+									<span class="glyphicon glyphicon-eye-open"></span>
+									<span class="span-bold">@Localization.ReadMore</span>
+								</a>
+							</div>
+						</div>
+					}
+				}
+			</div>
+			<!-- Left and right controls -->
+			<a class="left carousel-control" href="#newsCarousel" data-slide="prev">
+				<span class="glyphicon glyphicon-chevron-left"></span>
+			</a>
+			<a class="right carousel-control" href="#newsCarousel" data-slide="next">
+				<span class="glyphicon glyphicon-chevron-right"></span>
+			</a>
+		</div>
+	</div>
+</body>
+</html>

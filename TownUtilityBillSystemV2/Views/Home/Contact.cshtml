@@ -1,0 +1,47 @@
+﻿@model TownUtilityBillSystemV2.Models.UtilitySupplier.UtilitySupplier
+@using TownUtilityBillSystemV2.Resources
+
+@{
+	ViewBag.Title = "Contact";
+}
+
+
+<h2>@Localization.Contact</h2>
+
+<address>
+	<p2 class="span-red"><b> @Model.Name</b></p2><br />
+	@Model.Address<br />
+	@Model.Phone<br />
+	@Model.Fax<br />
+	<a href="https://@Model.Site.ToString()" target="_blank">@Model.Site</a><br />
+	@Model.Email
+</address>
+
+<div>
+	<div id="contactMapCanvas"></div>
+</div>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC7oyKXdpaKqurqotVj7_bhl9V9_7B5cMQ&libraries=places"
+		type="text/javascript"></script>
+<script>
+	var mapDiv = document.getElementById('contactMapCanvas');
+    var address = "@Model.Address.ToString()";
+    var mapBuildingZoom = 11;
+
+    var geocoder = new google.maps.Geocoder();
+
+    geocoder.geocode({
+        "address": address
+    }, function (results, status) {
+       map = new google.maps.Map(mapDiv, {
+            center: results[0].geometry.location,
+            zoom: mapBuildingZoom,
+            mapTypeId: google.maps.MapTypeId.ROADMAP,
+       })
+        marker = new google.maps.Marker({
+            position: results[0].geometry.location,
+            map: map,
+            draggable: true
+        });
+        });
+</script>

@@ -1,0 +1,89 @@
+﻿@model TownUtilityBillSystemV2.Models.Utility.UtilityModel
+@using TownUtilityBillSystemV2.Resources
+
+@{
+	ViewBag.Title = "Show Utility";
+
+	int i = 0;
+}
+
+
+<div class="jumbotron">
+	<div  class="div-medium-font-size">
+		<h3 class="header-bold">@Localization.Utility:</h3>
+		@if (Model.Utility.ImagePath != "")
+	{
+		<img src=@Model.Utility.ImagePath id="imgShowUtility"/>
+}
+
+		<font size="5" id="utilityName"><strong>@Model.Utility.ResourceName.ToUpper()</strong></font>
+		<br />
+		@Html.DisplayNameFor(model => model.Utility.Price) <text>--</text>
+		@if (Model.Utility.BigUsagePrice == null || Model.Utility.BigUsagePrice == 0)
+	{
+		<strong>
+			@Html.DisplayFor(model => model.Utility.Price) <text> </text>  @Model.Currency.ToString()
+		</strong>
+		<text>@Localization.Per 1</text> @Html.DisplayFor(model => model.Utility.Unit.Name)
+}
+else
+{
+	<strong>
+		@Html.DisplayFor(model => model.Utility.Price) <text> </text> @Model.Currency.ToString()
+	</strong><text>per 1</text> @Html.DisplayFor(model => model.Utility.Unit.Name) 
+			<text>(@Localization.LessThan</text> @Decimal.ToInt32(@Model.Utility.UsageForStandartPrice) 
+			<text> </text> @Html.DisplayFor(model => model.Utility.Unit.Name)<text>)</text>
+	<br />
+	@Html.DisplayNameFor(model => model.Utility.BigUsagePrice) <text>--</text>
+	<strong>
+		@Html.DisplayFor(model => model.Utility.BigUsagePrice)<text> </text>  @Model.Currency.ToString()
+	</strong> <text>per 1</text> @Html.DisplayFor(model => model.Utility.Unit.Name) 
+			<text>(@Localization.LessThan</text> @Decimal.ToInt32(@Model.Utility.UsageForStandartPrice) 
+			<text> </text> @Html.DisplayFor(model => model.Utility.Unit.Name)<text>)</text>
+}
+		<br />
+		<text>@Localization.TotalCustomersForThisUtility -- <strong> @Model.MeterQty </strong></text>
+	</div>
+	<div class="row">
+		<div class="col-md-4 margin-top-20">
+			<a href="@Url.Action("ShowMeterTypesForUtility", "Meter", new { utilityName = Model.Utility.Name }, null)" class="btn btn-primary btn-large btn-block">
+				<span class=" glyphicon glyphicon-dashboard"></span> @Localization.MeterTypes
+			</a>
+		</div>
+		<div class="col-md-4 margin-top-20">
+			<a href="@Url.Action("EditUtility", "Utility", new { utilityId = Model.Utility.Id }, null)" class="btn btn-primary btn-large btn-block">
+				<span class=" glyphicon glyphicon-edit"></span> @Localization.EditUtilityParameters
+			</a>
+		</div>
+		<div class="col-md-4 margin-top-20">
+			<a href="@Url.Action("ShowAllUtilitiesPrices", "Utility")" class="btn btn-primary btn-large btn-block">
+				<span class=" glyphicon glyphicon-list"></span> @Localization.ShowAllUtilities
+			</a>
+		</div>
+	</div>
+	<hr />
+	<text><strong>@Localization.OtherUtilities:</strong></text>
+	<div class="row">
+		<div class="col-md-4 margin-top-20">
+			<a href="@Url.Action("ShowUtility", "Utility", new { utilityName = Model.Utilities[0].Name}, null)" class="btn btn-primary btn-large btn-block btn-green">
+				<span class=" glyphicon glyphicon-info-sign"></span> @Model.Utilities[i++].ResourceName
+			</a>
+		</div>
+		<div class="col-md-4 margin-top-20">
+			<a href="@Url.Action("ShowUtility", "Utility", new { utilityName = Model.Utilities[1].Name}, null)" class="btn btn-primary btn-large btn-block btn-green">
+				<span class=" glyphicon glyphicon-info-sign"></span> @Model.Utilities[i++].ResourceName
+			</a>
+		</div>
+		<div class="col-md-4 margin-top-20">
+			<a href="@Url.Action("ShowUtility", "Utility", new { utilityName = Model.Utilities[2].Name}, null)" class="btn btn-primary btn-large btn-block btn-green">
+				<span class=" glyphicon glyphicon-info-sign"></span> @Model.Utilities[i++].ResourceName
+			</a>
+		</div>
+	</div>
+	<hr />
+	<a href="javascript:history.go(-1)" class="btn btn-link btn-large">
+		<span class=" glyphicon glyphicon-arrow-left"></span> <strong> @Localization.BackToPreviousPage</strong>
+	</a>
+</div>
+
+

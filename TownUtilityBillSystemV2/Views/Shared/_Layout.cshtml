@@ -1,0 +1,79 @@
+﻿@using TownUtilityBillSystemV2.Resources
+
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="shortcut icon" href="~/Content/Images/DongEnergy/IconApp.jpg" />
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>@ViewBag.Title</title>
+	@Styles.Render("~/Content/css")
+	@Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+	<img id="WebHeaderImage" src="~/Content/Images/DongEnergy/WebHeaderV2.jpg" alt="DongEnergy Header" />
+	<div class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				@if (Request.IsAuthenticated)
+				{
+					@Html.ActionLink(Localization.TownUtilityBillSystem, "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+				}
+			</div>
+			<div class="navbar-collapse collapse">
+				<ul class="nav navbar-nav">
+					@if (Request.IsAuthenticated)
+					{
+						<li>@Html.ActionLink(Localization.Home, "Index", "Home")</li>
+						<li>@Html.ActionLink(Localization.News, "News", "Home")</li>
+					}
+					<li>@Html.ActionLink(Localization.About, "About", "Home")</li>
+					<li>@Html.ActionLink(Localization.Contact, "Contact", "Home")</li>
+				</ul>
+				<div class="flags">
+					<img id="englishFlag" src="~/Content/Images/Flags/EnglishFlag.jpg" class="header-flag" onclick="ChangeLanguage('en')" />
+					<img class="empty-image" />
+					<img id="danishFlag" src="~/Content/Images/Flags/DanishFlag.jpg" class="header-flag" onclick="ChangeLanguage('da')" />
+					<img class="empty-image" />
+					<img id="germanFlag" src="~/Content/Images/Flags/GermanFlag.jpg" class="header-flag" onclick="ChangeLanguage('de')" />
+				</div>
+				@Html.Partial("_LoginPartial")
+			</div>
+		</div>
+	</div>
+	<div class="container body-content">
+		@RenderBody()
+		<hr />
+		<footer>
+			<p id="Footer"><strong> &copy; @DateTime.Now.Year - DONG Energy A/S</strong></p>
+		</footer>
+	</div>
+
+	@Scripts.Render("~/bundles/jquery")
+	@Scripts.Render("~/bundles/bootstrap")
+	@Scripts.Render("~/bundles/appscripts")
+	@RenderSection("scripts", required: false)
+</body>
+</html>
+
+
+@*debugger -- need to extract to js or ts file*@
+@*<script src="~/Scripts/appJsScripts/_layout.js"></script>*@
+<script>
+
+	function ChangeLanguage(language)
+	{
+		$.ajax({
+			url: '@Url.Action("Change", "Language")',
+			data: { languageAbbreviation: language }
+		}).done(function ()
+		{
+			location.reload(true);
+		});
+	}
+</script>

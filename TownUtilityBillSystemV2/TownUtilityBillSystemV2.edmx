@@ -1,0 +1,1598 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="TownUtilityBillSystemV2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ACCOUNT">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NUMBER" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="BALANCE" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ADDRESS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="INDEX_ID" Type="int" Nullable="false" />
+          <Property Name="TOWN_ID" Type="int" Nullable="false" />
+          <Property Name="STREET_ID" Type="int" Nullable="false" />
+          <Property Name="BUILDING_ID" Type="int" Nullable="false" />
+          <Property Name="FLAT_PART_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="BILL">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NUMBER" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="ACCOUNT_ID" Type="int" Nullable="false" />
+          <Property Name="DATE" Type="date" Nullable="false" />
+          <Property Name="PERIOD" Type="char" MaxLength="7" Nullable="false" />
+          <Property Name="SUM" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="PAID" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BUILDING">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NUMBER" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="SQUARE" Type="real" />
+          <Property Name="STREET_ID" Type="int" Nullable="false" />
+          <Property Name="IMAGE_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="CUSTOMER">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SURNAME" Type="varchar" MaxLength="50" />
+          <Property Name="NAME" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="EMAIL" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PHONE" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ADDRESS_ID" Type="int" Nullable="false" />
+          <Property Name="CUSTOMER_TYPE_ID" Type="int" Nullable="false" />
+          <Property Name="ACCOUNT_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CUSTOMER_TYPE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NAME" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FLAT_PART">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NUMBER" Type="int" />
+          <Property Name="NAME" Type="varchar" MaxLength="20" />
+          <Property Name="SQUARE" Type="real" />
+          <Property Name="BUILDING_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="IMAGE_BUILDING">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PATH" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="IMAGE_NEWS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PATH" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="IMAGE_UTILITY">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PATH" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="INDEX">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VALUE" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="METER">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SERIAL_NUMBER" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="ADDRESS_ID" Type="int" Nullable="false" />
+          <Property Name="METER_TYPE_ID" Type="int" Nullable="false" />
+          <Property Name="RELEASE_DATE" Type="date" Nullable="false" />
+          <Property Name="VARIFICATION_DATE" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="METER_ITEM">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="METER_ID" Type="int" Nullable="false" />
+          <Property Name="DATE" Type="date" Nullable="false" />
+          <Property Name="VALUE" Type="real" Nullable="false" />
+        </EntityType>
+        <EntityType Name="METER_TYPE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NAME" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="VARIFICATION_PERIOD_YEARS" Type="int" Nullable="false" />
+          <Property Name="UTILITY_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NEWS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NAME" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="DATE" Type="datetime" Nullable="false" />
+          <Property Name="IMAGE_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="NEWS_CHAPTER">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TEXT" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="LANGUAGE" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="NEWS_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NEWS_TITLE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TITLE" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="LANGUAGE" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="NEWS_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PAYMENT">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NUMBER" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="SUM" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="DATE" Type="date" Nullable="false" />
+          <Property Name="NOTE" Type="varchar" MaxLength="100" />
+          <Property Name="ACCOUNT_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="STREET">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NAME" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="TOWN_ID" Type="int" Nullable="false" />
+          <Property Name="INDEX_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TEMPERATURE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DATE" Type="date" Nullable="false" />
+          <Property Name="TOWN_ID" Type="int" Nullable="false" />
+          <Property Name="MINVALUE" Type="int" Nullable="false" />
+          <Property Name="MAXVALUE" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TOWN">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NAME" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UNIT">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NAME" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UTILITY">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NAME" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PRICE" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="USAGEFORSTANDARTPRICE" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="BIGUSAGEPRICE" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="UNIT_ID" Type="int" Nullable="false" />
+          <Property Name="IMAGE_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_ADDRESS_BUILDING">
+          <End Role="BUILDING" Type="Self.BUILDING" Multiplicity="1" />
+          <End Role="ADDRESS" Type="Self.ADDRESS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BUILDING">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ADDRESS">
+              <PropertyRef Name="BUILDING_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ADDRESS_FLAT_PART">
+          <End Role="FLAT_PART" Type="Self.FLAT_PART" Multiplicity="0..1" />
+          <End Role="ADDRESS" Type="Self.ADDRESS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FLAT_PART">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ADDRESS">
+              <PropertyRef Name="FLAT_PART_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ADDRESS_INDEX">
+          <End Role="INDEX" Type="Self.INDEX" Multiplicity="1" />
+          <End Role="ADDRESS" Type="Self.ADDRESS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="INDEX">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ADDRESS">
+              <PropertyRef Name="INDEX_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ADDRESS_STREET">
+          <End Role="STREET" Type="Self.STREET" Multiplicity="1" />
+          <End Role="ADDRESS" Type="Self.ADDRESS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STREET">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ADDRESS">
+              <PropertyRef Name="STREET_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ADDRESS_TOWN">
+          <End Role="TOWN" Type="Self.TOWN" Multiplicity="1" />
+          <End Role="ADDRESS" Type="Self.ADDRESS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TOWN">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ADDRESS">
+              <PropertyRef Name="TOWN_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BILL_ACCOUNT_ID">
+          <End Role="ACCOUNT" Type="Self.ACCOUNT" Multiplicity="1" />
+          <End Role="BILL" Type="Self.BILL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ACCOUNT">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="BILL">
+              <PropertyRef Name="ACCOUNT_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BUILDING_IMAGE_BUILDING">
+          <End Role="IMAGE_BUILDING" Type="Self.IMAGE_BUILDING" Multiplicity="0..1" />
+          <End Role="BUILDING" Type="Self.BUILDING" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IMAGE_BUILDING">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="BUILDING">
+              <PropertyRef Name="IMAGE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BUILDING_STREET">
+          <End Role="STREET" Type="Self.STREET" Multiplicity="1" />
+          <End Role="BUILDING" Type="Self.BUILDING" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STREET">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="BUILDING">
+              <PropertyRef Name="STREET_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CUSTOMER_ACCOUNT">
+          <End Role="ACCOUNT" Type="Self.ACCOUNT" Multiplicity="1" />
+          <End Role="CUSTOMER" Type="Self.CUSTOMER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ACCOUNT">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CUSTOMER">
+              <PropertyRef Name="ACCOUNT_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CUSTOMER_ADDRESS">
+          <End Role="ADDRESS" Type="Self.ADDRESS" Multiplicity="1" />
+          <End Role="CUSTOMER" Type="Self.CUSTOMER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ADDRESS">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CUSTOMER">
+              <PropertyRef Name="ADDRESS_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CUSTOMER_CUSTOMER_TYPE">
+          <End Role="CUSTOMER_TYPE" Type="Self.CUSTOMER_TYPE" Multiplicity="1" />
+          <End Role="CUSTOMER" Type="Self.CUSTOMER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CUSTOMER_TYPE">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CUSTOMER">
+              <PropertyRef Name="CUSTOMER_TYPE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FLAT_BUILDING">
+          <End Role="BUILDING" Type="Self.BUILDING" Multiplicity="1" />
+          <End Role="FLAT_PART" Type="Self.FLAT_PART" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BUILDING">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="FLAT_PART">
+              <PropertyRef Name="BUILDING_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_METER_ADDRESS">
+          <End Role="ADDRESS" Type="Self.ADDRESS" Multiplicity="1" />
+          <End Role="METER" Type="Self.METER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ADDRESS">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="METER">
+              <PropertyRef Name="ADDRESS_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_METER_ITEM_METER">
+          <End Role="METER" Type="Self.METER" Multiplicity="1" />
+          <End Role="METER_ITEM" Type="Self.METER_ITEM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="METER">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="METER_ITEM">
+              <PropertyRef Name="METER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_METER_METER_TYPE">
+          <End Role="METER_TYPE" Type="Self.METER_TYPE" Multiplicity="1" />
+          <End Role="METER" Type="Self.METER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="METER_TYPE">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="METER">
+              <PropertyRef Name="METER_TYPE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_METER_TYPE_UTILITY">
+          <End Role="UTILITY" Type="Self.UTILITY" Multiplicity="1" />
+          <End Role="METER_TYPE" Type="Self.METER_TYPE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UTILITY">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="METER_TYPE">
+              <PropertyRef Name="UTILITY_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NEWS_CHAPTER_NEWS">
+          <End Role="NEWS" Type="Self.NEWS" Multiplicity="1" />
+          <End Role="NEWS_CHAPTER" Type="Self.NEWS_CHAPTER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NEWS">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="NEWS_CHAPTER">
+              <PropertyRef Name="NEWS_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NEWS_IMAGE_NEWS">
+          <End Role="IMAGE_NEWS" Type="Self.IMAGE_NEWS" Multiplicity="0..1" />
+          <End Role="NEWS" Type="Self.NEWS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IMAGE_NEWS">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="NEWS">
+              <PropertyRef Name="IMAGE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NEWS_TITLE_NEWS">
+          <End Role="NEWS" Type="Self.NEWS" Multiplicity="1" />
+          <End Role="NEWS_TITLE" Type="Self.NEWS_TITLE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NEWS">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="NEWS_TITLE">
+              <PropertyRef Name="NEWS_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PAYMENT_ACCOUNT_ID">
+          <End Role="ACCOUNT" Type="Self.ACCOUNT" Multiplicity="1" />
+          <End Role="PAYMENT" Type="Self.PAYMENT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ACCOUNT">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PAYMENT">
+              <PropertyRef Name="ACCOUNT_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_STREET_INDEX">
+          <End Role="INDEX" Type="Self.INDEX" Multiplicity="1" />
+          <End Role="STREET" Type="Self.STREET" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="INDEX">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="STREET">
+              <PropertyRef Name="INDEX_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_STREET_TOWN">
+          <End Role="TOWN" Type="Self.TOWN" Multiplicity="1" />
+          <End Role="STREET" Type="Self.STREET" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TOWN">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="STREET">
+              <PropertyRef Name="TOWN_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TEMPERATURE_TOWN">
+          <End Role="TOWN" Type="Self.TOWN" Multiplicity="1" />
+          <End Role="TEMPERATURE" Type="Self.TEMPERATURE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TOWN">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TEMPERATURE">
+              <PropertyRef Name="TOWN_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UTILITY_IMAGE_UTILITY">
+          <End Role="IMAGE_UTILITY" Type="Self.IMAGE_UTILITY" Multiplicity="1" />
+          <End Role="UTILITY" Type="Self.UTILITY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IMAGE_UTILITY">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UTILITY">
+              <PropertyRef Name="IMAGE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UTILITY_UNIT">
+          <End Role="UNIT" Type="Self.UNIT" Multiplicity="1" />
+          <End Role="UTILITY" Type="Self.UTILITY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UNIT">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UTILITY">
+              <PropertyRef Name="UNIT_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TownUtilityBillSystemV2ModelStoreContainer">
+          <EntitySet Name="ACCOUNT" EntityType="Self.ACCOUNT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ADDRESS" EntityType="Self.ADDRESS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BILL" EntityType="Self.BILL" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BUILDING" EntityType="Self.BUILDING" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CUSTOMER" EntityType="Self.CUSTOMER" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CUSTOMER_TYPE" EntityType="Self.CUSTOMER_TYPE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FLAT_PART" EntityType="Self.FLAT_PART" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="IMAGE_BUILDING" EntityType="Self.IMAGE_BUILDING" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="IMAGE_NEWS" EntityType="Self.IMAGE_NEWS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="IMAGE_UTILITY" EntityType="Self.IMAGE_UTILITY" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="INDEX" EntityType="Self.INDEX" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="METER" EntityType="Self.METER" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="METER_ITEM" EntityType="Self.METER_ITEM" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="METER_TYPE" EntityType="Self.METER_TYPE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NEWS" EntityType="Self.NEWS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NEWS_CHAPTER" EntityType="Self.NEWS_CHAPTER" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NEWS_TITLE" EntityType="Self.NEWS_TITLE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PAYMENT" EntityType="Self.PAYMENT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="STREET" EntityType="Self.STREET" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TEMPERATURE" EntityType="Self.TEMPERATURE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TOWN" EntityType="Self.TOWN" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UNIT" EntityType="Self.UNIT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UTILITY" EntityType="Self.UTILITY" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_ADDRESS_BUILDING" Association="Self.FK_ADDRESS_BUILDING">
+            <End Role="BUILDING" EntitySet="BUILDING" />
+            <End Role="ADDRESS" EntitySet="ADDRESS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ADDRESS_FLAT_PART" Association="Self.FK_ADDRESS_FLAT_PART">
+            <End Role="FLAT_PART" EntitySet="FLAT_PART" />
+            <End Role="ADDRESS" EntitySet="ADDRESS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ADDRESS_INDEX" Association="Self.FK_ADDRESS_INDEX">
+            <End Role="INDEX" EntitySet="INDEX" />
+            <End Role="ADDRESS" EntitySet="ADDRESS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ADDRESS_STREET" Association="Self.FK_ADDRESS_STREET">
+            <End Role="STREET" EntitySet="STREET" />
+            <End Role="ADDRESS" EntitySet="ADDRESS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ADDRESS_TOWN" Association="Self.FK_ADDRESS_TOWN">
+            <End Role="TOWN" EntitySet="TOWN" />
+            <End Role="ADDRESS" EntitySet="ADDRESS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BILL_ACCOUNT_ID" Association="Self.FK_BILL_ACCOUNT_ID">
+            <End Role="ACCOUNT" EntitySet="ACCOUNT" />
+            <End Role="BILL" EntitySet="BILL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BUILDING_IMAGE_BUILDING" Association="Self.FK_BUILDING_IMAGE_BUILDING">
+            <End Role="IMAGE_BUILDING" EntitySet="IMAGE_BUILDING" />
+            <End Role="BUILDING" EntitySet="BUILDING" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BUILDING_STREET" Association="Self.FK_BUILDING_STREET">
+            <End Role="STREET" EntitySet="STREET" />
+            <End Role="BUILDING" EntitySet="BUILDING" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CUSTOMER_ACCOUNT" Association="Self.FK_CUSTOMER_ACCOUNT">
+            <End Role="ACCOUNT" EntitySet="ACCOUNT" />
+            <End Role="CUSTOMER" EntitySet="CUSTOMER" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CUSTOMER_ADDRESS" Association="Self.FK_CUSTOMER_ADDRESS">
+            <End Role="ADDRESS" EntitySet="ADDRESS" />
+            <End Role="CUSTOMER" EntitySet="CUSTOMER" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CUSTOMER_CUSTOMER_TYPE" Association="Self.FK_CUSTOMER_CUSTOMER_TYPE">
+            <End Role="CUSTOMER_TYPE" EntitySet="CUSTOMER_TYPE" />
+            <End Role="CUSTOMER" EntitySet="CUSTOMER" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FLAT_BUILDING" Association="Self.FK_FLAT_BUILDING">
+            <End Role="BUILDING" EntitySet="BUILDING" />
+            <End Role="FLAT_PART" EntitySet="FLAT_PART" />
+          </AssociationSet>
+          <AssociationSet Name="FK_METER_ADDRESS" Association="Self.FK_METER_ADDRESS">
+            <End Role="ADDRESS" EntitySet="ADDRESS" />
+            <End Role="METER" EntitySet="METER" />
+          </AssociationSet>
+          <AssociationSet Name="FK_METER_ITEM_METER" Association="Self.FK_METER_ITEM_METER">
+            <End Role="METER" EntitySet="METER" />
+            <End Role="METER_ITEM" EntitySet="METER_ITEM" />
+          </AssociationSet>
+          <AssociationSet Name="FK_METER_METER_TYPE" Association="Self.FK_METER_METER_TYPE">
+            <End Role="METER_TYPE" EntitySet="METER_TYPE" />
+            <End Role="METER" EntitySet="METER" />
+          </AssociationSet>
+          <AssociationSet Name="FK_METER_TYPE_UTILITY" Association="Self.FK_METER_TYPE_UTILITY">
+            <End Role="UTILITY" EntitySet="UTILITY" />
+            <End Role="METER_TYPE" EntitySet="METER_TYPE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NEWS_CHAPTER_NEWS" Association="Self.FK_NEWS_CHAPTER_NEWS">
+            <End Role="NEWS" EntitySet="NEWS" />
+            <End Role="NEWS_CHAPTER" EntitySet="NEWS_CHAPTER" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NEWS_IMAGE_NEWS" Association="Self.FK_NEWS_IMAGE_NEWS">
+            <End Role="IMAGE_NEWS" EntitySet="IMAGE_NEWS" />
+            <End Role="NEWS" EntitySet="NEWS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NEWS_TITLE_NEWS" Association="Self.FK_NEWS_TITLE_NEWS">
+            <End Role="NEWS" EntitySet="NEWS" />
+            <End Role="NEWS_TITLE" EntitySet="NEWS_TITLE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PAYMENT_ACCOUNT_ID" Association="Self.FK_PAYMENT_ACCOUNT_ID">
+            <End Role="ACCOUNT" EntitySet="ACCOUNT" />
+            <End Role="PAYMENT" EntitySet="PAYMENT" />
+          </AssociationSet>
+          <AssociationSet Name="FK_STREET_INDEX" Association="Self.FK_STREET_INDEX">
+            <End Role="INDEX" EntitySet="INDEX" />
+            <End Role="STREET" EntitySet="STREET" />
+          </AssociationSet>
+          <AssociationSet Name="FK_STREET_TOWN" Association="Self.FK_STREET_TOWN">
+            <End Role="TOWN" EntitySet="TOWN" />
+            <End Role="STREET" EntitySet="STREET" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TEMPERATURE_TOWN" Association="Self.FK_TEMPERATURE_TOWN">
+            <End Role="TOWN" EntitySet="TOWN" />
+            <End Role="TEMPERATURE" EntitySet="TEMPERATURE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UTILITY_IMAGE_UTILITY" Association="Self.FK_UTILITY_IMAGE_UTILITY">
+            <End Role="IMAGE_UTILITY" EntitySet="IMAGE_UTILITY" />
+            <End Role="UTILITY" EntitySet="UTILITY" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UTILITY_UNIT" Association="Self.FK_UTILITY_UNIT">
+            <End Role="UNIT" EntitySet="UNIT" />
+            <End Role="UTILITY" EntitySet="UTILITY" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TownUtilityBillSystemV2Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ACCOUNT">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NUMBER" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BALANCE" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <NavigationProperty Name="BILLs" Relationship="Self.FK_BILL_ACCOUNT_ID" FromRole="ACCOUNT" ToRole="BILL" />
+          <NavigationProperty Name="CUSTOMERs" Relationship="Self.FK_CUSTOMER_ACCOUNT" FromRole="ACCOUNT" ToRole="CUSTOMER" />
+          <NavigationProperty Name="PAYMENTs" Relationship="Self.FK_PAYMENT_ACCOUNT_ID" FromRole="ACCOUNT" ToRole="PAYMENT" />
+        </EntityType>
+        <EntityType Name="ADDRESS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="INDEX_ID" Type="Int32" Nullable="false" />
+          <Property Name="TOWN_ID" Type="Int32" Nullable="false" />
+          <Property Name="STREET_ID" Type="Int32" Nullable="false" />
+          <Property Name="BUILDING_ID" Type="Int32" Nullable="false" />
+          <Property Name="FLAT_PART_ID" Type="Int32" />
+          <NavigationProperty Name="BUILDING" Relationship="Self.FK_ADDRESS_BUILDING" FromRole="ADDRESS" ToRole="BUILDING" />
+          <NavigationProperty Name="FLAT_PART" Relationship="Self.FK_ADDRESS_FLAT_PART" FromRole="ADDRESS" ToRole="FLAT_PART" />
+          <NavigationProperty Name="INDEX" Relationship="Self.FK_ADDRESS_INDEX" FromRole="ADDRESS" ToRole="INDEX" />
+          <NavigationProperty Name="STREET" Relationship="Self.FK_ADDRESS_STREET" FromRole="ADDRESS" ToRole="STREET" />
+          <NavigationProperty Name="TOWN" Relationship="Self.FK_ADDRESS_TOWN" FromRole="ADDRESS" ToRole="TOWN" />
+          <NavigationProperty Name="CUSTOMERs" Relationship="Self.FK_CUSTOMER_ADDRESS" FromRole="ADDRESS" ToRole="CUSTOMER" />
+          <NavigationProperty Name="METERs" Relationship="Self.FK_METER_ADDRESS" FromRole="ADDRESS" ToRole="METER" />
+        </EntityType>
+        <EntityType Name="BILL">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NUMBER" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ACCOUNT_ID" Type="Int32" Nullable="false" />
+          <Property Name="DATE" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="PERIOD" Type="String" MaxLength="7" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="SUM" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="PAID" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="ACCOUNT" Relationship="Self.FK_BILL_ACCOUNT_ID" FromRole="BILL" ToRole="ACCOUNT" />
+        </EntityType>
+        <EntityType Name="BUILDING">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NUMBER" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SQUARE" Type="Single" />
+          <Property Name="STREET_ID" Type="Int32" Nullable="false" />
+          <Property Name="IMAGE_ID" Type="Int32" />
+          <NavigationProperty Name="ADDRESSes" Relationship="Self.FK_ADDRESS_BUILDING" FromRole="BUILDING" ToRole="ADDRESS" />
+          <NavigationProperty Name="IMAGE_BUILDING" Relationship="Self.FK_BUILDING_IMAGE_BUILDING" FromRole="BUILDING" ToRole="IMAGE_BUILDING" />
+          <NavigationProperty Name="STREET" Relationship="Self.FK_BUILDING_STREET" FromRole="BUILDING" ToRole="STREET" />
+          <NavigationProperty Name="FLAT_PART" Relationship="Self.FK_FLAT_BUILDING" FromRole="BUILDING" ToRole="FLAT_PART" />
+        </EntityType>
+        <EntityType Name="CUSTOMER">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SURNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EMAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PHONE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ADDRESS_ID" Type="Int32" Nullable="false" />
+          <Property Name="CUSTOMER_TYPE_ID" Type="Int32" Nullable="false" />
+          <Property Name="ACCOUNT_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ACCOUNT" Relationship="Self.FK_CUSTOMER_ACCOUNT" FromRole="CUSTOMER" ToRole="ACCOUNT" />
+          <NavigationProperty Name="ADDRESS" Relationship="Self.FK_CUSTOMER_ADDRESS" FromRole="CUSTOMER" ToRole="ADDRESS" />
+          <NavigationProperty Name="CUSTOMER_TYPE" Relationship="Self.FK_CUSTOMER_CUSTOMER_TYPE" FromRole="CUSTOMER" ToRole="CUSTOMER_TYPE" />
+        </EntityType>
+        <EntityType Name="CUSTOMER_TYPE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="CUSTOMERs" Relationship="Self.FK_CUSTOMER_CUSTOMER_TYPE" FromRole="CUSTOMER_TYPE" ToRole="CUSTOMER" />
+        </EntityType>
+        <EntityType Name="FLAT_PART">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NUMBER" Type="Int32" />
+          <Property Name="NAME" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="SQUARE" Type="Single" />
+          <Property Name="BUILDING_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ADDRESSes" Relationship="Self.FK_ADDRESS_FLAT_PART" FromRole="FLAT_PART" ToRole="ADDRESS" />
+          <NavigationProperty Name="BUILDING" Relationship="Self.FK_FLAT_BUILDING" FromRole="FLAT_PART" ToRole="BUILDING" />
+        </EntityType>
+        <EntityType Name="IMAGE_BUILDING">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PATH" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="BUILDINGs" Relationship="Self.FK_BUILDING_IMAGE_BUILDING" FromRole="IMAGE_BUILDING" ToRole="BUILDING" />
+        </EntityType>
+        <EntityType Name="IMAGE_NEWS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PATH" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="NEWS" Relationship="Self.FK_NEWS_IMAGE_NEWS" FromRole="IMAGE_NEWS" ToRole="NEWS" />
+        </EntityType>
+        <EntityType Name="IMAGE_UTILITY">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PATH" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="UTILITies" Relationship="Self.FK_UTILITY_IMAGE_UTILITY" FromRole="IMAGE_UTILITY" ToRole="UTILITY" />
+        </EntityType>
+        <EntityType Name="INDEX">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VALUE" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ADDRESSes" Relationship="Self.FK_ADDRESS_INDEX" FromRole="INDEX" ToRole="ADDRESS" />
+          <NavigationProperty Name="STREETs" Relationship="Self.FK_STREET_INDEX" FromRole="INDEX" ToRole="STREET" />
+        </EntityType>
+        <EntityType Name="METER">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SERIAL_NUMBER" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ADDRESS_ID" Type="Int32" Nullable="false" />
+          <Property Name="METER_TYPE_ID" Type="Int32" Nullable="false" />
+          <Property Name="RELEASE_DATE" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="VARIFICATION_DATE" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="ADDRESS" Relationship="Self.FK_METER_ADDRESS" FromRole="METER" ToRole="ADDRESS" />
+          <NavigationProperty Name="METER_ITEM" Relationship="Self.FK_METER_ITEM_METER" FromRole="METER" ToRole="METER_ITEM" />
+          <NavigationProperty Name="METER_TYPE" Relationship="Self.FK_METER_METER_TYPE" FromRole="METER" ToRole="METER_TYPE" />
+        </EntityType>
+        <EntityType Name="METER_ITEM">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="METER_ID" Type="Int32" Nullable="false" />
+          <Property Name="DATE" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="VALUE" Type="Single" Nullable="false" />
+          <NavigationProperty Name="METER" Relationship="Self.FK_METER_ITEM_METER" FromRole="METER_ITEM" ToRole="METER" />
+        </EntityType>
+        <EntityType Name="METER_TYPE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="VARIFICATION_PERIOD_YEARS" Type="Int32" Nullable="false" />
+          <Property Name="UTILITY_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="METERs" Relationship="Self.FK_METER_METER_TYPE" FromRole="METER_TYPE" ToRole="METER" />
+          <NavigationProperty Name="UTILITY" Relationship="Self.FK_METER_TYPE_UTILITY" FromRole="METER_TYPE" ToRole="UTILITY" />
+        </EntityType>
+        <EntityType Name="NEWS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DATE" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IMAGE_ID" Type="Int32" />
+          <NavigationProperty Name="IMAGE_NEWS" Relationship="Self.FK_NEWS_IMAGE_NEWS" FromRole="NEWS" ToRole="IMAGE_NEWS" />
+          <NavigationProperty Name="NEWS_CHAPTER" Relationship="Self.FK_NEWS_CHAPTER_NEWS" FromRole="NEWS" ToRole="NEWS_CHAPTER" />
+          <NavigationProperty Name="NEWS_TITLE" Relationship="Self.FK_NEWS_TITLE_NEWS" FromRole="NEWS" ToRole="NEWS_TITLE" />
+        </EntityType>
+        <EntityType Name="NEWS_CHAPTER">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TEXT" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LANGUAGE" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NEWS_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="NEWS" Relationship="Self.FK_NEWS_CHAPTER_NEWS" FromRole="NEWS_CHAPTER" ToRole="NEWS" />
+        </EntityType>
+        <EntityType Name="NEWS_TITLE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TITLE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LANGUAGE" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NEWS_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="NEWS" Relationship="Self.FK_NEWS_TITLE_NEWS" FromRole="NEWS_TITLE" ToRole="NEWS" />
+        </EntityType>
+        <EntityType Name="PAYMENT">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NUMBER" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SUM" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="DATE" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="NOTE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ACCOUNT_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ACCOUNT" Relationship="Self.FK_PAYMENT_ACCOUNT_ID" FromRole="PAYMENT" ToRole="ACCOUNT" />
+        </EntityType>
+        <EntityType Name="STREET">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TOWN_ID" Type="Int32" Nullable="false" />
+          <Property Name="INDEX_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ADDRESSes" Relationship="Self.FK_ADDRESS_STREET" FromRole="STREET" ToRole="ADDRESS" />
+          <NavigationProperty Name="BUILDINGs" Relationship="Self.FK_BUILDING_STREET" FromRole="STREET" ToRole="BUILDING" />
+          <NavigationProperty Name="INDEX" Relationship="Self.FK_STREET_INDEX" FromRole="STREET" ToRole="INDEX" />
+          <NavigationProperty Name="TOWN" Relationship="Self.FK_STREET_TOWN" FromRole="STREET" ToRole="TOWN" />
+        </EntityType>
+        <EntityType Name="TEMPERATURE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DATE" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="TOWN_ID" Type="Int32" Nullable="false" />
+          <Property Name="MINVALUE" Type="Int32" Nullable="false" />
+          <Property Name="MAXVALUE" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="TOWN" Relationship="Self.FK_TEMPERATURE_TOWN" FromRole="TEMPERATURE" ToRole="TOWN" />
+        </EntityType>
+        <EntityType Name="TOWN">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="ADDRESSes" Relationship="Self.FK_ADDRESS_TOWN" FromRole="TOWN" ToRole="ADDRESS" />
+          <NavigationProperty Name="STREETs" Relationship="Self.FK_STREET_TOWN" FromRole="TOWN" ToRole="STREET" />
+          <NavigationProperty Name="TEMPERATUREs" Relationship="Self.FK_TEMPERATURE_TOWN" FromRole="TOWN" ToRole="TEMPERATURE" />
+        </EntityType>
+        <EntityType Name="UNIT">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="UTILITies" Relationship="Self.FK_UTILITY_UNIT" FromRole="UNIT" ToRole="UTILITY" />
+        </EntityType>
+        <EntityType Name="UTILITY">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PRICE" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="USAGEFORSTANDARTPRICE" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="BIGUSAGEPRICE" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="UNIT_ID" Type="Int32" Nullable="false" />
+          <Property Name="IMAGE_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="IMAGE_UTILITY" Relationship="Self.FK_UTILITY_IMAGE_UTILITY" FromRole="UTILITY" ToRole="IMAGE_UTILITY" />
+          <NavigationProperty Name="METER_TYPE" Relationship="Self.FK_METER_TYPE_UTILITY" FromRole="UTILITY" ToRole="METER_TYPE" />
+          <NavigationProperty Name="UNIT" Relationship="Self.FK_UTILITY_UNIT" FromRole="UTILITY" ToRole="UNIT" />
+        </EntityType>
+        <Association Name="FK_BILL_ACCOUNT_ID">
+          <End Role="ACCOUNT" Type="Self.ACCOUNT" Multiplicity="1" />
+          <End Role="BILL" Type="Self.BILL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ACCOUNT">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="BILL">
+              <PropertyRef Name="ACCOUNT_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CUSTOMER_ACCOUNT">
+          <End Role="ACCOUNT" Type="Self.ACCOUNT" Multiplicity="1" />
+          <End Role="CUSTOMER" Type="Self.CUSTOMER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ACCOUNT">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CUSTOMER">
+              <PropertyRef Name="ACCOUNT_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PAYMENT_ACCOUNT_ID">
+          <End Role="ACCOUNT" Type="Self.ACCOUNT" Multiplicity="1" />
+          <End Role="PAYMENT" Type="Self.PAYMENT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ACCOUNT">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PAYMENT">
+              <PropertyRef Name="ACCOUNT_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ADDRESS_BUILDING">
+          <End Role="BUILDING" Type="Self.BUILDING" Multiplicity="1" />
+          <End Role="ADDRESS" Type="Self.ADDRESS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BUILDING">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ADDRESS">
+              <PropertyRef Name="BUILDING_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ADDRESS_FLAT_PART">
+          <End Role="FLAT_PART" Type="Self.FLAT_PART" Multiplicity="0..1" />
+          <End Role="ADDRESS" Type="Self.ADDRESS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FLAT_PART">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ADDRESS">
+              <PropertyRef Name="FLAT_PART_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ADDRESS_INDEX">
+          <End Role="INDEX" Type="Self.INDEX" Multiplicity="1" />
+          <End Role="ADDRESS" Type="Self.ADDRESS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="INDEX">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ADDRESS">
+              <PropertyRef Name="INDEX_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ADDRESS_STREET">
+          <End Role="STREET" Type="Self.STREET" Multiplicity="1" />
+          <End Role="ADDRESS" Type="Self.ADDRESS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STREET">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ADDRESS">
+              <PropertyRef Name="STREET_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ADDRESS_TOWN">
+          <End Role="TOWN" Type="Self.TOWN" Multiplicity="1" />
+          <End Role="ADDRESS" Type="Self.ADDRESS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TOWN">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ADDRESS">
+              <PropertyRef Name="TOWN_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CUSTOMER_ADDRESS">
+          <End Role="ADDRESS" Type="Self.ADDRESS" Multiplicity="1" />
+          <End Role="CUSTOMER" Type="Self.CUSTOMER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ADDRESS">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CUSTOMER">
+              <PropertyRef Name="ADDRESS_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_METER_ADDRESS">
+          <End Role="ADDRESS" Type="Self.ADDRESS" Multiplicity="1" />
+          <End Role="METER" Type="Self.METER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ADDRESS">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="METER">
+              <PropertyRef Name="ADDRESS_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BUILDING_IMAGE_BUILDING">
+          <End Role="IMAGE_BUILDING" Type="Self.IMAGE_BUILDING" Multiplicity="0..1" />
+          <End Role="BUILDING" Type="Self.BUILDING" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IMAGE_BUILDING">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="BUILDING">
+              <PropertyRef Name="IMAGE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BUILDING_STREET">
+          <End Role="STREET" Type="Self.STREET" Multiplicity="1" />
+          <End Role="BUILDING" Type="Self.BUILDING" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STREET">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="BUILDING">
+              <PropertyRef Name="STREET_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FLAT_BUILDING">
+          <End Role="BUILDING" Type="Self.BUILDING" Multiplicity="1" />
+          <End Role="FLAT_PART" Type="Self.FLAT_PART" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BUILDING">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="FLAT_PART">
+              <PropertyRef Name="BUILDING_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CUSTOMER_CUSTOMER_TYPE">
+          <End Role="CUSTOMER_TYPE" Type="Self.CUSTOMER_TYPE" Multiplicity="1" />
+          <End Role="CUSTOMER" Type="Self.CUSTOMER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CUSTOMER_TYPE">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CUSTOMER">
+              <PropertyRef Name="CUSTOMER_TYPE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NEWS_IMAGE_NEWS">
+          <End Role="IMAGE_NEWS" Type="Self.IMAGE_NEWS" Multiplicity="0..1" />
+          <End Role="NEWS" Type="Self.NEWS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IMAGE_NEWS">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="NEWS">
+              <PropertyRef Name="IMAGE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UTILITY_IMAGE_UTILITY">
+          <End Role="IMAGE_UTILITY" Type="Self.IMAGE_UTILITY" Multiplicity="1" />
+          <End Role="UTILITY" Type="Self.UTILITY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IMAGE_UTILITY">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UTILITY">
+              <PropertyRef Name="IMAGE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_STREET_INDEX">
+          <End Role="INDEX" Type="Self.INDEX" Multiplicity="1" />
+          <End Role="STREET" Type="Self.STREET" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="INDEX">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="STREET">
+              <PropertyRef Name="INDEX_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_METER_ITEM_METER">
+          <End Role="METER" Type="Self.METER" Multiplicity="1" />
+          <End Role="METER_ITEM" Type="Self.METER_ITEM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="METER">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="METER_ITEM">
+              <PropertyRef Name="METER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_METER_METER_TYPE">
+          <End Role="METER_TYPE" Type="Self.METER_TYPE" Multiplicity="1" />
+          <End Role="METER" Type="Self.METER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="METER_TYPE">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="METER">
+              <PropertyRef Name="METER_TYPE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_METER_TYPE_UTILITY">
+          <End Role="UTILITY" Type="Self.UTILITY" Multiplicity="1" />
+          <End Role="METER_TYPE" Type="Self.METER_TYPE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UTILITY">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="METER_TYPE">
+              <PropertyRef Name="UTILITY_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NEWS_CHAPTER_NEWS">
+          <End Role="NEWS" Type="Self.NEWS" Multiplicity="1" />
+          <End Role="NEWS_CHAPTER" Type="Self.NEWS_CHAPTER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NEWS">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="NEWS_CHAPTER">
+              <PropertyRef Name="NEWS_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NEWS_TITLE_NEWS">
+          <End Role="NEWS" Type="Self.NEWS" Multiplicity="1" />
+          <End Role="NEWS_TITLE" Type="Self.NEWS_TITLE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NEWS">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="NEWS_TITLE">
+              <PropertyRef Name="NEWS_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_STREET_TOWN">
+          <End Role="TOWN" Type="Self.TOWN" Multiplicity="1" />
+          <End Role="STREET" Type="Self.STREET" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TOWN">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="STREET">
+              <PropertyRef Name="TOWN_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TEMPERATURE_TOWN">
+          <End Role="TOWN" Type="Self.TOWN" Multiplicity="1" />
+          <End Role="TEMPERATURE" Type="Self.TEMPERATURE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TOWN">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TEMPERATURE">
+              <PropertyRef Name="TOWN_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UTILITY_UNIT">
+          <End Role="UNIT" Type="Self.UNIT" Multiplicity="1" />
+          <End Role="UTILITY" Type="Self.UTILITY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UNIT">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UTILITY">
+              <PropertyRef Name="UNIT_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TOWN_UTILITY_BILL_SYSTEM_V2Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ACCOUNTs" EntityType="Self.ACCOUNT" />
+          <EntitySet Name="ADDRESSes" EntityType="Self.ADDRESS" />
+          <EntitySet Name="BILLs" EntityType="Self.BILL" />
+          <EntitySet Name="BUILDINGs" EntityType="Self.BUILDING" />
+          <EntitySet Name="CUSTOMERs" EntityType="Self.CUSTOMER" />
+          <EntitySet Name="CUSTOMER_TYPE" EntityType="Self.CUSTOMER_TYPE" />
+          <EntitySet Name="FLAT_PART" EntityType="Self.FLAT_PART" />
+          <EntitySet Name="IMAGE_BUILDING" EntityType="Self.IMAGE_BUILDING" />
+          <EntitySet Name="IMAGE_NEWS" EntityType="Self.IMAGE_NEWS" />
+          <EntitySet Name="IMAGE_UTILITY" EntityType="Self.IMAGE_UTILITY" />
+          <EntitySet Name="Indices" EntityType="Self.INDEX" />
+          <EntitySet Name="METERs" EntityType="Self.METER" />
+          <EntitySet Name="METER_ITEM" EntityType="Self.METER_ITEM" />
+          <EntitySet Name="METER_TYPE" EntityType="Self.METER_TYPE" />
+          <EntitySet Name="NEWS" EntityType="Self.NEWS" />
+          <EntitySet Name="NEWS_CHAPTER" EntityType="Self.NEWS_CHAPTER" />
+          <EntitySet Name="NEWS_TITLE" EntityType="Self.NEWS_TITLE" />
+          <EntitySet Name="PAYMENTs" EntityType="Self.PAYMENT" />
+          <EntitySet Name="STREETs" EntityType="Self.STREET" />
+          <EntitySet Name="TEMPERATUREs" EntityType="Self.TEMPERATURE" />
+          <EntitySet Name="TOWNs" EntityType="Self.TOWN" />
+          <EntitySet Name="UNITs" EntityType="Self.UNIT" />
+          <EntitySet Name="UTILITies" EntityType="Self.UTILITY" />
+          <AssociationSet Name="FK_BILL_ACCOUNT_ID" Association="Self.FK_BILL_ACCOUNT_ID">
+            <End Role="ACCOUNT" EntitySet="ACCOUNTs" />
+            <End Role="BILL" EntitySet="BILLs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CUSTOMER_ACCOUNT" Association="Self.FK_CUSTOMER_ACCOUNT">
+            <End Role="ACCOUNT" EntitySet="ACCOUNTs" />
+            <End Role="CUSTOMER" EntitySet="CUSTOMERs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PAYMENT_ACCOUNT_ID" Association="Self.FK_PAYMENT_ACCOUNT_ID">
+            <End Role="ACCOUNT" EntitySet="ACCOUNTs" />
+            <End Role="PAYMENT" EntitySet="PAYMENTs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ADDRESS_BUILDING" Association="Self.FK_ADDRESS_BUILDING">
+            <End Role="BUILDING" EntitySet="BUILDINGs" />
+            <End Role="ADDRESS" EntitySet="ADDRESSes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ADDRESS_FLAT_PART" Association="Self.FK_ADDRESS_FLAT_PART">
+            <End Role="FLAT_PART" EntitySet="FLAT_PART" />
+            <End Role="ADDRESS" EntitySet="ADDRESSes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ADDRESS_INDEX" Association="Self.FK_ADDRESS_INDEX">
+            <End Role="INDEX" EntitySet="Indices" />
+            <End Role="ADDRESS" EntitySet="ADDRESSes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ADDRESS_STREET" Association="Self.FK_ADDRESS_STREET">
+            <End Role="STREET" EntitySet="STREETs" />
+            <End Role="ADDRESS" EntitySet="ADDRESSes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ADDRESS_TOWN" Association="Self.FK_ADDRESS_TOWN">
+            <End Role="TOWN" EntitySet="TOWNs" />
+            <End Role="ADDRESS" EntitySet="ADDRESSes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CUSTOMER_ADDRESS" Association="Self.FK_CUSTOMER_ADDRESS">
+            <End Role="ADDRESS" EntitySet="ADDRESSes" />
+            <End Role="CUSTOMER" EntitySet="CUSTOMERs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_METER_ADDRESS" Association="Self.FK_METER_ADDRESS">
+            <End Role="ADDRESS" EntitySet="ADDRESSes" />
+            <End Role="METER" EntitySet="METERs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BUILDING_IMAGE_BUILDING" Association="Self.FK_BUILDING_IMAGE_BUILDING">
+            <End Role="IMAGE_BUILDING" EntitySet="IMAGE_BUILDING" />
+            <End Role="BUILDING" EntitySet="BUILDINGs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BUILDING_STREET" Association="Self.FK_BUILDING_STREET">
+            <End Role="STREET" EntitySet="STREETs" />
+            <End Role="BUILDING" EntitySet="BUILDINGs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FLAT_BUILDING" Association="Self.FK_FLAT_BUILDING">
+            <End Role="BUILDING" EntitySet="BUILDINGs" />
+            <End Role="FLAT_PART" EntitySet="FLAT_PART" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CUSTOMER_CUSTOMER_TYPE" Association="Self.FK_CUSTOMER_CUSTOMER_TYPE">
+            <End Role="CUSTOMER_TYPE" EntitySet="CUSTOMER_TYPE" />
+            <End Role="CUSTOMER" EntitySet="CUSTOMERs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NEWS_IMAGE_NEWS" Association="Self.FK_NEWS_IMAGE_NEWS">
+            <End Role="IMAGE_NEWS" EntitySet="IMAGE_NEWS" />
+            <End Role="NEWS" EntitySet="NEWS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UTILITY_IMAGE_UTILITY" Association="Self.FK_UTILITY_IMAGE_UTILITY">
+            <End Role="IMAGE_UTILITY" EntitySet="IMAGE_UTILITY" />
+            <End Role="UTILITY" EntitySet="UTILITies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_STREET_INDEX" Association="Self.FK_STREET_INDEX">
+            <End Role="INDEX" EntitySet="Indices" />
+            <End Role="STREET" EntitySet="STREETs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_METER_ITEM_METER" Association="Self.FK_METER_ITEM_METER">
+            <End Role="METER" EntitySet="METERs" />
+            <End Role="METER_ITEM" EntitySet="METER_ITEM" />
+          </AssociationSet>
+          <AssociationSet Name="FK_METER_METER_TYPE" Association="Self.FK_METER_METER_TYPE">
+            <End Role="METER_TYPE" EntitySet="METER_TYPE" />
+            <End Role="METER" EntitySet="METERs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_METER_TYPE_UTILITY" Association="Self.FK_METER_TYPE_UTILITY">
+            <End Role="UTILITY" EntitySet="UTILITies" />
+            <End Role="METER_TYPE" EntitySet="METER_TYPE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NEWS_CHAPTER_NEWS" Association="Self.FK_NEWS_CHAPTER_NEWS">
+            <End Role="NEWS" EntitySet="NEWS" />
+            <End Role="NEWS_CHAPTER" EntitySet="NEWS_CHAPTER" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NEWS_TITLE_NEWS" Association="Self.FK_NEWS_TITLE_NEWS">
+            <End Role="NEWS" EntitySet="NEWS" />
+            <End Role="NEWS_TITLE" EntitySet="NEWS_TITLE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_STREET_TOWN" Association="Self.FK_STREET_TOWN">
+            <End Role="TOWN" EntitySet="TOWNs" />
+            <End Role="STREET" EntitySet="STREETs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TEMPERATURE_TOWN" Association="Self.FK_TEMPERATURE_TOWN">
+            <End Role="TOWN" EntitySet="TOWNs" />
+            <End Role="TEMPERATURE" EntitySet="TEMPERATUREs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UTILITY_UNIT" Association="Self.FK_UTILITY_UNIT">
+            <End Role="UNIT" EntitySet="UNITs" />
+            <End Role="UTILITY" EntitySet="UTILITies" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TownUtilityBillSystemV2ModelStoreContainer" CdmEntityContainer="TOWN_UTILITY_BILL_SYSTEM_V2Entities">
+          <EntitySetMapping Name="ACCOUNTs">
+            <EntityTypeMapping TypeName="TownUtilityBillSystemV2Model.ACCOUNT">
+              <MappingFragment StoreEntitySet="ACCOUNT">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="NUMBER" ColumnName="NUMBER" />
+                <ScalarProperty Name="BALANCE" ColumnName="BALANCE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ADDRESSes">
+            <EntityTypeMapping TypeName="TownUtilityBillSystemV2Model.ADDRESS">
+              <MappingFragment StoreEntitySet="ADDRESS">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="INDEX_ID" ColumnName="INDEX_ID" />
+                <ScalarProperty Name="TOWN_ID" ColumnName="TOWN_ID" />
+                <ScalarProperty Name="STREET_ID" ColumnName="STREET_ID" />
+                <ScalarProperty Name="BUILDING_ID" ColumnName="BUILDING_ID" />
+                <ScalarProperty Name="FLAT_PART_ID" ColumnName="FLAT_PART_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BILLs">
+            <EntityTypeMapping TypeName="TownUtilityBillSystemV2Model.BILL">
+              <MappingFragment StoreEntitySet="BILL">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="NUMBER" ColumnName="NUMBER" />
+                <ScalarProperty Name="ACCOUNT_ID" ColumnName="ACCOUNT_ID" />
+                <ScalarProperty Name="DATE" ColumnName="DATE" />
+                <ScalarProperty Name="PERIOD" ColumnName="PERIOD" />
+                <ScalarProperty Name="SUM" ColumnName="SUM" />
+                <ScalarProperty Name="PAID" ColumnName="PAID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BUILDINGs">
+            <EntityTypeMapping TypeName="TownUtilityBillSystemV2Model.BUILDING">
+              <MappingFragment StoreEntitySet="BUILDING">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="NUMBER" ColumnName="NUMBER" />
+                <ScalarProperty Name="SQUARE" ColumnName="SQUARE" />
+                <ScalarProperty Name="STREET_ID" ColumnName="STREET_ID" />
+                <ScalarProperty Name="IMAGE_ID" ColumnName="IMAGE_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CUSTOMERs">
+            <EntityTypeMapping TypeName="TownUtilityBillSystemV2Model.CUSTOMER">
+              <MappingFragment StoreEntitySet="CUSTOMER">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="SURNAME" ColumnName="SURNAME" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="PHONE" ColumnName="PHONE" />
+                <ScalarProperty Name="ADDRESS_ID" ColumnName="ADDRESS_ID" />
+                <ScalarProperty Name="CUSTOMER_TYPE_ID" ColumnName="CUSTOMER_TYPE_ID" />
+                <ScalarProperty Name="ACCOUNT_ID" ColumnName="ACCOUNT_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CUSTOMER_TYPE">
+            <EntityTypeMapping TypeName="TownUtilityBillSystemV2Model.CUSTOMER_TYPE">
+              <MappingFragment StoreEntitySet="CUSTOMER_TYPE">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FLAT_PART">
+            <EntityTypeMapping TypeName="TownUtilityBillSystemV2Model.FLAT_PART">
+              <MappingFragment StoreEntitySet="FLAT_PART">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="NUMBER" ColumnName="NUMBER" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="SQUARE" ColumnName="SQUARE" />
+                <ScalarProperty Name="BUILDING_ID" ColumnName="BUILDING_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IMAGE_BUILDING">
+            <EntityTypeMapping TypeName="TownUtilityBillSystemV2Model.IMAGE_BUILDING">
+              <MappingFragment StoreEntitySet="IMAGE_BUILDING">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="PATH" ColumnName="PATH" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IMAGE_NEWS">
+            <EntityTypeMapping TypeName="TownUtilityBillSystemV2Model.IMAGE_NEWS">
+              <MappingFragment StoreEntitySet="IMAGE_NEWS">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="PATH" ColumnName="PATH" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IMAGE_UTILITY">
+            <EntityTypeMapping TypeName="TownUtilityBillSystemV2Model.IMAGE_UTILITY">
+              <MappingFragment StoreEntitySet="IMAGE_UTILITY">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="PATH" ColumnName="PATH" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Indices">
+            <EntityTypeMapping TypeName="TownUtilityBillSystemV2Model.INDEX">
+              <MappingFragment StoreEntitySet="INDEX">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="VALUE" ColumnName="VALUE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="METERs">
+            <EntityTypeMapping TypeName="TownUtilityBillSystemV2Model.METER">
+              <MappingFragment StoreEntitySet="METER">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="SERIAL_NUMBER" ColumnName="SERIAL_NUMBER" />
+                <ScalarProperty Name="ADDRESS_ID" ColumnName="ADDRESS_ID" />
+                <ScalarProperty Name="METER_TYPE_ID" ColumnName="METER_TYPE_ID" />
+                <ScalarProperty Name="RELEASE_DATE" ColumnName="RELEASE_DATE" />
+                <ScalarProperty Name="VARIFICATION_DATE" ColumnName="VARIFICATION_DATE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="METER_ITEM">
+            <EntityTypeMapping TypeName="TownUtilityBillSystemV2Model.METER_ITEM">
+              <MappingFragment StoreEntitySet="METER_ITEM">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="METER_ID" ColumnName="METER_ID" />
+                <ScalarProperty Name="DATE" ColumnName="DATE" />
+                <ScalarProperty Name="VALUE" ColumnName="VALUE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="METER_TYPE">
+            <EntityTypeMapping TypeName="TownUtilityBillSystemV2Model.METER_TYPE">
+              <MappingFragment StoreEntitySet="METER_TYPE">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="VARIFICATION_PERIOD_YEARS" ColumnName="VARIFICATION_PERIOD_YEARS" />
+                <ScalarProperty Name="UTILITY_ID" ColumnName="UTILITY_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NEWS">
+            <EntityTypeMapping TypeName="TownUtilityBillSystemV2Model.NEWS">
+              <MappingFragment StoreEntitySet="NEWS">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="DATE" ColumnName="DATE" />
+                <ScalarProperty Name="IMAGE_ID" ColumnName="IMAGE_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NEWS_CHAPTER">
+            <EntityTypeMapping TypeName="TownUtilityBillSystemV2Model.NEWS_CHAPTER">
+              <MappingFragment StoreEntitySet="NEWS_CHAPTER">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="TEXT" ColumnName="TEXT" />
+                <ScalarProperty Name="LANGUAGE" ColumnName="LANGUAGE" />
+                <ScalarProperty Name="NEWS_ID" ColumnName="NEWS_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NEWS_TITLE">
+            <EntityTypeMapping TypeName="TownUtilityBillSystemV2Model.NEWS_TITLE">
+              <MappingFragment StoreEntitySet="NEWS_TITLE">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="TITLE" ColumnName="TITLE" />
+                <ScalarProperty Name="LANGUAGE" ColumnName="LANGUAGE" />
+                <ScalarProperty Name="NEWS_ID" ColumnName="NEWS_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PAYMENTs">
+            <EntityTypeMapping TypeName="TownUtilityBillSystemV2Model.PAYMENT">
+              <MappingFragment StoreEntitySet="PAYMENT">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="NUMBER" ColumnName="NUMBER" />
+                <ScalarProperty Name="SUM" ColumnName="SUM" />
+                <ScalarProperty Name="DATE" ColumnName="DATE" />
+                <ScalarProperty Name="NOTE" ColumnName="NOTE" />
+                <ScalarProperty Name="ACCOUNT_ID" ColumnName="ACCOUNT_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="STREETs">
+            <EntityTypeMapping TypeName="TownUtilityBillSystemV2Model.STREET">
+              <MappingFragment StoreEntitySet="STREET">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="TOWN_ID" ColumnName="TOWN_ID" />
+                <ScalarProperty Name="INDEX_ID" ColumnName="INDEX_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TEMPERATUREs">
+            <EntityTypeMapping TypeName="TownUtilityBillSystemV2Model.TEMPERATURE">
+              <MappingFragment StoreEntitySet="TEMPERATURE">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="DATE" ColumnName="DATE" />
+                <ScalarProperty Name="TOWN_ID" ColumnName="TOWN_ID" />
+                <ScalarProperty Name="MINVALUE" ColumnName="MINVALUE" />
+                <ScalarProperty Name="MAXVALUE" ColumnName="MAXVALUE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TOWNs">
+            <EntityTypeMapping TypeName="TownUtilityBillSystemV2Model.TOWN">
+              <MappingFragment StoreEntitySet="TOWN">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UNITs">
+            <EntityTypeMapping TypeName="TownUtilityBillSystemV2Model.UNIT">
+              <MappingFragment StoreEntitySet="UNIT">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UTILITies">
+            <EntityTypeMapping TypeName="TownUtilityBillSystemV2Model.UTILITY">
+              <MappingFragment StoreEntitySet="UTILITY">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="PRICE" ColumnName="PRICE" />
+                <ScalarProperty Name="USAGEFORSTANDARTPRICE" ColumnName="USAGEFORSTANDARTPRICE" />
+                <ScalarProperty Name="BIGUSAGEPRICE" ColumnName="BIGUSAGEPRICE" />
+                <ScalarProperty Name="UNIT_ID" ColumnName="UNIT_ID" />
+                <ScalarProperty Name="IMAGE_ID" ColumnName="IMAGE_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

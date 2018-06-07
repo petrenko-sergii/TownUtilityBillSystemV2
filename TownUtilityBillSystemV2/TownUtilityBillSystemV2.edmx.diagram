@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="0edc9bc7bd294106b5cd6d32ef8ea036" Name="Diagram1">
+        <EntityTypeShape EntityType="TownUtilityBillSystemV2Model.ACCOUNT" Width="1.5" PointX="6" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TownUtilityBillSystemV2Model.ADDRESS" Width="1.5" PointX="3" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TownUtilityBillSystemV2Model.BILL" Width="1.5" PointX="8.25" PointY="14" IsExpanded="true" />
+        <EntityTypeShape EntityType="TownUtilityBillSystemV2Model.BUILDING" Width="1.5" PointX="11.25" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="TownUtilityBillSystemV2Model.CUSTOMER" Width="1.5" PointX="8.25" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TownUtilityBillSystemV2Model.CUSTOMER_TYPE" Width="1.5" PointX="6" PointY="13.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="TownUtilityBillSystemV2Model.FLAT_PART" Width="1.5" PointX="13.5" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TownUtilityBillSystemV2Model.IMAGE_BUILDING" Width="1.5" PointX="9" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="TownUtilityBillSystemV2Model.IMAGE_NEWS" Width="1.5" PointX="11.75" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="TownUtilityBillSystemV2Model.IMAGE_UTILITY" Width="1.5" PointX="1.5" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="TownUtilityBillSystemV2Model.INDEX" Width="1.5" PointX="3.75" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TownUtilityBillSystemV2Model.METER" Width="1.5" PointX="5.25" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="TownUtilityBillSystemV2Model.METER_ITEM" Width="1.5" PointX="7.5" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="TownUtilityBillSystemV2Model.METER_TYPE" Width="1.5" PointX="3" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TownUtilityBillSystemV2Model.NEWS" Width="1.5" PointX="14" PointY="12.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TownUtilityBillSystemV2Model.NEWS_CHAPTER" Width="1.5" PointX="16.25" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="TownUtilityBillSystemV2Model.NEWS_TITLE" Width="1.5" PointX="16.25" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TownUtilityBillSystemV2Model.PAYMENT" Width="1.5" PointX="8.25" PointY="17.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TownUtilityBillSystemV2Model.STREET" Width="1.5" PointX="6" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TownUtilityBillSystemV2Model.TEMPERATURE" Width="1.5" PointX="3" PointY="14.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TownUtilityBillSystemV2Model.TOWN" Width="1.5" PointX="0.75" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="TownUtilityBillSystemV2Model.UNIT" Width="1.5" PointX="1.5" PointY="18.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TownUtilityBillSystemV2Model.UTILITY" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
+        <AssociationConnector Association="TownUtilityBillSystemV2Model.FK_BILL_ACCOUNT_ID" ManuallyRouted="false" />
+        <AssociationConnector Association="TownUtilityBillSystemV2Model.FK_CUSTOMER_ACCOUNT" ManuallyRouted="false" />
+        <AssociationConnector Association="TownUtilityBillSystemV2Model.FK_PAYMENT_ACCOUNT_ID" ManuallyRouted="false" />
+        <AssociationConnector Association="TownUtilityBillSystemV2Model.FK_ADDRESS_BUILDING" ManuallyRouted="false" />
+        <AssociationConnector Association="TownUtilityBillSystemV2Model.FK_ADDRESS_FLAT_PART" ManuallyRouted="false" />
+        <AssociationConnector Association="TownUtilityBillSystemV2Model.FK_ADDRESS_INDEX" ManuallyRouted="false" />
+        <AssociationConnector Association="TownUtilityBillSystemV2Model.FK_ADDRESS_STREET" ManuallyRouted="false" />
+        <AssociationConnector Association="TownUtilityBillSystemV2Model.FK_ADDRESS_TOWN" ManuallyRouted="false" />
+        <AssociationConnector Association="TownUtilityBillSystemV2Model.FK_CUSTOMER_ADDRESS" ManuallyRouted="false" />
+        <AssociationConnector Association="TownUtilityBillSystemV2Model.FK_METER_ADDRESS" ManuallyRouted="false" />
+        <AssociationConnector Association="TownUtilityBillSystemV2Model.FK_BUILDING_IMAGE_BUILDING" ManuallyRouted="false" />
+        <AssociationConnector Association="TownUtilityBillSystemV2Model.FK_BUILDING_STREET" ManuallyRouted="false" />
+        <AssociationConnector Association="TownUtilityBillSystemV2Model.FK_FLAT_BUILDING" ManuallyRouted="false" />
+        <AssociationConnector Association="TownUtilityBillSystemV2Model.FK_CUSTOMER_CUSTOMER_TYPE" ManuallyRouted="false" />
+        <AssociationConnector Association="TownUtilityBillSystemV2Model.FK_NEWS_IMAGE_NEWS" ManuallyRouted="false" />
+        <AssociationConnector Association="TownUtilityBillSystemV2Model.FK_UTILITY_IMAGE_UTILITY" ManuallyRouted="false" />
+        <AssociationConnector Association="TownUtilityBillSystemV2Model.FK_STREET_INDEX" ManuallyRouted="false" />
+        <AssociationConnector Association="TownUtilityBillSystemV2Model.FK_METER_ITEM_METER" ManuallyRouted="false" />
+        <AssociationConnector Association="TownUtilityBillSystemV2Model.FK_METER_METER_TYPE" ManuallyRouted="false" />
+        <AssociationConnector Association="TownUtilityBillSystemV2Model.FK_METER_TYPE_UTILITY" ManuallyRouted="false" />
+        <AssociationConnector Association="TownUtilityBillSystemV2Model.FK_NEWS_CHAPTER_NEWS" ManuallyRouted="false" />
+        <AssociationConnector Association="TownUtilityBillSystemV2Model.FK_NEWS_TITLE_NEWS" ManuallyRouted="false" />
+        <AssociationConnector Association="TownUtilityBillSystemV2Model.FK_STREET_TOWN" ManuallyRouted="false" />
+        <AssociationConnector Association="TownUtilityBillSystemV2Model.FK_TEMPERATURE_TOWN" ManuallyRouted="false" />
+        <AssociationConnector Association="TownUtilityBillSystemV2Model.FK_UTILITY_UNIT" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

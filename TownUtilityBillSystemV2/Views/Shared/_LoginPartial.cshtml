@@ -1,0 +1,26 @@
+﻿@using Microsoft.AspNet.Identity
+@using TownUtilityBillSystemV2.Resources
+
+@if (Request.IsAuthenticated)
+{
+	using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+	{
+		@Html.AntiForgeryToken()
+
+		<img src="/Content/Images/User/AppUser.jpg" class="user-icon" />
+
+		<ul class="nav navbar-nav navbar-right">
+			<li>
+				@Html.ActionLink(Localization.Hello + " " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+			</li>
+			<li><a href="javascript:document.getElementById('logoutForm').submit()">@Localization.LogOff</a></li>
+		</ul>
+	}
+}
+else
+{
+	<ul class="nav navbar-nav navbar-right">
+		<li>@Html.ActionLink(Localization.Register, "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+		<li>@Html.ActionLink(Localization.LogIn, "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+	</ul>
+}

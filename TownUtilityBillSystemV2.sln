@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.2043
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TownUtilityBillSystemV2", "TownUtilityBillSystemV2\TownUtilityBillSystemV2.csproj", "{30D49929-8DD1-4D51-8EBD-C065CEA45C66}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TownUtilityBillSystemV2.Tests", "TownUtilityBillSystemV2.Tests\TownUtilityBillSystemV2.Tests.csproj", "{B199776A-6F08-4D3F-8D3C-89B1E40A342F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{30D49929-8DD1-4D51-8EBD-C065CEA45C66}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{30D49929-8DD1-4D51-8EBD-C065CEA45C66}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{30D49929-8DD1-4D51-8EBD-C065CEA45C66}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{30D49929-8DD1-4D51-8EBD-C065CEA45C66}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B199776A-6F08-4D3F-8D3C-89B1E40A342F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B199776A-6F08-4D3F-8D3C-89B1E40A342F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B199776A-6F08-4D3F-8D3C-89B1E40A342F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B199776A-6F08-4D3F-8D3C-89B1E40A342F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F702FEBB-94B8-4949-B21F-087E51717584}
+	EndGlobalSection
+EndGlobal

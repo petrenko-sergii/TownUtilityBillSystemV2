@@ -1,0 +1,365 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="About" xml:space="preserve">
+    <value>Om</value>
+  </data>
+  <data name="Bills" xml:space="preserve">
+    <value>Sedler</value>
+  </data>
+  <data name="CalculatorOnLine" xml:space="preserve">
+    <value>Lommeregner on-line</value>
+  </data>
+  <data name="ConfirmPassword" xml:space="preserve">
+    <value>Bekræft kodeord</value>
+  </data>
+  <data name="ConfirmPasswordWarning" xml:space="preserve">
+    <value>Adgangskoden og bekræftelsesadgangskoden stemmer ikke overens.</value>
+  </data>
+  <data name="Contact" xml:space="preserve">
+    <value>Kontakt</value>
+  </data>
+  <data name="CreateNewAccount" xml:space="preserve">
+    <value>Oprette en ny konto</value>
+  </data>
+  <data name="Customers" xml:space="preserve">
+    <value>Kunder</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>E-mail</value>
+  </data>
+  <data name="EnterValidEmail" xml:space="preserve">
+    <value>Indtast venligst en gyldig e-mailadresse.</value>
+  </data>
+  <data name="EnterValidPhone" xml:space="preserve">
+    <value>Indtast venligst en gyldig telefon</value>
+  </data>
+  <data name="FieldIsRequired" xml:space="preserve">
+    <value>Dette {0} felt er påkrævet</value>
+  </data>
+  <data name="Hello" xml:space="preserve">
+    <value>Hej</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Hjem</value>
+  </data>
+  <data name="Language" xml:space="preserve">
+    <value>Sprog</value>
+  </data>
+  <data name="LogIn" xml:space="preserve">
+    <value>Log på</value>
+  </data>
+  <data name="LoginForApp" xml:space="preserve">
+    <value>Log på</value>
+  </data>
+  <data name="LogInSystem" xml:space="preserve">
+    <value>Log ind i systemet</value>
+  </data>
+  <data name="LogOff" xml:space="preserve">
+    <value>Log af</value>
+  </data>
+  <data name="Log_In" xml:space="preserve">
+    <value>Log_på</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Navn</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Adgangskode</value>
+  </data>
+  <data name="PayOnLine" xml:space="preserve">
+    <value>Betal on-line</value>
+  </data>
+  <data name="PhoneNumber" xml:space="preserve">
+    <value>Telefonnummer</value>
+  </data>
+  <data name="Register" xml:space="preserve">
+    <value>Tilmeld</value>
+  </data>
+  <data name="RegisterAsNewUser" xml:space="preserve">
+    <value>Tilmeld dig som ny bruger</value>
+  </data>
+  <data name="RememberMe" xml:space="preserve">
+    <value>Husk mig?</value>
+  </data>
+  <data name="Statistic" xml:space="preserve">
+    <value>Statistik</value>
+  </data>
+  <data name="Surname" xml:space="preserve">
+    <value>Efternavn</value>
+  </data>
+  <data name="Utilities" xml:space="preserve">
+    <value>Hjælpeprogrammer</value>
+  </data>
+  <data name="ValueMustBeAtLeastCharactersLong" xml:space="preserve">
+    <value>{0} værdien skal være mindst {2} tegn lang.</value>
+  </data>
+  <data name="ChooseNextFacility" xml:space="preserve">
+    <value>Vælg den næste facilitet</value>
+  </data>
+  <data name="InvalidLoginAttempt" xml:space="preserve">
+    <value>Ugyldigt login forsøg</value>
+  </data>
+  <data name="ValueMustHaveFromToCharactersLong" xml:space="preserve">
+    <value>{0} skal have fra {2} til {1} tegn lange.</value>
+  </data>
+  <data name="News" xml:space="preserve">
+    <value>Nyheder</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>Næste</value>
+  </data>
+  <data name="PleaseLogInOrRegister" xml:space="preserve">
+    <value>Venligst log ind eller registrer dig</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>Tidligere</value>
+  </data>
+  <data name="TownUtilityBillSystem" xml:space="preserve">
+    <value>Town Utility Bill System</value>
+  </data>
+  <data name="ReadMore" xml:space="preserve">
+    <value>Læs mere...</value>
+  </data>
+  <data name="BackToHomePage" xml:space="preserve">
+    <value>Tilbage til startsiden</value>
+  </data>
+  <data name="BackToPreviousPage" xml:space="preserve">
+    <value>Tilbage til forrige side</value>
+  </data>
+  <data name="AllNews" xml:space="preserve">
+    <value>Alle nyheder</value>
+  </data>
+  <data name="ForAdditionalInfoPleaseContact" xml:space="preserve">
+    <value>For yderligere oplysninger, kontakt venligst</value>
+  </data>
+  <data name="AboutData_ChangeNameDate" xml:space="preserve">
+    <value>Den 6. november 2017</value>
+  </data>
+  <data name="AboutData_FirstReleaseDate" xml:space="preserve">
+    <value>7 august 2017.</value>
+  </data>
+  <data name="AboutData_IsAWebAppThatHelps" xml:space="preserve">
+    <value>er en webapplikation, der hjælper med at styre dataene for byværdien, såsom el, vand, varme og gas. Det opererer også af kundesystem.</value>
+  </data>
+  <data name="AboutData_IsOneOfNorthernEurope" xml:space="preserve">
+    <value>er en af ​​Nordeuropas førende energigrupper og har hovedkontor i Danmark. Omkring 6.500 ambitiøse medarbejdere udvikler, bygger og driver offshore vindmølleparker, producerer kraft og varme fra vores kraftværker samt forsyning og handel med energi til grossister, erhvervsliv og privatkunder. Derudover producerer vi olie og gas, og der er igangsat en proces til afhændelse af denne forretningsenhed. Den fortsatte del af koncernen har ca. 6.100 medarbejdere
+og genererede en indtægt i 2016 på 61 mia. kr. (8,2 EUR er en af ​​Nordeuropas førende energigrupper og har hovedkontor i Danmark. Omkring 6.500 ambitiøse medarbejdere udvikler, bygger og driver havmølleparker, producerer også kraft og varme fra vores kraftværker som levering og handel med energi til grossister, erhvervsliv og privatkunder. Derudover producerer vi olie og gas, og der er igangsat en proces for at afhente denne forretningsenhed. Den fortsatte del af koncernen har ca. 6.100 medarbejdere og genereret en omsætning i 2016 på 61 mia. Kr. (8,2 mia. Euro).</value>
+  </data>
+  <data name="AboutData_TheFirstRelease" xml:space="preserve">
+    <value>Den første udgivelse af App var på</value>
+  </data>
+  <data name="DongEnergy" xml:space="preserve">
+    <value>DONG Energy</value>
+  </data>
+  <data name="AboutData_ChairmanСitation" xml:space="preserve">
+    <value>. Thomas Thune Andersen, bestyrelsesformand, sagde: "DONG var oprindeligt kort for dansk olie og naturgas. Med vores dybe strategiske
+omdannelse og afhændelse af vores opstrøms olie- og gasvirksomhed, er det ikke længere, hvem vi er. Derfor er det nu rigtigt at ændre vores navn.</value>
+  </data>
+  <data name="AboutData_HasChangedNameTo" xml:space="preserve">
+    <value>har ændret navn til</value>
+  </data>
+  <data name="Orsted" xml:space="preserve">
+    <value>Ørsted</value>
+  </data>
+  <data name="HigherPrice" xml:space="preserve">
+    <value>Højere pris</value>
+  </data>
+  <data name="Price" xml:space="preserve">
+    <value>Pris</value>
+  </data>
+  <data name="UsageForStandartPrice" xml:space="preserve">
+    <value>Anvendelse til standardpris</value>
+  </data>
+  <data name="ValueMustBeBiggerThanZero" xml:space="preserve">
+    <value>{0} skal være større end 0.</value>
+  </data>
+  <data name="CheckUtilityName" xml:space="preserve">
+    <value>Kontroller anvendelsesnavn</value>
+  </data>
+  <data name="Electricity" xml:space="preserve">
+    <value>Elektricitet</value>
+  </data>
+  <data name="FindMeterByAddress" xml:space="preserve">
+    <value>Find meter efter adresse</value>
+  </data>
+  <data name="FindMeterByDetails" xml:space="preserve">
+    <value>Find meter efter detaljer</value>
+  </data>
+  <data name="Gas" xml:space="preserve">
+    <value>Gas</value>
+  </data>
+  <data name="Heating" xml:space="preserve">
+    <value>Opvarmning</value>
+  </data>
+  <data name="Meters" xml:space="preserve">
+    <value>Målere</value>
+  </data>
+  <data name="MeterTypes" xml:space="preserve">
+    <value>Meter typer</value>
+  </data>
+  <data name="ShowAllUtilities" xml:space="preserve">
+    <value>Vis alle forsyningsselskaber</value>
+  </data>
+  <data name="Water" xml:space="preserve">
+    <value>Vand</value>
+  </data>
+  <data name="AllUtilities" xml:space="preserve">
+    <value>Alle hjælpeprogrammer</value>
+  </data>
+  <data name="CreateNewUtility" xml:space="preserve">
+    <value>Opret det nye værktøj</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Slet</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Redigere</value>
+  </data>
+  <data name="Icon" xml:space="preserve">
+    <value>Ikon</value>
+  </data>
+  <data name="MeterTypesLowerCase" xml:space="preserve">
+    <value>Meter typer</value>
+  </data>
+  <data name="Options" xml:space="preserve">
+    <value>Muligheder</value>
+  </data>
+  <data name="Per" xml:space="preserve">
+    <value>om</value>
+  </data>
+  <data name="Unit" xml:space="preserve">
+    <value>Enhed</value>
+  </data>
+  <data name="Utility" xml:space="preserve">
+    <value>Fælles tjeneste</value>
+  </data>
+  <data name="EditUtilityParameters" xml:space="preserve">
+    <value>Rediger brugeparametre</value>
+  </data>
+  <data name="TotalCustomersForThisUtility" xml:space="preserve">
+    <value>Samlede kunder til dette værktøj</value>
+  </data>
+  <data name="LessThan" xml:space="preserve">
+    <value>mindre end</value>
+  </data>
+  <data name="OtherUtilities" xml:space="preserve">
+    <value>Andre forsyningsvirksomheder</value>
+  </data>
+</root>

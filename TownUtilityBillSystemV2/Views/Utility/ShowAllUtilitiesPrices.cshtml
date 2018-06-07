@@ -1,0 +1,86 @@
+﻿@model TownUtilityBillSystemV2.Models.Utility.UtilityModel
+@using TownUtilityBillSystemV2.Resources
+
+@{
+	ViewBag.Title = "ShowAllUtilitiesPrices";
+
+	int rowNumber = 1;
+}
+
+<h2 class="header-bold">@Localization.AllUtilities</h2>
+
+<table class="table">
+	<tr>
+		<th>#</th>
+		<th>@Localization.Icon</th>
+		<th>
+			@Html.DisplayNameFor(model => model.Utility.Name)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.Utility.Price)
+		</th>
+		<th>@Localization.Per @Localization.Unit</th>
+		<th>
+			@Html.DisplayNameFor(model => model.Utility.UsageForStandartPrice)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.Utility.BigUsagePrice)
+		</th>
+		<th>@Localization.Options</th>
+	</tr>
+
+	@foreach (var item in Model.Utilities)
+	{
+		<tr>
+			<td>@(rowNumber++)</td>
+			<td> <img src=@item.ImagePath class="utility-icon"/>  </td>
+			<td>
+				@Html.DisplayFor(modelItem => item.ResourceName)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.Price) <text> @Model.Currency</text>
+			</td>
+			<td>
+				<text>  @Localization.Per 1 @item.Unit.Name </text>
+			</td>
+			<td>
+				@if (item.UsageForStandartPrice == 0)
+				{
+					<text>--</text>
+				}
+				else
+				{
+					<text>@item.UsageForStandartPrice @item.Unit.Name</text>
+				}
+			</td>
+			<td>
+				@if (item.BigUsagePrice == 0)
+				{
+					<text>--</text>
+				}
+				else
+				{
+					@Html.DisplayFor(modelItem => item.BigUsagePrice) <text> @Model.Currency</text>
+				}
+			</td>
+			<td>
+				@Html.ActionLink(Localization.Edit, "EditUtility", new { utilityId = item.Id }) |
+				@Html.ActionLink(Localization.MeterTypesLowerCase, "ShowMeterTypesForUtility", "Meter", new { utilityName = item.Name }, null) |
+				@Html.ActionLink(Localization.Delete, "DeleteUtility", new { utilityId = item.Id })
+			</td>
+		</tr>
+	}
+</table>
+
+<div class="row">
+	<div class="col-md-4 margin-top-20">
+		<a href="@Url.Action("CreateUtility", "Utility")" class="btn btn-primary btn-large btn-block">
+			<span class=" glyphicon glyphicon-plus-sign"></span> @Localization.CreateNewUtility
+		</a>
+	</div>
+</div>
+<hr />
+
+<a href="javascript:history.go(-1)" class="btn btn-link btn-large">
+	<span class=" glyphicon glyphicon-arrow-left"></span> <strong> @Localization.BackToPreviousPage</strong>
+</a>

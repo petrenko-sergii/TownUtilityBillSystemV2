@@ -1,0 +1,35 @@
+﻿@model TownUtilityBillSystemV2.Models.News.NewsModel
+@using TownUtilityBillSystemV2.Resources
+
+@{
+	ViewBag.Title = "News";
+}
+
+<style>
+	#newsHeader {
+		font-size: 30px;
+	}
+</style>
+
+@Html.Partial("~/Views/News/_NewsAllPartial.cshtml", Model)
+
+<hr />
+<div id="allNewsList">
+	@{
+		for (int i = 0; i < Model.NewsList.Count; i++)
+		{
+			<a id="linkForNewsList" href="@Url.Action("ShowSingleNews", "Home", new { newsId = @Model.NewsList[i].Id}, null)"> @Model.NewsList[i].Date.ToString("dd.MM.yyyy HH:mm") -- <strong>@Model.NewsList[i].Title</strong></a>
+			<br />
+		}
+	}
+</div>
+<br />
+<a href="@Url.Action("Index","Home")" class="btn btn-link btn-large">
+	<span class=" glyphicon glyphicon-home"></span> <strong>@Localization.BackToHomePage</strong>
+</a>
+<br />
+
+<a href="javascript:history.go(-1)" class="btn btn-link btn-large">
+	<span class=" glyphicon glyphicon-arrow-left"></span> <strong>@Localization.BackToPreviousPage</strong>
+</a>
+

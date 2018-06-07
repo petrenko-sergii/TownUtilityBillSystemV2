@@ -1,0 +1,45 @@
+﻿@using TownUtilityBillSystemV2.Resources
+@model TownUtilityBillSystemV2.Models.News.NewsModel
+
+@{
+	ViewBag.Title = Localization.TownUtilityBillSystem;
+}
+
+@if (Request.IsAuthenticated)
+{
+<div class=" jumbotron">
+	<h3 class="header-bold">@Localization.ChooseNextFacility:</h3>
+
+	<div class="row">
+		<div class="col-md-6 margin-top-20">
+			<a href="@Url.Action("ShowUtilities", "Utility")" class="btn btn-primary btn-large btn-block">
+				<span class="glyphicon glyphicon-flash"></span> @Localization.Utilities
+			</a>
+			<a href="@Url.Action("ShowCustomerMenu", "Customer")" class="btn btn-primary btn-large btn-block">
+				<span class=" glyphicon glyphicon-user"></span> @Localization.Customers
+			</a>
+			<a href="@Url.Action("ShowStatisticMenu", "Statistic")" class="btn btn-primary btn-large btn-block">
+				<span class="glyphicon glyphicon-dashboard"></span> @Localization.Statistic
+			</a>
+		</div>
+		<div class="col-md-6 margin-top-20">
+			<a href="@Url.Action("ShowBills", "Bill")" class="btn btn-primary btn-large btn-block">
+				<span class="glyphicon glyphicon-list-alt"></span> @Localization.Bills
+			</a>
+			<a href="@Url.Action("PayOnLineBill", "Bill")" class="btn btn-primary btn-large btn-block">
+				<span class="glyphicon glyphicon-usd"></span> @Localization.PayOnLine
+			</a>
+			<a href="@Url.Action("ShowCalculatorOnLine", "Calculator")" class="btn btn-primary btn-large btn-block">
+				<span class="glyphicon glyphicon-usd"></span> @Localization.CalculatorOnLine
+			</a>
+		</div>
+	</div>
+	@Html.Partial("~/Views/News/_NewsAllPartial.cshtml", Model)
+</div>
+}
+
+else
+{
+<h2 class="header-bold">@Localization.TownUtilityBillSystem</h2>
+<h3 class="header-bold">@Localization.PleaseLogInOrRegister</h3>
+}

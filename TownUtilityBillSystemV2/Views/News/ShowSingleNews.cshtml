@@ -1,0 +1,36 @@
+﻿@model TownUtilityBillSystemV2.Models.News.NewsModel
+@using TownUtilityBillSystemV2.Resources
+
+@{
+	ViewBag.Title = "Show the news";
+}
+
+<h3 align="center"><strong>@Model.SingleNews.Title</strong> </h3>
+<p align="right">@Model.SingleNews.Date.ToString("dd.MM.yyyy HH:mm")</p>
+
+@{
+	foreach (var item in Model.SingleNews.NewsChapters)
+	{
+		<p>@item.Text</p>
+		<br />
+	}
+}
+<div>
+	<text>@Localization.ForAdditionalInfoPleaseContact:</text><br />
+	<text>@Model.NewsEmployee.Name</text><br />
+	<text>@Model.NewsEmployee.PhoneNumber</text><br />
+	<text>@Model.NewsEmployee.Email</text>
+	<br />
+</div>
+<br />
+
+<a href="@Url.Action("News","Home")" class="btn btn-link btn-large">
+	<span class=" glyphicon glyphicon-list"></span> <strong>@Localization.AllNews</strong>
+</a>
+<br />
+
+
+<a href="javascript:history.go(-1)" class="btn btn-link btn-large">
+	<span class=" glyphicon glyphicon-arrow-left"></span> <strong>@Localization.BackToPreviousPage</strong>
+</a>
+
