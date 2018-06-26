@@ -362,4 +362,121 @@ omdannelse og afhændelse af vores opstrøms olie- og gasvirksomhed, er det ikke
   <data name="OtherUtilities" xml:space="preserve">
     <value>Andre forsyningsvirksomheder</value>
   </data>
+  <data name="ShowTheNews" xml:space="preserve">
+    <value>Vis nyhederne</value>
+  </data>
+  <data name="AllMeterTypes" xml:space="preserve">
+    <value>Alle målertyper</value>
+  </data>
+  <data name="CreateNewMeterType" xml:space="preserve">
+    <value>Opret den nye målertype</value>
+  </data>
+  <data name="ShowAllMeterTypes" xml:space="preserve">
+    <value>Vis alle måttyper</value>
+  </data>
+  <data name="ValueMustBeBiggerThan" xml:space="preserve">
+    <value>{0} skal være større end {1}.</value>
+  </data>
+  <data name="VarificationPeriod" xml:space="preserve">
+    <value>Verifikationsperiode</value>
+  </data>
+  <data name="Years" xml:space="preserve">
+    <value>flere år</value>
+  </data>
+  <data name="NewValue" xml:space="preserve">
+    <value>Ny værdi</value>
+  </data>
+  <data name="ReleaseDate" xml:space="preserve">
+    <value>Udgivelses dato</value>
+  </data>
+  <data name="SerialNumber" xml:space="preserve">
+    <value>Serienummer</value>
+  </data>
+  <data name="VarificationDate" xml:space="preserve">
+    <value>Verifikationsdato</value>
+  </data>
+  <data name="Building" xml:space="preserve">
+    <value>Bygning</value>
+  </data>
+  <data name="CreateNewMeter" xml:space="preserve">
+    <value>Opret den nye måler</value>
+  </data>
+  <data name="Data" xml:space="preserve">
+    <value>Data</value>
+  </data>
+  <data name="FlatPart" xml:space="preserve">
+    <value>Flad / Del</value>
+  </data>
+  <data name="Index" xml:space="preserve">
+    <value>Indeks</value>
+  </data>
+  <data name="Release" xml:space="preserve">
+    <value>Frigøre</value>
+  </data>
+  <data name="Serial" xml:space="preserve">
+    <value>Seriel</value>
+  </data>
+  <data name="ShowAllMeters" xml:space="preserve">
+    <value>Vis alle målere</value>
+  </data>
+  <data name="SomeRandomMeters" xml:space="preserve">
+    <value>Nogle tilfældige målere</value>
+  </data>
+  <data name="Street" xml:space="preserve">
+    <value>Gade</value>
+  </data>
+  <data name="TotalQuantity" xml:space="preserve">
+    <value>Samlet mængde</value>
+  </data>
+  <data name="Town" xml:space="preserve">
+    <value>By</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>Type</value>
+  </data>
+  <data name="UtilityMeters" xml:space="preserve">
+    <value>Utility meter</value>
+  </data>
+  <data name="Verification" xml:space="preserve">
+    <value>Verifikation</value>
+  </data>
+  <data name="AllUtilityMeters" xml:space="preserve">
+    <value>Alle hjælpemåler</value>
+  </data>
+  <data name="Create" xml:space="preserve">
+    <value>Skab</value>
+  </data>
+  <data name="ShowSomeMeters" xml:space="preserve">
+    <value>Vis nogle målere</value>
+  </data>
+  <data name="Address" xml:space="preserve">
+    <value>Adresse</value>
+  </data>
+  <data name="FindMetersByDetails" xml:space="preserve">
+    <value>Find målere efter detaljer</value>
+  </data>
+  <data name="Number" xml:space="preserve">
+    <value>Nummer</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Søg</value>
+  </data>
+  <data name="BackToList" xml:space="preserve">
+    <value>Tilbage til listen</value>
+  </data>
+  <data name="Found" xml:space="preserve">
+    <value>Fundet</value>
+  </data>
+  <data name="FoundOneMeter" xml:space="preserve">
+    <value>Fundet 1 meter</value>
+  </data>
+  <data name="NoAnyMeterIsFound" xml:space="preserve">
+    <value>Ingen meter fundet</value>
+  </data>
+  <data name="SearchFilter" xml:space="preserve">
+    <value>Søgefilter</value>
+  </data>
+  <data name="ShowFoundMeters" xml:space="preserve">
+    <value>Vis fundne målere</value>
+  </data>
 </root>

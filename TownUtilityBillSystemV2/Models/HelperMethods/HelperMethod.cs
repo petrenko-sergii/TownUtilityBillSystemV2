@@ -5,10 +5,12 @@ using System.Linq;
 using System.Threading;
 using System.Web;
 
-namespace TownUtilityBillSystemV2.Models.Customized
+namespace TownUtilityBillSystemV2.Models.HelperMethods
 {
-	public static class CustomizedMethods
+	public static class HelperMethod
 	{
+		private static Random rnd = new Random();
+
 		public static string GetCurrentLanguage()
 		{
 			return Thread.CurrentThread.CurrentCulture.ToString();
@@ -37,6 +39,20 @@ namespace TownUtilityBillSystemV2.Models.Customized
 					imagePathForHtml = "/Content/Images/" + folderName + "/" + imageName;
 				}
 				return imagePathForHtml;
+			}
+		}
+
+		public static void Shuffle<T>(List<T> list)
+		{
+			int n = list.Count;
+
+			while (n > 1)
+			{
+				n--;
+				int k = rnd.Next(n + 1);
+				T value = list[k];
+				list[k] = list[n];
+				list[n] = value;
 			}
 		}
 	}

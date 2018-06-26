@@ -20,10 +20,10 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				@if (Request.IsAuthenticated)
-				{
-					@Html.ActionLink(Localization.TownUtilityBillSystem, "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-				}
+				@*@if (Request.IsAuthenticated)
+					{*@
+				@Html.ActionLink(Localization.TownUtilityBillSystem, "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+				@*}*@
 			</div>
 			<div class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">
@@ -57,23 +57,9 @@
 	@Scripts.Render("~/bundles/jquery")
 	@Scripts.Render("~/bundles/bootstrap")
 	@Scripts.Render("~/bundles/appscripts")
+	@*@Scripts.Render("~/bundles/appScriptsFromTs")*@
 	@RenderSection("scripts", required: false)
 </body>
 </html>
 
-
-@*debugger -- need to extract to js or ts file*@
-@*<script src="~/Scripts/appJsScripts/_layout.js"></script>*@
-<script>
-
-	function ChangeLanguage(language)
-	{
-		$.ajax({
-			url: '@Url.Action("Change", "Language")',
-			data: { languageAbbreviation: language }
-		}).done(function ()
-		{
-			location.reload(true);
-		});
-	}
-</script>
+<script src="~/Scripts/appJsScripts/_layout.js"></script>

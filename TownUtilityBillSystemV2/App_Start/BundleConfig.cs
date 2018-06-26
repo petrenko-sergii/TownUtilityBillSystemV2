@@ -29,6 +29,9 @@ namespace TownUtilityBillSystemV2
 
 			bundles.Add(new ScriptBundle("~/bundles/appscripts").Include(
 						"~/build/app.js"));
+
+			bundles.Add(new ScriptBundle("~/bundles/appScriptsFromTs").Include(
+						"~/ts-src/app.js"));
 		}
 	}
 }

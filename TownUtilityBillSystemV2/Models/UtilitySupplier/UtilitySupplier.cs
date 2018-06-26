@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using TownUtilityBillSystemV2.Models.Customized;
+using TownUtilityBillSystemV2.Models.HelperMethods;
 
 namespace TownUtilityBillSystemV2.Models.UtilitySupplier
 {
@@ -34,7 +34,7 @@ namespace TownUtilityBillSystemV2.Models.UtilitySupplier
 		{
 			get
 			{
-				if (CustomizedMethods.GetCurrentLanguage() == "en")
+				if (HelperMethod.GetCurrentLanguage() == "en")
 					return String.Format("{0}, {1}", address, countryEn);
 
 				return String.Format("{0}, {1}", address, countryDa); ;

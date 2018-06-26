@@ -1,26 +1,10 @@
-﻿
-function EnglishFlagPressed()
+﻿function ChangeLanguage(language)
 {
-	debugger;
 	$.ajax({
-		
-		url: '@Url.Action("Change", "Language")',
-		data: { languageAbbreviation: "en" }
+		url: '/Language/Change',
+		data: { languageAbbreviation: language }
 	}).done(function ()
 	{
 		location.reload(true);
 	});
 }
-
-function DanishFlagPressed()
-{
-	debugger;
-	$.ajax({
-		url: '@Url.Action("Change", "Language")',
-		data: { languageAbbreviation: "da" }
-	}).done(function ()
-	{
-		location.reload(true);
-	});
-}
-

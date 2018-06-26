@@ -52,3 +52,5 @@ C:\Users\Petrenko\Documents\Visual Studio 2017\Projects\TownUtilityBillSystemV2\
 C:\Users\Petrenko\Documents\Visual Studio 2017\Projects\TownUtilityBillSystemV2\TownUtilityBillSystemV2.Tests\obj\Debug\TownUtilityBillSystemV2.Tests.csproj.CopyComplete
 C:\Users\Petrenko\Documents\Visual Studio 2017\Projects\TownUtilityBillSystemV2\TownUtilityBillSystemV2.Tests\obj\Debug\TownUtilityBillSystemV2.Tests.dll
 C:\Users\Petrenko\Documents\Visual Studio 2017\Projects\TownUtilityBillSystemV2\TownUtilityBillSystemV2.Tests\obj\Debug\TownUtilityBillSystemV2.Tests.pdb
+C:\Users\Petrenko\Documents\Visual Studio 2017\Projects\TownUtilityBillSystemV2\TownUtilityBillSystemV2.Tests\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Petrenko\Documents\Visual Studio 2017\Projects\TownUtilityBillSystemV2\TownUtilityBillSystemV2.Tests\bin\Debug\EntityFramework.SqlServer.xml

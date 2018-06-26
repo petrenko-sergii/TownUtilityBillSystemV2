@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using TownUtilityBillSystemV2.Models.Currency;
-using TownUtilityBillSystemV2.Models.Customized;
+using TownUtilityBillSystemV2.Models.HelperMethods;
 using TownUtilityBillSystemV2.Resources;
 
-namespace TownUtilityBillSystemV2.Models.Utility
+namespace TownUtilityBillSystemV2.Models.UtilityModels
 {
 	public class UtilityModel
 	{
@@ -48,12 +48,10 @@ namespace TownUtilityBillSystemV2.Models.Utility
 		{
 			using (var context = new TownUtilityBillSystemV2Entities())
 			{
-				string test = Localization.Electricity;
-
 				var utilitiesDB = context.UTILITYs.ToList();
 
 				foreach (var item in utilitiesDB)
-					Utilities.Add(new Utility { Id = item.ID, Name = item.NAME, ResourceName = GetResourceName(item.NAME) });
+					Utilities.Add(new Utility { Id = item.ID, Name = item.NAME, ResourceName = GetResourceNameForUtility(item.NAME) });
 			}
 		}
 
@@ -71,10 +69,10 @@ namespace TownUtilityBillSystemV2.Models.Utility
 					if (item.USAGEFORSTANDARTPRICE != null && item.BIGUSAGEPRICE != null)
 						Utilities.Add(new Utility { Id = item.ID, Name = item.NAME, Price = item.PRICE, BigUsagePrice = (decimal)item.BIGUSAGEPRICE,
 							UsageForStandartPrice = Math.Round((decimal)item.USAGEFORSTANDARTPRICE, 0),
-							ImagePath = CustomizedMethods.GetUtilityImage(item.ID), Unit = unit, ResourceName = GetResourceName(item.NAME)});
+							ImagePath = HelperMethod.GetUtilityImage(item.ID), Unit = unit, ResourceName = GetResourceNameForUtility(item.NAME)});
 					else
 						Utilities.Add(new Utility { Id = item.ID, Name = item.NAME, Price = item.PRICE,
-							ImagePath = CustomizedMethods.GetUtilityImage(item.ID), Unit = unit, ResourceName = GetResourceName(item.NAME) });
+							ImagePath = HelperMethod.GetUtilityImage(item.ID), Unit = unit, ResourceName = GetResourceNameForUtility(item.NAME) });
 				}
 			}
 		}
@@ -94,8 +92,8 @@ namespace TownUtilityBillSystemV2.Models.Utility
 				Utility.Id = utilityDB.ID;
 				Utility.Name = utilityDB.NAME;
 				Utility.Price = utilityDB.PRICE;
-				Utility.ResourceName = GetResourceName(utilityDB.NAME);
-				Utility.ImagePath = CustomizedMethods.GetUtilityImage(utilityDB.ID);
+				Utility.ResourceName = GetResourceNameForUtility(utilityDB.NAME);
+				Utility.ImagePath = HelperMethod.GetUtilityImage(utilityDB.ID);
 
 				if (utilityDB.USAGEFORSTANDARTPRICE != null)
 					Utility.UsageForStandartPrice = (decimal)utilityDB.USAGEFORSTANDARTPRICE;
@@ -107,7 +105,7 @@ namespace TownUtilityBillSystemV2.Models.Utility
 				foreach (var u in utilitiesDB)
 				{
 					if (u.NAME != Utility.Name)
-						Utilities.Add(new Utility() { Name = u.NAME, ResourceName = GetResourceName(u.NAME) });
+						Utilities.Add(new Utility() { Name = u.NAME, ResourceName = GetResourceNameForUtility(u.NAME) });
 				}
 
 				var meterTypesDB = context.METER_TYPEs.Where(mt => mt.UTILITY_ID == Utility.Id).ToList();
@@ -129,7 +127,7 @@ namespace TownUtilityBillSystemV2.Models.Utility
 
 		#region Private
 
-		private static string GetResourceName(string name)
+		public static string GetResourceNameForUtility(string name)
 		{
 			string resourceName;
 
@@ -146,7 +144,7 @@ namespace TownUtilityBillSystemV2.Models.Utility
 
 			return resourceName;
 		}
-		
+
 		#endregion
 
 		#endregion

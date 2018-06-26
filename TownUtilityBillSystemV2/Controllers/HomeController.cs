@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using TownUtilityBillSystemV2.Models.News;
 using TownUtilityBillSystemV2.Models.UtilitySupplier;
+using TownUtilityBillSystemV2.Resources;
 
 namespace TownUtilityBillSystemV2.Controllers
 {
@@ -21,12 +22,16 @@ namespace TownUtilityBillSystemV2.Controllers
 
 		public ActionResult About()
 		{
+			ViewBag.Title = Localization.About;
+
 			return View();
 		}
 
 		public ActionResult Contact()
 		{
 			UtilitySupplierModel utilitySupplierModel = new UtilitySupplierModel();
+
+			ViewBag.Title = Localization.Contact;
 
 			return View(utilitySupplierModel.UtilitySupplier);
 		}

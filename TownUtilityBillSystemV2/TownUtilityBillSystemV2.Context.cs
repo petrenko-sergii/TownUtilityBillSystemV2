@@ -12,9 +12,9 @@ namespace TownUtilityBillSystemV2
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-    
-    public partial class TownUtilityBillSystemV2Entities : DbContext
-    {
+
+	public partial class TownUtilityBillSystemV2Entities : DbContext
+	{
         public TownUtilityBillSystemV2Entities()
             : base("name=TownUtilityBillSystemV2Entities")
         {

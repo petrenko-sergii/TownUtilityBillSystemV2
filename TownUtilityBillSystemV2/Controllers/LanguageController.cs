@@ -8,13 +8,13 @@ using System.Web.Mvc;
 
 namespace TownUtilityBillSystemV2.Controllers
 {
-    public class LanguageController : Controller
+	public class LanguageController : Controller
     {
-        // GET: Language
-        public ActionResult Index()
-        {
-            return View();
-        }
+		// GET: Language
+		public ActionResult Index()
+		{
+			return View();
+		}
 
 		public ActionResult Change(string languageAbbreviation)
 		{

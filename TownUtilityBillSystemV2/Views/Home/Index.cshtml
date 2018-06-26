@@ -5,8 +5,8 @@
 	ViewBag.Title = Localization.TownUtilityBillSystem;
 }
 
-@if (Request.IsAuthenticated)
-{
+@*@if (Request.IsAuthenticated)
+	{*@
 <div class=" jumbotron">
 	<h3 class="header-bold">@Localization.ChooseNextFacility:</h3>
 
@@ -36,10 +36,10 @@
 	</div>
 	@Html.Partial("~/Views/News/_NewsAllPartial.cshtml", Model)
 </div>
-}
+@*}
 
 else
 {
 <h2 class="header-bold">@Localization.TownUtilityBillSystem</h2>
 <h3 class="header-bold">@Localization.PleaseLogInOrRegister</h3>
-}
+}*@

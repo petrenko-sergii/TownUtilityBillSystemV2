@@ -70,9 +70,15 @@ textarea {
 	color: #4099da;
 }
 
+.mark-yellow {
+	background-color: yellow;
+	color: black;
+	font-weight: bold;
+}
+
 #allNewsList {
-	width:900px;
-	margin:0 auto;
+	width: 900px;
+	margin: 0 auto;
 }
 
 #linkForNewsList {
@@ -122,4 +128,5 @@ textarea {
 .div-medium-font-size {
 	font-size:medium;
 }
+
 

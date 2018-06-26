@@ -33,6 +33,17 @@ $(document).ready(function () {
         $('#' + flag).addClass('flag-highlighted');
     });
 });
+//function ChangeLanguage(language)
+//{
+//	debugger;
+//	$.ajax({
+//		url: '/Language/Change',
+//		data: { languageAbbreviation: language }
+//	}).done(function ()
+//	{
+//		location.reload(true);
+//	});
+//}
 //$(document).ready(function ()
 //{
 //	alert("Current language: " + userLangAbbr);

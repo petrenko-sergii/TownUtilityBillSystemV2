@@ -1,4 +1,4 @@
-﻿@model TownUtilityBillSystemV2.Models.Utility.UtilityModel
+﻿@model TownUtilityBillSystemV2.Models.UtilityModels.UtilityModel
 @using TownUtilityBillSystemV2.Resources
 
 @{
@@ -43,12 +43,12 @@
 			<a href="@Url.Action("ShowAllMeterTypes", "Meter")" class="btn btn-primary btn-large btn-block btn-green">
 				<span class=" glyphicon glyphicon-list"></span> @Localization.MeterTypes
 			</a>
-			<a href="@Url.Action("ShowRandomMeters", "Meter")" class="btn btn-primary btn-large btn-block btn-green">
+			<a href="@Url.Action("ShowSomeMeters", "Meter")" class="btn btn-primary btn-large btn-block btn-green">
 				<span class=" glyphicon glyphicon-dashboard"></span> @Localization.Meters
 			</a>
 		</div>
 		<div class="col-md-6 margin-top-20">
-			<a href="@Url.Action("FindMetersBy", "Meter")" class="btn btn-primary btn-large btn-block btn-green">
+			<a href="@Url.Action("FindMetersByDetails", "Meter")" class="btn btn-primary btn-large btn-block btn-green">
 				<span class=" glyphicon glyphicon-search"></span> @Localization.FindMeterByDetails
 			</a>
 			<a href="@Url.Action("FindMeterByAddress", "Meter")" class="btn btn-primary btn-large btn-block btn-green">

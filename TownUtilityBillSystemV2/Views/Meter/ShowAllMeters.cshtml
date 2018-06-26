@@ -1,0 +1,70 @@
+﻿@model IEnumerable<TownUtilityBillSystemV2.METER>
+@using TownUtilityBillSystemV2.Resources
+
+@{
+	ViewBag.Title = Localization.ShowAllMeters;
+
+	int rowNumber = 1;
+}
+
+<h2 class="header-bold">@Localization.AllUtilityMeters</h2>
+<h4>@Localization.TotalQuantity: @Model.Count()</h4>
+<div class="row">
+	<div class="col-md-4 margin-top-20">
+		<a href="@Url.Action("CreateMeter", "Meter")" class="btn btn-primary btn-large btn-block">
+			<span class=" glyphicon glyphicon-plus-sign"></span> @Localization.CreateNewMeter
+		</a>
+	</div>
+</div>
+<br />
+
+<table class="table">
+	<tr>
+		<th>#</th>
+		<th>@Localization.Serial #</th>
+		<th>@Localization.Type</th>
+		<th>@Localization.Release</th>
+		<th>@Localization.Verification</th>
+		<th>@Localization.Options</th>
+	</tr>
+
+	@foreach (var item in Model)
+	{
+		<tr>
+			<td>@(rowNumber++)</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.SERIAL_NUMBER)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.METER_TYPE.NAME)
+			</td>
+			<td>
+				@item.RELEASE_DATE.Year.ToString()<text>-</text>@item.RELEASE_DATE.Month.ToString()<text>-</text>@item.RELEASE_DATE.Day
+			</td>
+			<td>
+				@item.VARIFICATION_DATE.Year.ToString()<text>-</text>@item.VARIFICATION_DATE.Month.ToString()<text>-</text>@item.VARIFICATION_DATE.Day
+			</td>
+
+			<td>
+				@Html.ActionLink(Localization.Edit, "EditMeter", new { meterId = item.ID }) |
+				@Html.ActionLink(Localization.Data, "ShowMeterData", new { meterId = item.ID }) |
+				@Html.ActionLink(Localization.Delete, "DeleteMeter", new { meterId = item.ID })
+			</td>
+		</tr>
+	}
+
+</table>
+
+<div class="row">
+	<div class="col-md-4 margin-top-20">
+		<a href="@Url.Action("Create New", "Create")" class="btn btn-primary btn-large btn-block">
+			<span class=" glyphicon glyphicon-plus-sign"></span> @Localization.Create
+		</a>
+	</div>
+</div>
+<hr />
+
+<a href="javascript:history.go(-1)" class="btn btn-link btn-large">
+	<span class=" glyphicon glyphicon-arrow-left"></span> <strong>@Localization.BackToPreviousPage</strong>
+</a>
+

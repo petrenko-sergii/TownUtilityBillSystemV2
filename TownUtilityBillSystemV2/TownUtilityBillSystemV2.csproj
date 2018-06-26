@@ -244,16 +244,30 @@
       <DependentUpon>TownUtilityBillSystemV2.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\AddressModels\Address.cs" />
+    <Compile Include="Models\AddressModels\AddressModel.cs" />
+    <Compile Include="Models\AddressModels\Building.cs" />
+    <Compile Include="Models\AddressModels\FlatPart.cs" />
+    <Compile Include="Models\AddressModels\Index.cs" />
+    <Compile Include="Models\AddressModels\Street.cs" />
+    <Compile Include="Models\AddressModels\Town.cs" />
     <Compile Include="Models\BaseModels\ObjectWithImage.cs" />
     <Compile Include="Models\BaseModels\ObjectWithName.cs" />
+    <Compile Include="Models\Chart\ChartData.cs" />
     <Compile Include="Models\Currency\CurrencyMoney.cs" />
     <Compile Include="Models\Currency\CurrencyModel.cs" />
-    <Compile Include="Models\Customized\CustomizedMessages.cs" />
-    <Compile Include="Models\Customized\CustomizedMethods.cs" />
+    <Compile Include="Models\CustomizedMessage\CustomizedMessage.cs" />
+    <Compile Include="Models\HelperMethods\HelperMethod.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\InitialDB\InitialDBEnums.cs" />
     <Compile Include="Models\InitialDB\InitialDBModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\MeterModels\Meter.cs" />
+    <Compile Include="Models\MeterModels\MeterItem.cs" />
+    <Compile Include="Models\MeterModels\MeterItemModel.cs" />
+    <Compile Include="Models\MeterModels\MeterModel.cs" />
+    <Compile Include="Models\MeterModels\MeterType.cs" />
+    <Compile Include="Models\MeterModels\MeterTypeModel.cs" />
     <Compile Include="Models\News\News.cs" />
     <Compile Include="Models\News\NewsChapter.cs" />
     <Compile Include="Models\News\NewsEmployee.cs" />
@@ -261,9 +275,9 @@
     <Compile Include="Models\Temperature\Temperature.cs" />
     <Compile Include="Models\UtilitySupplier\UtilitySupplier.cs" />
     <Compile Include="Models\UtilitySupplier\UtilitySupplierModel.cs" />
-    <Compile Include="Models\Utility\Unit.cs" />
-    <Compile Include="Models\Utility\Utility.cs" />
-    <Compile Include="Models\Utility\UtilityModel.cs" />
+    <Compile Include="Models\UtilityModels\Unit.cs" />
+    <Compile Include="Models\UtilityModels\Utility.cs" />
+    <Compile Include="Models\UtilityModels\UtilityModel.cs" />
     <Compile Include="NEWS.cs">
       <DependentUpon>TownUtilityBillSystemV2.tt</DependentUpon>
     </Compile>
@@ -333,6 +347,7 @@
     <Content Include="Content\Images\News\Plant.jpg" />
     <Content Include="Content\Images\News\PlantNight.jpg" />
     <Content Include="Content\Images\News\WindMills.jpg" />
+    <Content Include="Content\Images\NoImageIcon.jpg" />
     <Content Include="Content\Images\TownBuildings\Kolding\Kolding_Haderslevvej_10.JPG" />
     <Content Include="Content\Images\TownBuildings\Kolding\Kolding_Haderslevvej_100.JPG" />
     <Content Include="Content\Images\TownBuildings\Kolding\Kolding_Haderslevvej_102.JPG" />
@@ -460,11 +475,16 @@
     <Content Include="Views\Utility\ShowUtilities.cshtml" />
     <Content Include="Views\Utility\ShowAllUtilitiesPrices.cshtml" />
     <Content Include="Views\Utility\ShowUtility.cshtml" />
+    <Content Include="Views\Meter\ShowAllMeterTypes.cshtml" />
+    <Content Include="Views\Meter\ShowSomeMeters.cshtml" />
+    <Content Include="Views\Meter\ShowAllMeters.cshtml" />
+    <Content Include="Views\Meter\FindMetersByDetails.cshtml" />
+    <Content Include="Views\Meter\ShowFoundMeters.cshtml" />
+    <Content Include="Views\Meter\FindMeterByAddress.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\Meter\" />
-    <Folder Include="Views\Meter\" />
+    <Folder Include="Models\HelperModels\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

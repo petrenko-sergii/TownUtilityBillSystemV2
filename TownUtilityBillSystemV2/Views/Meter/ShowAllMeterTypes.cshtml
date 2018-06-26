@@ -1,0 +1,63 @@
+﻿@model TownUtilityBillSystemV2.Models.MeterModels.MeterTypeModel
+@using TownUtilityBillSystemV2.Resources;
+
+@{
+	ViewBag.Title = Localization.ShowAllMeterTypes;
+
+	int rowNumber = 1;
+}
+
+<h2>@Localization.AllMeterTypes</h2>
+
+<table class="table">
+	<tr>
+		<th>#</th>
+		<th>@Localization.Icon</th>
+		<th>
+			@Html.DisplayNameFor(model => model.MeterType.Name)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.MeterType.VarificationPeriod)
+		</th>
+		<th>
+			@Localization.Utility
+		</th>
+		<th>@Localization.Options</th>
+	</tr>
+
+
+	@foreach (var item in Model.MeterTypes)
+	{
+		<tr>
+			<td>@(rowNumber++)</td>
+			<td> <img src=@item.Utility.ImagePath class="utility-icon"/>  </td>
+
+			<td>
+				@Html.DisplayFor(model => item.Name)
+			</td>
+			<td>
+				@Html.DisplayFor(model => item.VarificationPeriod) <text> @Localization.Years</text>
+			</td>
+			<td>
+				@Html.DisplayFor(model => item.Utility.ResourceName)
+			</td>
+			<td>
+				@Html.ActionLink(Localization.Edit, "EditMeterType", new { meterTypeId = item.Id }) |
+				@Html.ActionLink(Localization.Delete, "DeleteMeterType", new { meterTypeId = item.Id })
+			</td>
+		</tr>
+	}
+</table>
+
+<div class="row">
+	<div class="col-md-4 margin-top-20">
+		<a href="@Url.Action("CreateMeterType", "Meter")" class="btn btn-primary btn-large btn-block">
+			<span class=" glyphicon glyphicon-plus-sign"></span> @Localization.CreateNewMeterType
+		</a>
+	</div>
+</div>
+<hr />
+
+<a href="javascript:history.go(-1)" class="btn btn-link btn-large">
+	<span class=" glyphicon glyphicon-arrow-left"></span> <strong> @Localization.BackToPreviousPage</strong>
+</a>

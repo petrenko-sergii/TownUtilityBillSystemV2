@@ -6,7 +6,7 @@ using System.Web;
 using TownUtilityBillSystemV2.Models.BaseModels;
 using TownUtilityBillSystemV2.Resources;
 
-namespace TownUtilityBillSystemV2.Models.Utility
+namespace TownUtilityBillSystemV2.Models.UtilityModels
 {
 	public class Utility : ObjectWithImage
 	{
