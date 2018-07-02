@@ -1,0 +1,110 @@
+﻿@model TownUtilityBillSystemV2.Models.CustomerModels.CustomerModel
+@using TownUtilityBillSystemV2.Resources
+
+@{
+	ViewBag.Title = Localization.ShowFoundCustomers;
+
+	int rowNumber = 1;
+}
+
+@if (Model.Customers.Count == 0)
+{
+	<h2>@Localization.NoAnyCustomerIsFound</h2>
+}
+else if (Model.Customers.Count == 1)
+{
+	<h2>@Localization.FoundOneCustomer</h2>
+}
+else
+{
+	<h2>@Localization.Found @Model.Customers.Count @Localization.Customers.ToLower()</h2>
+}
+
+<h4>@Localization.SearchFilter: <mark class="mark-yellow"> @ViewBag.SearchString </mark></h4>
+
+@if (Model.Customers.Count != 0)
+{
+	<table class="table">
+		<tr>
+			<th>#</th>
+			<th>@Localization.AccountNum</th>
+			<th>@Localization.Surname/@Localization.Name</th>
+			<th>@Localization.Email</th>
+			<th>@Localization.Phone</th>
+			<th>@Localization.Type</th>
+			<th>@Localization.Index</th>
+			<th>@Localization.Town</th>
+			<th>@Localization.Street</th>
+			<th>@Localization.Building</th>
+			<th>@Localization.FlatPart</th>
+			<th>@Localization.Balance, @Model.Currency.Name</th>
+			<th>@Localization.Options</th>
+		</tr>
+
+		@foreach (var item in Model.Customers)
+		{
+			<tr>
+				<td>@(rowNumber++)</td>
+				<td>
+					@Html.DisplayFor(model => item.Account.Number)
+				</td>
+				<td>
+					@Html.DisplayFor(model => item.Surname) @Html.DisplayFor(model => item.Name)
+				</td>
+				<td>
+					@Html.DisplayFor(model => item.Email)
+				</td>
+				<td>
+					@Html.DisplayFor(model => item.Phone)
+				</td>
+				<td>
+					@Html.DisplayFor(model => item.CustomerType.ResourceName)
+				</td>
+				<td>
+					@Html.DisplayFor(model => item.Address.Index.Value)
+				</td>
+				<td>
+					@Html.DisplayFor(model => item.Address.Town.Name)
+				</td>
+				<td>
+					@Html.DisplayFor(model => item.Address.Street.Name)
+				</td>
+				<td>
+					@Html.DisplayFor(model => item.Address.Building.Number)
+				</td>
+
+				@if (item.Address.FlatPart == null)
+				{
+					<td>
+						<text>--</text>
+					</td>
+				}
+				else if (!String.IsNullOrEmpty(item.Address.FlatPart.Name))
+				{
+					<td>
+						@Html.DisplayFor(model => item.Address.FlatPart.Name)
+					</td>
+				}
+				else if (item.Address.FlatPart.Number != 0 && !String.IsNullOrEmpty(item.Address.FlatPart.Number.ToString()))
+				{
+					<td>
+						@Html.DisplayFor(model => item.Address.FlatPart.Number)
+					</td>
+				}
+				<td>
+					@Html.DisplayFor(model => item.Account.Balance)
+				</td>
+
+				<td>
+					@Html.ActionLink(Localization.Details, "ShowDetailsForCustomer", new { customerId = item.Id }) |
+					@Html.ActionLink(Localization.Bills, "ShowAllBillsForCustomer", "Bill", new { customerId = item.Id }, null) |
+					@Html.ActionLink(Localization.Edit, "EditCustomer", new { customerId = item.Id }) |
+					@Html.ActionLink(Localization.Delete, "DeleteCustomer", new { customerId = item.Id })
+				</td>
+			</tr>
+		}
+	</table>
+}
+
+@Html.Partial("~/Views/Shared/_BackToPreviousPagePartial.cshtml")
+

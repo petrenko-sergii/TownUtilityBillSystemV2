@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using TownUtilityBillSystemV2.App_Start;
 using TownUtilityBillSystemV2.Controllers;
 
 namespace TownUtilityBillSystemV2
@@ -19,9 +20,10 @@ namespace TownUtilityBillSystemV2
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+			ControllerBuilder.Current.SetControllerFactory(new NinjectControllerFactory());
 
 			//Initialize DB if it is empty
-			initialDbCtrl = new InitialDBController();
+			//initialDbCtrl = new InitialDBController();
         }
 
 		protected void Application_BeginRequest(object sender, EventArgs e)

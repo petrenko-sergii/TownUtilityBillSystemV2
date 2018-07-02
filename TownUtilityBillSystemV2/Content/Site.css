@@ -37,8 +37,8 @@ textarea {
 	font-weight: bold;
 }
 
-.header-flag {
-}
+/*.header-flag {
+}*/
 
 .user-icon {
 	margin-top: 17px;
@@ -128,5 +128,23 @@ textarea {
 .div-medium-font-size {
 	font-size:medium;
 }
+
+#map-canvas {
+	width: 100%;
+	height: 270px;
+}
+
+.row .col-xs-4 {
+	background-color: white;
+	color: black;
+}
+
+.map-canvasForTemperatureView {
+	min-width: 310px;
+	height: 400px;
+	margin: 0 auto
+}
+
+
 
 

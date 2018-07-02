@@ -7,12 +7,13 @@ using TownUtilityBillSystemV2.Models.HelperMethods;
 using TownUtilityBillSystemV2.Models.UtilityModels;
 using System.Data.Entity;
 using System.Web.Mvc;
+using TownUtilityBillSystemV2.Models.Exceptions;
 
 namespace TownUtilityBillSystemV2.Models.MeterModels
 {
 	public class MeterModel
 	{
-		private int meterCountToDisplay = 25;
+		private readonly int meterCountToDisplay = 25;
 
 		#region Properties
 
@@ -97,6 +98,9 @@ namespace TownUtilityBillSystemV2.Models.MeterModels
 
 				var addressDB = context.ADDRESSes.Where(a => a.BUILDING_ID == buildingId).FirstOrDefault();
 
+				if (addressDB == null)
+					throw new InvalidBuildingIdException(buildingId);
+
 				if (addressDB.FLAT_PART_ID == null)
 					FillMetersForModel(context, addressDB);
 			}
@@ -158,20 +162,15 @@ namespace TownUtilityBillSystemV2.Models.MeterModels
 				FlatPart flatPart = null;
 
 				if (flatPartDB != null)
-				{
-					if (!String.IsNullOrEmpty(flatPartDB.NAME) && !flatPartDB.NUMBER.HasValue)
-						flatPart = new FlatPart() { Id = flatPartDB.ID, Name = flatPartDB.NAME };
-					else if (String.IsNullOrEmpty(flatPartDB.NAME) && flatPartDB.NUMBER.HasValue)
-						flatPart = new FlatPart() { Id = flatPartDB.ID, Number = (int)flatPartDB.NUMBER };
-					else if (!String.IsNullOrEmpty(flatPartDB.NAME) && flatPartDB.NUMBER.HasValue)
-						flatPart = new FlatPart() { Id = flatPartDB.ID, Number = (int)flatPartDB.NUMBER, Name = flatPartDB.NAME };
-				}
+					flatPart = FlatPart.Get(flatPartDB);
 
 				var address = new Address() { Id = addressDB.ID, Index = index, Town = town, Street = street, Building = building, FlatPart = flatPart };
 
 				model.Meters.Add(new Meter() { Id = m.ID, SerialNumber = m.SERIAL_NUMBER, ReleaseDate = m.RELEASE_DATE, VarificationDate = m.VARIFICATION_DATE, MeterType = meterType, Address = address });
 			}
 		}
+
+		
 
 		#endregion
 	}

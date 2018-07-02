@@ -23,5 +23,15 @@ namespace TownUtilityBillSystemV2.Models.MeterModels
 		public Utility Utility { get; set; }
 
 		public List<Utility> Utilities { get; set; }
+
+		public static MeterType Get(METER_TYPE meterType)
+		{
+			return new MeterType
+			{
+				Id = meterType.ID,
+				Name = meterType.NAME,
+				VarificationPeriod = meterType.VARIFICATION_PERIOD_YEARS
+			};
+		}
 	}
 }

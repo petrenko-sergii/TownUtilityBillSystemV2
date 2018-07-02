@@ -140,7 +140,7 @@ namespace TownUtilityBillSystemV2.Models.UtilityModels
 			else if (name == InitialDB.InitialDBEnums.Utilities.Gas.ToString())
 				resourceName = Localization.Gas;
 			else
-				throw new Exception(Localization.CheckUtilityName);
+				resourceName = name;
 
 			return resourceName;
 		}

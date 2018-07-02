@@ -15,7 +15,25 @@ namespace TownUtilityBillSystemV2.Controllers
 {
 	//[Authorize]
 	public class MeterController : Controller
-    {
+	{
+		TownUtilityBillSystemV2Entities context = new TownUtilityBillSystemV2Entities();
+
+		private IMeterRepository meterRepo;
+		private IStreetRepository streetRepo;
+		private IBuildingRepository buildingRepo;
+
+		public MeterController(IMeterRepository meterRepo, IStreetRepository streetRepo, IBuildingRepository buildingRepo)
+		{
+			this.meterRepo = meterRepo;
+			this.streetRepo = streetRepo;
+			this.buildingRepo = buildingRepo;
+		}
+
+		public ViewResult ShowAllMeters()
+		{
+			return View(meterRepo.METERs.Include(m => m.ADDRESS).Include(m => m.METER_TYPE).ToList());
+		}
+
 		public ActionResult ShowAllMeterTypes()
 		{
 			var model = new MeterTypeModel();
@@ -32,13 +50,6 @@ namespace TownUtilityBillSystemV2.Controllers
 			model.GetRandomMeters();
 
 			return View(model);
-		}
-
-		public ActionResult ShowAllMeters()
-		{
-			var model = new MeterModel();
-
-			return View(model.GetAllMeters());
 		}
 
 		public ActionResult FindMetersByDetails()
@@ -72,11 +83,16 @@ namespace TownUtilityBillSystemV2.Controllers
 
 		public JsonResult GetStreetList(int townId)
 		{
-			var model = new AddressModel();
+			List<STREET> streetsDB = streetRepo.STREETs.Where(s => s.TOWN_ID == townId).OrderBy(s=>s.NAME).ToList();
 
-			var streetList = model.GetStreetList(townId);
+			var streetsForView = from s in streetsDB
+					 select new
+					 {
+						 Id = s.ID,
+						 Name = s.NAME
+					 };
 
-			return Json(streetList, JsonRequestBehavior.AllowGet);
+			return Json(streetsForView.ToList(), JsonRequestBehavior.AllowGet);
 		}
 
 		public string GetTownName(int townId)
@@ -102,11 +118,16 @@ namespace TownUtilityBillSystemV2.Controllers
 
 		public JsonResult GetBuildingList(int streetId)
 		{
-			var model = new AddressModel();
+			List<BUILDING> buildingsDB = buildingRepo.BUILDINGSs.Where(b => b.STREET_ID == streetId).ToList();
 
-			var buildingList = model.GetBuildingList(streetId);
+			var buildingsForView = from b in buildingsDB
+					 select new
+					 {
+						 Id = b.ID,
+						 Number = b.NUMBER
+					 };
 
-			return Json(buildingList, JsonRequestBehavior.AllowGet);
+			return Json(buildingsForView.ToList(), JsonRequestBehavior.AllowGet);
 		}
 
 		public JsonResult GetFlatPartList(int buildingId)
@@ -141,6 +162,42 @@ namespace TownUtilityBillSystemV2.Controllers
 			model.GetMetersForFlatPart(flatPartId);
 
 			return Json(model.Meters, JsonRequestBehavior.AllowGet);
+		}
+
+		public JsonResult GetLocalizatedWordsForSelectBoxes()
+		{
+			return Json(HelperMethod.GetLocalizatedWordsForSelectBoxesFindByAddress(), JsonRequestBehavior.AllowGet);
+		}
+
+		public JsonResult GetLocalizatedWordsForMeterTable()
+		{
+			return Json(HelperMethod.GetLocalizatedWordsForMeterTableFindByAddress(), JsonRequestBehavior.AllowGet);
+		}
+
+		public ActionResult ShowMeterTypesForUtility(string utilityName)
+		{
+			var model = new MeterTypeModel();
+
+			model.GetMeterTypesForUtility(utilityName);
+
+			return View(model);
+
+			//using (var context = new TownUtilityBillSystemV2Entities())
+			//{
+			//	var model = new MeterTypeModel();
+			//	var utilityDB = context.UTILITYs.Where(u => u.NAME == utilityName).FirstOrDefault();
+			//	var meterTypesDB = context.METER_TYPEs.Where(mt => mt.UTILITY_ID == utilityDB.ID).ToList();
+
+			//	model.Utility.Id = utilityDB.ID;
+			//	model.Utility.Name = utilityDB.NAME;
+
+			//	foreach (var mt in meterTypesDB)
+			//		model.MeterTypes.Add(new MeterType() { Id = mt.ID, Name = mt.NAME, VarificationPeriod = mt.VARIFICATION_PERIOD_YEARS });
+
+			//	var view = View("~/Views/Meter/ShowMeterTypesForUtility.cshtml", model);
+
+			//	return view;
+			//}
 		}
 	}
 }

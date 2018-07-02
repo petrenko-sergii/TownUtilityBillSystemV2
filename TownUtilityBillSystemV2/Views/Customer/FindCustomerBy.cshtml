@@ -1,0 +1,109 @@
+﻿@model TownUtilityBillSystemV2.Models.CustomerModels.CustomerModel
+@using TownUtilityBillSystemV2.Resources
+
+@{
+	ViewBag.Title = Localization.FindCustomer;
+
+	int rowNumber = 1;
+}
+
+<h2 class="header-bold">@Localization.FindCustomer</h2>
+<h4>@Localization.TotalQuantity: @Model.TotalCount</h4>
+<p>
+	@using (Html.BeginForm("ShowFoundCustomers", "Customer", FormMethod.Get))
+	{
+		@Html.TextBox("searchString") <input type="submit" value=@Localization.Search class="btn btn-primary btn-large" />
+	}
+</p>
+
+<table class="table">
+	<caption><strong>@Localization.SomeRandomCustomers</strong></caption>
+	<tr>
+		<th>#</th>
+		<th>@Localization.AccountNum</th>
+		<th>@Localization.Surname/@Localization.Name</th>
+		<th>@Localization.Email</th>
+		<th>@Localization.Phone</th>
+		<th>@Localization.Type</th>
+		<th>@Localization.Index</th>
+		<th>@Localization.Town</th>
+		<th>@Localization.Street</th>
+		<th>@Localization.Building</th>
+		<th>@Localization.FlatPart</th>
+		<th>@Localization.Balance, @Model.Currency.Name</th>
+		<th>@Localization.Options</th>
+	</tr>
+
+	@foreach (var item in Model.Customers)
+	{
+		<tr>
+			<td>@(rowNumber++)</td>
+			<td>
+				@Html.DisplayFor(model => item.Account.Number)
+			</td>
+			<td>
+				@Html.DisplayFor(model => item.Surname) @Html.DisplayFor(model => item.Name)
+			</td>
+			<td>
+				@Html.DisplayFor(model => item.Email)
+			</td>
+			<td>
+				@Html.DisplayFor(model => item.Phone)
+			</td>
+			<td>
+				@Html.DisplayFor(model => item.CustomerType.ResourceName)
+			</td>
+			<td>
+				@Html.DisplayFor(model => item.Address.Index.Value)
+			</td>
+			<td>
+				@Html.DisplayFor(model => item.Address.Town.Name)
+			</td>
+			<td>
+				@Html.DisplayFor(model => item.Address.Street.Name)
+			</td>
+			<td>
+				@Html.DisplayFor(model => item.Address.Building.Number)
+			</td>
+
+			@if (item.Address.FlatPart == null)
+			{
+				<td>
+					<text>--</text>
+				</td>
+			}
+			else if (!String.IsNullOrEmpty(item.Address.FlatPart.Name))
+			{
+				<td>
+					@Html.DisplayFor(model => item.Address.FlatPart.Name)
+				</td>
+			}
+			else if (item.Address.FlatPart.Number != 0 && !String.IsNullOrEmpty(item.Address.FlatPart.Number.ToString()))
+			{
+				<td>
+					@Html.DisplayFor(model => item.Address.FlatPart.Number)
+				</td>
+			}
+			<td>
+				@Html.DisplayFor(model => item.Account.Balance)
+			</td>
+			<td>
+				@Html.ActionLink(Localization.Meters, "ShowDetailsForCustomer", new { customerId = item.Id }) |
+				@Html.ActionLink(Localization.Edit, "Edit", new { id = item.Id }) |
+				@Html.ActionLink(Localization.Delete, "DeleteCustomer", new { id = item.Id })
+			</td>
+		</tr>
+	}
+</table>
+
+<div class="row">
+	<div class="col-md-4 margin-top-20">
+		<a href="@Url.Action("Create New", "Create")" class="btn btn-primary btn-large btn-block">
+			<span class=" glyphicon glyphicon-plus-sign"></span> @Localization.Create
+		</a>
+	</div>
+</div>
+<hr />
+
+@Html.Partial("~/Views/Shared/_BackToPreviousPagePartial.cshtml")
+

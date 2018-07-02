@@ -33,5 +33,16 @@ namespace TownUtilityBillSystemV2.Models.UtilityModels
 		public decimal BigUsagePrice { get; set; }
 
 		public Unit Unit { get; set; }
+
+		public static Utility GetUtilityWithIdAndResourceName(UTILITY utility)
+		{
+			return new Utility
+			{
+				Id = utility.ID,
+				ResourceName = UtilityModel.GetResourceNameForUtility(utility.NAME)
+			};
+		}
 	}
+
+	
 }

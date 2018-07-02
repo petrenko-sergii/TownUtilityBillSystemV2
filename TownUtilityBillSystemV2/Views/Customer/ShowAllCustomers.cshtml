@@ -1,0 +1,56 @@
+﻿@model TownUtilityBillSystemV2.Models.CustomerModels.CustomerModel
+@using TownUtilityBillSystemV2.Resources
+
+@{
+	ViewBag.Title = Localization.ShowAllCustomers;
+	int rowNumber = 1;
+}
+
+<h2>@Localization.Customers:</h2>
+<h4>@Localization.TotalQuantity: @Model.Customers.Count</h4>
+
+<table class="table">
+	<tr>
+		<th>#</th>
+		<th>@Localization.AccountNum</th>
+		<th>@Localization.Surname/@Localization.Name</th>
+		<th>@Localization.Email</th>
+		<th>@Localization.Phone</th>
+		<th>@Localization.Type</th>
+		<th>@Localization.Balance, @Model.Currency.Name</th>
+		<th>@Localization.Options</th>
+	</tr>
+
+	@foreach (var item in Model.Customers)
+	{
+		<tr>
+			<td>@(rowNumber++)</td>
+			<td>
+				@Html.DisplayFor(model => item.Account.Number)
+			</td>
+			<td>
+				@Html.DisplayFor(model => item.Surname) @Html.DisplayFor(model => item.Name)
+			</td>
+			<td>
+				@Html.DisplayFor(model => item.Email)
+			</td>
+			<td>
+				@Html.DisplayFor(model => item.Phone)
+			</td>
+			<td>
+				@Html.DisplayFor(model => item.CustomerType.Name)
+			</td>
+			<td>
+				@Html.DisplayFor(model => item.Account.Balance)
+			</td>
+			<td>
+				@Html.ActionLink(Localization.Details, "ShowDetailsForCustomer", new { customerId = item.Id }) |
+				@Html.ActionLink(Localization.Edit, "EditCustomer", new { customerId = item.Id }) |
+				@Html.ActionLink(Localization.Delete, "DeleteCustomer", new { customerId = item.Id })
+			</td>
+		</tr>
+	}
+</table>
+
+@Html.Partial("~/Views/Shared/_BackToPreviousPagePartial.cshtml")
+

@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Web;
+using TownUtilityBillSystemV2.Models.HelperMethods;
 
 namespace TownUtilityBillSystemV2.Models.News
 {
@@ -40,7 +41,7 @@ namespace TownUtilityBillSystemV2.Models.News
 			{
 				var newsDB = context.NEWS.ToList();
 				var newsTitlesDB = context.NEWS_TITLEs.ToList();
-				string currentLanguage = GetCurrentLanguage();
+				string currentLanguage = HelperMethod.GetCurrentLanguage();
 
 				foreach (var n in newsDB)
 				{
@@ -59,7 +60,7 @@ namespace TownUtilityBillSystemV2.Models.News
 			using (var context = new TownUtilityBillSystemV2Entities())
 			{
 				var singleNewsDB = context.NEWS.Find(newsId);
-				string currentLanguage = GetCurrentLanguage();
+				string currentLanguage = HelperMethod.GetCurrentLanguage();
 
 				var newsTitle = context.NEWS_TITLEs.
 					Where(t=>t.NEWS_ID == singleNewsDB.ID).
@@ -99,11 +100,6 @@ namespace TownUtilityBillSystemV2.Models.News
 				}
 				return imagePathForHtml;
 			}
-		}
-
-		public string GetCurrentLanguage()
-		{
-			return Thread.CurrentThread.CurrentCulture.ToString();
 		}
 
 		#endregion

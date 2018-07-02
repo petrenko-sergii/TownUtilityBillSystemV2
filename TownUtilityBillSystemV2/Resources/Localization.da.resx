@@ -479,4 +479,175 @@ omdannelse og afhændelse af vores opstrøms olie- og gasvirksomhed, er det ikke
   <data name="ShowFoundMeters" xml:space="preserve">
     <value>Vis fundne målere</value>
   </data>
+  <data name="BuildingImage" xml:space="preserve">
+    <value>Bygning af billede</value>
+  </data>
+  <data name="FlatNumber" xml:space="preserve">
+    <value>Flad #</value>
+  </data>
+  <data name="MetersForThisAddress" xml:space="preserve">
+    <value>Målere til denne adresse</value>
+  </data>
+  <data name="PartHyphen" xml:space="preserve">
+    <value>Part -</value>
+  </data>
+  <data name="SelectBuilding" xml:space="preserve">
+    <value>--Vælg bygning--</value>
+  </data>
+  <data name="SelectFlatPart" xml:space="preserve">
+    <value>--Vælg fladt/delvist--</value>
+  </data>
+  <data name="SelectStreet" xml:space="preserve">
+    <value>--Vælg gade--</value>
+  </data>
+  <data name="SelectTown" xml:space="preserve">
+    <value>--Vælg by--</value>
+  </data>
+  <data name="AccountNumber" xml:space="preserve">
+    <value>Kontonummer</value>
+  </data>
+  <data name="AllCustomers" xml:space="preserve">
+    <value>Alle kunder</value>
+  </data>
+  <data name="Balance" xml:space="preserve">
+    <value>Balance</value>
+  </data>
+  <data name="FindCustomer" xml:space="preserve">
+    <value>Find kunde</value>
+  </data>
+  <data name="LegalCustomers" xml:space="preserve">
+    <value>Juridiske kunder</value>
+  </data>
+  <data name="PrivateCustomers" xml:space="preserve">
+    <value>Private kunder</value>
+  </data>
+  <data name="ShowCustomerMenu" xml:space="preserve">
+    <value>Vis Kundemenu</value>
+  </data>
+  <data name="AdminWillBeNotified" xml:space="preserve">
+    <value>Admin vil blive underrettet.</value>
+  </data>
+  <data name="InvalidBuildingIdParam" xml:space="preserve">
+    <value>Ugyldigt bygnings id: {0}.</value>
+  </data>
+  <data name="InvalidStreetIdParam" xml:space="preserve">
+    <value>Ugyldigt gade id: {0}.</value>
+  </data>
+  <data name="InvalidTownIdParam" xml:space="preserve">
+    <value>Ugyldigt by-id: {0}.</value>
+  </data>
+  <data name="AccountNum" xml:space="preserve">
+    <value>Konto #</value>
+  </data>
+  <data name="CreateNewCustomer" xml:space="preserve">
+    <value>Opret den nye kunde</value>
+  </data>
+  <data name="Details" xml:space="preserve">
+    <value>Detaljer</value>
+  </data>
+  <data name="InvalidUtilityNameParam" xml:space="preserve">
+    <value>Ugyldigt anvendelsesnavn: {0}.</value>
+  </data>
+  <data name="Phone" xml:space="preserve">
+    <value>Telefon</value>
+  </data>
+  <data name="ShowLegalCustomers" xml:space="preserve">
+    <value>Vis juridiske kunder</value>
+  </data>
+  <data name="ShowMeterTypesForUtility" xml:space="preserve">
+    <value>Vis metertyper til hjælpeprogram</value>
+  </data>
+  <data name="ShowPrivateCustomers" xml:space="preserve">
+    <value>Vis private kunder</value>
+  </data>
+  <data name="AdministrativeBuilding" xml:space="preserve">
+    <value>Administrativ bygning</value>
+  </data>
+  <data name="Apartment" xml:space="preserve">
+    <value>Lejlighed</value>
+  </data>
+  <data name="Cafe" xml:space="preserve">
+    <value>Cafe</value>
+  </data>
+  <data name="Church" xml:space="preserve">
+    <value>Kirke</value>
+  </data>
+  <data name="Company" xml:space="preserve">
+    <value>Selskab</value>
+  </data>
+  <data name="Factory" xml:space="preserve">
+    <value>Fabrik</value>
+  </data>
+  <data name="FuelStation" xml:space="preserve">
+    <value>Brændstofstation</value>
+  </data>
+  <data name="Hospital" xml:space="preserve">
+    <value>Hospital</value>
+  </data>
+  <data name="Hotel" xml:space="preserve">
+    <value>Hotel</value>
+  </data>
+  <data name="House" xml:space="preserve">
+    <value>Hus</value>
+  </data>
+  <data name="KinderGarden" xml:space="preserve">
+    <value>Kinder garden</value>
+  </data>
+  <data name="Museum" xml:space="preserve">
+    <value>Museum</value>
+  </data>
+  <data name="Nursery" xml:space="preserve">
+    <value>Planteskole</value>
+  </data>
+  <data name="Other" xml:space="preserve">
+    <value>Andet</value>
+  </data>
+  <data name="Plant" xml:space="preserve">
+    <value>Plante</value>
+  </data>
+  <data name="Restaurant" xml:space="preserve">
+    <value>Restaurant</value>
+  </data>
+  <data name="Salon" xml:space="preserve">
+    <value>Salon</value>
+  </data>
+  <data name="School" xml:space="preserve">
+    <value>Skole</value>
+  </data>
+  <data name="ServiceStation" xml:space="preserve">
+    <value>Servicestation</value>
+  </data>
+  <data name="Shop" xml:space="preserve">
+    <value>Butik</value>
+  </data>
+  <data name="SomeRandomCustomers" xml:space="preserve">
+    <value>Nogle tilfældige kunder</value>
+  </data>
+  <data name="Theatre" xml:space="preserve">
+    <value>Teater</value>
+  </data>
+  <data name="WorkShop" xml:space="preserve">
+    <value>Værksted</value>
+  </data>
+  <data name="FoundOneCustomer" xml:space="preserve">
+    <value>Fundet 1 kunde</value>
+  </data>
+  <data name="NoAnyCustomerIsFound" xml:space="preserve">
+    <value>Ingen kunde er fundet</value>
+  </data>
+  <data name="ShowAllCustomers" xml:space="preserve">
+    <value>Vis alle kunder</value>
+  </data>
+  <data name="ShowFoundCustomers" xml:space="preserve">
+    <value>Vis viste kunder</value>
+  </data>
+  <data name="ShowStatisticMenu" xml:space="preserve">
+    <value>Vis statistikmenu</value>
+  </data>
+  <data name="Temperature" xml:space="preserve">
+    <value>Temperatur</value>
+  </data>
+  <data name="Usage" xml:space="preserve">
+    <value>Anvendelse</value>
+  </data>
 </root>

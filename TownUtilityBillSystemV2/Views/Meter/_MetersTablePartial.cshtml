@@ -1,0 +1,83 @@
+﻿@model TownUtilityBillSystemV2.Models.MeterModels.MeterModel
+@using TownUtilityBillSystemV2.Resources
+
+@{ 
+	int rowNumber = 1;
+}
+
+
+<table class="table">
+	<tr>
+		<th>#</th>
+		<th>@Localization.Serial #</th>
+		<th>@Localization.Type</th>
+		<th>@Localization.Utility</th>
+		<th>@Localization.Release</th>
+		<th>@Localization.Verification</th>
+		<th>@Localization.Index</th>
+		<th>@Localization.Town</th>
+		<th>@Localization.Street</th>
+		<th>@Localization.Building</th>
+		<th>@Localization.FlatPart</th>
+		<th>@Localization.Options</th>
+	</tr>
+
+	@foreach (var item in Model.Meters)
+	{
+		<tr>
+			<td>@(rowNumber++)</td>
+			<td>
+				@Html.DisplayFor(model => item.SerialNumber)
+			</td>
+			<td>
+				@Html.DisplayFor(model => item.MeterType.Name)
+			</td>
+			<td>
+				@Html.DisplayFor(model => item.MeterType.Utility.ResourceName)
+			</td>
+			<td>
+				@item.ReleaseDate.Year.ToString()<text>-</text>@item.ReleaseDate.Month.ToString()<text>-</text>@item.ReleaseDate.Day
+			</td>
+			<td>
+				@item.VarificationDate.Year.ToString()<text>-</text>@item.VarificationDate.Month.ToString()<text>-</text>@item.VarificationDate.Day
+			</td>
+			<td>
+				@Html.DisplayFor(model => item.Address.Index.Value)
+			</td>
+			<td>
+				@Html.DisplayFor(model => item.Address.Town.Name)
+			</td>
+			<td>
+				@Html.DisplayFor(model => item.Address.Street.Name)
+			</td>
+			<td>
+				@Html.DisplayFor(model => item.Address.Building.Number)
+			</td>
+
+			@if (item.Address.FlatPart == null)
+			{
+				<td>
+					<text>--</text>
+				</td>
+			}
+			else if (!String.IsNullOrEmpty(item.Address.FlatPart.Name))
+			{
+				<td>
+					@Html.DisplayFor(model => item.Address.FlatPart.Name)
+				</td>
+			}
+			else if (item.Address.FlatPart.Number != 0 && !String.IsNullOrEmpty(item.Address.FlatPart.Number.ToString()))
+			{
+				<td>
+					@Html.DisplayFor(model => item.Address.FlatPart.Number)
+				</td>
+			}
+
+			<td>
+				@Html.ActionLink(Localization.Edit, "EditMeter", new { meterId = item.Id }) |
+				@Html.ActionLink(Localization.Data, "ShowMeterData", new { meterId = item.Id }) |
+				@Html.ActionLink(Localization.Delete, "DeleteMeter", new { meterId = item.Id })
+			</td>
+		</tr>
+	}
+</table>

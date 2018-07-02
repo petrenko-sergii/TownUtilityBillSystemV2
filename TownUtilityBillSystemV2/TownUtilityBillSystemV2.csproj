@@ -115,6 +115,9 @@
     <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="Ninject, Version=3.3.4.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.3.3.4\lib\net45\Ninject.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Diagnostics.DiagnosticSource, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
@@ -195,6 +198,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
+    <Compile Include="App_Start\NinjectControllerFactory.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="BILL.cs">
@@ -204,11 +208,14 @@
       <DependentUpon>TownUtilityBillSystemV2.tt</DependentUpon>
     </Compile>
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ChartController.cs" />
+    <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InitialDBController.cs" />
     <Compile Include="Controllers\LanguageController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MeterController.cs" />
+    <Compile Include="Controllers\StatisticController.cs" />
     <Compile Include="Controllers\UtilityController.cs" />
     <Compile Include="CUSTOMER.cs">
       <DependentUpon>TownUtilityBillSystemV2.tt</DependentUpon>
@@ -243,12 +250,17 @@
     <Compile Include="METER_TYPE.cs">
       <DependentUpon>TownUtilityBillSystemV2.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\AccountModels\Account.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AddressModels\Address.cs" />
     <Compile Include="Models\AddressModels\AddressModel.cs" />
     <Compile Include="Models\AddressModels\Building.cs" />
+    <Compile Include="Models\AddressModels\EFBuildingRepository.cs" />
+    <Compile Include="Models\AddressModels\EFStreetRepository.cs" />
     <Compile Include="Models\AddressModels\FlatPart.cs" />
+    <Compile Include="Models\AddressModels\IBuildingRepository.cs" />
     <Compile Include="Models\AddressModels\Index.cs" />
+    <Compile Include="Models\AddressModels\IStreetRepository.cs" />
     <Compile Include="Models\AddressModels\Street.cs" />
     <Compile Include="Models\AddressModels\Town.cs" />
     <Compile Include="Models\BaseModels\ObjectWithImage.cs" />
@@ -256,12 +268,23 @@
     <Compile Include="Models\Chart\ChartData.cs" />
     <Compile Include="Models\Currency\CurrencyMoney.cs" />
     <Compile Include="Models\Currency\CurrencyModel.cs" />
+    <Compile Include="Models\CustomerModels\Customer.cs" />
+    <Compile Include="Models\CustomerModels\CustomerModel.cs" />
+    <Compile Include="Models\CustomerModels\CustomerType.cs" />
+    <Compile Include="Models\CustomerModels\EFCustomerRepository.cs" />
+    <Compile Include="Models\CustomerModels\ICustomerRepository.cs" />
     <Compile Include="Models\CustomizedMessage\CustomizedMessage.cs" />
+    <Compile Include="Models\Exceptions\InvalidBuildingIdException.cs" />
+    <Compile Include="Models\Exceptions\InvalidStreetIdException.cs" />
+    <Compile Include="Models\Exceptions\InvalidTownIdException.cs" />
+    <Compile Include="Models\Exceptions\InvalidUtilityNameException.cs" />
     <Compile Include="Models\HelperMethods\HelperMethod.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\InitialDB\InitialDBEnums.cs" />
     <Compile Include="Models\InitialDB\InitialDBModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\MeterModels\EFMeterRepository.cs" />
+    <Compile Include="Models\MeterModels\IMeterRepository.cs" />
     <Compile Include="Models\MeterModels\Meter.cs" />
     <Compile Include="Models\MeterModels\MeterItem.cs" />
     <Compile Include="Models\MeterModels\MeterItemModel.cs" />
@@ -272,7 +295,8 @@
     <Compile Include="Models\News\NewsChapter.cs" />
     <Compile Include="Models\News\NewsEmployee.cs" />
     <Compile Include="Models\News\NewsModel.cs" />
-    <Compile Include="Models\Temperature\Temperature.cs" />
+    <Compile Include="Models\TemperatureModels\Temperature.cs" />
+    <Compile Include="Models\TemperatureModels\TemperatureModel.cs" />
     <Compile Include="Models\UtilitySupplier\UtilitySupplier.cs" />
     <Compile Include="Models\UtilitySupplier\UtilitySupplierModel.cs" />
     <Compile Include="Models\UtilityModels\Unit.cs" />
@@ -347,7 +371,10 @@
     <Content Include="Content\Images\News\Plant.jpg" />
     <Content Include="Content\Images\News\PlantNight.jpg" />
     <Content Include="Content\Images\News\WindMills.jpg" />
+    <Content Include="Content\Images\EmptyImages\NoImageBuildingDa.jpg" />
+    <Content Include="Content\Images\EmptyImages\NoImageBuildingEn.jpg" />
     <Content Include="Content\Images\NoImageIcon.jpg" />
+    <Content Include="Content\Images\Temperature\TemperatureIcon.jpg" />
     <Content Include="Content\Images\TownBuildings\Kolding\Kolding_Haderslevvej_10.JPG" />
     <Content Include="Content\Images\TownBuildings\Kolding\Kolding_Haderslevvej_100.JPG" />
     <Content Include="Content\Images\TownBuildings\Kolding\Kolding_Haderslevvej_102.JPG" />
@@ -393,13 +420,15 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Scripts\appJsScripts\findMeterByAddress.js" />
+    <Content Include="Scripts\appJsScripts\googleMapScript.js" />
     <Content Include="Scripts\appJsScripts\_layout.js" />
-    <Content Include="Scripts\bootstrap.js" />
-    <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="TownUtilityBillSystemV2.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>TownUtilityBillSystemV2.edmx</DependentUpon>
@@ -481,6 +510,17 @@
     <Content Include="Views\Meter\FindMetersByDetails.cshtml" />
     <Content Include="Views\Meter\ShowFoundMeters.cshtml" />
     <Content Include="Views\Meter\FindMeterByAddress.cshtml" />
+    <Content Include="Views\Meter\_MetersTablePartial.cshtml" />
+    <Content Include="Views\Customer\ShowCustomerMenu.cshtml" />
+    <Content Include="Views\Customer\ShowPrivateCustomers.cshtml" />
+    <Content Include="Views\Meter\ShowMeterTypesForUtility.cshtml" />
+    <Content Include="Views\Shared\_BackToPreviousPagePartial.cshtml" />
+    <Content Include="Views\Customer\ShowLegalCustomers.cshtml" />
+    <Content Include="Views\Customer\FindCustomerBy.cshtml" />
+    <Content Include="Views\Customer\ShowFoundCustomers.cshtml" />
+    <Content Include="Views\Customer\ShowAllCustomers.cshtml" />
+    <Content Include="Views\Statistic\ShowStatisticMenu.cshtml" />
+    <Content Include="Views\Chart\ShowTemperatureChart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -135,11 +135,56 @@ namespace TownUtilityBillSystemV2.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Account #.
+        /// </summary>
+        public static string AccountNum {
+            get {
+                return ResourceManager.GetString("AccountNum", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Account Number.
+        /// </summary>
+        public static string AccountNumber {
+            get {
+                return ResourceManager.GetString("AccountNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Address.
         /// </summary>
         public static string Address {
             get {
                 return ResourceManager.GetString("Address", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Administrative building.
+        /// </summary>
+        public static string AdministrativeBuilding {
+            get {
+                return ResourceManager.GetString("AdministrativeBuilding", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Admin will be notified..
+        /// </summary>
+        public static string AdminWillBeNotified {
+            get {
+                return ResourceManager.GetString("AdminWillBeNotified", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to All customers.
+        /// </summary>
+        public static string AllCustomers {
+            get {
+                return ResourceManager.GetString("AllCustomers", resourceCulture);
             }
         }
         
@@ -180,6 +225,15 @@ namespace TownUtilityBillSystemV2.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Apartment.
+        /// </summary>
+        public static string Apartment {
+            get {
+                return ResourceManager.GetString("Apartment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Back to home page.
         /// </summary>
         public static string BackToHomePage {
@@ -207,6 +261,15 @@ namespace TownUtilityBillSystemV2.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Balance.
+        /// </summary>
+        public static string Balance {
+            get {
+                return ResourceManager.GetString("Balance", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Bills.
         /// </summary>
         public static string Bills {
@@ -221,6 +284,24 @@ namespace TownUtilityBillSystemV2.Resources {
         public static string Building {
             get {
                 return ResourceManager.GetString("Building", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Building image.
+        /// </summary>
+        public static string BuildingImage {
+            get {
+                return ResourceManager.GetString("BuildingImage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cafe.
+        /// </summary>
+        public static string Cafe {
+            get {
+                return ResourceManager.GetString("Cafe", resourceCulture);
             }
         }
         
@@ -248,6 +329,24 @@ namespace TownUtilityBillSystemV2.Resources {
         public static string ChooseNextFacility {
             get {
                 return ResourceManager.GetString("ChooseNextFacility", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Church.
+        /// </summary>
+        public static string Church {
+            get {
+                return ResourceManager.GetString("Church", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Company.
+        /// </summary>
+        public static string Company {
+            get {
+                return ResourceManager.GetString("Company", resourceCulture);
             }
         }
         
@@ -293,6 +392,15 @@ namespace TownUtilityBillSystemV2.Resources {
         public static string CreateNewAccount {
             get {
                 return ResourceManager.GetString("CreateNewAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create the new customer.
+        /// </summary>
+        public static string CreateNewCustomer {
+            get {
+                return ResourceManager.GetString("CreateNewCustomer", resourceCulture);
             }
         }
         
@@ -347,6 +455,15 @@ namespace TownUtilityBillSystemV2.Resources {
         public static string Delete {
             get {
                 return ResourceManager.GetString("Delete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Details.
+        /// </summary>
+        public static string Details {
+            get {
+                return ResourceManager.GetString("Details", resourceCulture);
             }
         }
         
@@ -414,11 +531,29 @@ namespace TownUtilityBillSystemV2.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Factory.
+        /// </summary>
+        public static string Factory {
+            get {
+                return ResourceManager.GetString("Factory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The field {0} is required.
         /// </summary>
         public static string FieldIsRequired {
             get {
                 return ResourceManager.GetString("FieldIsRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Find customer.
+        /// </summary>
+        public static string FindCustomer {
+            get {
+                return ResourceManager.GetString("FindCustomer", resourceCulture);
             }
         }
         
@@ -450,6 +585,15 @@ namespace TownUtilityBillSystemV2.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Flat #.
+        /// </summary>
+        public static string FlatNumber {
+            get {
+                return ResourceManager.GetString("FlatNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Flat/Part.
         /// </summary>
         public static string FlatPart {
@@ -477,11 +621,29 @@ namespace TownUtilityBillSystemV2.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Found 1 customer.
+        /// </summary>
+        public static string FoundOneCustomer {
+            get {
+                return ResourceManager.GetString("FoundOneCustomer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Found 1 meter.
         /// </summary>
         public static string FoundOneMeter {
             get {
                 return ResourceManager.GetString("FoundOneMeter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fuel station.
+        /// </summary>
+        public static string FuelStation {
+            get {
+                return ResourceManager.GetString("FuelStation", resourceCulture);
             }
         }
         
@@ -531,6 +693,33 @@ namespace TownUtilityBillSystemV2.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Hospital.
+        /// </summary>
+        public static string Hospital {
+            get {
+                return ResourceManager.GetString("Hospital", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hotel.
+        /// </summary>
+        public static string Hotel {
+            get {
+                return ResourceManager.GetString("Hotel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to House.
+        /// </summary>
+        public static string House {
+            get {
+                return ResourceManager.GetString("House", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Icon.
         /// </summary>
         public static string Icon {
@@ -549,6 +738,15 @@ namespace TownUtilityBillSystemV2.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Invalid building id: {0}..
+        /// </summary>
+        public static string InvalidBuildingIdParam {
+            get {
+                return ResourceManager.GetString("InvalidBuildingIdParam", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invalid login attempt.
         /// </summary>
         public static string InvalidLoginAttempt {
@@ -558,11 +756,56 @@ namespace TownUtilityBillSystemV2.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Invalid street id: {0}..
+        /// </summary>
+        public static string InvalidStreetIdParam {
+            get {
+                return ResourceManager.GetString("InvalidStreetIdParam", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid town id: {0}..
+        /// </summary>
+        public static string InvalidTownIdParam {
+            get {
+                return ResourceManager.GetString("InvalidTownIdParam", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid utility name: {0}..
+        /// </summary>
+        public static string InvalidUtilityNameParam {
+            get {
+                return ResourceManager.GetString("InvalidUtilityNameParam", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Kinder garden.
+        /// </summary>
+        public static string KinderGarden {
+            get {
+                return ResourceManager.GetString("KinderGarden", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Language.
         /// </summary>
         public static string Language {
             get {
                 return ResourceManager.GetString("Language", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Legal customers.
+        /// </summary>
+        public static string LegalCustomers {
+            get {
+                return ResourceManager.GetString("LegalCustomers", resourceCulture);
             }
         }
         
@@ -630,6 +873,15 @@ namespace TownUtilityBillSystemV2.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Meters for this address.
+        /// </summary>
+        public static string MetersForThisAddress {
+            get {
+                return ResourceManager.GetString("MetersForThisAddress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Meter types.
         /// </summary>
         public static string MeterTypes {
@@ -644,6 +896,15 @@ namespace TownUtilityBillSystemV2.Resources {
         public static string MeterTypesLowerCase {
             get {
                 return ResourceManager.GetString("MeterTypesLowerCase", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Museum.
+        /// </summary>
+        public static string Museum {
+            get {
+                return ResourceManager.GetString("Museum", resourceCulture);
             }
         }
         
@@ -684,6 +945,15 @@ namespace TownUtilityBillSystemV2.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No any customer is found.
+        /// </summary>
+        public static string NoAnyCustomerIsFound {
+            get {
+                return ResourceManager.GetString("NoAnyCustomerIsFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No any meter is found.
         /// </summary>
         public static string NoAnyMeterIsFound {
@@ -698,6 +968,15 @@ namespace TownUtilityBillSystemV2.Resources {
         public static string Number {
             get {
                 return ResourceManager.GetString("Number", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nursery.
+        /// </summary>
+        public static string Nursery {
+            get {
+                return ResourceManager.GetString("Nursery", resourceCulture);
             }
         }
         
@@ -720,11 +999,29 @@ namespace TownUtilityBillSystemV2.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Other.
+        /// </summary>
+        public static string Other {
+            get {
+                return ResourceManager.GetString("Other", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Other utilities.
         /// </summary>
         public static string OtherUtilities {
             get {
                 return ResourceManager.GetString("OtherUtilities", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Part -.
+        /// </summary>
+        public static string PartHyphen {
+            get {
+                return ResourceManager.GetString("PartHyphen", resourceCulture);
             }
         }
         
@@ -756,11 +1053,29 @@ namespace TownUtilityBillSystemV2.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Phone.
+        /// </summary>
+        public static string Phone {
+            get {
+                return ResourceManager.GetString("Phone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Phone Number.
         /// </summary>
         public static string PhoneNumber {
             get {
                 return ResourceManager.GetString("PhoneNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Plant.
+        /// </summary>
+        public static string Plant {
+            get {
+                return ResourceManager.GetString("Plant", resourceCulture);
             }
         }
         
@@ -788,6 +1103,15 @@ namespace TownUtilityBillSystemV2.Resources {
         public static string Price {
             get {
                 return ResourceManager.GetString("Price", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Private customers.
+        /// </summary>
+        public static string PrivateCustomers {
+            get {
+                return ResourceManager.GetString("PrivateCustomers", resourceCulture);
             }
         }
         
@@ -846,6 +1170,33 @@ namespace TownUtilityBillSystemV2.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Restaurant.
+        /// </summary>
+        public static string Restaurant {
+            get {
+                return ResourceManager.GetString("Restaurant", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Salon.
+        /// </summary>
+        public static string Salon {
+            get {
+                return ResourceManager.GetString("Salon", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to School.
+        /// </summary>
+        public static string School {
+            get {
+                return ResourceManager.GetString("School", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Search.
         /// </summary>
         public static string Search {
@@ -864,6 +1215,42 @@ namespace TownUtilityBillSystemV2.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to --Select building--.
+        /// </summary>
+        public static string SelectBuilding {
+            get {
+                return ResourceManager.GetString("SelectBuilding", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to --Select flat/part--.
+        /// </summary>
+        public static string SelectFlatPart {
+            get {
+                return ResourceManager.GetString("SelectFlatPart", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to --Select street--.
+        /// </summary>
+        public static string SelectStreet {
+            get {
+                return ResourceManager.GetString("SelectStreet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to --Select town--.
+        /// </summary>
+        public static string SelectTown {
+            get {
+                return ResourceManager.GetString("SelectTown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Serial.
         /// </summary>
         public static string Serial {
@@ -878,6 +1265,33 @@ namespace TownUtilityBillSystemV2.Resources {
         public static string SerialNumber {
             get {
                 return ResourceManager.GetString("SerialNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Service station.
+        /// </summary>
+        public static string ServiceStation {
+            get {
+                return ResourceManager.GetString("ServiceStation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Shop.
+        /// </summary>
+        public static string Shop {
+            get {
+                return ResourceManager.GetString("Shop", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Show all customers.
+        /// </summary>
+        public static string ShowAllCustomers {
+            get {
+                return ResourceManager.GetString("ShowAllCustomers", resourceCulture);
             }
         }
         
@@ -909,11 +1323,56 @@ namespace TownUtilityBillSystemV2.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Show Customer Menu.
+        /// </summary>
+        public static string ShowCustomerMenu {
+            get {
+                return ResourceManager.GetString("ShowCustomerMenu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Show found customers.
+        /// </summary>
+        public static string ShowFoundCustomers {
+            get {
+                return ResourceManager.GetString("ShowFoundCustomers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Show Found Meters.
         /// </summary>
         public static string ShowFoundMeters {
             get {
                 return ResourceManager.GetString("ShowFoundMeters", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Show legal customers.
+        /// </summary>
+        public static string ShowLegalCustomers {
+            get {
+                return ResourceManager.GetString("ShowLegalCustomers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Show metertypes for utility.
+        /// </summary>
+        public static string ShowMeterTypesForUtility {
+            get {
+                return ResourceManager.GetString("ShowMeterTypesForUtility", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Show private customers.
+        /// </summary>
+        public static string ShowPrivateCustomers {
+            get {
+                return ResourceManager.GetString("ShowPrivateCustomers", resourceCulture);
             }
         }
         
@@ -927,11 +1386,29 @@ namespace TownUtilityBillSystemV2.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Show statistic menu.
+        /// </summary>
+        public static string ShowStatisticMenu {
+            get {
+                return ResourceManager.GetString("ShowStatisticMenu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Show the news.
         /// </summary>
         public static string ShowTheNews {
             get {
                 return ResourceManager.GetString("ShowTheNews", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Some random customers.
+        /// </summary>
+        public static string SomeRandomCustomers {
+            get {
+                return ResourceManager.GetString("SomeRandomCustomers", resourceCulture);
             }
         }
         
@@ -968,6 +1445,24 @@ namespace TownUtilityBillSystemV2.Resources {
         public static string Surname {
             get {
                 return ResourceManager.GetString("Surname", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Temperature.
+        /// </summary>
+        public static string Temperature {
+            get {
+                return ResourceManager.GetString("Temperature", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Theatre.
+        /// </summary>
+        public static string Theatre {
+            get {
+                return ResourceManager.GetString("Theatre", resourceCulture);
             }
         }
         
@@ -1022,6 +1517,15 @@ namespace TownUtilityBillSystemV2.Resources {
         public static string Unit {
             get {
                 return ResourceManager.GetString("Unit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Usage.
+        /// </summary>
+        public static string Usage {
+            get {
+                return ResourceManager.GetString("Usage", resourceCulture);
             }
         }
         
@@ -1130,6 +1634,15 @@ namespace TownUtilityBillSystemV2.Resources {
         public static string Water {
             get {
                 return ResourceManager.GetString("Water", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to WorkShop.
+        /// </summary>
+        public static string WorkShop {
+            get {
+                return ResourceManager.GetString("WorkShop", resourceCulture);
             }
         }
         

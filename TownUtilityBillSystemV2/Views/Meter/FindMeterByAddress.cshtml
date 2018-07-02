@@ -1,40 +1,28 @@
 ﻿@model TownUtilityBillSystemV2.Models.AddressModels.AddressModel
+@using TownUtilityBillSystemV2.Resources
+
 @{
-	ViewBag.Title = "FindMeterByAddress";
+	ViewBag.Title = Localization.FindMeterByAddress;
 }
-
-<style>
-	#map-canvas {
-		width: 100%;
-		height: 270px;
-	}
-
-	.row .col-xs-4 {
-		background-color: white;
-		color: black;
-	}
-</style>
-
-
 
 <br /><br />
 <div class="row">
 	<div id="addressForm" class="col-xs-4">
-		<h3><strong>Find meter by address</strong></h3>
+		<h3 class="header-bold">@Localization.FindMeterByAddress</h3>
 		<div class="form-group">
 			@if (ViewBag.TownList != null)
 			{
-				@Html.DropDownListFor(model => model.Town.Id, ViewBag.TownList as SelectList, "--Select town--", new { @class = "form-control" })
+				@Html.DropDownListFor(model => model.Town.Id, ViewBag.TownList as SelectList, Localization.SelectTown, new { @class = "form-control" })
 			}
 		</div>
 		<div class="form-group">
-			@Html.DropDownListFor(model => model.Street.Id, new SelectList(" "), "--Select street--", new { @class = "form-control" })
+			@Html.DropDownListFor(model => model.Street.Id, new SelectList(" "), Localization.SelectStreet, new { @class = "form-control" })
 		</div>
 		<div class="form-group">
-			@Html.DropDownListFor(model => model.Building.Id, new SelectList(" "), "--Select building--", new { @class = "form-control" })
+			@Html.DropDownListFor(model => model.Building.Id, new SelectList(" "), Localization.SelectBuilding, new { @class = "form-control" })
 		</div>
 		<div class="form-group" style="visibility:hidden">
-			@Html.DropDownListFor(model => model.FlatPart.Id, new SelectList(" "), "--Select flat/part--", new { @class = "form-control" })
+			@Html.DropDownListFor(model => model.FlatPart.Id, new SelectList(" "), Localization.SelectFlatPart, new { @class = "form-control" })
 		</div>
 	</div>
 
@@ -46,322 +34,16 @@
 </div>
 
 <div id="utilityDiv" style="visibility:hidden">
-	<h3><strong> Meters for this address</strong></h3>
-	<table class="table" id="meters_table">
-	</table>
+	<h3 class="header-bold">@Localization.MetersForThisAddress</h3>
+	<table class="table" id="meters_table"></table>
 </div>
 
-
 <a href="javascript:history.go(-1)" class="btn btn-link btn-large">
-	<span class=" glyphicon glyphicon-arrow-left"></span> <strong>Back to previous page</strong>
+	<span class=" glyphicon glyphicon-arrow-left"></span> <strong>@Localization.BackToPreviousPage</strong>
 </a>
 
-<script src="~/Scripts/jquery-3.3.1.min.js"></script>
-<script>
-    $(document).ready(function () {
-        $("#Town_Id").change(function () {
-            $.get("/Meter/GetStreetList", { townId: $("#Town_Id").val() }, function (data) {
-
-                var uDiv = document.getElementById("utilityDiv");
-                uDiv.style.visibility = "hidden";
-
-                var bildingImage = document.getElementById("buildingImage");
-                bildingImage.style.visibility = "hidden";
-
-                $("#Building_Id").empty();
-                $("#Building_Id").append("<option value='" + 0 + "'>" + "--Select building--" + "</option>")
-
-                $("#Street_Id").empty();
-                $("#Street_Id").append("<option value='" + 0 + "'>" + "--Select street--" + "</option>")
-
-                var f = document.getElementById("FlatPart_Id");
-                $("#FlatPart_Id").empty();
-                f.style.visibility = "hidden";
-
-                $.each(data, function (index, row) {
-                    $("#Street_Id").append("<option value='" + row.Id + "'>" + row.Name + "</option>")
-                });
-            });
-        })
-    });
-</script>
-
-<script>
-    $(document).ready(function () {
-        $("#Street_Id").change(function () {
-            $.get("/Meter/GetBuildingList", { streetId: $("#Street_Id").val() }, function (data) {
-
-                var uDiv = document.getElementById("utilityDiv");
-                uDiv.style.visibility = "hidden";
-
-                var bildingImage = document.getElementById("buildingImage");
-                bildingImage.style.visibility = "hidden";
-
-                var f = document.getElementById("FlatPart_Id");
-                $("#FlatPart_Id").empty();
-                f.style.visibility = "hidden";
-
-                $("#Building_Id").empty();
-                $("#Building_Id").append("<option value='" + 0 + "'>" + "--Select building--" + "</option>")
-                $.each(data, function (index, row) {
-                    $("#Building_Id").append("<option value='" + row.Id + "'>" + row.Number + "</option>")
-                });
-            });
-        })
-
-    });
-</script>
-
-<script>
-    $(document).ready(function () {
-        $("#Building_Id").change(function () {
-            $.get("/Meter/GetFlatPartList", { buildingId: $("#Building_Id").val() }, function (data) {
-                var f = document.getElementById("FlatPart_Id");
-                $("#FlatPart_Id").empty();
-                $("#FlatPart_Id").append("<option value='" + 0 + "'>" + "--Select flat/part--" + "</option>")
-                f.style.visibility = "hidden";
-                $.each(data, function (index, row) {
-                    if (row.Name != null && (row.Number == 0 || row.Number == null)) {
-                        $("#FlatPart_Id").append("<option value='" + row.Id + "'>" + "Part - " + row.Name + "</option>")
-                    }
-                    else if (row.Name == null && (row.Number != 0 || row.Number != null)) {
-                        $("#FlatPart_Id").append("<option value='" + row.Id + "'>" + "Flat #" + row.Number + "</option>")
-                    }
-                    else if (row.Name != null && (row.Number != 0 || row.Number != null)) {
-                        $("#FlatPart_Id").append("<option value='" + row.Id + "'>" + "Flat #" + row.Number + ", " + row.Name + "</option>")
-                    }
-                    if (row.Id != 0 || row.Id != null) {
-                        f.style.visibility = "visible";
-                    }
-                });
-            });
-        })
-    });
-</script>
-
 <script src="~/Scripts/jquery-3.3.1.js"></script>
-<script>
-    $("#Building_Id").change(function () {
-        $.ajax({
-            type: "GET",
-            url: '/Meter/GetBuildingImage',
-            data: { buildingId: $("#Building_Id").val() },
-            success: function (data) {
-                var bildingImage = document.getElementById("buildingImage");
-                bildingImage.style.visibility = "visible";
-                $("#buildingImage").empty().append(data);
-            }
-        });
-        $.ajax({
-            type: "GET",
-            url: '/Meter/GetMetersForBuilding',
-            data: { buildingId: $("#Building_Id").val() },
-            success: function (data) {
-				var uDiv = document.getElementById("utilityDiv");
-
-                if (data[0] != null) {
-					uDiv.style.visibility = "visible";
-                    var meter_data = '';
-                    var rowNumber = 1;
-
-					meter_data += '<tr><th>#</th><th>Serial #</th><th>Type</th><th>Utility</th><th>Release</th><th>Varification</th><th>Options</th></tr>'
-
-                    $.each(data, function (key, value) {
-                        var dateRelease = jsonDateFormatToJS(value.ReleaseDate);
-                        var dateVarif = jsonDateFormatToJS(value.VarificationDate);
-
-                        meter_data += '<tr>';
-                        meter_data += '<td align="center">' + rowNumber++ + '</td>';
-                        meter_data += '<td>' + value.SerialNumber + '</td>';
-                        meter_data += '<td>' + value.MeterType.Name + '</td>';
-                        meter_data += '<td>' + value.MeterType.Utility.Name + '</td>';
-                        meter_data += '<td>' + dateRelease + '</td>';
-                        meter_data += '<td>' + dateVarif + '</td>';
-                        meter_data += '<td>' + '<a href="/Meter/EditMeter?meterId=' + value.Id + '">Edit | </a>' + '<a href="/Meter/ShowMeterData?meterId=' + value.Id + '">Data</a>' + '</td>';
-
-                    });
-					$('#meters_table').empty().append(meter_data);
-					
-                }
-                else {
-                    uDiv.style.visibility = "hidden";
-                }
-            }
-        });
-    });
-
-
-    $("#FlatPart_Id").change(function () {
-        $.ajax({
-            type: "GET",
-            url: '/Meter/GetMetersForFlatPart',
-            data: { flatPartId: $("#FlatPart_Id").val() },
-            success: function (data) {
-				var uDiv = document.getElementById("utilityDiv");
-
-                if (data[0] != null) {
-					uDiv.style.visibility = "visible";
-
-                    var meter_data = '';
-					var rowNumber = 1;
-
-					meter_data += '<tr><th>#</th><th>Serial #</th><th>Type</th><th>Utility</th><th>Release</th><th>Varification</th><th>Options</th></tr>'
-
-                    $.each(data, function (key, value) {
-                        var dateRelease = jsonDateFormatToJS(value.ReleaseDate);
-                        var dateVarif = jsonDateFormatToJS(value.VarificationDate);
-
-                        meter_data += '<tr>';
-                        meter_data += '<td align="center">' + rowNumber++ + '</td>';
-                        meter_data += '<td>' + value.SerialNumber + '</td>';
-                        meter_data += '<td>' + value.MeterType.Name + '</td>';
-                        meter_data += '<td>' + value.MeterType.Utility.Name + '</td>';
-                        meter_data += '<td>' + dateRelease + '</td>';
-                        meter_data += '<td>' + dateVarif + '</td>';
-                        meter_data += '<td>' + '<a href="/Meter/EditMeter/' + value.Id + '">Edit | </a>' + '<a href="/Meter/ShowMeterData?meterId=' + value.Id + '">Data</a>' + '</td>';
-                        meter_data += '</tr>';
-                    });
-                    $('#meters_table').empty().append(meter_data);
-                }
-            }
-        });
-    });
-
-    function jsonDateFormatToJS(value) {
-        var dateString = value.substr(6);
-        var currentTime = new Date(parseInt(dateString));
-        var month = currentTime.getMonth() + 1;
-        var day = currentTime.getDate();
-        var year = currentTime.getFullYear();
-        var date = year + "-" + month + "-" + day;
-        return date;
-    };
-
-
-
-
-</script>
-
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC7oyKXdpaKqurqotVj7_bhl9V9_7B5cMQ&libraries=places"
-		type="text/javascript"></script>
-<script>
-    var map = new google.maps.Map(document.getElementById('map-canvas'), {
-        center: {
-            lat: 55.60,
-            lng: 9.6
-        },
-        zoom: 7
-    });
-    var marker = new google.maps.Marker({
-        position: {
-            lat: 55.60,
-            lng: 9.6
-        },
-        map: map,
-        draggable: true
-    });
-    var country = "Denmark";
-    var town;
-    var street;
-    var building;
-    var mapDiv;
-    var address;
-    var geocoder;
-    var mapTownZoom = 10;
-    var mapStreetZoom = 14;
-    var mapBuildingZoom = 17;
-
-    $(document).ready(function () {
-        $("#Town_Id").change(function () {
-            $.ajax({
-                type: "GET",
-                url: '/Meter/GetTownName',
-                data: { townId: $("#Town_Id").val() },
-                success: function (data) {
-                    town = data;
-                    mapDiv = document.getElementById('map-canvas');
-                    address = town + country;
-                    geocoder = new google.maps.Geocoder();
-
-                    geocoder.geocode({
-                        "address": address
-                    }, function (results, status) {
-                        map = new google.maps.Map(mapDiv, {
-                            center: results[0].geometry.location,
-                            zoom: mapTownZoom,
-                            mapTypeId: google.maps.MapTypeId.ROADMAP,
-                        })
-                        marker = new google.maps.Marker({
-                            position: results[0].geometry.location,
-                            map: map,
-                            draggable: true
-                        });
-                    });
-                }
-            });
-        })
-    });
-
-    $(document).ready(function () {
-        $("#Street_Id").change(function () {
-            $.ajax({
-                type: "GET",
-                url: '/Meter/GetStreetName',
-                data: { streetId: $("#Street_Id").val() },
-                success: function (data) {
-                    street = data;
-                    mapDiv = document.getElementById('map-canvas');
-                    address = street + town + country;
-                    geocoder = new google.maps.Geocoder();
-
-                    geocoder.geocode({
-                        "address": address
-                    }, function (results, status) {
-                        map = new google.maps.Map(mapDiv, {
-                            center: results[0].geometry.location,
-                            zoom: mapStreetZoom,
-                            mapTypeId: google.maps.MapTypeId.ROADMAP,
-                        })
-                        marker = new google.maps.Marker({
-                            position: results[0].geometry.location,
-                            map: map,
-                            draggable: true
-                        });
-                    });
-                }
-            });
-        })
-    });
-
-    $(document).ready(function () {
-        $("#Building_Id").change(function () {
-            $.ajax({
-                type: "GET",
-                url: '/Meter/GetBuildingNumber',
-                data: { buildingId: $("#Building_Id").val() },
-                success: function (data) {
-                    building = data;
-                    mapDiv = document.getElementById('map-canvas');
-                    address = building + street + town + country;
-                    geocoder = new google.maps.Geocoder();
-
-                    geocoder.geocode({
-                        "address": address
-                    }, function (results, status) {
-                        map = new google.maps.Map(mapDiv, {
-                            center: results[0].geometry.location,
-                            zoom: mapBuildingZoom,
-                            mapTypeId: google.maps.MapTypeId.ROADMAP,
-                        })
-                        marker = new google.maps.Marker({
-                            position: results[0].geometry.location,
-                            map: map,
-                            draggable: true
-                        });
-                    });
-                }
-            });
-        })
-    });
-</script>
-
+<script src="~/Scripts/appJsScripts/_layout.js"></script>
+<script src="~/Scripts/appJsScripts/findMeterByAddress.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC7oyKXdpaKqurqotVj7_bhl9V9_7B5cMQ&libraries=places"></script>
+<script src="~/Scripts/appJsScripts/googleMapScript.js"></script>

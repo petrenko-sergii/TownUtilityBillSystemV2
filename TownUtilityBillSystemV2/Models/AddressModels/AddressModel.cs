@@ -4,6 +4,9 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using TownUtilityBillSystemV2.Models.Exceptions;
+using TownUtilityBillSystemV2.Models.HelperMethods;
+using TownUtilityBillSystemV2.Resources;
 
 namespace TownUtilityBillSystemV2.Models.AddressModels
 {
@@ -40,7 +43,7 @@ namespace TownUtilityBillSystemV2.Models.AddressModels
 		{
 			using (var context = new TownUtilityBillSystemV2Entities())
 			{
-				var townsDB = context.TOWNs.ToList();
+				var townsDB = context.TOWNs.OrderBy(t=>t.NAME).ToList();
 
 				var townList = townsDB.Select(Town.Get).ToList();
 
@@ -72,6 +75,8 @@ namespace TownUtilityBillSystemV2.Models.AddressModels
 
 				if (townDB != null)
 					townName = townDB.NAME;
+				else
+					throw new InvalidTownIdException(townId);
 			}
 
 			return townName;
@@ -87,6 +92,8 @@ namespace TownUtilityBillSystemV2.Models.AddressModels
 
 				if (streetDB != null)
 					streetName = streetDB.NAME;
+				else
+					throw new InvalidStreetIdException(streetId);
 
 				return streetName;
 			}
@@ -154,10 +161,21 @@ namespace TownUtilityBillSystemV2.Models.AddressModels
 					imagePathDB = imageDB.PATH.ToString();
 					folderName = Path.GetFileName(Path.GetDirectoryName(imagePathDB));
 					imageName = Path.GetFileName(imagePathDB);
-					imagePathForHtml = "<img src = '/Content/Images/TownBuildings/" + folderName + "/" + imageName + "'" + "id = 'buildingImage'/> <br /> <br /><strong>Building image</strong>";
+					imagePathForHtml = "<img src = '/Content/Images/TownBuildings/" + folderName + "/" + imageName + "'" + "id = 'buildingImage'/> <br /> <br /><strong>" + Localization.BuildingImage + "</strong>";
 				}
 				else
-					imagePathForHtml = "<img src = '/Content/Images/NoImageIcon.jpg' id = 'buildingImage'/>";
+				{
+
+					switch (HelperMethod.GetCurrentLanguage())
+					{
+						case "da":
+							imagePathForHtml = "<img src = '/Content/Images/EmptyImages/NoImageBuildingDa.jpg' id = 'buildingImage'/>";
+							break;
+						default:
+							imagePathForHtml = "<img src = '/Content/Images/EmptyImages/NoImageBuildingEn.jpg' id = 'buildingImage'/>";
+							break;
+					}
+				}
 
 				return imagePathForHtml;
 			}

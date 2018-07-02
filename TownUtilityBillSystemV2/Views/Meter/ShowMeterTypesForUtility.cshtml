@@ -1,0 +1,56 @@
+﻿@model TownUtilityBillSystemV2.Models.MeterModels.MeterTypeModel
+@using TownUtilityBillSystemV2.Resources
+
+@{
+	ViewBag.Title = Localization.ShowMeterTypesForUtility;
+	int rowNumber = 1;
+}
+
+<h2>@Model.Utility.ResourceName @Localization.MeterTypes.ToLower() </h2>
+
+<table class="table">
+	<tr>
+		<th>#</th>
+		<th>
+			@Html.DisplayNameFor(model => model.MeterType.Name)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.MeterType.VarificationPeriod)
+		</th>
+		<th>@Localization.Options</th>
+	</tr>
+
+
+	@foreach (var item in Model.MeterTypes)
+	{
+		<tr>
+			<td>@(rowNumber++)</td>
+			<td>
+				@Html.DisplayFor(model => item.Name)
+			</td>
+			<td>
+				@Html.DisplayFor(model => item.VarificationPeriod) <text> @Localization.Years</text>
+			</td>
+			<td>
+				@Html.ActionLink(Localization.Edit, "EditMeterType", new { meterTypeId = item.Id }) |
+				@Html.ActionLink(Localization.Delete, "DeleteMeterType", new { meterTypeId = item.Id })
+			</td>
+		</tr>
+	}
+</table>
+
+<div class="row">
+	<div class="col-md-4 margin-top-20">
+		<a href="@Url.Action("Create New", "Create", new { utilityName = Model.Utility.Name }, null)" class="btn btn-primary btn-large btn-block">
+			<span class=" glyphicon glyphicon-plus-sign"></span> @Localization.Create
+		</a>
+	</div>
+	<div class="col-md-4 margin-top-20">
+		<a href="@Url.Action("ShowAllMeterTypes", "Meter", new { utilityName = Model.Utility.Name }, null)" class="btn btn-primary btn-large btn-block">
+			<span class=" glyphicon glyphicon-list"></span> @Localization.AllMeterTypes
+		</a>
+	</div>
+</div>
+<hr />
+
+@Html.Partial("~/Views/Shared/_BackToPreviousPagePartial.cshtml")

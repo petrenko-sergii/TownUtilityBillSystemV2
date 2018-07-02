@@ -1,6 +1,8 @@
 ﻿import * as $ from 'jquery'
+import { } from '@types/googlemaps';
 
 $("img.header-flag").css('cursor', 'pointer');
+
 
 $(document).ready(function ()
 {

@@ -1,0 +1,25 @@
+﻿
+@using TownUtilityBillSystemV2.Resources
+@{
+	ViewBag.Title = "ShowStatisticMenu";
+}
+
+<div class="jumbotron">
+	<h3 class="header-bold">@Localization.Statistic (@Localization.Usage.ToLower()):</h3>
+	<div class="row">
+		<div class="col-md-6">
+			<a href="@Url.Action("ShowPrivateCustomers", "Customer")" class="btn btn-primary btn-large btn-block">
+				<span class=" glyphicon glyphicon-user"></span> @Localization.PrivateCustomers @Localization.Usage.ToLower()
+			</a>
+			<a href="@Url.Action("ShowLegalCustomers", "Customer")" class="btn btn-primary btn-large btn-block">
+				<span class=" glyphicon glyphicon-home"></span> @Localization.LegalCustomers @Localization.Usage.ToLower()
+			</a>
+			<hr />
+			<a href="@Url.Action("ShowTemperatureChart", "Chart")" class="btn btn-primary btn-large btn-block">
+				<span class=" glyphicon glyphicon-globe"></span>  @Localization.Temperature
+			</a>
+		</div>
+	</div>
+	<hr />
+	@Html.Partial("~/Views/Shared/_BackToPreviousPagePartial.cshtml")
+</div>

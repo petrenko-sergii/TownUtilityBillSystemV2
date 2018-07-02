@@ -8,6 +8,7 @@ using System.Web.Mvc;
 using System.Web.Hosting;
 using static TownUtilityBillSystemV2.Models.InitialDB.InitialDBEnums;
 using TownUtilityBillSystemV2.Models;
+using TownUtilityBillSystemV2.Models.TemperatureModels;
 
 namespace TownUtilityBillSystemV2.Models.InitialDB
 {

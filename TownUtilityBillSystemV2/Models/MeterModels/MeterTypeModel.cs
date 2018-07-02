@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using TownUtilityBillSystemV2.Models.Exceptions;
 using TownUtilityBillSystemV2.Models.HelperMethods;
 using TownUtilityBillSystemV2.Models.UtilityModels;
 
@@ -47,6 +48,21 @@ namespace TownUtilityBillSystemV2.Models.MeterModels
 			}
 		}
 
-		
+		public void GetMeterTypesForUtility(string utilityName)
+		{
+			using (var context = new TownUtilityBillSystemV2Entities())
+			{
+				var utilityDB = context.UTILITYs.Where(u => u.NAME == utilityName).FirstOrDefault();
+
+				if (utilityDB == null)
+					throw new InvalidUtilityNameException(utilityName);
+
+				var meterTypesDB = context.METER_TYPEs.Where(mt => mt.UTILITY_ID == utilityDB.ID).ToList();
+
+				Utility = Utility.GetUtilityWithIdAndResourceName(utilityDB);
+
+				MeterTypes = meterTypesDB.Select(MeterType.Get).ToList();
+			}
+		}
 	}
 }
