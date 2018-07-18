@@ -650,4 +650,178 @@ and generated a revenue in 2016 of DKK 61 billion (EUR 8.2 is one of Northern Eu
   <data name="Usage" xml:space="preserve">
     <value>Usage</value>
   </data>
+  <data name="April" xml:space="preserve">
+    <value>April</value>
+  </data>
+  <data name="August" xml:space="preserve">
+    <value>August</value>
+  </data>
+  <data name="AverageTemperaturePerYear" xml:space="preserve">
+    <value>Average temperature per year</value>
+  </data>
+  <data name="December" xml:space="preserve">
+    <value>December</value>
+  </data>
+  <data name="February" xml:space="preserve">
+    <value>February</value>
+  </data>
+  <data name="For" xml:space="preserve">
+    <value>for</value>
+  </data>
+  <data name="January" xml:space="preserve">
+    <value>January</value>
+  </data>
+  <data name="July" xml:space="preserve">
+    <value>July</value>
+  </data>
+  <data name="June" xml:space="preserve">
+    <value>June</value>
+  </data>
+  <data name="March" xml:space="preserve">
+    <value>March</value>
+  </data>
+  <data name="May" xml:space="preserve">
+    <value>May</value>
+  </data>
+  <data name="November" xml:space="preserve">
+    <value>November</value>
+  </data>
+  <data name="October" xml:space="preserve">
+    <value>October</value>
+  </data>
+  <data name="September" xml:space="preserve">
+    <value>September</value>
+  </data>
+  <data name="ShowTemperatureChart" xml:space="preserve">
+    <value>Show temperature chart</value>
+  </data>
+  <data name="TemperatureChart" xml:space="preserve">
+    <value>Temperature chart</value>
+  </data>
+  <data name="UsageCanNotBeNegative" xml:space="preserve">
+    <value>The usage can not be negative</value>
+  </data>
+  <data name="CalculateCharges" xml:space="preserve">
+    <value>Calculate the charges</value>
+  </data>
+  <data name="Calculations" xml:space="preserve">
+    <value>Calculations</value>
+  </data>
+  <data name="EnterUtilityMonthUsage" xml:space="preserve">
+    <value>Enter utility month usage</value>
+  </data>
+  <data name="ShowCalculatorOnLine" xml:space="preserve">
+    <value>Show calculator on line</value>
+  </data>
+  <data name="ShowCharges" xml:space="preserve">
+    <value>Show charges</value>
+  </data>
+  <data name="TotalCharges" xml:space="preserve">
+    <value>Total charges</value>
+  </data>
+  <data name="UtilitiesPrices" xml:space="preserve">
+    <value>Utilities prices</value>
+  </data>
+  <data name="UtilitiesCharges" xml:space="preserve">
+    <value>Utilities charges</value>
+  </data>
+  <data name="Value" xml:space="preserve">
+    <value>Value</value>
+  </data>
+  <data name="YouMustEnterAtLeastOneUtilityUsage" xml:space="preserve">
+    <value>You must enter at least 1 utility usage</value>
+  </data>
+  <data name="Denmark" xml:space="preserve">
+    <value>Denmark</value>
+  </data>
+  <data name="ShowMeterData" xml:space="preserve">
+    <value>Show meter data</value>
+  </data>
+  <data name="CreateNewMeterData" xml:space="preserve">
+    <value>Create the new meter data</value>
+  </data>
+  <data name="Date" xml:space="preserve">
+    <value>Date</value>
+  </data>
+  <data name="EditData" xml:space="preserve">
+    <value>Edit data</value>
+  </data>
+  <data name="MeterType" xml:space="preserve">
+    <value>Meter type</value>
+  </data>
+  <data name="MonthsUsageYearHistory" xml:space="preserve">
+    <value>Months' usage (year's history)</value>
+  </data>
+  <data name="ShowAllUtilityUsage" xml:space="preserve">
+    <value>Show all utility usage</value>
+  </data>
+  <data name="SorryNoData" xml:space="preserve">
+    <value>Sorry, no data</value>
+  </data>
+  <data name="InvalidMeterIdParam" xml:space="preserve">
+    <value>Invalid meter id: {0}.</value>
+  </data>
+  <data name="Account" xml:space="preserve">
+    <value>Account</value>
+  </data>
+  <data name="Customer" xml:space="preserve">
+    <value>Customer</value>
+  </data>
+  <data name="ShowAllUtilityCharts" xml:space="preserve">
+    <value>Show all utility charts</value>
+  </data>
+  <data name="Square" xml:space="preserve">
+    <value>Square</value>
+  </data>
+  <data name="SquareMeter" xml:space="preserve">
+    <value>sq. m.</value>
+  </data>
+  <data name="Str" xml:space="preserve">
+    <value>Str</value>
+  </data>
+  <data name="UtilitiesUsage" xml:space="preserve">
+    <value>Utilities usage</value>
+  </data>
+  <data name="SorryNoDataForThisCustomerMeters" xml:space="preserve">
+    <value>Sorry, no data for this customer meters</value>
+  </data>
+  <data name="EditUtility" xml:space="preserve">
+    <value>Edit utility</value>
+  </data>
+  <data name="FieldMustBeNumeric" xml:space="preserve">
+    <value>The field {0} must be a number.</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="FieldMustBeNumberWith2DecimalDigits" xml:space="preserve">
+    <value>The field {0} must be a number with 2 decimal digits</value>
+  </data>
+  <data name="FieldMustBeNonNegativeNumber2WithDecDigits" xml:space="preserve">
+    <value>The field {0} must be a non negative number with 2 decimal digits.</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="EditMeterType" xml:space="preserve">
+    <value>Edit meter type</value>
+  </data>
+  <data name="SelectType" xml:space="preserve">
+    <value>--Select type--</value>
+  </data>
+  <data name="EditMeter" xml:space="preserve">
+    <value>Edit meter</value>
+  </data>
+  <data name="CurrentValue" xml:space="preserve">
+    <value>Current value</value>
+  </data>
+  <data name="EditMeterData" xml:space="preserve">
+    <value>Edit meter data</value>
+  </data>
+  <data name="MeasureDate" xml:space="preserve">
+    <value>Measure date</value>
+  </data>
+  <data name="MeterData" xml:space="preserve">
+    <value>Meter data</value>
+  </data>
 </root>

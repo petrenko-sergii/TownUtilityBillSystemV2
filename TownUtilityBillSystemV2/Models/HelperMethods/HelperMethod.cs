@@ -71,6 +71,15 @@ namespace TownUtilityBillSystemV2.Models.HelperMethods
 			return localizedWords;
 		}
 
+		public static object GetLocalizatedWordsTemperatureChartForFirstLoad()
+		{
+			string[] localizedWords = { Localization.AverageTemperaturePerYear,
+										Localization.For,
+										Localization.Temperature};
+
+			return localizedWords;
+		}
+
 		/// <summary>
 		/// Rerurns localizated words for meterTable for FindMeterByAddress view
 		/// </summary>
@@ -95,11 +104,72 @@ namespace TownUtilityBillSystemV2.Models.HelperMethods
 			return localizedWords;
 		}
 
+		/// <summary>
+		/// Rerurns localizated words for ChargesChart for ShowCharges view
+		/// </summary>
+		public static string[] GetLocalizatedWordsForChart()
+		{
+			string[] localizedWords = { Localization.UtilitiesCharges,
+										Localization.Value};
+
+			return localizedWords;
+		}
+
 		public static string GetTemperatureIconImage()
 		{
 			string path = "/Content/Images/Temperature/TemperatureIcon.jpg";
 
 			return path;
+		}
+
+		public static string GetResourceNameForMonth(string name)
+		{
+			string resourceName = "";
+
+			switch (name)
+			{
+				case "January":
+					resourceName = Localization.January;
+					break;
+				case "February":
+					resourceName = Localization.February;
+					break;
+				case "March":
+					resourceName = Localization.March;
+					break;
+				case "April":
+					resourceName = Localization.April;
+					break;
+				case "May":
+					resourceName = Localization.May;
+					break;
+				case "June":
+					resourceName = Localization.June;
+					break;
+				case "July":
+					resourceName = Localization.July;
+					break;
+				case "August":
+					resourceName = Localization.August;
+					break;
+				case "September":
+					resourceName = Localization.September;
+					break;
+				case "October":
+					resourceName = Localization.October;
+					break;
+				case "November":
+					resourceName = Localization.November;
+					break;
+				case "December":
+					resourceName = Localization.December;
+					break;
+				default:
+					resourceName = name;
+					break;
+			}
+
+			return resourceName;
 		}
 	}
 }

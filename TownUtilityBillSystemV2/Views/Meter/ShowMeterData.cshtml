@@ -1,0 +1,90 @@
+﻿@model TownUtilityBillSystemV2.Models.MeterModels.MeterItemModel
+@using TownUtilityBillSystemV2.Resources
+
+
+
+@{
+	ViewBag.Title = Localization.ShowMeterData;
+
+	int rowNumber = 1;
+}
+
+
+@if (Model.MeterItems.Count == 0)
+{
+	<h2 class="header-bold">@Localization.SorryNoData</h2>
+}
+
+else
+{
+	<h2 class="header-bold">@Localization.MeterData:</h2>
+	<h4><strong> @Localization.Utility:</strong> @Model.Meter.MeterType.Utility.ResourceName</h4>
+	<h4><strong> @Localization.MeterType:</strong> @Model.Meter.MeterType.Name</h4>
+	<h4><strong> @Localization.SerialNumber :</strong> @Model.Meter.SerialNumber</h4>
+	<h4><strong> @Localization.ReleaseDate: </strong> @Model.Meter.ReleaseDate.Year.ToString()<text>-</text>@Model.Meter.ReleaseDate.Month.ToString()<text>-</text>@Model.Meter.ReleaseDate.Day</h4>
+	<h4><strong> @Localization.VarificationDate:</strong> @Model.Meter.VarificationDate.Year.ToString()<text>-</text>@Model.Meter.VarificationDate.Month.ToString()<text>-</text>@Model.Meter.VarificationDate.Day</h4>
+	<h4><strong> @Localization.Address:</strong> @Model.Meter.Address.Building.Number, @Model.Meter.Address.Street.Name str., @Model.Meter.Address.Town.Name, @Model.Meter.Address.Country @Model.Meter.Address.Index.Value</h4>
+
+	<div class="row">
+		<div class="col-md-4 margin-top-20">
+			<a href="@Url.Action("TryToShowAllUtilityCharts", "Meter", new { meterId = @Model.Meter.Id }, null)" class="btn btn-primary btn-large btn-block">
+				<span class=" glyphicon glyphicon-stats"></span> @Localization.ShowAllUtilityUsage
+			</a>
+		</div>
+		<div class="col-md-4 margin-top-20">
+			<a href="@Url.Action("CreateMeterItem", "Meter")" class="btn btn-primary btn-large btn-block">
+				<span class=" glyphicon glyphicon-plus-sign"></span> @Localization.CreateNewMeterData
+			</a>
+		</div>
+	</div>
+
+	<div id="chartArear"></div>
+
+	<table class="table">
+		<tr>
+			<th>#</th>
+			<th>
+				@Localization.Date
+			</th>
+			<th>
+				@Localization.Value (@Model.Meter.MeterType.Utility.Unit.Name)
+			</th>
+			<th>@Localization.Options</th>
+		</tr>
+
+		@foreach (var item in Model.MeterItems)
+		{
+			<tr>
+				<td>@(rowNumber++)</td>
+				<td>
+					@item.Date.Year.ToString()<text>-</text>@item.Date.Month.ToString()<text>-</text>@item.Date.Day
+				</td>
+				<td>
+					@Math.Round(item.Value, 2)
+				</td>
+				<td>
+					@Html.ActionLink(Localization.EditData, "EditMeterData", new { meterItemId = item.Id }) |
+					@Html.ActionLink(Localization.Delete, "DeleteMeterItem", new { meterItemId = item.Id })
+				</td>
+			</tr>
+		}
+	</table>
+}
+
+@Html.Partial("~/Views/Shared/_BackToPreviousPagePartial.cshtml")
+
+<script>
+	//variables for showMeterData.js file
+	var meterId = @Model.Meter.Id;
+	var utilityResourceName = '@Model.Meter.MeterType.Utility.ResourceName';
+	var unitName = '@Model.Meter.MeterType.Utility.Unit.Name';
+	var usage = '@Localization.Usage';
+	var monthsUsageYearHistory = '@Localization.MonthsUsageYearHistory';
+	var value = '@Localization.Value';
+</script>
+
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+<script src="~/Scripts/appJsScripts/showMeterData.js"></script>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+

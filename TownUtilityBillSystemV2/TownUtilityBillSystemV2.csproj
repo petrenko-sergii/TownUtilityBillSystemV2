@@ -195,6 +195,16 @@
     <Compile Include="ADDRESS.cs">
       <DependentUpon>TownUtilityBillSystemV2.tt</DependentUpon>
     </Compile>
+    <Compile Include="App_GlobalResources\ErrorMessages.da.designer.cs">
+      <DependentUpon>ErrorMessages.da.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="App_GlobalResources\ErrorMessages.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ErrorMessages.resx</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
@@ -208,6 +218,7 @@
       <DependentUpon>TownUtilityBillSystemV2.tt</DependentUpon>
     </Compile>
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CalculatorController.cs" />
     <Compile Include="Controllers\ChartController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -265,7 +276,9 @@
     <Compile Include="Models\AddressModels\Town.cs" />
     <Compile Include="Models\BaseModels\ObjectWithImage.cs" />
     <Compile Include="Models\BaseModels\ObjectWithName.cs" />
+    <Compile Include="Models\Calculator\CalculatorItemModel.cs" />
     <Compile Include="Models\Chart\ChartData.cs" />
+    <Compile Include="Models\Chart\ChartModel.cs" />
     <Compile Include="Models\Currency\CurrencyMoney.cs" />
     <Compile Include="Models\Currency\CurrencyModel.cs" />
     <Compile Include="Models\CustomerModels\Customer.cs" />
@@ -275,10 +288,13 @@
     <Compile Include="Models\CustomerModels\ICustomerRepository.cs" />
     <Compile Include="Models\CustomizedMessage\CustomizedMessage.cs" />
     <Compile Include="Models\Exceptions\InvalidBuildingIdException.cs" />
+    <Compile Include="Models\Exceptions\InvalidMeterIdException.cs" />
     <Compile Include="Models\Exceptions\InvalidStreetIdException.cs" />
     <Compile Include="Models\Exceptions\InvalidTownIdException.cs" />
     <Compile Include="Models\Exceptions\InvalidUtilityNameException.cs" />
     <Compile Include="Models\HelperMethods\HelperMethod.cs" />
+    <Compile Include="Models\HelperModels\CustomModelBinder.cs" />
+    <Compile Include="Models\HelperModels\DecimalModelBinder.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\InitialDB\InitialDBEnums.cs" />
     <Compile Include="Models\InitialDB\InitialDBModel.cs" />
@@ -422,6 +438,10 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\appJsScripts\findMeterByAddress.js" />
     <Content Include="Scripts\appJsScripts\googleMapScript.js" />
+    <Content Include="Scripts\appJsScripts\showAllUtilityCharts.js" />
+    <Content Include="Scripts\appJsScripts\showCalculatorCharges.js" />
+    <Content Include="Scripts\appJsScripts\showMeterData.js" />
+    <Content Include="Scripts\appJsScripts\showTemperatureChart.js" />
     <Content Include="Scripts\appJsScripts\_layout.js" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -521,10 +541,18 @@
     <Content Include="Views\Customer\ShowAllCustomers.cshtml" />
     <Content Include="Views\Statistic\ShowStatisticMenu.cshtml" />
     <Content Include="Views\Chart\ShowTemperatureChart.cshtml" />
+    <Content Include="Views\Calculator\ShowCalculatorOnLine.cshtml" />
+    <Content Include="Views\Calculator\ShowCharges.cshtml" />
+    <Content Include="Views\Meter\ShowMeterData.cshtml" />
+    <Content Include="Views\Chart\ShowAllUtilityCharts.cshtml" />
+    <Content Include="Views\Utility\EditUtility.cshtml" />
+    <Content Include="Views\Meter\EditMeterType.cshtml" />
+    <Content Include="Views\Shared\_SaveCancelButtonsForEditView.cshtml" />
+    <Content Include="Views\Meter\EditMeter.cshtml" />
+    <Content Include="Views\Meter\EditMeterData.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\HelperModels\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -541,6 +569,14 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_GlobalResources\ErrorMessages.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>ErrorMessages.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\ErrorMessages.da.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>ErrorMessages.da.designer.cs</LastGenOutput>
+    </Content>
     <EmbeddedResource Include="Resources\Localization.da.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Localization.da.Designer.cs</LastGenOutput>

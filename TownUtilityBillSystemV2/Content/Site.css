@@ -37,8 +37,8 @@ textarea {
 	font-weight: bold;
 }
 
-/*.header-flag {
-}*/
+.header-flag {
+}
 
 .user-icon {
 	margin-top: 17px;
@@ -111,9 +111,33 @@ textarea {
 	background-color: #006600 !important;
 }
 
+.btn-brown {
+	background-color: #b36b00 !important;
+}
+
+.btn-dark-brown {
+	background-color: #995c00 !important;
+}
+
+.btn-cancel {
+	width: 280px;
+	border-color: brown;
+}
+
+.btn-cancel-brown {
+	width: 280px;
+	border-color: brown;
+}
+
+
 .utility-icon {
 	width: auto;
 	height: 30px;
+}
+
+.utility-icon-height-40px {
+	width: auto;
+	height: 40px;
 }
 
 #utilityName {
@@ -144,6 +168,43 @@ textarea {
 	height: 400px;
 	margin: 0 auto
 }
+
+.temperaturteIcon {
+	width:auto;
+	height:40px;
+}
+
+#chartArear {
+	min-width: 310px;
+	height: 400px; 
+	margin: 0 auto;
+}
+
+.p-red{
+	color:red;
+}
+
+#containerUtilitiesCharges {
+	min-width: 310px;
+	height: 400px;
+	max-width: 600px;
+	margin: 0 auto;
+}
+
+#containerForOneUtility {
+	min-width: 310px;
+	height: 300px;
+	margin: 0 auto;
+}
+
+#containerForThreeUtilities {
+	min-width: 310px;
+	height: 450px;
+	margin: 0 auto;
+}
+
+
+
 
 
 

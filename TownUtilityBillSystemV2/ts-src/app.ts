@@ -10,14 +10,14 @@ $(document).ready(function ()
 	$("#slide-0").addClass("active");
 });
 
-$("a.btn-green").mouseover(function ()
+$("a.btn-green").hover(function ()
 {
-	$(this).addClass('btn-dark-green');
+	$(this).toggleClass('btn-dark-green');
 });
 
-$("a.btn-green").mouseout(function ()
+$("a.btn-brown").hover(function ()
 {
-	$(this).removeClass('btn-dark-green');
+	$(this).toggleClass('btn-dark-brown');
 });
 
 $(document).ready(function ()

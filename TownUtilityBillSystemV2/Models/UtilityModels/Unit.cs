@@ -8,5 +8,13 @@ namespace TownUtilityBillSystemV2.Models.UtilityModels
 {
 	public class Unit : ObjectWithName
 	{
+		public static Unit Get(UNIT unit)
+		{
+			return new Unit
+			{
+				Id = unit.ID,
+				Name = unit.NAME
+			};
+		}
 	}
 }

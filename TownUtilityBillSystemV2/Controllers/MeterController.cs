@@ -6,10 +6,15 @@ using System.Web.Mvc;
 using TownUtilityBillSystemV2.Models.AddressModels;
 using TownUtilityBillSystemV2.Models.HelperMethods;
 using TownUtilityBillSystemV2.Models.MeterModels;
-using TownUtilityBillSystemV2.Models.UtilityModels;
 using System.Data;
 using System.Data.Entity;
 using System.IO;
+using TownUtilityBillSystemV2.Models.CustomerModels;
+using TownUtilityBillSystemV2.Models.UtilityModels;
+using TownUtilityBillSystemV2.Models.AccountModels;
+using TownUtilityBillSystemV2.Models.Chart;
+using static TownUtilityBillSystemV2.Models.InitialDB.InitialDBEnums;
+using TownUtilityBillSystemV2.Models.Exceptions;
 
 namespace TownUtilityBillSystemV2.Controllers
 {
@@ -181,23 +186,145 @@ namespace TownUtilityBillSystemV2.Controllers
 			model.GetMeterTypesForUtility(utilityName);
 
 			return View(model);
+		}
 
-			//using (var context = new TownUtilityBillSystemV2Entities())
-			//{
-			//	var model = new MeterTypeModel();
-			//	var utilityDB = context.UTILITYs.Where(u => u.NAME == utilityName).FirstOrDefault();
-			//	var meterTypesDB = context.METER_TYPEs.Where(mt => mt.UTILITY_ID == utilityDB.ID).ToList();
+		public ActionResult ShowMeterData(int meterId)
+		{
+			var model = new MeterItemModel();
 
-			//	model.Utility.Id = utilityDB.ID;
-			//	model.Utility.Name = utilityDB.NAME;
+			model.GetMeterData(meterId);
 
-			//	foreach (var mt in meterTypesDB)
-			//		model.MeterTypes.Add(new MeterType() { Id = mt.ID, Name = mt.NAME, VarificationPeriod = mt.VARIFICATION_PERIOD_YEARS });
+			return View(model);
+		}
 
-			//	var view = View("~/Views/Meter/ShowMeterTypesForUtility.cshtml", model);
+		public ActionResult GetMeterDataForChart(int meterId)
+		{
+			var model = new MeterItemModel();
 
-			//	return view;
-			//}
+			model.GetMeterDataForChart(meterId);
+
+			if(model.ChartData.Count != 0)
+				return Json(model.ChartData, JsonRequestBehavior.AllowGet);
+
+			return Json(null, JsonRequestBehavior.AllowGet);
+		}
+
+		public ActionResult TryToShowAllUtilityCharts(int meterId)
+		{
+			using (var context = new TownUtilityBillSystemV2Entities())
+			{
+				var meterDB = context.METERs.Find(meterId);
+
+				if (meterDB != null)
+				{
+					int addressId = meterDB.ADDRESS_ID;
+					int customerIdDB = context.CUSTOMERs.Where(c => c.ADDRESS_ID == addressId).FirstOrDefault().ID;
+
+					return RedirectToAction("ShowAllUtilityCharts", "Meter", new { customerId = customerIdDB });
+				}
+				else
+					throw new InvalidMeterIdException(meterId);
+			}
+		}
+
+		public ActionResult ShowAllUtilityCharts(int customerId)
+		{
+			var model = new CustomerModel();
+
+			model.GetAllUtilityDataForCustomer(customerId);
+
+			ViewBag.currentAddressForJS = model.Customer.Address;
+
+			return View("~/Views/Chart/ShowAllUtilityCharts.cshtml", model);
+		}
+
+		public ActionResult GetAllUtilitiesDataForChart(int addressId)
+		{
+			var model = new CustomerModel();
+
+			var dataForChart = model.GetAllUtilitiesDataForChart(addressId);
+
+			return Json(dataForChart, JsonRequestBehavior.AllowGet);
+		}
+
+		public ActionResult EditMeterType(int meterTypeId)
+		{
+			var model = new MeterType();
+
+			var meterTypeForEdit = model.GetMeterType(meterTypeId);
+
+			return View(meterTypeForEdit);
+		}
+
+		[HttpPost]
+		[ValidateAntiForgeryToken]
+		public ActionResult EditMeterType(MeterType meterType)
+		{
+			if (ModelState.IsValid)
+			{
+				var model = new MeterType();
+
+				model.UpdateMeterType(meterType);
+
+				return RedirectToAction("ShowAllMeterTypes", "Meter");
+			}
+
+			meterType.Utilities = context.UTILITYs.Select(Utility.GetUtilityWithIdAndResourceName).ToList();
+
+			return View();
+		}
+
+		public ActionResult EditMeter(int meterId)
+		{
+			var model = new Meter();
+
+			model.GetMeterForEdit(meterId);
+
+			return View(model);
+		}
+
+		[HttpPost]
+		[ValidateAntiForgeryToken]
+		public ActionResult EditMeter(Meter meter)
+		{
+			var model = new Meter();
+
+			if (ModelState.IsValid)
+			{
+				model.UpdateMeter(meter);
+
+				return RedirectToAction("ShowFoundMeters", "Meter", new { searchString = meter.SerialNumber });
+			}
+
+			meter.MeterTypes = context.METER_TYPEs.Select(MeterType.Get).ToList();
+
+			return View(meter);
+		}
+
+		public ActionResult EditMeterData(int meterItemId)
+		{
+			var model = new MeterItemModel();
+
+			model.GetMeterAndDataToEdit(meterItemId);
+
+			return View(model);
+		}
+
+		[HttpPost]
+		[ValidateAntiForgeryToken]
+		public ActionResult EditMeterData(MeterItem meterItem)
+		{
+			var model = new MeterItem();
+			
+			if (ModelState.IsValid)
+			{
+				model.UpdateMeterData(meterItem);
+
+				int meterId = model.GetMeterId(meterItem.Id);
+
+				return RedirectToAction("ShowMeterData", "Meter", new { meterId });
+			}
+			return View();
 		}
 	}
 }

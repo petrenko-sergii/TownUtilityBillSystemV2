@@ -9,5 +9,14 @@ namespace TownUtilityBillSystemV2.Models.AddressModels
 	{
 		public int Id { get; set; }
 		public int Value { get; set; }
+
+		public static Index Get (INDEX index)
+		{
+			return new Index
+			{
+				Id = index.ID,
+				Value = index.VALUE
+			};
+		}
 	}
 }

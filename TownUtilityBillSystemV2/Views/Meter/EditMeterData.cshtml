@@ -1,0 +1,48 @@
+﻿@model TownUtilityBillSystemV2.Models.MeterModels.MeterItemModel
+@using TownUtilityBillSystemV2.Resources
+@using System.Threading
+
+@{
+	ViewBag.Title = Localization.EditMeterData;
+	Thread.CurrentThread.CurrentCulture.NumberFormat.NumberDecimalSeparator = ".";
+}
+
+<div>
+	<h3 class="header-bold">@Localization.MeterData:</h3>
+	<h4><strong> @Localization.Utility:</strong> @Model.Meter.MeterType.Utility.Name</h4>
+	<h4><strong> @Localization.MeterType:</strong> @Model.Meter.MeterType.Name</h4>
+	<h4><strong> @Localization.SerialNumber:</strong> @Model.Meter.SerialNumber</h4>
+	<h4><strong> @Localization.ReleaseDate: </strong> @Model.Meter.ReleaseDate.Year.ToString()<text>-</text>@Model.Meter.ReleaseDate.Month.ToString()<text>-</text>@Model.Meter.ReleaseDate.Day</h4>
+	<h4><strong> @Localization.VarificationDate:</strong> @Model.Meter.VarificationDate.Year.ToString()<text>-</text>@Model.Meter.VarificationDate.Month.ToString()<text>-</text>@Model.Meter.VarificationDate.Day</h4>
+	<h4><strong> @Localization.Address:</strong> @Model.Meter.Address.Building.Number, @Model.Meter.Address.Street.Name str., @Model.Meter.Address.Town.Name, @Model.Meter.Address.Country @Model.Meter.Address.Index.Value</h4>
+	<p>
+		<hr />
+		<h4><strong>@Localization.MeasureDate: </strong>@Model.MeterItem.Date.Year.ToString()<text>-</text>@Model.MeterItem.Date.Month.ToString()<text>-</text>@Model.MeterItem.Date.Day <strong>@Localization.CurrentValue: </strong><mark class="mark-yellow">@Math.Round(Model.MeterItem.Value, 2)</mark> @Model.Meter.MeterType.Utility.Unit.Name</h4>
+		@using (Html.BeginForm("EditMeterData", "Meter", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+	{
+		@Html.AntiForgeryToken()
+		@Html.ValidationSummary("", new { @class = "text-danger" })
+		<div class="form-group">
+			@Html.LabelFor(m => m.MeterItem.Value, new { @class = "col-md-2 control-label" })
+			<div class="col-md-10">
+				@Html.HiddenFor(m => m.MeterItem.Id)
+				@Html.TextBoxFor(m => m.MeterItem.Value, new { @class = "form-control" })
+			</div>
+		</div>
+
+		@Html.Partial("~/Views/Shared/_SaveCancelButtonsForEditView.cshtml")
+}
+	</p>
+</div>
+
+@section Scripts {
+	@Scripts.Render("~/bundles/jqueryval")
+}
+
+
+
+
+
+
+
+

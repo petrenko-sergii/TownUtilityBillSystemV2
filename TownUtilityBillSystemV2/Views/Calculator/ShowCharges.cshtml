@@ -1,0 +1,112 @@
+﻿@model TownUtilityBillSystemV2.Models.Calculator.CalculatorItemModel
+@using TownUtilityBillSystemV2.Resources
+
+@{
+	ViewBag.Title = Localization.ShowCharges;
+
+	int i = 0;
+	int elIndex = 0;
+	int waterIndex = 1;
+	int heatIndex = 2;
+	int gasIndex = 3;
+}
+
+<h3 class="header-bold">@Localization.Calculations:</h3>
+
+@if (Model.ElectricUsage > 0)
+{
+	<img src=@Model.Utilities[elIndex].ImagePath class="utility-icon-height-40px" />
+	<font color="red" size="4"> <strong>@Model.Utilities[elIndex].ResourceName.ToUpper()</strong></font>
+	if (Model.ElectricUsage > (float)Model.Utilities[elIndex].UsageForStandartPrice)
+	{
+		var usageWithBiggerPrice = Model.ElectricUsage - (float)Model.Utilities[elIndex].UsageForStandartPrice;
+
+		<font size="4">
+			: <strong>@Math.Round(Model.Utilities[elIndex].UsageForStandartPrice, 0) </strong> @Model.Utilities[elIndex].Unit.Name
+			x <strong>
+				@Model.Utilities[elIndex].Price
+			</strong> @Model.Currency.Name + <strong>
+				@usageWithBiggerPrice
+			</strong> @Model.Utilities[elIndex].Unit.Name
+			x <strong> @Model.Utilities[elIndex].BigUsagePrice </strong> @Model.Currency.Name= <strong> @Model.ElCharges </strong> @Model.Currency.Name;
+		</font>
+	}
+	else
+	{
+		<font size="4">
+			: <strong>@Math.Round(Model.ElectricUsage, 2) </strong> @Model.Utilities[elIndex].Unit.Name
+			x <strong> @Model.Utilities[elIndex].Price</strong> @Model.Currency.Name =  <strong> @Math.Round(Model.ElCharges, 2) </strong> @Model.Currency.Name;
+		</font>
+	}
+	<br />
+}
+
+@if (Model.WaterUsage > 0)
+{
+	<img src=@Model.Utilities[waterIndex].ImagePath class="utility-icon-height-40px" />
+	<font color="red" size="4"> <strong>@Model.Utilities[waterIndex].ResourceName.ToUpper()</strong></font>
+	<font size="4">
+		: <strong>@Math.Round(Model.WaterUsage, 2) </strong> @Model.Utilities[waterIndex].Unit.Name
+		x <strong> @Model.Utilities[waterIndex].Price</strong> @Model.Currency.Name =  <strong> @Math.Round(Model.WaterCharges, 2) </strong> @Model.Currency.Name;
+	</font>
+	<br />
+}
+@if (Model.HeatUsage > 0)
+{
+	<img src=@Model.Utilities[heatIndex].ImagePath style="width:auto; height:40px" />
+	<font color="red" size="4"> <strong>@Model.Utilities[heatIndex].ResourceName.ToUpper()</strong></font>
+	<font size="4">
+		: <strong>@Math.Round(Model.HeatUsage, 2) </strong> @Model.Utilities[heatIndex].Unit.Name
+		x <strong> @Model.Utilities[heatIndex].Price</strong> @Model.Currency.Name =  <strong> @Math.Round(Model.HeatCharges, 2) </strong> @Model.Currency.Name;
+	</font>
+	<br />
+}
+
+@if (Model.GasUsage > 0)
+{
+	<img src=@Model.Utilities[gasIndex].ImagePath class="utility-icon-height-40px" />
+	<font color="red" size="4"> <strong>@Model.Utilities[gasIndex].ResourceName.ToUpper()</strong></font>
+	<font size="4">
+		: <strong>@Math.Round(Model.GasUsage, 2) </strong> @Model.Utilities[gasIndex].Unit.Name
+		x <strong> @Model.Utilities[gasIndex].Price</strong> @Model.Currency.Name =  <strong> @Math.Round(Model.GasCharges, 2) </strong> @Model.Currency.Name;
+	</font>
+}
+<h3 class="header-bold">@Localization.TotalCharges: @Math.Round(Model.TotalCharges, 2) @Model.Currency.Name</h3>
+
+<div id="containerUtilitiesCharges"></div>
+
+@Html.Partial("~/Views/Shared/_BackToPreviousPagePartial.cshtml")
+
+<script>
+	var utilitiesResourceNames = ['@Model.Utilities[i++].ResourceName',
+								'@Model.Utilities[i++].ResourceName',
+								'@Model.Utilities[i++].ResourceName',
+								'@Model.Utilities[i].ResourceName'];
+
+	var utilitiesCharges = [parseArrayToNumber([@Model.ElCharges]),
+							parseArrayToNumber([@Model.WaterCharges]),
+							parseArrayToNumber([@Model.HeatCharges]),
+							parseArrayToNumber([@Model.GasCharges])];
+
+	var localizedUtilitiesChargesWord = '@Localization.UtilitiesCharges';
+	var localizedValueWord = '@Localization.Value';
+
+	function parseArrayToNumber(data)
+	{
+		if (data.length > 1)
+		{
+			utilityCharges = Number([data[0], data[1]].join("."));
+		}
+		else
+		{
+			utilityCharges = Number(data[0]);
+		}
+		return utilityCharges;
+	}
+</script>
+
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="~/Scripts/jquery-3.3.1.js"></script>
+<script src="~/Scripts/appJsScripts/showCalculatorCharges.js"></script>
+

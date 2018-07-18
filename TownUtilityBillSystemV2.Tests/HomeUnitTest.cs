@@ -12,6 +12,7 @@ namespace TownUtilityBillSystemV2.Tests
 		public void AboutActionReturnsAboutView()
 		{
 			HomeController homeController = new HomeController();
+
 			ViewResult result = homeController.About() as ViewResult;
 
 			Assert.AreEqual("About", result.ViewBag.Title);
@@ -21,6 +22,7 @@ namespace TownUtilityBillSystemV2.Tests
 		public void ContactActionReturnsContactView()
 		{
 			HomeController homeController = new HomeController();
+
 			ViewResult result = homeController.Contact() as ViewResult;
 
 			Assert.AreEqual("Contact", result.ViewBag.Title);

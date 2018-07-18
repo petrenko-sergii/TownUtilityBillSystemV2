@@ -33,5 +33,45 @@ namespace TownUtilityBillSystemV2.Models.MeterModels
 				VarificationPeriod = meterType.VARIFICATION_PERIOD_YEARS
 			};
 		}
+
+		internal MeterType GetMeterType(int meterTypeId)
+		{
+			using (var context = new TownUtilityBillSystemV2Entities())
+			{
+				MeterType meterType;
+				var meterTypeDB = context.METER_TYPEs.Find(meterTypeId);
+
+				if (meterTypeDB != null)
+				{
+					var utilityDB = context.UTILITYs.Where(u => u.ID == meterTypeDB.UTILITY_ID).FirstOrDefault();
+					var utility = Utility.GetUtilityWithIdAndResourceName(utilityDB);
+
+					meterType = MeterType.Get(meterTypeDB);
+					meterType.Utility = utility;
+
+					meterType.Utilities = context.UTILITYs.Select(Utility.GetUtilityWithIdAndResourceName).ToList();
+				}
+				else
+				{
+					meterType = null;
+				}
+
+				return meterType;
+			}
+		}
+
+		internal void UpdateMeterType(MeterType meterType)
+		{
+			using (var context = new TownUtilityBillSystemV2Entities())
+			{
+				var meterTypeDB = context.METER_TYPEs.Find(meterType.Id);
+
+				meterTypeDB.NAME = meterType.Name;
+				meterTypeDB.UTILITY_ID = meterType.Utility.Id;
+				meterTypeDB.VARIFICATION_PERIOD_YEARS = meterType.VarificationPeriod;
+
+				context.SaveChanges();
+			}
+		}
 	}
 }

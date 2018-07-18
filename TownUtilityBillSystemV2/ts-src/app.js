@@ -6,11 +6,11 @@ $(document).ready(function () {
     $("#indicator-0").addClass("active");
     $("#slide-0").addClass("active");
 });
-$("a.btn-green").mouseover(function () {
-    $(this).addClass('btn-dark-green');
+$("a.btn-green").hover(function () {
+    $(this).toggleClass('btn-dark-green');
 });
-$("a.btn-green").mouseout(function () {
-    $(this).removeClass('btn-dark-green');
+$("a.btn-brown").hover(function () {
+    $(this).toggleClass('btn-dark-brown');
 });
 $(document).ready(function () {
     $.get("/Language/GetCurrentLanguage", function (data) {

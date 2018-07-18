@@ -1,0 +1,121 @@
+﻿@model TownUtilityBillSystemV2.Models.Calculator.CalculatorItemModel
+@using TownUtilityBillSystemV2.Resources
+
+@{
+	ViewBag.Title = Localization.ShowCalculatorOnLine;
+
+	int rowNumber = 1;
+	int i = 0;
+}
+
+<div class="jumbotron">
+	<h3 class="header-bold">@Localization.CalculatorOnLine</h3>
+	<h4 class="header-bold">@Localization.EnterUtilityMonthUsage</h4>
+	@using (Html.BeginForm("CalculateCharges", "Calculator", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+	{
+		@Html.AntiForgeryToken()
+		if (ViewBag.ErrorMessage != "" || ViewBag.ErrorMessage != null)
+		{
+			<p class="p-red"> @ViewBag.ErrorMessage</p>
+		}
+		<div class="form-horizontal">
+			@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+			<div class="form-group">
+				<p class="control-label col-md-3"><strong>@Model.Utilities[i].ResourceName (@Model.Utilities[i].Unit.Name)</strong></p>
+				<div class="col-md-9">
+					@Html.EditorFor(model => model.ElectricUsage, new { htmlAttributes = new { @class = "form-control" } })
+					@Html.ValidationMessageFor(model => model.ElectricUsage, "", new { @class = "text-danger" })
+				</div>
+			</div>
+
+			<div class="form-group">
+				<p class="control-label col-md-3"><strong>@Model.Utilities[++i].ResourceName (@Model.Utilities[i].Unit.Name)</strong></p>
+				<div class="col-md-9">
+					@Html.EditorFor(model => model.WaterUsage, new { htmlAttributes = new { @class = "form-control" } })
+					@Html.ValidationMessageFor(model => model.WaterUsage, "", new { @class = "text-danger" })
+				</div>
+			</div>
+
+			<div class="form-group">
+				<p class="control-label col-md-3"><strong>@Model.Utilities[++i].ResourceName (@Model.Utilities[i].Unit.Name)</strong></p>
+				<div class="col-md-9">
+					@Html.EditorFor(model => model.HeatUsage, new { htmlAttributes = new { @class = "form-control" } })
+					@Html.ValidationMessageFor(model => model.HeatUsage, "", new { @class = "text-danger" })
+				</div>
+			</div>
+
+			<div class="form-group">
+				<p class="control-label col-md-3"><strong>@Model.Utilities[++i].ResourceName (@Model.Utilities[i].Unit.Name)</strong></p>
+				<div class="col-md-9">
+					@Html.EditorFor(model => model.GasUsage, new { htmlAttributes = new { @class = "form-control" } })
+					@Html.ValidationMessageFor(model => model.GasUsage, "", new { @class = "text-danger" })
+				</div>
+			</div>
+
+			<div class="form-group">
+				<div class="col-md-offset-3 col-md-9">
+					<input type="submit" value= @Localization.CalculateCharges class="btn btn-primary btn-large btn-block" />
+				</div>
+			</div>
+		</div>
+	}
+	<h4 class="header-bold">@Localization.UtilitiesPrices</h4>
+	<div id="utilitiesPricesId" name="utilitiesPrices">
+		<table class="table" id="utilityId">
+			<tr>
+				<th>#</th>
+				<th>@Localization.Icon</th>
+				<th>@Localization.Name</th>
+				<th>@Localization.Price</th>
+				<th>@Localization.Per.ToLower() @Localization.Unit</th>
+				<th>@Localization.UsageForStandartPrice</th>
+				<th>@Localization.HigherPrice</th>
+			</tr>
+
+			@foreach (var item in Model.Utilities)
+			{
+				<tr>
+					<td>@(rowNumber++)</td>
+					<td> <img src=@item.ImagePath class="utility-icon" />  </td>
+					<td>
+						@Html.DisplayFor(modelItem => item.ResourceName)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.Price) <text> @Model.Currency</text>
+					</td>
+					<td>
+						<text> @Localization.Per.ToLower() 1 @item.Unit.Name </text>
+					</td>
+					<td>
+						@if (item.UsageForStandartPrice == 0)
+						{
+							<text>--</text>
+						}
+						else
+						{
+							<text>@item.UsageForStandartPrice @item.Unit.Name</text>
+						}
+					</td>
+					<td>
+						@if (item.BigUsagePrice == 0)
+						{
+							<text>--</text>
+						}
+						else
+						{
+							@Html.DisplayFor(modelItem => item.BigUsagePrice) <text> @Model.Currency</text>
+						}
+					</td>
+				</tr>
+			}
+		</table>
+	</div>
+
+	<hr />
+	@Html.Partial("~/Views/Shared/_BackToPreviousPagePartial.cshtml")>
+</div>
+
+
+
+
+

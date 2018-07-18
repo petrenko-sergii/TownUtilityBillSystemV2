@@ -67,13 +67,61 @@ namespace TownUtilityBillSystemV2.Models.UtilityModels
 					var unit = new Unit() { Id = unitDB.ID, Name = unitDB.NAME };
 
 					if (item.USAGEFORSTANDARTPRICE != null && item.BIGUSAGEPRICE != null)
-						Utilities.Add(new Utility { Id = item.ID, Name = item.NAME, Price = item.PRICE, BigUsagePrice = (decimal)item.BIGUSAGEPRICE,
+						Utilities.Add(new Utility
+						{
+							Id = item.ID,
+							Name = item.NAME,
+							Price = item.PRICE,
+							BigUsagePrice = (decimal)item.BIGUSAGEPRICE,
 							UsageForStandartPrice = Math.Round((decimal)item.USAGEFORSTANDARTPRICE, 0),
-							ImagePath = HelperMethod.GetUtilityImage(item.ID), Unit = unit, ResourceName = GetResourceNameForUtility(item.NAME)});
+							ImagePath = HelperMethod.GetUtilityImage(item.ID),
+							Unit = unit,
+							ResourceName = GetResourceNameForUtility(item.NAME)
+						});
 					else
-						Utilities.Add(new Utility { Id = item.ID, Name = item.NAME, Price = item.PRICE,
-							ImagePath = HelperMethod.GetUtilityImage(item.ID), Unit = unit, ResourceName = GetResourceNameForUtility(item.NAME) });
+						Utilities.Add(new Utility
+						{
+							Id = item.ID,
+							Name = item.NAME,
+							Price = item.PRICE,
+							ImagePath = HelperMethod.GetUtilityImage(item.ID),
+							Unit = unit,
+							ResourceName = GetResourceNameForUtility(item.NAME)
+						});
 				}
+			}
+		}
+
+		internal void UpdateUtility(Utility utility)
+		{
+			using (var contextDB = new TownUtilityBillSystemV2Entities())
+			{
+				var utilityDB = contextDB.UTILITYs.Find(utility.Id);
+
+				utilityDB.NAME = utility.Name;
+				utilityDB.PRICE = utility.Price;
+				if (utilityDB.USAGEFORSTANDARTPRICE != null)
+					utilityDB.USAGEFORSTANDARTPRICE = utility.UsageForStandartPrice;
+				if (utilityDB.BIGUSAGEPRICE != null)
+					utilityDB.BIGUSAGEPRICE = utility.BigUsagePrice;
+
+				contextDB.SaveChanges();
+			}
+		}
+
+		internal Utility GetUtility(int utilityId)
+		{
+			using (var context = new TownUtilityBillSystemV2Entities())
+			{
+				Utility utility;
+				var utilityDB = context.UTILITYs.Find(utilityId);
+
+				if (utilityDB.BIGUSAGEPRICE != null && utilityDB.USAGEFORSTANDARTPRICE != null)
+					utility = Utility.GetUtilityWithBigUsagePrice(utilityDB);
+				else
+					utility = Utility.GetUtilityWithOutBigUsagePrice(utilityDB);
+
+				return utility;
 			}
 		}
 
@@ -122,6 +170,8 @@ namespace TownUtilityBillSystemV2.Models.UtilityModels
 				}
 			}
 		}
+
+
 
 		#endregion
 

@@ -41,6 +41,14 @@ namespace TownUtilityBillSystemV2.Tests
 			Assert.IsNotNull(meterModel.Meters);
 		}
 
-		
+		[TestMethod]
+		[ExpectedException(typeof(InvalidUtilityNameException))]
+		public void CheckGetMeterTypesForUtility_throws_Exception()
+		{
+			string wrongUtilityName = "WrongUtility";
+			var meterModel = new MeterTypeModel();
+
+			meterModel.GetMeterTypesForUtility(wrongUtilityName);
+		}
 	}
 }

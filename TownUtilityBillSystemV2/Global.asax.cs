@@ -7,6 +7,7 @@ using System.Web.Optimization;
 using System.Web.Routing;
 using TownUtilityBillSystemV2.App_Start;
 using TownUtilityBillSystemV2.Controllers;
+using TownUtilityBillSystemV2.Models.HelperModels;
 
 namespace TownUtilityBillSystemV2
 {
@@ -21,10 +22,14 @@ namespace TownUtilityBillSystemV2
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 			ControllerBuilder.Current.SetControllerFactory(new NinjectControllerFactory());
+			ModelBinders.Binders.Add(typeof(decimal), new DecimalModelBinder());
+			ModelBinders.Binders.Add(typeof(decimal?), new DecimalModelBinder());
+			ClientDataTypeModelValidatorProvider.ResourceClassKey = "ErrorMessages";
+			DefaultModelBinder.ResourceClassKey = "ErrorMessages";
 
 			//Initialize DB if it is empty
 			//initialDbCtrl = new InitialDBController();
-        }
+		}
 
 		protected void Application_BeginRequest(object sender, EventArgs e)
 		{

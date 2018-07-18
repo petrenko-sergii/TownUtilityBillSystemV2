@@ -13,7 +13,9 @@ namespace TownUtilityBillSystemV2.Controllers
 {
 	[Authorize]
 	public class UtilityController : Controller
-    {
+	{
+		TownUtilityBillSystemV2Entities context = new TownUtilityBillSystemV2Entities();
+
 		public ActionResult ShowUtilities()
 		{
 			var model = new UtilityModel();
@@ -39,6 +41,31 @@ namespace TownUtilityBillSystemV2.Controllers
 			model.GetDataForUtility(utilityName);
 
 			return View("~/Views/Utility/ShowUtility.cshtml", model);
+		}
+
+		public ActionResult EditUtility(int utilityId)
+		{
+			var model = new UtilityModel();
+
+			var utilityForEdit = model.GetUtility(utilityId);
+
+			return View("~/Views/Utility/EditUtility.cshtml", utilityForEdit);
+		}
+
+		[HttpPost]
+		[ValidateAntiForgeryToken]
+		public ActionResult EditUtility(Utility utility)
+		{
+			if (ModelState.IsValid)
+			{
+				var model = new UtilityModel();
+
+				model.UpdateUtility(utility);
+
+				return RedirectToAction("ShowUtility", "Utility", new { utilityName = utility.Name });
+			}
+
+			return View();
 		}
 	}
 }

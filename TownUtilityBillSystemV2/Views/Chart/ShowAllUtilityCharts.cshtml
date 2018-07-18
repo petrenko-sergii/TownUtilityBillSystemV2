@@ -1,0 +1,58 @@
+﻿@model TownUtilityBillSystemV2.Models.CustomerModels.CustomerModel
+@using TownUtilityBillSystemV2.Resources
+
+@{
+	ViewBag.Title = Localization.ShowAllUtilityCharts;
+}
+
+@if (Model.Customer == null)
+{
+	<h2 class="header-bold">@Localization.SorryNoData</h2>
+}
+else
+{
+	<div style="overflow:auto;" id="customerData">
+		@if (Model.Customer.Surname == null)
+		{
+			<h5><strong>@Localization.Customer: @Localization.Name:</strong> @Model.Customer.Name</h5>
+		}
+		else
+		{
+			<h5><strong>@Localization.Customer: @Localization.Surname/@Localization.Name:</strong> @Model.Customer.Surname @Model.Customer.Name</h5>
+		}
+
+		<h5><strong>@Localization.Account:</strong> @Model.Customer.Account.Number<strong> @Localization.Email:</strong> @Model.Customer.Email <strong> @Localization.Phone:</strong> @Model.Customer.Phone</h5>
+		<h5>
+			<strong> @Localization.Address:</strong>
+			@Model.Customer.Address.Building.Number, @Model.Customer.Address.Street.Name @Localization.Str.ToLower().,
+			@Model.Customer.Address.Town.Name, @Model.Customer.Address.Country @Model.Customer.Address.Index.Value
+			<strong> @Localization.Square:</strong>
+			@Model.Customer.Address.Building.Square @Localization.SquareMeter
+			<strong> @Localization.Type:</strong>
+			@Model.Customer.CustomerType.ResourceName
+		</h5>
+	</div>
+
+	<div id="containerForThreeUtilities"></div>
+	<div id="containerForOneUtility"></div>
+}
+
+@Html.Partial("~/Views/Shared/_BackToPreviousPagePartial.cshtml")
+
+<script>
+	//variables for showAllUtilityCharts.js file
+	var addressIdDTO = @Model.Customer.Address.Id;
+	var waterHeatingGas = '@Localization.Water' + '(cub.m), ' + '@Localization.Heating' + '(Gcal), ' + '@Localization.Gas' + '(cub.m)';
+	var valueCubM_Gcal = '@Localization.Value' + ' (cub.m, Gcal)';
+	var value_kWh = '@Localization.Value' + ', kWh';
+	var utilities = ['@Localization.Electricity','@Localization.Water', '@Localization.Heating', '@Localization.Gas'];
+	var localizedWordsForContainerForThreeUtilities = ['@Localization.UtilitiesUsage', waterHeatingGas, valueCubM_Gcal];
+	var localizedWordsForContainerForOneUtility = ['@Localization.Electricity' + ' @Localization.Usage.ToLower()', value_kWh, 'kWh'];
+	var messageForWarningTag = '@Localization.SorryNoDataForThisCustomerMeters';
+</script>
+
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC7oyKXdpaKqurqotVj7_bhl9V9_7B5cMQ&libraries=places"></script>
+<script src="~/Scripts/appJsScripts/showAllUtilityCharts.js"></script>

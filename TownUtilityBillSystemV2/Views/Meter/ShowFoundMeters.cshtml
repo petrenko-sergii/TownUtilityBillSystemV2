@@ -22,13 +22,11 @@ else
 <h4>@Localization.SearchFilter: <mark class="mark-yellow"> @ViewBag.SearchString </mark></h4>
 @if (Model.Meters.Count != 0)
 {
-	@Html.Partial("~/Views/Meter/_MetersTablePartial.cshtml", Model)	
+	@Html.Partial("~/Views/Meter/_MetersTablePartial.cshtml", Model)
 }
 
-<a href="@Url.Action("FindMetersBy", "Meter")" class="btn btn-link btn-large">
+<a href="@Url.Action("FindMetersByDetails", "Meter")" class="btn btn-link btn-large">
 	<span class=" glyphicon glyphicon-list"></span> <strong>@Localization.BackToList</strong>
 </a>
 <br />
-<a href="javascript:history.go(-1)" class="btn btn-link btn-large">
-	<span class=" glyphicon glyphicon-arrow-left"></span> <strong>@Localization.BackToPreviousPage</strong>
-</a>
+@Html.Partial("~/Views/Shared/_BackToPreviousPagePartial.cshtml")

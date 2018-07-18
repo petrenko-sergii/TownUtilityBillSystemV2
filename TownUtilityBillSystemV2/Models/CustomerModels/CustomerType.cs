@@ -25,7 +25,7 @@ namespace TownUtilityBillSystemV2.Models.CustomerModels
 			};
 		}
 
-		private static string GetResourceName(string name)
+		public static string GetResourceName(string name)
 		{
 			string resourceName;
 
