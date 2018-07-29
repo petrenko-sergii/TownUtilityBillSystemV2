@@ -824,4 +824,184 @@ omdannelse og afhændelse af vores opstrøms olie- og gasvirksomhed, er det ikke
   <data name="MeterData" xml:space="preserve">
     <value>Meter data</value>
   </data>
+  <data name="Sorry" xml:space="preserve">
+    <value>Beklager</value>
+  </data>
+  <data name="YouCanEditMeterDataOnlyAtEnglishSiteVersion" xml:space="preserve">
+    <value>Du kan kun redigere måledata på engelsk sideversion</value>
+  </data>
+  <data name="EditCustomer" xml:space="preserve">
+    <value>Rediger kunde</value>
+  </data>
+  <data name="ShowDetailsForCustomer" xml:space="preserve">
+    <value>Vis detaljer for kunde</value>
+  </data>
+  <data name="ShowAllBills" xml:space="preserve">
+    <value>Vis alle regninger</value>
+  </data>
+  <data name="DeleteCustomer" xml:space="preserve">
+    <value>Slet kunde</value>
+  </data>
+  <data name="DeleteMeter" xml:space="preserve">
+    <value>Slet meter</value>
+  </data>
+  <data name="DeleteMeterItem" xml:space="preserve">
+    <value>Slet målerelement</value>
+  </data>
+  <data name="DeleteMeterType" xml:space="preserve">
+    <value>Slet måttype</value>
+  </data>
+  <data name="YouHaveNoAdministratorRights" xml:space="preserve">
+    <value>Du har ingen administratorrettigheder!</value>
+  </data>
+  <data name="DeleteUtility" xml:space="preserve">
+    <value>Slet nytteværdi</value>
+  </data>
+  <data name="BillDate" xml:space="preserve">
+    <value>Bill dato</value>
+  </data>
+  <data name="BillNumber" xml:space="preserve">
+    <value>Regning nummer</value>
+  </data>
+  <data name="CreateNewBill" xml:space="preserve">
+    <value>Opret den nye regning</value>
+  </data>
+  <data name="FindBillByDetailsNumberCustomerPeriod" xml:space="preserve">
+    <value>Find regning efter detaljer (nummer, kunde, periode)</value>
+  </data>
+  <data name="Paid" xml:space="preserve">
+    <value>Betalt</value>
+  </data>
+  <data name="Period" xml:space="preserve">
+    <value>Periode</value>
+  </data>
+  <data name="Show" xml:space="preserve">
+    <value>Vise</value>
+  </data>
+  <data name="ShowBills" xml:space="preserve">
+    <value>Vis regninger</value>
+  </data>
+  <data name="SomeRandomBills" xml:space="preserve">
+    <value>Nogle tilfældige regninger</value>
+  </data>
+  <data name="Sum" xml:space="preserve">
+    <value>Sum</value>
+  </data>
+  <data name="DeleteBill" xml:space="preserve">
+    <value>Slet faktura</value>
+  </data>
+  <data name="FoundOneBill" xml:space="preserve">
+    <value>Fundet 1 regning</value>
+  </data>
+  <data name="NoAnyBillIsFound" xml:space="preserve">
+    <value>Ingen regning er fundet</value>
+  </data>
+  <data name="ShowFoundBills" xml:space="preserve">
+    <value>Vis fundne regninger</value>
+  </data>
+  <data name="ShowAllBillsForCustomer" xml:space="preserve">
+    <value>Vis alle regninger for kunden</value>
+  </data>
+  <data name="PayOnLineBill" xml:space="preserve">
+    <value>Betal online regning</value>
+  </data>
+  <data name="CardOwnerName" xml:space="preserve">
+    <value>Kort ejer: navn</value>
+  </data>
+  <data name="CardOwnerSurname" xml:space="preserve">
+    <value>Kortindehaver: Efternavn</value>
+  </data>
+  <data name="CardType" xml:space="preserve">
+    <value>Kort type</value>
+  </data>
+  <data name="CVVnumber" xml:space="preserve">
+    <value>CVVnummer</value>
+  </data>
+  <data name="ExpireDate" xml:space="preserve">
+    <value>Udløbsdato</value>
+  </data>
+  <data name="PayingSum" xml:space="preserve">
+    <value>Betalingsbeløb</value>
+  </data>
+  <data name="PayingSumCanNotBeNegative" xml:space="preserve">
+    <value>Det betalende beløb kan ikke være negativt</value>
+  </data>
+  <data name="PaymentCardNumber" xml:space="preserve">
+    <value>Betalingskort nummer</value>
+  </data>
+  <data name="ValueMustHaveCountDigits" xml:space="preserve">
+    <value>{0} skal have {2} cifre.</value>
+  </data>
+  <data name="CardIExpired" xml:space="preserve">
+    <value>Kortet er udløbet.</value>
+  </data>
+  <data name="CreditCardNumberMustHave16Digits" xml:space="preserve">
+    <value>Kreditkortnummeret skal have 16 cifre.</value>
+  </data>
+  <data name="CVVnumberMustHave3Digits" xml:space="preserve">
+    <value>CVV-nummeret skal have 3 cifre.</value>
+  </data>
+  <data name="PayTheBillOnLine" xml:space="preserve">
+    <value>Betal regningen online</value>
+  </data>
+  <data name="BillData" xml:space="preserve">
+    <value>Regning data</value>
+  </data>
+  <data name="BillPeriod" xml:space="preserve">
+    <value>Regnskabsperiode</value>
+  </data>
+  <data name="BillSum" xml:space="preserve">
+    <value>Regning sum</value>
+  </data>
+  <data name="EnterBillNumber" xml:space="preserve">
+    <value>Indtast faktura nummer</value>
+  </data>
+  <data name="Find" xml:space="preserve">
+    <value>Finde</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>Ingen</value>
+  </data>
+  <data name="NoBillIsFoundWarning" xml:space="preserve">
+    <value>Ingen regning er fundet - tjek nummeret</value>
+  </data>
+  <data name="PaymentCardForm" xml:space="preserve">
+    <value>Betalingskort formular</value>
+  </data>
+  <data name="PayTheBill" xml:space="preserve">
+    <value>Betal regningen</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>Ja</value>
+  </data>
+  <data name="YouCanNotPayThisBillAgain" xml:space="preserve">
+    <value>Du kan ikke betale denne regning igen</value>
+  </data>
+  <data name="TrialImitation" xml:space="preserve">
+    <value>Forsøg efterligning</value>
+  </data>
+  <data name="SelectCardType" xml:space="preserve">
+    <value>--Vælg korttype--</value>
+  </data>
+  <data name="Month" xml:space="preserve">
+    <value>Måned</value>
+  </data>
+  <data name="Year" xml:space="preserve">
+    <value>År</value>
+  </data>
+  <data name="BackToMainMenu" xml:space="preserve">
+    <value>Tilbage til hovedmenuen</value>
+  </data>
+  <data name="IsPaid" xml:space="preserve">
+    <value>Betales</value>
+  </data>
+  <data name="PayAnotherBill" xml:space="preserve">
+    <value>Betal en anden regning</value>
+  </data>
+  <data name="ShowBillPaidInfo" xml:space="preserve">
+    <value>Vis faktura betalt info</value>
+  </data>
+  <data name="TheBill" xml:space="preserve">
+    <value>Faktura</value>
+  </data>
 </root>

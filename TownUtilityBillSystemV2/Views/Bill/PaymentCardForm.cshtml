@@ -1,0 +1,116 @@
+﻿@model TownUtilityBillSystemV2.Models.PaymentCardModels.PaymentCardModel
+@using TownUtilityBillSystemV2.Resources;
+
+@{
+	ViewBag.Title = Localization.PaymentCardForm;
+}
+
+<div class="jumbotron">
+	@using (Html.BeginForm("PaymentCardForm", "Bill", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+	{
+		@Html.AntiForgeryToken()
+		<div class="form-horizontal">
+			<h3><strong>@Localization.PayOnLineBill @Model.Bill.Number <text class="red-color-text">(@Localization.TrialImitation.ToLower()) </text> </strong></h3>
+			@Html.ValidationSummary(true, "", new { @class = "text-danger font-size-15px" })
+			<div class="form-group">
+				@Html.LabelFor(model => model.PaymentCard.Number, htmlAttributes: new { @class = "control-label col-md-3 font-size-17px-zeroTopPadding" })
+				<div class="col-md-9">
+					@Html.EditorFor(model => model.PaymentCard.Number, new { htmlAttributes = new { @class = "form-control" } })
+					@if (ViewBag.WrongCardNumberError != null)
+					{
+						<font class="brown-color-text font-size-15px">@ViewBag.WrongCardNumberError</font>
+					}
+					else
+					{
+						@Html.ValidationMessageFor(model => model.PaymentCard.Number, "", new { @class = "text-danger font-size-15px" })
+					}
+				</div>
+			</div>
+
+			<div class="form-group">
+				@Html.LabelFor(model => model.PaymentCard.Surname, htmlAttributes: new { @class = "control-label col-md-3 font-size-17px-zeroTopPadding" })
+				<div class="col-md-9">
+					@Html.EditorFor(model => model.PaymentCard.Surname, new { htmlAttributes = new { @class = "form-control" } })
+					@Html.ValidationMessageFor(model => model.PaymentCard.Surname, "", new { @class = "text-danger font-size-15px" })
+				</div>
+			</div>
+
+			<div class="form-group">
+				@Html.LabelFor(model => model.PaymentCard.Name, htmlAttributes: new { @class = "control-label col-md-3 font-size-17px-zeroTopPadding" })
+				<div class="col-md-9">
+					@Html.EditorFor(model => model.PaymentCard.Name, new { htmlAttributes = new { @class = "form-control" } })
+					@Html.ValidationMessageFor(model => model.PaymentCard.Name, "", new { @class = "text-danger font-size-15px" })
+				</div>
+			</div>
+
+			<div class="form-group">
+				@Html.LabelFor(model => model.PaymentCard.ExpireDate, htmlAttributes: new { @class = "control-label col-md-3 font-size-17px-zeroTopPadding" })
+				<div class="col-md-9">
+					@if (Model.PaymentCard.ExpireDate == null ||
+						Model.PaymentCard.ExpireDate.ToString() == ("1/1/0001 12:00:00 AM") ||
+						Model.PaymentCard.ExpireDate.ToString() == ("01-01-0001 00:00:00") ||
+						Model.PaymentCard.ExpireDate.ToString().Contains("0001")
+					)
+					{
+						@Html.EditorFor(model => model.PaymentCard.ExpireDate, new { htmlAttributes = new { @class = "form-control", @Value = @Localization.Month.ToLower() + " " + Localization.Year.ToLower() } })
+					}
+					else
+					{
+						string expireDate = Model.PaymentCard.ExpireDate.ToString("MM yyyy");
+
+						@Html.EditorFor(model => model.PaymentCard.ExpireDate, new { htmlAttributes = new { @class = "form-control", @Value = expireDate } })
+					}
+					@if (ViewBag.WrongExpireDateError != null)
+					{
+						<font class="brown-color-text font-size-15px">@ViewBag.WrongExpireDateError</font>
+					}
+					else
+					{
+						@Html.ValidationMessageFor(model => model.PaymentCard.ExpireDate, "", new { @class = "text-danger font-size-15px" })
+					}
+				</div>
+			</div>
+
+			<div class="form-group">
+				@Html.LabelFor(model => model.PaymentCard.CVV, htmlAttributes: new { @class = "control-label col-md-3 font-size-17px-zeroTopPadding" })
+				<div class="col-md-9">
+					@Html.EditorFor(model => model.PaymentCard.CVV, new { htmlAttributes = new { @class = "form-control", @Type = "password" } })
+					@if (ViewBag.WrongCVVError != null)
+					{
+						<font class="brown-color-text font-size-15px">@ViewBag.WrongCVVError</font>
+					}
+					else
+					{
+						@Html.ValidationMessageFor(model => model.PaymentCard.CVV, "", new { @class = "text-danger font-size-15px" })
+					}
+				</div>
+			</div>
+
+			<div class="form-group">
+				@Html.Label(Localization.PayingSum + " (" + Model.Currency.Name + ")", htmlAttributes: new { @class = "control-label col-md-3 font-size-17px-zeroTopPadding" })
+				<div class="col-md-9">
+					@Html.EditorFor(model => model.PayingSum, new { htmlAttributes = new { @class = "form-control", @Value = Model.Bill.Sum } })
+					@Html.ValidationMessageFor(model => model.PayingSum, "", new { @class = "text-danger font-size-15px" })
+				</div>
+			</div>
+
+			<div class="form-group">
+				@Html.LabelFor(model => model.PaymentCard.Type, htmlAttributes: new { @class = "control-label col-md-3 font-size-17px-zeroTopPadding" })
+				<div class="col-md-9">
+					@Html.DropDownListFor(model => model.PaymentCard.Type.Id, new SelectList(Model.PaymentCardTypes, "Id", "Name"), Localization.SelectCardType, new { @class = "form-control" })
+					@Html.ValidationMessageFor(model => model.PaymentCard.Type.Id, "", new { @class = "text-danger font-size-15px" })
+				</div>
+			</div>
+			<div style="display:none;">
+				@Html.EditorFor(model => model.Bill.Id, new { htmlAttributes = new { @class = "form-control" } })
+				@Html.EditorFor(model => model.Bill.Sum, new { htmlAttributes = new { @class = "form-control" } })
+			</div>
+
+			<div class="form-group">
+				<div class="col-md-offset-3 col-md-9">
+					<input type="submit" value=@Localization.PayTheBill class="btn btn-primary btn-large btn-block" />
+				</div>
+			</div>
+		</div>
+	}
+</div>

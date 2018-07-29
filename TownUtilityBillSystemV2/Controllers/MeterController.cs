@@ -15,6 +15,7 @@ using TownUtilityBillSystemV2.Models.AccountModels;
 using TownUtilityBillSystemV2.Models.Chart;
 using static TownUtilityBillSystemV2.Models.InitialDB.InitialDBEnums;
 using TownUtilityBillSystemV2.Models.Exceptions;
+using TownUtilityBillSystemV2.Models.Customized;
 
 namespace TownUtilityBillSystemV2.Controllers
 {
@@ -247,29 +248,12 @@ namespace TownUtilityBillSystemV2.Controllers
 			return Json(dataForChart, JsonRequestBehavior.AllowGet);
 		}
 
-		public ActionResult EditMeterType(int meterTypeId)
+		#region Meter CRUD
+
+		public ActionResult CreateMeter()
 		{
-			var model = new MeterType();
-
-			var meterTypeForEdit = model.GetMeterType(meterTypeId);
-
-			return View(meterTypeForEdit);
-		}
-
-		[HttpPost]
-		[ValidateAntiForgeryToken]
-		public ActionResult EditMeterType(MeterType meterType)
-		{
-			if (ModelState.IsValid)
-			{
-				var model = new MeterType();
-
-				model.UpdateMeterType(meterType);
-
-				return RedirectToAction("ShowAllMeterTypes", "Meter");
-			}
-
-			meterType.Utilities = context.UTILITYs.Select(Utility.GetUtilityWithIdAndResourceName).ToList();
+			//TO DO
+			ViewBag.Message = CustomizedMessages.NoAdministratorRightsMessage;
 
 			return View();
 		}
@@ -301,11 +285,80 @@ namespace TownUtilityBillSystemV2.Controllers
 			return View(meter);
 		}
 
+		public ActionResult DeleteMeter(int meterId)
+		{
+			//TO DO
+			ViewBag.Message = CustomizedMessages.NoAdministratorRightsMessage;
+
+			return View();
+		}
+
+		#endregion
+
+		#region MeterType CRUD
+
+		public ActionResult CreateMeterType()
+		{
+			//TO DO
+			ViewBag.Message = CustomizedMessages.NoAdministratorRightsMessage;
+
+			return View();
+		}
+
+		public ActionResult EditMeterType(int meterTypeId)
+		{
+			var model = new MeterType();
+
+			var meterTypeForEdit = model.GetMeterType(meterTypeId);
+
+			return View(meterTypeForEdit);
+		}
+
+		[HttpPost]
+		[ValidateAntiForgeryToken]
+		public ActionResult EditMeterType(MeterType meterType)
+		{
+			if (ModelState.IsValid)
+			{
+				var model = new MeterType();
+
+				model.UpdateMeterType(meterType);
+
+				return RedirectToAction("ShowAllMeterTypes", "Meter");
+			}
+
+			meterType.Utilities = context.UTILITYs.Select(Utility.GetUtilityWithIdAndResourceName).ToList();
+
+			return View();
+		}
+
+		public ActionResult DeleteMeterType(int meterTypeId)
+		{
+			//TO DO
+			ViewBag.Message = CustomizedMessages.NoAdministratorRightsMessage;
+
+			return View();
+		}
+
+		#endregion
+
+		#region MeterItem CRUD
+
+		public ActionResult CreateMeterItem()
+		{
+			//TO DO
+			ViewBag.Message = CustomizedMessages.NoAdministratorRightsMessage;
+
+			return View();
+		}
+
 		public ActionResult EditMeterData(int meterItemId)
 		{
 			var model = new MeterItemModel();
 
 			model.GetMeterAndDataToEdit(meterItemId);
+
+			ViewBag.CurrentCulture = HelperMethod.GetCurrentLanguage();
 
 			return View(model);
 		}
@@ -315,7 +368,7 @@ namespace TownUtilityBillSystemV2.Controllers
 		public ActionResult EditMeterData(MeterItem meterItem)
 		{
 			var model = new MeterItem();
-			
+
 			if (ModelState.IsValid)
 			{
 				model.UpdateMeterData(meterItem);
@@ -326,5 +379,15 @@ namespace TownUtilityBillSystemV2.Controllers
 			}
 			return View();
 		}
+
+		public ActionResult DeleteMeterItem(int meterItemId)
+		{
+			//TO DO
+			ViewBag.Message = CustomizedMessages.NoAdministratorRightsMessage;
+
+			return View();
+		}
+
+		#endregion
 	}
 }

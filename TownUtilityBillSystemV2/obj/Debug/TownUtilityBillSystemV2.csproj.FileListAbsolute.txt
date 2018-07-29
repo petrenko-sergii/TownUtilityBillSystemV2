@@ -75,6 +75,7 @@ C:\Users\Petrenko\Documents\Visual Studio 2017\Projects\TownUtilityBillSystemV2\
 C:\Users\Petrenko\Documents\Visual Studio 2017\Projects\TownUtilityBillSystemV2\TownUtilityBillSystemV2\bin\Microsoft.Owin.Security.Twitter.dll
 C:\Users\Petrenko\Documents\Visual Studio 2017\Projects\TownUtilityBillSystemV2\TownUtilityBillSystemV2\bin\Microsoft.Web.Infrastructure.dll
 C:\Users\Petrenko\Documents\Visual Studio 2017\Projects\TownUtilityBillSystemV2\TownUtilityBillSystemV2\bin\Newtonsoft.Json.dll
+C:\Users\Petrenko\Documents\Visual Studio 2017\Projects\TownUtilityBillSystemV2\TownUtilityBillSystemV2\bin\Ninject.dll
 C:\Users\Petrenko\Documents\Visual Studio 2017\Projects\TownUtilityBillSystemV2\TownUtilityBillSystemV2\bin\Owin.dll
 C:\Users\Petrenko\Documents\Visual Studio 2017\Projects\TownUtilityBillSystemV2\TownUtilityBillSystemV2\bin\System.Diagnostics.DiagnosticSource.dll
 C:\Users\Petrenko\Documents\Visual Studio 2017\Projects\TownUtilityBillSystemV2\TownUtilityBillSystemV2\bin\System.Web.Helpers.dll
@@ -103,6 +104,7 @@ C:\Users\Petrenko\Documents\Visual Studio 2017\Projects\TownUtilityBillSystemV2\
 C:\Users\Petrenko\Documents\Visual Studio 2017\Projects\TownUtilityBillSystemV2\TownUtilityBillSystemV2\bin\Microsoft.Owin.Security.OAuth.xml
 C:\Users\Petrenko\Documents\Visual Studio 2017\Projects\TownUtilityBillSystemV2\TownUtilityBillSystemV2\bin\Microsoft.Owin.Security.Twitter.xml
 C:\Users\Petrenko\Documents\Visual Studio 2017\Projects\TownUtilityBillSystemV2\TownUtilityBillSystemV2\bin\Newtonsoft.Json.xml
+C:\Users\Petrenko\Documents\Visual Studio 2017\Projects\TownUtilityBillSystemV2\TownUtilityBillSystemV2\bin\Ninject.xml
 C:\Users\Petrenko\Documents\Visual Studio 2017\Projects\TownUtilityBillSystemV2\TownUtilityBillSystemV2\bin\System.Diagnostics.DiagnosticSource.xml
 C:\Users\Petrenko\Documents\Visual Studio 2017\Projects\TownUtilityBillSystemV2\TownUtilityBillSystemV2\bin\System.Web.Helpers.xml
 C:\Users\Petrenko\Documents\Visual Studio 2017\Projects\TownUtilityBillSystemV2\TownUtilityBillSystemV2\bin\System.Web.Mvc.xml
@@ -114,14 +116,12 @@ C:\Users\Petrenko\Documents\Visual Studio 2017\Projects\TownUtilityBillSystemV2\
 C:\Users\Petrenko\Documents\Visual Studio 2017\Projects\TownUtilityBillSystemV2\TownUtilityBillSystemV2\bin\Microsoft.AspNet.Identity.Core.xml
 C:\Users\Petrenko\Documents\Visual Studio 2017\Projects\TownUtilityBillSystemV2\TownUtilityBillSystemV2\bin\Microsoft.AspNet.Identity.Owin.xml
 C:\Users\Petrenko\Documents\Visual Studio 2017\Projects\TownUtilityBillSystemV2\TownUtilityBillSystemV2\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\Petrenko\Documents\Visual Studio 2017\Projects\TownUtilityBillSystemV2\TownUtilityBillSystemV2\obj\Debug\TownUtilityBillSystemV2.Resources.Localization.resources
+C:\Users\Petrenko\Documents\Visual Studio 2017\Projects\TownUtilityBillSystemV2\TownUtilityBillSystemV2\obj\Debug\TownUtilityBillSystemV2.Resources.Localization.da.resources
 C:\Users\Petrenko\Documents\Visual Studio 2017\Projects\TownUtilityBillSystemV2\TownUtilityBillSystemV2\obj\Debug\TownUtilityBillSystemV2.csproj.GenerateResource.cache
 C:\Users\Petrenko\Documents\Visual Studio 2017\Projects\TownUtilityBillSystemV2\TownUtilityBillSystemV2\obj\Debug\TownUtilityBillSystemV2.csproj.CoreCompileInputs.cache
 C:\Users\Petrenko\Documents\Visual Studio 2017\Projects\TownUtilityBillSystemV2\TownUtilityBillSystemV2\obj\Debug\da\TownUtilityBillSystemV2.resources.dll
 C:\Users\Petrenko\Documents\Visual Studio 2017\Projects\TownUtilityBillSystemV2\TownUtilityBillSystemV2\obj\Debug\TownUtilityBillSystemV2.csproj.CopyComplete
 C:\Users\Petrenko\Documents\Visual Studio 2017\Projects\TownUtilityBillSystemV2\TownUtilityBillSystemV2\obj\Debug\TownUtilityBillSystemV2.dll
 C:\Users\Petrenko\Documents\Visual Studio 2017\Projects\TownUtilityBillSystemV2\TownUtilityBillSystemV2\obj\Debug\TownUtilityBillSystemV2.pdb
-C:\Users\Petrenko\Documents\Visual Studio 2017\Projects\TownUtilityBillSystemV2\TownUtilityBillSystemV2\obj\Debug\TownUtilityBillSystemV2.Resources.Localization.resources
-C:\Users\Petrenko\Documents\Visual Studio 2017\Projects\TownUtilityBillSystemV2\TownUtilityBillSystemV2\obj\Debug\TownUtilityBillSystemV2.Resources.Localization.da.resources
-C:\Users\Petrenko\Documents\Visual Studio 2017\Projects\TownUtilityBillSystemV2\TownUtilityBillSystemV2\bin\Ninject.dll
-C:\Users\Petrenko\Documents\Visual Studio 2017\Projects\TownUtilityBillSystemV2\TownUtilityBillSystemV2\bin\Ninject.xml
 C:\Users\Petrenko\Documents\Visual Studio 2017\Projects\TownUtilityBillSystemV2\TownUtilityBillSystemV2\obj\Debug\TownUtilityBillSystemV2.csprojResolveAssemblyReference.cache

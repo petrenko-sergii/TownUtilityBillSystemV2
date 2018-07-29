@@ -824,4 +824,184 @@ and generated a revenue in 2016 of DKK 61 billion (EUR 8.2 is one of Northern Eu
   <data name="MeterData" xml:space="preserve">
     <value>Meter data</value>
   </data>
+  <data name="Sorry" xml:space="preserve">
+    <value>Sorry</value>
+  </data>
+  <data name="YouCanEditMeterDataOnlyAtEnglishSiteVersion" xml:space="preserve">
+    <value>You can edit meter data only at english site version</value>
+  </data>
+  <data name="EditCustomer" xml:space="preserve">
+    <value>Edit customer</value>
+  </data>
+  <data name="ShowDetailsForCustomer" xml:space="preserve">
+    <value>Show details for customer</value>
+  </data>
+  <data name="ShowAllBills" xml:space="preserve">
+    <value>Show all bills</value>
+  </data>
+  <data name="DeleteCustomer" xml:space="preserve">
+    <value>Delete customer</value>
+  </data>
+  <data name="DeleteMeter" xml:space="preserve">
+    <value>Delete meter</value>
+  </data>
+  <data name="DeleteMeterItem" xml:space="preserve">
+    <value>Delete meter item</value>
+  </data>
+  <data name="DeleteMeterType" xml:space="preserve">
+    <value>Delete meter type</value>
+  </data>
+  <data name="YouHaveNoAdministratorRights" xml:space="preserve">
+    <value>You have no administrator rights!</value>
+  </data>
+  <data name="DeleteUtility" xml:space="preserve">
+    <value>Delete utility</value>
+  </data>
+  <data name="BillDate" xml:space="preserve">
+    <value>Bill date</value>
+  </data>
+  <data name="BillNumber" xml:space="preserve">
+    <value>Bill number</value>
+  </data>
+  <data name="CreateNewBill" xml:space="preserve">
+    <value>Create the new bill</value>
+  </data>
+  <data name="FindBillByDetailsNumberCustomerPeriod" xml:space="preserve">
+    <value>Find bill by details (number, customer, period)</value>
+  </data>
+  <data name="Paid" xml:space="preserve">
+    <value>Paid</value>
+  </data>
+  <data name="Period" xml:space="preserve">
+    <value>Period</value>
+  </data>
+  <data name="Show" xml:space="preserve">
+    <value>Show</value>
+  </data>
+  <data name="ShowBills" xml:space="preserve">
+    <value>Show bills</value>
+  </data>
+  <data name="SomeRandomBills" xml:space="preserve">
+    <value>Some random bills</value>
+  </data>
+  <data name="Sum" xml:space="preserve">
+    <value>Sum</value>
+  </data>
+  <data name="DeleteBill" xml:space="preserve">
+    <value>Delete bill</value>
+  </data>
+  <data name="FoundOneBill" xml:space="preserve">
+    <value>Found 1 bill</value>
+  </data>
+  <data name="NoAnyBillIsFound" xml:space="preserve">
+    <value>No any bill is found</value>
+  </data>
+  <data name="ShowFoundBills" xml:space="preserve">
+    <value>Show found bills</value>
+  </data>
+  <data name="ShowAllBillsForCustomer" xml:space="preserve">
+    <value>Show all bills for customer</value>
+  </data>
+  <data name="PayOnLineBill" xml:space="preserve">
+    <value>Pay on-line bill</value>
+  </data>
+  <data name="CardOwnerName" xml:space="preserve">
+    <value>Card owner: name</value>
+  </data>
+  <data name="CardOwnerSurname" xml:space="preserve">
+    <value>Card owner: surname</value>
+  </data>
+  <data name="CardType" xml:space="preserve">
+    <value>Card type</value>
+  </data>
+  <data name="CVVnumber" xml:space="preserve">
+    <value>CVV number</value>
+  </data>
+  <data name="ExpireDate" xml:space="preserve">
+    <value>Expire date</value>
+  </data>
+  <data name="PayingSum" xml:space="preserve">
+    <value>Paying sum</value>
+  </data>
+  <data name="PayingSumCanNotBeNegative" xml:space="preserve">
+    <value>The paying sum cannot be negative</value>
+  </data>
+  <data name="PaymentCardNumber" xml:space="preserve">
+    <value>Payment card number</value>
+  </data>
+  <data name="ValueMustHaveCountDigits" xml:space="preserve">
+    <value>The {0} must have {2} digits.</value>
+  </data>
+  <data name="CardIExpired" xml:space="preserve">
+    <value>The card is expired.</value>
+  </data>
+  <data name="CreditCardNumberMustHave16Digits" xml:space="preserve">
+    <value>The Credit card number must have 16 digits.</value>
+  </data>
+  <data name="CVVnumberMustHave3Digits" xml:space="preserve">
+    <value>The CVV number must have 3 digits.</value>
+  </data>
+  <data name="PayTheBillOnLine" xml:space="preserve">
+    <value>Pay the bill on-line</value>
+  </data>
+  <data name="BillData" xml:space="preserve">
+    <value>Bill data</value>
+  </data>
+  <data name="BillPeriod" xml:space="preserve">
+    <value>Bill period</value>
+  </data>
+  <data name="BillSum" xml:space="preserve">
+    <value>Bill sum</value>
+  </data>
+  <data name="EnterBillNumber" xml:space="preserve">
+    <value>Enter the bill number</value>
+  </data>
+  <data name="Find" xml:space="preserve">
+    <value>Find</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="NoBillIsFoundWarning" xml:space="preserve">
+    <value>No bill is found -- check the number</value>
+  </data>
+  <data name="PaymentCardForm" xml:space="preserve">
+    <value>Payment card form</value>
+  </data>
+  <data name="PayTheBill" xml:space="preserve">
+    <value>Pay the bill</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>Yes</value>
+  </data>
+  <data name="YouCanNotPayThisBillAgain" xml:space="preserve">
+    <value>You can not pay this bill again</value>
+  </data>
+  <data name="TrialImitation" xml:space="preserve">
+    <value>Trial imitation</value>
+  </data>
+  <data name="SelectCardType" xml:space="preserve">
+    <value>--Select card type--</value>
+  </data>
+  <data name="Month" xml:space="preserve">
+    <value>Month</value>
+  </data>
+  <data name="Year" xml:space="preserve">
+    <value>Year</value>
+  </data>
+  <data name="BackToMainMenu" xml:space="preserve">
+    <value>Back to main menu</value>
+  </data>
+  <data name="IsPaid" xml:space="preserve">
+    <value>Is paid</value>
+  </data>
+  <data name="PayAnotherBill" xml:space="preserve">
+    <value>Pay another bill</value>
+  </data>
+  <data name="ShowBillPaidInfo" xml:space="preserve">
+    <value>Show bill paid info</value>
+  </data>
+  <data name="TheBill" xml:space="preserve">
+    <value>The bill</value>
+  </data>
 </root>

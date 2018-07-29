@@ -20,5 +20,16 @@ namespace TownUtilityBillSystemV2.Models.AddressModels
 				Number = building.NUMBER
 			};
 		}
+
+		public static Building GetWithSquareAndImagePath(BUILDING building)
+		{
+			return new Building
+			{
+				Id = building.ID,
+				Number = building.NUMBER,
+				Square = (float)building.SQUARE,
+				ImagePath = AddressModel.GetBuildingImageForCustomerDetailsView(building.ID)
+			};
+		}
 	}
 }

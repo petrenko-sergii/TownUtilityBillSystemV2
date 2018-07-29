@@ -155,7 +155,7 @@ namespace TownUtilityBillSystemV2.Models.MeterModels
 			var flatPartDB = context.FLAT_PARTs.Where(fp => fp.ID == addressDB.FLAT_PART_ID).FirstOrDefault();
 			var unit = context.UNITs.Where(u => u.ID == utilityDB.UNIT_ID).Select(Unit.Get).FirstOrDefault();
 
-			var utility = new Utility() { Id = utilityDB.ID, Name = utilityDB.NAME, Unit = unit };
+			var utility = new Utility() { Id = utilityDB.ID, Name = utilityDB.NAME,ResourceName = UtilityModel.GetResourceNameForUtility(utilityDB.NAME) , Unit = unit };
 			var meterType = new MeterType() { Id = meterTypeDB.ID, Name = meterTypeDB.NAME, Utility = utility };
 
 			FlatPart flatPart = null;

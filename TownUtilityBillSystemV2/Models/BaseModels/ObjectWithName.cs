@@ -7,7 +7,7 @@ using TownUtilityBillSystemV2.Resources;
 
 namespace TownUtilityBillSystemV2.Models.BaseModels
 {
-	public class ObjectWithName
+	public abstract class ObjectWithName
 	{
 		public int Id { get; set; }
 

@@ -218,6 +218,7 @@
       <DependentUpon>TownUtilityBillSystemV2.tt</DependentUpon>
     </Compile>
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BillController.cs" />
     <Compile Include="Controllers\CalculatorController.cs" />
     <Compile Include="Controllers\ChartController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
@@ -276,6 +277,8 @@
     <Compile Include="Models\AddressModels\Town.cs" />
     <Compile Include="Models\BaseModels\ObjectWithImage.cs" />
     <Compile Include="Models\BaseModels\ObjectWithName.cs" />
+    <Compile Include="Models\BillModels\Bill.cs" />
+    <Compile Include="Models\BillModels\BillModel.cs" />
     <Compile Include="Models\Calculator\CalculatorItemModel.cs" />
     <Compile Include="Models\Chart\ChartData.cs" />
     <Compile Include="Models\Chart\ChartModel.cs" />
@@ -311,6 +314,11 @@
     <Compile Include="Models\News\NewsChapter.cs" />
     <Compile Include="Models\News\NewsEmployee.cs" />
     <Compile Include="Models\News\NewsModel.cs" />
+    <Compile Include="Models\PaymentCardModels\PaymentCard.cs" />
+    <Compile Include="Models\PaymentCardModels\PaymentCardModel.cs" />
+    <Compile Include="Models\PaymentCardModels\PaymentCardType.cs" />
+    <Compile Include="Models\PaymentModels\Payment.cs" />
+    <Compile Include="Models\PaymentModels\PaymentModel.cs" />
     <Compile Include="Models\TemperatureModels\Temperature.cs" />
     <Compile Include="Models\TemperatureModels\TemperatureModel.cs" />
     <Compile Include="Models\UtilitySupplier\UtilitySupplier.cs" />
@@ -438,10 +446,13 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\appJsScripts\findMeterByAddress.js" />
     <Content Include="Scripts\appJsScripts\googleMapScript.js" />
+    <Content Include="Scripts\appJsScripts\payOnLineBill.js" />
     <Content Include="Scripts\appJsScripts\showAllUtilityCharts.js" />
     <Content Include="Scripts\appJsScripts\showCalculatorCharges.js" />
+    <Content Include="Scripts\appJsScripts\showDetailsForCustomer.js" />
     <Content Include="Scripts\appJsScripts\showMeterData.js" />
     <Content Include="Scripts\appJsScripts\showTemperatureChart.js" />
+    <Content Include="Scripts\appJsScripts\_editMeterData.js" />
     <Content Include="Scripts\appJsScripts\_layout.js" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -449,6 +460,10 @@
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\cldr.js" />
+    <Content Include="Scripts\cldr\event.js" />
+    <Content Include="Scripts\cldr\supplemental.js" />
+    <Content Include="Scripts\cldr\unresolved.js" />
     <Content Include="TownUtilityBillSystemV2.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>TownUtilityBillSystemV2.edmx</DependentUpon>
@@ -550,6 +565,27 @@
     <Content Include="Views\Shared\_SaveCancelButtonsForEditView.cshtml" />
     <Content Include="Views\Meter\EditMeter.cshtml" />
     <Content Include="Views\Meter\EditMeterData.cshtml" />
+    <Content Include="Views\Customer\EditCustomer.cshtml" />
+    <Content Include="Views\Customer\ShowDetailsForCustomer.cshtml" />
+    <Content Include="Views\Customer\CreateCustomer.cshtml" />
+    <Content Include="Views\Customer\DeleteCustomer.cshtml" />
+    <Content Include="Views\Meter\CreateMeter.cshtml" />
+    <Content Include="Views\Meter\CreateMeterItem.cshtml" />
+    <Content Include="Views\Meter\CreateMeterType.cshtml" />
+    <Content Include="Views\Meter\DeleteMeter.cshtml" />
+    <Content Include="Views\Meter\DeleteMeterItem.cshtml" />
+    <Content Include="Views\Meter\DeleteMeterType.cshtml" />
+    <Content Include="Views\Utility\CreateUtility.cshtml" />
+    <Content Include="Views\Utility\DeleteUtility.cshtml" />
+    <Content Include="Views\Bill\ShowBills.cshtml" />
+    <Content Include="Views\Bill\ShowFoundBills.cshtml" />
+    <Content Include="Views\Bill\CreateBill.cshtml" />
+    <Content Include="Views\Bill\DeleteBill.cshtml" />
+    <Content Include="Views\Bill\ShowAllBillsForCustomer.cshtml" />
+    <Content Include="Views\Bill\_BillsTablePartial.cshtml" />
+    <Content Include="Views\Bill\PayOnLineBill.cshtml" />
+    <Content Include="Views\Bill\PaymentCardForm.cshtml" />
+    <Content Include="Views\Bill\ShowBillPaidInfo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -580,10 +616,12 @@
     <EmbeddedResource Include="Resources\Localization.da.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Localization.da.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Localization.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Localization.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

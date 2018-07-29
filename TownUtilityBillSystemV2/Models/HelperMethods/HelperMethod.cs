@@ -171,5 +171,21 @@ namespace TownUtilityBillSystemV2.Models.HelperMethods
 
 			return resourceName;
 		}
+
+		public static string GetFullMonthName(string period)
+		{
+			DateTime billPeriod = Convert.ToDateTime(period);
+			string fullMonthName = UppercaseFirstLetter(billPeriod.ToString("MMMM yyyy"));
+
+			return fullMonthName;
+		}
+
+		static string UppercaseFirstLetter(string s)
+		{
+			if (string.IsNullOrEmpty(s))
+				return string.Empty;
+
+			return char.ToUpper(s[0]) + s.Substring(1);
+		}
 	}
 }

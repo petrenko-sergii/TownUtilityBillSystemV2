@@ -5,11 +5,12 @@
 @{
 	ViewBag.Title = Localization.EditMeterData;
 	Thread.CurrentThread.CurrentCulture.NumberFormat.NumberDecimalSeparator = ".";
+	var currentCulrure = ViewBag.CurrentCulture;
 }
 
 <div>
 	<h3 class="header-bold">@Localization.MeterData:</h3>
-	<h4><strong> @Localization.Utility:</strong> @Model.Meter.MeterType.Utility.Name</h4>
+	<h4><strong> @Localization.Utility:</strong> @Model.Meter.MeterType.Utility.ResourceName</h4>
 	<h4><strong> @Localization.MeterType:</strong> @Model.Meter.MeterType.Name</h4>
 	<h4><strong> @Localization.SerialNumber:</strong> @Model.Meter.SerialNumber</h4>
 	<h4><strong> @Localization.ReleaseDate: </strong> @Model.Meter.ReleaseDate.Year.ToString()<text>-</text>@Model.Meter.ReleaseDate.Month.ToString()<text>-</text>@Model.Meter.ReleaseDate.Day</h4>
@@ -19,30 +20,45 @@
 		<hr />
 		<h4><strong>@Localization.MeasureDate: </strong>@Model.MeterItem.Date.Year.ToString()<text>-</text>@Model.MeterItem.Date.Month.ToString()<text>-</text>@Model.MeterItem.Date.Day <strong>@Localization.CurrentValue: </strong><mark class="mark-yellow">@Math.Round(Model.MeterItem.Value, 2)</mark> @Model.Meter.MeterType.Utility.Unit.Name</h4>
 		@using (Html.BeginForm("EditMeterData", "Meter", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-	{
-		@Html.AntiForgeryToken()
-		@Html.ValidationSummary("", new { @class = "text-danger" })
-		<div class="form-group">
-			@Html.LabelFor(m => m.MeterItem.Value, new { @class = "col-md-2 control-label" })
-			<div class="col-md-10">
-				@Html.HiddenFor(m => m.MeterItem.Id)
-				@Html.TextBoxFor(m => m.MeterItem.Value, new { @class = "form-control" })
+		{
+			@Html.AntiForgeryToken()
+			@Html.ValidationSummary("", new { @class = "text-danger" })
+			<div class="form-group">
+				@Html.LabelFor(m => m.MeterItem.Value, new { @class = "col-md-2 control-label" })
+				<div class="col-md-10">
+					@Html.HiddenFor(m => m.MeterItem.Id)
+					@Html.TextBoxFor(m => m.MeterItem.Value, new { @class = "form-control", @id = "NewEditedValue" })
+					<label id="lblMeterDataNotEditable" style="visibility:hidden" class="text-danger">@Localization.Sorry, @Localization.YouCanEditMeterDataOnlyAtEnglishSiteVersion.ToLower()</label>
+				</div>
 			</div>
-		</div>
 
-		@Html.Partial("~/Views/Shared/_SaveCancelButtonsForEditView.cshtml")
-}
+			<div class="form-group">
+				<div class="col-md-offset-2 col-md-10">
+					@if (currentCulrure != "en")
+					{
+						<input disabled type="submit" value=@Localization.Save class="btn btn-primary btn-large btn-block" />
+					}
+					else
+					{
+						<input type="submit" value=@Localization.Save class="btn btn-primary btn-large btn-block" />
+					}
+					<br />
+					<a href="javascript:history.go(-1)" class="btn btn-primary btn-large btn-block btn-brown btn-cancel">
+						@Localization.Cancel
+					</a>
+				</div>
+			</div>
+		}
 	</p>
 </div>
+
+
+<script>
+	var currentCulrure = '@currentCulrure';
+</script>
+<script src="~/Scripts/jquery-3.3.1.js"></script>
+<script src="~/Scripts/appJsScripts/_editMeterData.js"></script>
 
 @section Scripts {
 	@Scripts.Render("~/bundles/jqueryval")
 }
-
-
-
-
-
-
-
-

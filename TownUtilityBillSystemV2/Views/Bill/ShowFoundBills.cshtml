@@ -1,0 +1,28 @@
+﻿@model TownUtilityBillSystemV2.Models.BillModels.BillModel
+@using TownUtilityBillSystemV2.Resources
+
+@{
+	ViewBag.Title = Localization.ShowFoundBills;
+}
+
+@if (Model.Bills.Count == 0)
+{
+	<h2>@Localization.NoAnyBillIsFound</h2>
+}
+
+else if (Model.Bills.Count == 1)
+{
+	<h2>@Localization.FoundOneBill</h2>
+}
+else
+{
+	<h2>@Localization.Found @Model.Bills.Count @Localization.Bills.ToLower()</h2>
+}
+<h4>@Localization.SearchFilter: <mark class="mark-yellow"> @ViewBag.SearchString </mark></h4>
+
+@if (Model.Bills.Count != 0)
+{
+	@Html.Partial("~/Views/Bill/_BillsTablePartial.cshtml", Model)
+}
+
+@Html.Partial("~/Views/Shared/_BackToPreviousPagePartial.cshtml")

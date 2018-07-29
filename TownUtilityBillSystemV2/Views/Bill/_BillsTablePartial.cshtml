@@ -1,0 +1,57 @@
+﻿@model TownUtilityBillSystemV2.Models.BillModels.BillModel
+@using TownUtilityBillSystemV2.Resources
+
+@{
+	int rowNumber = 1;
+}
+
+<table class="table">
+	<tr>
+		<th>#</th>
+		<th>@Localization.BillNumber</th>
+		<th>@Localization.Customer</th>
+		<th>@Localization.BillDate</th>
+		<th>@Localization.Period</th>
+		<th>@Localization.Sum</th>
+		<th>@Localization.Paid</th>
+		<th>@Localization.Options</th>
+	</tr>
+
+	@foreach (var item in Model.Bills)
+	{
+		<tr>
+			<td>@(rowNumber++)</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.Number)
+			</td>
+			@if (item.Customer.Surname != null || item.Customer.Surname != "")
+			{
+				<td>
+					@Html.DisplayFor(modelItem => item.Customer.Surname) @Html.DisplayFor(modelItem => item.Customer.Name)
+				</td>
+			}
+			else
+			{
+				<td>
+					@Html.DisplayFor(modelItem => item.Customer.Name)
+				</td>
+			}
+			<td>
+				@item.Date.Year.ToString()<text>-</text>@item.Date.Month.ToString()<text>-</text>@item.Date.Day.ToString()
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.Period)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.Sum) <text> </text>  @Model.Currency.ToString()
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.Paid)
+			</td>
+			<td>
+				@Html.ActionLink(Localization.Show, "ShowBill", new { bill_Id = item.Id }) |
+				@Html.ActionLink(Localization.Delete, "DeleteBill", new { bill_Id = item.Id })
+			</td>
+		</tr>
+	}
+</table>

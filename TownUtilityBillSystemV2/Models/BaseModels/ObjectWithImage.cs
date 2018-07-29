@@ -7,7 +7,7 @@ using TownUtilityBillSystemV2.Resources;
 
 namespace TownUtilityBillSystemV2.Models.BaseModels
 {
-	public class ObjectWithImage
+	public abstract class ObjectWithImage
 	{
 		[Required(ErrorMessageResourceName = "FieldIsRequired", ErrorMessageResourceType = typeof(Localization))]
 		public int Id { get; set; }

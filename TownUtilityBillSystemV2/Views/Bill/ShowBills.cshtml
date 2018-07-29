@@ -1,0 +1,39 @@
+﻿@model TownUtilityBillSystemV2.Models.BillModels.BillModel
+@using TownUtilityBillSystemV2.Resources
+
+@{
+	ViewBag.Title = Localization.ShowBills;
+}
+
+@if (Model.Bills.Count != 0)
+{
+	<h2 class="header-bold">@Localization.FindBillByDetailsNumberCustomerPeriod</h2>
+	<p>
+		@using (Html.BeginForm("ShowFoundBills", "Bill", FormMethod.Get))
+		{
+			@Html.TextBox("searchString") <input type="submit" value=@Localization.Search class="btn btn-primary btn-large" />
+		}
+	</p>
+	<h5 style="text-align:center"><strong>@Localization.SomeRandomBills</strong></h5>
+	@Html.Partial("~/Views/Bill/_BillsTablePartial.cshtml", Model)
+
+	<div class="row">
+		<div class="col-md-4 margin-top-20">
+			<a href="@Url.Action("CreateBill", "Bill")" class="btn btn-primary btn-large btn-block">
+				<span class=" glyphicon glyphicon-plus-sign"></span> @Localization.CreateNewBill
+			</a>
+		</div>
+	</div>
+	<hr />
+
+	@Html.Partial("~/Views/Shared/_BackToPreviousPagePartial.cshtml")
+}
+else
+{
+	<h2 class="header-bold">@Localization.SorryNoData</h2>
+
+}
+
+
+
+

@@ -70,6 +70,133 @@ namespace TownUtilityBillSystemV2.Models.CustomerModels
 			}
 		}
 
+		internal List<CustomerType> GetCustomerTypes()
+		{
+			using (var context = new TownUtilityBillSystemV2Entities())
+			{
+				return context.CUSTOMER_TYPEs.Select(CustomerType.Get).ToList();
+			}
+		}
+
+		internal void GetMeterDetailsForCustomer(int customerId)
+		{
+			using (var context = new TownUtilityBillSystemV2Entities())
+			{
+				var customerDB = context.CUSTOMERs.Find(customerId);
+
+				if (customerDB != null)
+				{
+					var customerTypeDB = context.CUSTOMER_TYPEs.Where(mt => mt.ID == customerDB.CUSTOMER_TYPE_ID).FirstOrDefault();
+					var addressDB = context.ADDRESSes.Where(a => a.ID == customerDB.ADDRESS_ID).FirstOrDefault();
+					var index = context.INDEXes.Where(i => i.ID == addressDB.INDEX_ID).Select(Index.Get).FirstOrDefault();
+					var town = context.TOWNs.Where(t => t.ID == addressDB.TOWN_ID).Select(Town.Get).FirstOrDefault();
+					var street = context.STREETs.Where(s => s.ID == addressDB.STREET_ID).Select(Street.Get).FirstOrDefault();
+					var building = context.BUILDINGs.Where(b => b.ID == addressDB.BUILDING_ID).Select(Building.GetWithSquareAndImagePath).FirstOrDefault();
+					var flatPartDB = context.FLAT_PARTs.Where(fp => fp.ID == addressDB.FLAT_PART_ID).FirstOrDefault();
+					var metersDB = context.METERs.Where(m => m.ADDRESS_ID == addressDB.ID).ToList();
+
+					foreach (var m in metersDB)
+					{
+						var meterTypeDB = context.METER_TYPEs.Where(mt => mt.ID == m.METER_TYPE_ID).FirstOrDefault();
+						var utility = context.UTILITYs.Where(u => u.ID == meterTypeDB.UTILITY_ID).Select(Utility.GetUtilityWithIdAndResourceName).FirstOrDefault();
+						var meterType = new MeterType() { Id = meterTypeDB.ID, Name = meterTypeDB.NAME, Utility = utility };
+
+						Meters.Add(new Meter() { Id = m.ID, SerialNumber = m.SERIAL_NUMBER, ReleaseDate = m.RELEASE_DATE, VarificationDate = m.VARIFICATION_DATE, MeterType = meterType });
+					}
+
+					FlatPart flatPart = null;
+
+					if (flatPartDB != null)
+						flatPart = FlatPart.Get(flatPartDB);
+
+					var customerType = new CustomerType() { Id = customerTypeDB.ID, Name = customerTypeDB.NAME, ResourceName = CustomerType.GetResourceName(customerTypeDB.NAME) };
+					var account = context.ACCOUNTs.Where(a => a.ID == customerDB.ACCOUNT_ID).Select(Account.Get).FirstOrDefault();
+					var address = new Address() { Id = addressDB.ID, Index = index, Town = town, Street = street, Building = building, FlatPart = flatPart };
+
+					Customer = new Customer() { Id = customerDB.ID, Account = account, Surname = customerDB.SURNAME, Name = customerDB.NAME, Email = customerDB.EMAIL, Phone = customerDB.PHONE, CustomerType = customerType, Address = address };
+				}
+				else
+					Customer = null;
+			}
+		}
+
+		internal bool IsCustomerAPrivateType(int customerId)
+		{
+			List<int> privateTypeIds;
+
+			using (var context = new TownUtilityBillSystemV2Entities())
+			{
+				privateTypeIds = (from ct in context.CUSTOMER_TYPEs
+									  where
+										  ct.NAME.Contains("Apartment") ||
+										  ct.NAME.Contains("House")
+									  select ct).Select(ct=>ct.ID).ToList();
+			}
+
+			return privateTypeIds.Contains(customerId);
+		}
+
+		internal void UpdateCustomer(Customer customer)
+		{
+			using (var context = new TownUtilityBillSystemV2Entities())
+			{
+				var customerDB = context.CUSTOMERs.Find(customer.Id);
+
+				if (customerDB.SURNAME != null)
+					customerDB.SURNAME = customer.Surname;
+				customerDB.NAME = customer.Name;
+				customerDB.EMAIL = customer.Email;
+				customerDB.PHONE = customer.Phone;
+				customerDB.CUSTOMER_TYPE_ID = customer.CustomerType.Id;
+
+				context.SaveChanges();
+			}
+		}
+
+		internal Customer GetCustomerForEdit(int customerId)
+		{
+			using (var context = new TownUtilityBillSystemV2Entities())
+			{
+				var model = new Customer();
+
+				var customerDB = context.CUSTOMERs.Find(customerId);
+
+				if (customerDB != null)
+				{
+					var customerType = context.CUSTOMER_TYPEs.Where(mt => mt.ID == customerDB.CUSTOMER_TYPE_ID).Select(CustomerType.Get).FirstOrDefault();
+					var addressDB = context.ADDRESSes.Where(a => a.ID == customerDB.ADDRESS_ID).FirstOrDefault();
+					var index = context.INDEXes.Where(i => i.ID == addressDB.INDEX_ID).Select(Index.Get).FirstOrDefault();
+					var town = context.TOWNs.Where(t => t.ID == addressDB.TOWN_ID).Select(Town.Get).FirstOrDefault();
+					var street = context.STREETs.Where(s => s.ID == addressDB.STREET_ID).Select(Street.Get).FirstOrDefault();
+					var building = context.BUILDINGs.Where(b => b.ID == addressDB.BUILDING_ID).Select(Building.Get).FirstOrDefault();
+					var flatPartDB = context.FLAT_PARTs.Where(fp => fp.ID == addressDB.FLAT_PART_ID).FirstOrDefault();
+					var account = context.ACCOUNTs.Where(a => a.ID == customerDB.ACCOUNT_ID).Select(Account.Get).FirstOrDefault();
+
+					FlatPart flatPart = null;
+
+					if (flatPartDB != null)
+						flatPart = FlatPart.Get(flatPartDB);
+
+					var address = new Address() { Id = addressDB.ID, Index = index, Town = town, Street = street, Building = building, FlatPart = flatPart };
+
+					model.Id = customerDB.ID;
+					model.Account = account;
+					model.Surname = customerDB.SURNAME;
+					model.Name = customerDB.NAME;
+					model.Email = customerDB.EMAIL;
+					model.Phone = customerDB.PHONE;
+					model.CustomerType = customerType;
+					model.Address = address;
+
+					model.CustomerTypes = context.CUSTOMER_TYPEs.Select(CustomerType.Get).ToList();
+				}
+				else
+					model = null;
+
+				return model;
+			}
+		}
+
 		public void GetFoundCustomers(string searchString)
 		{
 			using (var context = new TownUtilityBillSystemV2Entities())
@@ -198,14 +325,7 @@ namespace TownUtilityBillSystemV2.Models.CustomerModels
 				FlatPart flatPart = null;
 
 				if (flatPartDB != null)
-				{
-					if (!String.IsNullOrEmpty(flatPartDB.NAME) && !flatPartDB.NUMBER.HasValue)
-						flatPart = new FlatPart() { Id = flatPartDB.ID, Name = flatPartDB.NAME };
-					else if (String.IsNullOrEmpty(flatPartDB.NAME) && flatPartDB.NUMBER.HasValue)
-						flatPart = new FlatPart() { Id = flatPartDB.ID, Number = (int)flatPartDB.NUMBER };
-					else if (!String.IsNullOrEmpty(flatPartDB.NAME) && flatPartDB.NUMBER.HasValue)
-						flatPart = new FlatPart() { Id = flatPartDB.ID, Number = (int)flatPartDB.NUMBER, Name = flatPartDB.NAME };
-				}
+					flatPart = FlatPart.Get(flatPartDB);
 
 				var address = new Address() { Id = addressDB.ID, Index = index, Town = town, Street = street, Building = building, FlatPart = flatPart };
 
@@ -250,12 +370,12 @@ namespace TownUtilityBillSystemV2.Models.CustomerModels
 				startDate = new DateTime(prevYear, nextMonth, startDay);
 				finishDate = new DateTime(presYear, presMonth, startDay);
 
-				metersListIds = context.METERs.Where(m => m.ADDRESS_ID == addressId).Select(m=>m.ID).ToList();
+				metersListIds = context.METERs.Where(m => m.ADDRESS_ID == addressId).Select(m => m.ID).ToList();
 
 				elIndex = metersListIds[(int)Utilities.Electricity - 1];
 				waterIndex = metersListIds[(int)Utilities.Water - 1];
 
-				elMeterItems = context.METER_ITEMs.Where(mi=>mi.METER_ID == elIndex).Select(MeterItem.GetMeterItemWithOutMeter).ToList();
+				elMeterItems = context.METER_ITEMs.Where(mi => mi.METER_ID == elIndex).Select(MeterItem.GetMeterItemWithOutMeter).ToList();
 				waterMeterItems = context.METER_ITEMs.Where(mi => mi.METER_ID == waterIndex).Select(MeterItem.GetMeterItemWithOutMeter).ToList();
 
 				if (metersListIds.Count > 2)
@@ -341,7 +461,7 @@ namespace TownUtilityBillSystemV2.Models.CustomerModels
 						Meters.Add(new Meter() { Id = m.ID, SerialNumber = m.SERIAL_NUMBER, ReleaseDate = m.RELEASE_DATE, VarificationDate = m.VARIFICATION_DATE, MeterType = meterType });
 					}
 
-					var customerType = new CustomerType() { Id = customerTypeDB.ID, ResourceName = CustomerType.GetResourceName(customerTypeDB.NAME)};
+					var customerType = new CustomerType() { Id = customerTypeDB.ID, ResourceName = CustomerType.GetResourceName(customerTypeDB.NAME) };
 					var index = new Index() { Id = indexDB.ID, Value = indexDB.VALUE };
 					var town = new Town() { Id = townDB.ID, Name = townDB.NAME };
 					var street = new Street() { Id = streetDB.ID, Name = streetDB.NAME };
@@ -350,16 +470,7 @@ namespace TownUtilityBillSystemV2.Models.CustomerModels
 					FlatPart flatPart = null;
 
 					if (flatPartDB != null)
-					{
-						if (!String.IsNullOrEmpty(flatPartDB.NAME) && !flatPartDB.NUMBER.HasValue)
-							flatPart = new FlatPart() { Id = flatPartDB.ID, Name = flatPartDB.NAME };
-
-						else if (String.IsNullOrEmpty(flatPartDB.NAME) && flatPartDB.NUMBER.HasValue)
-							flatPart = new FlatPart() { Id = flatPartDB.ID, Number = (int)flatPartDB.NUMBER };
-
-						else if (!String.IsNullOrEmpty(flatPartDB.NAME) && flatPartDB.NUMBER.HasValue)
-							flatPart = new FlatPart() { Id = flatPartDB.ID, Number = (int)flatPartDB.NUMBER, Name = flatPartDB.NAME };
-					}
+						flatPart = FlatPart.Get(flatPartDB);
 
 					var address = new Address() { Id = addressDB.ID, Index = index, Town = town, Street = street, Building = building, FlatPart = flatPart };
 

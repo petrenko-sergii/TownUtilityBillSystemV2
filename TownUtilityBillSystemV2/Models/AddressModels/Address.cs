@@ -39,6 +39,11 @@ namespace TownUtilityBillSystemV2.Models.AddressModels
 			FlatPart = new FlatPart();
 		}
 
+		internal static object GetAdressDataForGoogleMap(object customerId)
+		{
+			throw new NotImplementedException();
+		}
+
 		#endregion
 	}
 }

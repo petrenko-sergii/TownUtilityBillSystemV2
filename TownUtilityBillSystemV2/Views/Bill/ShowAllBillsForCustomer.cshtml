@@ -1,0 +1,92 @@
+﻿@model TownUtilityBillSystemV2.Models.BillModels.BillModel
+@using TownUtilityBillSystemV2.Resources
+
+@{
+	ViewBag.Title = Localization.ShowAllBillsForCustomer;
+	int rowNumber = 1;
+}
+
+@if (Model.CustomerModel.Customer == null)
+{
+	<h2 class="header-bold">@Localization.SorryNoData</h2>
+}
+else
+{
+	<div id="customerDataForFoundBills">
+		@if (Model.CustomerModel.Customer.Surname == null)
+		{
+			<h5><strong>@Localization.Customer: @Localization.Name:</strong> @Model.CustomerModel.Customer.Name</h5>
+		}
+		else
+		{
+			<h5><strong>@Localization.Customer: @Localization.Surname/@Localization.Name:</strong> @Model.CustomerModel.Customer.Surname @Model.CustomerModel.Customer.Name</h5>
+		}
+
+		<h5><strong>@Localization.AccountNum:</strong> @Model.CustomerModel.Customer.Account.Number<strong> @Localization.Email: </strong> @Model.CustomerModel.Customer.Email <strong> @Localization.Phone:</strong> @Model.CustomerModel.Customer.Phone</h5>
+		<h5>
+			<strong> @Localization.Address:</strong>
+			@Model.CustomerModel.Customer.Address.Building.Number, @Model.CustomerModel.Customer.Address.Street.Name @Localization.Str.ToLower(),
+			@Model.CustomerModel.Customer.Address.Town.Name, @Model.CustomerModel.Customer.Address.Country @Model.CustomerModel.Customer.Address.Index.Value
+			<strong> @Localization.Square:</strong>
+			@Model.CustomerModel.Customer.Address.Building.Square @Localization.SquareMeter
+			<strong> @Localization.Type:</strong>
+			@Model.CustomerModel.Customer.CustomerType.ResourceName
+		</h5>
+	</div>
+}
+@if (Model.Bills.Count != 0)
+{
+	<h3>@Localization.Bills:</h3>
+
+	<table class="table">
+		<tr>
+			<th>#</th>
+			<th>@Localization.BillNumber</th>
+			<th>@Localization.BillDate</th>
+			<th>@Localization.Period</th>
+			<th>@Localization.Sum</th>
+			<th>@Localization.Paid</th>
+			<th>@Localization.Options</th>
+		</tr>
+
+		@foreach (var item in Model.Bills)
+		{
+			<tr>
+				<td>@(rowNumber++)</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.Number)
+				</td>
+				<td>
+					@item.Date.Year.ToString()<text>-</text>@item.Date.Month.ToString()<text>-</text>@item.Date.Day.ToString()
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.Period)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.Sum) <text> </text>  @Model.Currency.ToString()
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.Paid)
+				</td>
+				<td>
+					@Html.ActionLink(Localization.Show, "ShowBill", new { bill_Id = item.Id }) |
+					@Html.ActionLink(Localization.Delete, "DeleteBill", new { bill_Id = item.Id })
+				</td>
+			</tr>
+		}
+	</table>
+	<div class="row">
+		<div class="col-md-4 margin-top-20">
+			<a href="@Url.Action("CreateBill", "Bill")" class="btn btn-primary btn-large btn-block">
+				<span class=" glyphicon glyphicon-plus-sign"></span> @Localization.CreateNewBill
+			</a>
+		</div>
+	</div>
+	<hr />
+
+	@Html.Partial("~/Views/Shared/_BackToPreviousPagePartial.cshtml")
+}
+else
+{
+	<h2 class="header-bold"> <strong>@Localization.SorryNoData</strong> </h2>
+}

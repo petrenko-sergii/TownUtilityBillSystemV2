@@ -165,7 +165,6 @@ namespace TownUtilityBillSystemV2.Models.AddressModels
 				}
 				else
 				{
-
 					switch (HelperMethod.GetCurrentLanguage())
 					{
 						case "da":
@@ -178,6 +177,35 @@ namespace TownUtilityBillSystemV2.Models.AddressModels
 				}
 
 				return imagePathForHtml;
+			}
+		}
+
+		public static string GetBuildingImageForCustomerDetailsView(int buildingId)
+		{
+			using (var context = new TownUtilityBillSystemV2Entities())
+			{
+				IMAGE_BUILDING imageDB = null;
+				string imageName = "";
+				string imagePath = "";
+				string imagePathDB = "";
+				string folderName = "";
+
+				var buildingDB = context.BUILDINGs.Where(b => b.ID == buildingId).FirstOrDefault();
+
+				if (buildingDB != null)
+					imageDB = context.IMAGE_BUILDINGs.Where(i => i.ID == buildingDB.IMAGE_ID).FirstOrDefault();
+
+				if (imageDB != null)
+				{
+					imagePathDB = imageDB.PATH.ToString();
+					folderName = Path.GetFileName(Path.GetDirectoryName(imagePathDB));
+					imageName = Path.GetFileName(imagePathDB);
+					imagePath = "/Content/Images/TownBuildings/" + folderName + "/" + imageName;
+				}
+				else
+					imagePath = "/Images/NoImageIcon.jpg";
+
+				return imagePath;
 			}
 		}
 	}

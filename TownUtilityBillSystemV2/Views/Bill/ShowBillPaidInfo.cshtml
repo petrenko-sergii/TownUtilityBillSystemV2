@@ -1,0 +1,65 @@
+﻿@model TownUtilityBillSystemV2.Models.BillModels.BillModel
+@using TownUtilityBillSystemV2.Resources
+
+@{
+	ViewBag.Title = Localization.ShowBillPaidInfo;
+	int rowNumber = 1;
+}
+<h3 class="header-bold"> @Localization.TheBill #@Model.Bill.Number @Localization.IsPaid.ToLower()</h3>
+
+<table class="table">
+	<tr>
+		<th>#</th>
+		<th>@Localization.BillNumber</th>
+		<th>@Localization.Customer</th>
+		<th>@Localization.BillDate</th>
+		<th>@Localization.Period</th>
+		<th>@Localization.Sum</th>
+		<th>@Localization.Paid</th>
+		<th>@Localization.Options</th>
+	</tr>
+
+	<tr>
+		<td>@(rowNumber++)</td>
+		<td>
+			@Html.DisplayFor(model => model.Bill.Number)
+		</td>
+		@if (Model.CustomerModel.Customer.Surname != null || Model.CustomerModel.Customer.Surname != "")
+		{
+			<td>
+				@Html.DisplayFor(model => Model.CustomerModel.Customer.Surname) @Html.DisplayFor(model => Model.CustomerModel.Customer.Name)
+			</td>
+		}
+		else
+		{
+			<td>
+				@Html.DisplayFor(model => Model.CustomerModel.Customer.Name)
+			</td>
+		}
+		<td>
+			@Model.Bill.Date.Year.ToString()<text>-</text>@Model.Bill.Date.Month.ToString()<text>-</text>@Model.Bill.Date.Day.ToString()
+		</td>
+		<td>
+			@Html.DisplayFor(model => Model.Bill.Period)
+		</td>
+		<td>
+			@Html.DisplayFor(model => Model.Bill.Sum) <text> </text>  @Model.Currency.ToString()
+		</td>
+		<td>
+			@Html.DisplayFor(model => Model.Bill.Paid)
+		</td>
+		<td>
+			@Html.ActionLink(Localization.Show, "ShowBill", new { bill_Id = Model.Bill.Id }) |
+			@Html.ActionLink(Localization.Delete, "DeleteBill", new { bill_Id = Model.Bill.Id })
+		</td>
+	</tr>
+
+</table>
+
+<a href="@Url.Action("PayOnLineBill", "Bill")" class="btn btn-link btn-large">
+	<span class=" glyphicon glyphicon-usd"></span> <strong>@Localization.PayAnotherBill</strong>
+</a>
+
+<a href="@Url.Action("Index", "Home")" class="btn btn-link btn-large">
+	<span class=" glyphicon glyphicon-home"></span> <strong>@Localization.BackToMainMenu</strong>
+</a>

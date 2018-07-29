@@ -1,0 +1,85 @@
+﻿@model TownUtilityBillSystemV2.Models.CustomerModels.Customer
+@using TownUtilityBillSystemV2.Resources
+
+@{
+	ViewBag.Title = Localization.EditCustomer;
+}
+
+<h2 class="header-bold">@Localization.EditCustomer</h2>
+
+@using (Html.BeginForm("EditCustomer", "Customer", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+	@Html.AntiForgeryToken()
+
+	<div class="form-horizontal">
+		<hr />
+		@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+		@Html.HiddenFor(model => model.Id)
+
+		<div class="form-group">
+			<label class="control-label col-md-2">@Localization.AccountNumber</label>
+			<div class="col-md-10">
+				@Html.EditorFor(model => model.Account.Number, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+				@Html.ValidationMessageFor(model => model.Account.Number, "", new { @class = "text-danger" })
+			</div>
+		</div>
+
+		@if (Model.Surname != null && Model.Surname != "")
+		{
+			<div class="form-group">
+				@Html.LabelFor(model => model.Surname, htmlAttributes: new { @class = "control-label col-md-2" })
+				<div class="col-md-10">
+					@Html.EditorFor(model => model.Surname, new { htmlAttributes = new { @class = "form-control" } })
+					@Html.ValidationMessageFor(model => model.Surname, "", new { @class = "text-danger" })
+				</div>
+			</div>
+		}
+		else
+		{
+			Model.Surname = "FooForValidation";
+			<div style="display:none;">
+				@Html.EditorFor(model => model.Surname, new { htmlAttributes = new { @class = "form-control" } })
+			</div>
+		}
+
+		<div class="form-group">
+			@Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+			<div class="col-md-10">
+				@Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+				@Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+			</div>
+		</div>
+
+		<div class="form-group">
+			@Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+			<div class="col-md-10">
+				@Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+				@Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+			</div>
+		</div>
+
+		<div class="form-group">
+			@Html.LabelFor(model => model.Phone, htmlAttributes: new { @class = "control-label col-md-2" })
+			<div class="col-md-10">
+				@Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control" } })
+				@Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label class="control-label col-md-2">@Localization.Customer @Localization.Type.ToLower()</label>
+			<div class="col-md-10">
+				@Html.DropDownListFor(model => model.CustomerType.Id, new SelectList(Model.CustomerTypes, "Id", "ResourceName"), Localization.SelectType, new { @class = "form-control" })
+				@Html.ValidationMessageFor(model => model.CustomerType.Id, "", new { @class = "text-danger" })
+			</div>
+		</div>
+
+		@Html.Partial("~/Views/Shared/_SaveCancelButtonsForEditView.cshtml")
+	</div>
+}
+
+@Html.Partial("~/Views/Shared/_BackToPreviousPagePartial.cshtml")
+
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.js")" type="text/javascript"></script>

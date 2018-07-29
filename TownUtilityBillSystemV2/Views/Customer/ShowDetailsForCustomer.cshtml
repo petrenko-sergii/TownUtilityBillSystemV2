@@ -1,0 +1,114 @@
+﻿@model TownUtilityBillSystemV2.Models.CustomerModels.CustomerModel
+@using TownUtilityBillSystemV2.Resources
+
+@{
+	ViewBag.Title = Localization.ShowDetailsForCustomer;
+	int rowNumber = 1;
+}
+
+@if (Model.Customer == null)
+{
+	<h2 class="header-bold">@Localization.SorryNoData</h2>
+}
+else
+{
+	<div class="row">
+		<div class="col-xs-4">
+			<h3 class="header-bold">@Localization.Customer:</h3>
+
+			<h4><strong> @Localization.AccountNumber:</strong> @Model.Customer.Account.Number</h4>
+			@if (Model.Customer.Surname == null)
+			{
+				<h4><strong> @Localization.Name:</strong> @Model.Customer.Name</h4>
+			}
+			else
+			{
+				<h4><strong> @Localization.Surname/@Localization.Name :</strong> @Model.Customer.Surname @Model.Customer.Name</h4>
+			}
+
+			<h4><strong> @Localization.Email:</strong> @Model.Customer.Email</h4>
+			<h4><strong> @Localization.Phone:</strong> @Model.Customer.Phone</h4>
+			<h4><strong> @Localization.Square:</strong> @Model.Customer.Address.Building.Square @Localization.SquareMeter</h4>
+			<h4><strong> @Localization.Type:</strong> @Model.Customer.CustomerType.ResourceName</h4>
+		</div>
+
+		<div class="col-xs-4">
+			<br />
+			<img src=@Model.Customer.Address.Building.ImagePath />
+		</div>
+		<div class="col-xs-4" id="mapCanvasDetailsForCustomer">
+		</div>
+	</div>
+
+	<hr />
+	<h4><strong> @Localization.Address:</strong> @Model.Customer.Address.Building.Number, @Model.Customer.Address.Street.Name @Localization.Str., @Model.Customer.Address.Town.Name, @Model.Customer.Address.Country @Model.Customer.Address.Index.Value</h4>
+	<hr />
+	<h4 class="header-bold"> @Localization.Meters:</h4>
+	<table class="table" id="meters_table">
+		<tr>
+			<th>#</th>
+			<th>@Localization.Serial #</th>
+			<th>@Localization.Type</th>
+			<th>@Localization.Utility</th>
+			<th>@Localization.Release</th>
+			<th>@Localization.Verification</th>
+			<th>@Localization.Options</th>
+		</tr>
+		@foreach (var item in Model.Meters)
+		{
+			<tr>
+				<td>@(rowNumber++)</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.SerialNumber)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.MeterType.Name)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.MeterType.Utility.ResourceName)
+				</td>
+				<td>
+					@item.ReleaseDate.Year.ToString()<text>-</text>@item.ReleaseDate.Month.ToString()<text>-</text>@item.ReleaseDate.Day
+				</td>
+				<td>
+					@item.VarificationDate.Year.ToString()<text>-</text>@item.VarificationDate.Month.ToString()<text>-</text>@item.VarificationDate.Day
+				</td>
+
+				<td>
+					@Html.ActionLink(Localization.Edit, "EditMeter", "Meter", new { meterId = item.Id }, null) |
+					@Html.ActionLink(Localization.Data, "ShowMeterData", "Meter", new { meterId = item.Id }, null) |
+					@Html.ActionLink(Localization.Delete, "DeleteMeter", "Meter", new { meterId = item.Id }, null)
+				</td>
+			</tr>
+		}
+
+	</table>
+	<hr />
+	<div class="row">
+		<div class="col-md-4 margin-top-20">
+			<a href="@Url.Action("ShowAllUtilityCharts", "Meter", new { customerId = @Model.Customer.Id }, null)" class="btn btn-primary btn-large btn-block">
+				<span class=" glyphicon glyphicon-stats"></span> @Localization.ShowAllUtilityUsage
+			</a>
+		</div>
+		<div class="col-md-4 margin-top-20">
+			<a href="@Url.Action("ShowAllBillsForCustomer", "Bill", new { customerId = @Model.Customer.Id }, null)" class="btn btn-primary btn-large btn-block">
+				<span class=" glyphicon glyphicon-usd"></span> @Localization.ShowAllBills
+			</a>
+		</div>
+	</div>
+}
+<hr />
+@Html.Partial("~/Views/Shared/_BackToPreviousPagePartial.cshtml")
+
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC7oyKXdpaKqurqotVj7_bhl9V9_7B5cMQ&libraries=places"></script>
+<script src="~/Scripts/appJsScripts/showDetailsForCustomer.js"></script>
+
+<script>
+	//variables for showDetailsForCustomer.js file
+    var country = @Html.Raw(Json.Encode(@ViewBag.currentAddressForJS.Country))
+    var town = @Html.Raw(Json.Encode(@ViewBag.currentAddressForJS.Town.Name));
+    var street = @Html.Raw(Json.Encode(@ViewBag.currentAddressForJS.Street.Name));
+    var building = @Html.Raw(Json.Encode(@ViewBag.currentAddressForJS.Building.Number));
+</script>
+

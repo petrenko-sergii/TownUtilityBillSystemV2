@@ -169,6 +169,8 @@ textarea {
 	margin: 0 auto
 }
 
+
+
 .temperaturteIcon {
 	width:auto;
 	height:40px;
@@ -202,6 +204,37 @@ textarea {
 	height: 450px;
 	margin: 0 auto;
 }
+
+#mapCanvasDetailsForCustomer {
+	width: 370px;
+	height: 250px;
+}
+
+#customerDataForFoundBills {
+	overflow: auto;
+}
+
+.font-size-15px {
+	font-size: 15px;
+}
+
+.font-size-17px {
+	font-size: 17px;
+}
+
+.red-color-text {
+	color:red;
+}
+
+.brown-color-text {
+	color: brown;
+}
+
+.font-size-17px-zeroTopPadding {
+	font-size: 17px;
+	padding-top: 0px !important;
+}
+
 
 
 

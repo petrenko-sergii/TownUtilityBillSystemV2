@@ -43,6 +43,16 @@ namespace TownUtilityBillSystemV2.Controllers
 			return View("~/Views/Utility/ShowUtility.cshtml", model);
 		}
 
+		#region Utility CRUD
+
+		public ActionResult CreateUtility()
+		{
+			//TO DO
+			ViewBag.Message = CustomizedMessages.NoAdministratorRightsMessage;
+
+			return View();
+		}
+
 		public ActionResult EditUtility(int utilityId)
 		{
 			var model = new UtilityModel();
@@ -67,5 +77,15 @@ namespace TownUtilityBillSystemV2.Controllers
 
 			return View();
 		}
+
+		public ActionResult DeleteUtility(int utilityId)
+		{
+			//TO DO
+			ViewBag.Message = CustomizedMessages.NoAdministratorRightsMessage;
+
+			return View();
+		}
+
+		#endregion
 	}
 }
