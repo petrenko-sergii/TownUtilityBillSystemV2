@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading;
 using System.Web;
 using TownUtilityBillSystemV2.Resources;
+using static TownUtilityBillSystemV2.Models.InitialDB.InitialDBEnums;
 
 namespace TownUtilityBillSystemV2.Models.HelperMethods
 {
@@ -180,12 +181,30 @@ namespace TownUtilityBillSystemV2.Models.HelperMethods
 			return fullMonthName;
 		}
 
-		static string UppercaseFirstLetter(string s)
+		 public static string UppercaseFirstLetter(string s)
 		{
 			if (string.IsNullOrEmpty(s))
 				return string.Empty;
 
 			return char.ToUpper(s[0]) + s.Substring(1);
+		}
+
+		public static string GetMonthNameAndYear(DateTime startDateForChart)
+		{
+			string monthNameAndYear;
+
+			if (startDateForChart.Month != 1)
+			{
+				Months month = (Months)(startDateForChart.Month - 1);
+				monthNameAndYear = GetResourceNameForMonth(month.ToString()) + " " + startDateForChart.Year;
+			}
+			else
+			{
+				Months month = Months.December;
+				monthNameAndYear = GetResourceNameForMonth(month.ToString()) + " " + startDateForChart.AddYears(-1).Year;
+			}
+
+			return monthNameAndYear;
 		}
 	}
 }

@@ -27,6 +27,8 @@ namespace TownUtilityBillSystemV2.Models.MeterModels
 		[Display(Name = "VarificationDate", ResourceType = typeof(Localization))]
 		public DateTime VarificationDate { get; set; }
 
+		public string VerificationNote { get; set; }
+
 		public float ConsumedMonthValue { get; set; }
 
 		public Address Address { get; set; }

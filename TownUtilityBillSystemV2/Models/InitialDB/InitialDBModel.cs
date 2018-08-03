@@ -9,6 +9,7 @@ using System.Web.Hosting;
 using static TownUtilityBillSystemV2.Models.InitialDB.InitialDBEnums;
 using TownUtilityBillSystemV2.Models;
 using TownUtilityBillSystemV2.Models.TemperatureModels;
+using TownUtilityBillSystemV2.Resources;
 
 namespace TownUtilityBillSystemV2.Models.InitialDB
 {
@@ -66,6 +67,7 @@ namespace TownUtilityBillSystemV2.Models.InitialDB
 			//FillNews();
 			//FillNewsTitles();
 			//FillNewsChapters();
+			FillPayments();
 		}
 
 		public static void FillUnits()
@@ -1410,6 +1412,28 @@ namespace TownUtilityBillSystemV2.Models.InitialDB
 							context.BILLs.Add(new BILL() { NUMBER = number, ACCOUNT_ID = c.ACCOUNT_ID, DATE = billDate, PERIOD = period, SUM = sum, PAID = paidFlag });
 					}
 				}
+				context.SaveChanges();
+			}
+		}
+
+		public static void FillPayments()
+		{
+			using (var context = new TownUtilityBillSystemV2Entities())
+			{
+				var billsDB = context.BILLs.Where(b => b.PAID).ToList();
+
+				foreach (BILL b in billsDB)
+				{
+					context.PAYMENTs.Add(new PAYMENT()
+					{
+						ID = Guid.NewGuid(),
+						SUM = b.SUM,
+						DATE = b.DATE.AddDays(rnd.Next(1, 4)),
+						NOTE = String.Format("{0} {1} {2}{3}", Localization.Payment, Localization.For, Localization.BillNum, b.NUMBER),
+						ACCOUNT_ID = b.ACCOUNT_ID
+					});
+				}
+
 				context.SaveChanges();
 			}
 		}

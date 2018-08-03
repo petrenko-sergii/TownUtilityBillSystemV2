@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="TownUtilityBillSystemV2Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+<Schema Namespace="TOWN_UTILITY_BILL_SYSTEM_V2Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
   <EntityType Name="ACCOUNT">
     <Key>
       <PropertyRef Name="ID" />
@@ -196,12 +196,11 @@
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="NUMBER" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ID" Type="Guid" Nullable="false" />
     <Property Name="SUM" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
     <Property Name="DATE" Type="DateTime" Nullable="false" Precision="0" />
-    <Property Name="NOTE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Name="ACCOUNT_ID" Type="Int32" Nullable="false" />
+    <Property Name="NOTE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="ACCOUNT" Relationship="Self.FK_PAYMENT_ACCOUNT_ID" FromRole="PAYMENT" ToRole="ACCOUNT" />
   </EntityType>
   <EntityType Name="STREET">
@@ -561,7 +560,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="TOWN_UTILITY_BILL_SYSTEM_V2Entities" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="TownUtilityBillSystemV2Entities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="ACCOUNTs" EntityType="Self.ACCOUNT" />
     <EntitySet Name="ADDRESSes" EntityType="Self.ADDRESS" />
     <EntitySet Name="BILLs" EntityType="Self.BILL" />

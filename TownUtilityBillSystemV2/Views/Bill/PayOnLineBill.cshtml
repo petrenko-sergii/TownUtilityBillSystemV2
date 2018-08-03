@@ -1,8 +1,10 @@
 ﻿@model TownUtilityBillSystemV2.Models.BillModels.BillModel
 @using TownUtilityBillSystemV2.Resources
+@using System.Threading
 
 @{
 	ViewBag.Title = Localization.PayOnLineBill;
+	Thread.CurrentThread.CurrentCulture.NumberFormat.NumberDecimalSeparator = ".";
 }
 
 <div class="jumbotron">
@@ -41,9 +43,11 @@
 	var billData = '@Localization.BillData';
 	var customer = '@Localization.Customer';
 	var billPeriod = '@Localization.BillPeriod';
+	var accountBalance = '@Localization.Account' + ' ' + '@Localization.Balance.ToLower()';
 	var billSum = '@Localization.BillSum';
 	var paidYes = '@Localization.Paid' + ': ' + '@Localization.Yes';
 	var paidNo = '@Localization.Paid' + ': ' + '@Localization.No';
+	var totalToPay = '@Localization.TotalToPay';
 	var canNotPayWarning = '@Localization.YouCanNotPayThisBillAgain';
 	var noBillIsFoundWarning = '@Localization.NoBillIsFoundWarning';
 </script>

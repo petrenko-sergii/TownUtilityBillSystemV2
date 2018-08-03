@@ -140,6 +140,11 @@ textarea {
 	height: 40px;
 }
 
+.temperature-icon-for-bill {
+	width: auto;
+	height: 37px
+}
+
 #utilityName {
 	color:red;
 }
@@ -166,6 +171,13 @@ textarea {
 .map-canvasForTemperatureView {
 	min-width: 310px;
 	height: 400px;
+	margin: 0 auto
+}
+
+.map-canvasUtilityUsage {
+	min-width: 310px;
+	max-width: 100%;
+	height: 320px;
 	margin: 0 auto
 }
 
@@ -214,6 +226,11 @@ textarea {
 	overflow: auto;
 }
 
+.font-size-5px-red {
+	font-size: 5px;
+	color: red;
+}
+
 .font-size-15px {
 	font-size: 15px;
 }
@@ -233,6 +250,23 @@ textarea {
 .font-size-17px-zeroTopPadding {
 	font-size: 17px;
 	padding-top: 0px !important;
+}
+
+.background-white {
+	background-color: white !important;
+	color: black !important;
+}
+
+.red-header {
+	color: red;
+}
+
+#utilitySupplierIcon {
+	width: 200px;
+}
+
+.text-indent {
+	text-indent: 40px;
 }
 
 

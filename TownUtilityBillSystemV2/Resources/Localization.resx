@@ -1004,4 +1004,52 @@ and generated a revenue in 2016 of DKK 61 billion (EUR 8.2 is one of Northern Eu
   <data name="TheBill" xml:space="preserve">
     <value>The bill</value>
   </data>
+  <data name="BillNum" xml:space="preserve">
+    <value>Bill #</value>
+  </data>
+  <data name="Payment" xml:space="preserve">
+    <value>Payment</value>
+  </data>
+  <data name="Bill" xml:space="preserve">
+    <value>Bill</value>
+  </data>
+  <data name="BillingDate" xml:space="preserve">
+    <value>Billing date</value>
+  </data>
+  <data name="Fax" xml:space="preserve">
+    <value>Fax</value>
+  </data>
+  <data name="ShowBill" xml:space="preserve">
+    <value>Show bill</value>
+  </data>
+  <data name="Supplier" xml:space="preserve">
+    <value>Supplier</value>
+  </data>
+  <data name="Charges" xml:space="preserve">
+    <value>Charges</value>
+  </data>
+  <data name="Consumed" xml:space="preserve">
+    <value>Consumed</value>
+  </data>
+  <data name="DownloadPdf" xml:space="preserve">
+    <value>Download PDF</value>
+  </data>
+  <data name="MeterNumber" xml:space="preserve">
+    <value>Meter number</value>
+  </data>
+  <data name="MonthAverageTemperature" xml:space="preserve">
+    <value>Month average temperature</value>
+  </data>
+  <data name="BalanceBeforeThisBill" xml:space="preserve">
+    <value>Balance before this bill</value>
+  </data>
+  <data name="BillCharges" xml:space="preserve">
+    <value>Bill charges</value>
+  </data>
+  <data name="MeterVerificationNote" xml:space="preserve">
+    <value>* The meter will be verificated next month. {0} years passed after the last verification (was on {1})</value>
+  </data>
+  <data name="TotalToPay" xml:space="preserve">
+    <value>Total to pay</value>
+  </data>
 </root>

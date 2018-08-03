@@ -7,8 +7,12 @@ using TownUtilityBillSystemV2.Models.Chart;
 using TownUtilityBillSystemV2.Models.Currency;
 using TownUtilityBillSystemV2.Models.CustomerModels;
 using TownUtilityBillSystemV2.Models.HelperMethods;
+using TownUtilityBillSystemV2.Models.MeterModels;
 using TownUtilityBillSystemV2.Models.TemperatureModels;
+using TownUtilityBillSystemV2.Models.UtilityModels;
 using TownUtilityBillSystemV2.Models.UtilitySupplier;
+using TownUtilityBillSystemV2.Resources;
+using static TownUtilityBillSystemV2.Models.InitialDB.InitialDBEnums;
 
 namespace TownUtilityBillSystemV2.Models.BillModels
 {
@@ -85,11 +89,13 @@ namespace TownUtilityBillSystemV2.Models.BillModels
 		{
 			using (var context = new TownUtilityBillSystemV2Entities())
 			{
-				var billDB = context.BILLs.Where(b => b.NUMBER == billNumber).FirstOrDefault();
+				BILL billDB = context.BILLs.Where(b => b.NUMBER == billNumber).FirstOrDefault();
+				Account account = context.ACCOUNTs.Where(a => a.ID == billDB.ACCOUNT_ID).Select(Account.Get).FirstOrDefault();
 
 				if (billDB != null)
 				{
 					Bill = Bill.Get(billDB);
+					Bill.Account = account;
 
 					var customerDB = context.CUSTOMERs.Where(c => c.ACCOUNT_ID == billDB.ACCOUNT_ID).FirstOrDefault();
 
@@ -145,6 +151,200 @@ namespace TownUtilityBillSystemV2.Models.BillModels
 			address = new Address() { Id = addressDB.ID, Index = index, Town = town, Street = street, Building = building, FlatPart = flatPart };
 		}
 
+		internal void GetBillDataWithAllUtilities(int bill_Id)
+		{
+			using (var context = new TownUtilityBillSystemV2Entities())
+			{
+				CUSTOMER customerDB = null;
+				float consumedMonthValue = 0;
+				float utilityCharges = 0;
+				List<MeterItem> meterItemList = new List<MeterItem>();
+
+				var billDB = context.BILLs.Find(bill_Id);
+
+				if (billDB != null)
+				{
+					Bill = Bill.Get(billDB);
+
+					var accountDB = context.ACCOUNTs.Where(a => a.ID == billDB.ACCOUNT_ID).FirstOrDefault();
+
+					customerDB = context.CUSTOMERs.Where(c => c.ACCOUNT_ID == accountDB.ID).FirstOrDefault();
+				}
+
+				if (customerDB != null)
+					GetCustomerDataForView(context, customerDB);
+				else
+					CustomerModel.Customer = null;
+
+				#region Initialization dates and variables for charts
+
+				float valueDifference;
+				string monthName;
+				string verificationNote;
+
+				DateTime localDate = DateTime.Now;
+				DateTime startDate = new DateTime();
+				DateTime finishDate = new DateTime();
+				DateTime startDateForChart = new DateTime();
+				DateTime finishDateForChart = new DateTime();
+
+				startDate = Convert.ToDateTime(Bill.Period + "-01");
+				finishDate = startDate.AddMonths(1);
+
+				int monthDifferenceBillPeriodAndStartUsageChart = 1;
+				int presChartYear = startDate.Year;
+				int startChartDay = 1;
+				int prevChartYear = presChartYear - 1;
+				int presChartMonth = startDate.Month;
+
+				#endregion
+
+				var metersDB = context.METERs.Where(m => m.ADDRESS_ID == CustomerModel.Customer.Address.Id).ToList();
+
+				foreach (var m in metersDB)
+				{
+					#region Filling meterItems for Utility Usage Charts
+
+					List<ChartData> chartData = new List<ChartData>();
+					meterItemList.Clear();
+
+					startDateForChart = new DateTime(prevChartYear, presChartMonth + monthDifferenceBillPeriodAndStartUsageChart, startChartDay);
+					finishDateForChart = startDate.AddMonths(1);
+
+					var meterTypeDB = context.METER_TYPEs.Where(mt => mt.ID == m.METER_TYPE_ID).FirstOrDefault();
+					var utilityDB = context.UTILITYs.Where(u => u.ID == meterTypeDB.UTILITY_ID).FirstOrDefault();
+					Utility utility;
+
+					if (utilityDB.USAGEFORSTANDARTPRICE != null && utilityDB.BIGUSAGEPRICE != null)
+						utility = Utility.GetUtilityWithBigUsagePrice(utilityDB);
+					else
+						utility = Utility.GetUtilityWithOutBigUsagePrice(utilityDB);
+
+					if (utility.Id == (int)Utilities.Heating)
+						GetTemperatureHistory(this, m.ADDRESS.TOWN_ID);
+
+					meterItemList = context.METER_ITEMs.Where(mi => mi.METER_ID == m.ID).Select(MeterItem.GetMeterItemWithOutMeter).ToList();
+
+					#region Getting chartData for every customer's meter 
+
+					if (meterItemList.Count != 0)
+					{
+						for (; startDateForChart <= finishDateForChart; startDateForChart = startDateForChart.AddMonths(1))
+						{
+							var startElValue = meterItemList.FirstOrDefault(ml => ml.Date == startDateForChart.AddMonths(-1)).Value;
+							var finishElValue = meterItemList.FirstOrDefault(ml => ml.Date == startDateForChart).Value;
+							valueDifference = (float)Math.Round(finishElValue - startElValue, 2);
+
+							monthName = HelperMethod.GetMonthNameAndYear(startDateForChart);
+
+							chartData.Add(new ChartData() { MonthName = monthName, Value = valueDifference });
+						}
+					}
+
+					#endregion
+
+					#endregion
+
+					var meterType = new MeterType() { Id = meterTypeDB.ID, Name = meterTypeDB.NAME, VarificationPeriod = meterTypeDB.VARIFICATION_PERIOD_YEARS, Utility = utility };
+
+					consumedMonthValue = GetConsumedMonthValue(startDate, finishDate, m);
+
+					if (m.METER_TYPE.UTILITY_ID == (int)Utilities.Electricity && consumedMonthValue > (float)m.METER_TYPE.UTILITY.USAGEFORSTANDARTPRICE)
+						utilityCharges = (float)m.METER_TYPE.UTILITY.USAGEFORSTANDARTPRICE * (float)m.METER_TYPE.UTILITY.PRICE + (consumedMonthValue - (float)m.METER_TYPE.UTILITY.USAGEFORSTANDARTPRICE) * (float)m.METER_TYPE.UTILITY.BIGUSAGEPRICE;
+					else
+						utilityCharges = consumedMonthValue * (float)m.METER_TYPE.UTILITY.PRICE;
+
+					UtilityChargesChartData.Add(new ChartData() { UtilityCharges = (float)Math.Round(utilityCharges, 2) });
+
+					verificationNote = GetVerificationNoteForMeter(m, meterType);
+
+					CustomerModel.Meters.Add(new Meter()
+					{
+						Id = m.ID,
+						SerialNumber = m.SERIAL_NUMBER,
+						ReleaseDate = m.RELEASE_DATE,
+						VarificationDate = m.VARIFICATION_DATE,
+						MeterType = meterType,
+						ConsumedMonthValue = consumedMonthValue,
+						ChartData = chartData,
+						VerificationNote = verificationNote
+					});
+				}
+			}
+		}
+
+		private string GetVerificationNoteForMeter(METER meter, MeterType meterType)
+		{
+			var age = Bill.Date.Year - meter.VARIFICATION_DATE.Year;
+
+			if (meter.VARIFICATION_DATE > Bill.Date.AddYears(-age))
+				age--;
+
+			return (age >= meterType.VarificationPeriod) ?
+				String.Format(Localization.MeterVerificationNote, 
+				meterType.VarificationPeriod, meter.VARIFICATION_DATE.ToString("dd MM yyyy")) :
+				String.Empty;
+		}
+
+		private static float GetConsumedMonthValue(DateTime startDate, DateTime finishDate, METER meter)
+		{
+			using (var context = new TownUtilityBillSystemV2Entities())
+			{
+				float consumedMonthValue;
+
+				var startMeterItem = (from item in context.METER_ITEMs
+									  where item.METER_ID == meter.ID && item.DATE == startDate
+									  select item).FirstOrDefault();
+
+				var finishMeterItem = (from item in context.METER_ITEMs
+									   where item.METER_ID == meter.ID && item.DATE == finishDate
+									   select item).FirstOrDefault();
+
+				consumedMonthValue = finishMeterItem.VALUE - startMeterItem.VALUE;
+
+				return consumedMonthValue;
+			}
+		}
+
+		private static void GetTemperatureHistory(BillModel model, int townId)
+		{
+			using (var context = new TownUtilityBillSystemV2Entities())
+			{
+				List<Temperature> temperaturesDB = new List<Temperature>();
+				DateTime temperatureStartDate = new DateTime();
+				DateTime temperatureFinishDate = new DateTime();
+				int temperatureYearsHistory = 2;
+				float valueSum = 0;
+				float averageValue;
+				string fullMonthName = "";
+
+				temperatureStartDate = Convert.ToDateTime(model.Bill.Period + "-01");
+				temperatureStartDate = temperatureStartDate.AddYears(-1);
+				temperatureFinishDate = temperatureStartDate.AddMonths(1);
+
+				temperaturesDB = context.TEMPERATUREs.Where(t => t.TOWN_ID == townId).Select(Temperature.Get).ToList();
+
+				for (int j = 0; j < temperatureYearsHistory; j++)
+				{
+					for (; temperatureStartDate < temperatureFinishDate; temperatureStartDate = temperatureStartDate.AddDays(1))
+						valueSum += (float)(temperaturesDB.FirstOrDefault(t => t.Date == temperatureStartDate).MinValue +
+							temperaturesDB.FirstOrDefault(t => t.Date == temperatureStartDate).MaxValue) / 2;
+
+					temperatureStartDate = temperatureStartDate.AddMonths(-1);
+					fullMonthName = HelperMethod.UppercaseFirstLetter(temperatureStartDate.ToString("MMMM yyyy"));
+
+					averageValue = valueSum / System.DateTime.DaysInMonth(temperatureStartDate.Year, temperatureStartDate.Month);
+
+					model.Temperatures.Add(new TemperatureModel() { AverageValue = (float)Math.Round(averageValue, 1), MonthName = fullMonthName });
+
+					temperatureStartDate = temperatureStartDate.AddYears(1);
+					temperatureFinishDate = temperatureStartDate.AddMonths(1);
+
+					valueSum = 0;
+				}
+			}
+		}
+
 		internal void FindBills(string searchString)
 		{
 			using (var context = new TownUtilityBillSystemV2Entities())
@@ -174,10 +374,10 @@ namespace TownUtilityBillSystemV2.Models.BillModels
 
 
 				var billsDBFoundByBillData = (from b in context.BILLs
-							   where
-								   b.NUMBER.Contains(searchString) ||
-								   b.PERIOD.Contains(billPeriod)
-							   select b)
+											  where
+												  b.NUMBER.Contains(searchString) ||
+												  b.PERIOD.Contains(billPeriod)
+											  select b)
 							   .ToList();
 
 				var allBills = billsDBFoundByCustomerData.Concat(billsDBFoundByBillData).OrderBy(b => b.NUMBER).ToList();
@@ -218,7 +418,7 @@ namespace TownUtilityBillSystemV2.Models.BillModels
 					CustomerModel.Customer = null;
 			}
 		}
-
+		
 		private void GetCustomerDataForView(TownUtilityBillSystemV2Entities context, CUSTOMER customerDB)
 		{
 			CustomerType customerType;

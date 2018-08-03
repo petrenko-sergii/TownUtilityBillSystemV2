@@ -464,6 +464,8 @@
     <Content Include="Scripts\cldr\event.js" />
     <Content Include="Scripts\cldr\supplemental.js" />
     <Content Include="Scripts\cldr\unresolved.js" />
+    <Content Include="Scripts\html2canvas.js" />
+    <Content Include="Scripts\jspdf.min.js" />
     <Content Include="TownUtilityBillSystemV2.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>TownUtilityBillSystemV2.edmx</DependentUpon>
@@ -527,13 +529,6 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="tsconfig.json" />
     <Content Include="Views\News\_NewsAllPartial.cshtml" />
-    <EntityDeploy Include="TownUtilityBillSystemV2.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>TownUtilityBillSystemV2.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="TownUtilityBillSystemV2.edmx.diagram">
-      <DependentUpon>TownUtilityBillSystemV2.edmx</DependentUpon>
-    </Content>
     <Content Include="Views\News\News.cshtml" />
     <Content Include="Views\News\ShowSingleNews.cshtml" />
     <Content Include="Views\Utility\ShowUtilities.cshtml" />
@@ -586,6 +581,14 @@
     <Content Include="Views\Bill\PayOnLineBill.cshtml" />
     <Content Include="Views\Bill\PaymentCardForm.cshtml" />
     <Content Include="Views\Bill\ShowBillPaidInfo.cshtml" />
+    <Content Include="Views\Bill\ShowBill.cshtml" />
+    <EntityDeploy Include="TownUtilityBillSystemV2.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>TownUtilityBillSystemV2.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="TownUtilityBillSystemV2.edmx.diagram">
+      <DependentUpon>TownUtilityBillSystemV2.edmx</DependentUpon>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

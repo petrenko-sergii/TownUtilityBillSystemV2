@@ -27,7 +27,9 @@ namespace TownUtilityBillSystemV2
 			ClientDataTypeModelValidatorProvider.ResourceClassKey = "ErrorMessages";
 			DefaultModelBinder.ResourceClassKey = "ErrorMessages";
 
-			//Initialize DB if it is empty
+			/// <summary>
+			/// Initialize DB if it is empty
+			/// </summary>
 			//initialDbCtrl = new InitialDBController();
 		}
 

@@ -89,7 +89,7 @@
 			<div class="form-group">
 				@Html.Label(Localization.PayingSum + " (" + Model.Currency.Name + ")", htmlAttributes: new { @class = "control-label col-md-3 font-size-17px-zeroTopPadding" })
 				<div class="col-md-9">
-					@Html.EditorFor(model => model.PayingSum, new { htmlAttributes = new { @class = "form-control", @Value = Model.Bill.Sum } })
+					@Html.EditorFor(model => model.PayingSum, new { htmlAttributes = new { @class = "form-control", @Value = Model.PayingSum } })
 					@Html.ValidationMessageFor(model => model.PayingSum, "", new { @class = "text-danger font-size-15px" })
 				</div>
 			</div>

@@ -1,0 +1,330 @@
+﻿@model TownUtilityBillSystemV2.Models.BillModels.BillModel
+@using TownUtilityBillSystemV2.Controllers
+@using TownUtilityBillSystemV2.Resources
+@using System.Threading
+
+@{
+	ViewBag.Title = Localization.ShowBill;
+	Thread.CurrentThread.CurrentCulture.NumberFormat.NumberDecimalSeparator = ".";
+	var j = 0;
+	var k = 0;
+}
+
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+
+@if (Model.Bill == null)
+{
+	<h2 class="header-bold">@Localization.SorryNoData</h2>
+}
+else
+{
+	<div class="container-fluid" id="testDiv">
+		<div class="row">
+			<div class="col-xs-4 background-white" id="supplierData">
+				<h4 class="header-bold">@Localization.Supplier:</h4>
+				<h5 class="red-header header-bold">@Model.UtilitySupplierModel.UtilitySupplier.Name</h5>
+				<h5>@Model.UtilitySupplierModel.UtilitySupplier.Address</h5>
+				<h5>@Localization.Phone/@Localization.Fax: @Model.UtilitySupplierModel.UtilitySupplier.Phone / @Model.UtilitySupplierModel.UtilitySupplier.Fax</h5>
+				<a href="https://@Model.UtilitySupplierModel.UtilitySupplier.Site.ToString()" target="_blank">@Model.UtilitySupplierModel.UtilitySupplier.Site</a>
+				<h5>@Localization.Email: @Model.UtilitySupplierModel.UtilitySupplier.Email</h5>
+				<h5>@Model.UtilitySupplierModel.UtilitySupplier.Bank (@Localization.Account @Localization.Details.ToLower(): @Model.UtilitySupplierModel.UtilitySupplier.AccountDetails)</h5>
+			</div>
+
+			<div class="col-xs-4 background-white" id="customerData">
+				<h4 class="header-bold">@Localization.Customer:</h4>
+				@if (Model.CustomerModel.Customer.Surname == null)
+				{
+					<h5 class="header-bold">@Model.CustomerModel.Customer.Name</h5>
+				}
+				else
+				{
+					<h5 class="header-bold">@Model.CustomerModel.Customer.Surname @Model.CustomerModel.Customer.Name </h5>
+				}
+				<h5>
+					@Model.CustomerModel.Customer.Address.Building.Number, @Model.CustomerModel.Customer.Address.Street.Name @Localization.Str.ToLower(),
+					@Model.CustomerModel.Customer.Address.Town.Name, @Model.CustomerModel.Customer.Address.Country @Model.CustomerModel.Customer.Address.Index.Value
+				</h5>
+				<h5>@Localization.Account #: @Model.CustomerModel.Customer.Account.Number</h5>
+				<h5>@Localization.Phone: @Model.CustomerModel.Customer.Phone</h5>
+				<h5>@Localization.Email: @Model.CustomerModel.Customer.Email</h5>
+				<h5>@Localization.Type: @Model.CustomerModel.Customer.CustomerType.ResourceName</h5>
+				<h5>@Localization.Square: @Model.CustomerModel.Customer.Address.Building.Square @Localization.SquareMeter</h5>
+			</div>
+
+			<div class="col-xs-4" id="supplierData">
+				<br />
+				@if (Model.CustomerModel.Customer.Address.Building.ImagePath != "")
+				{
+					<img src=@Model.CustomerModel.Customer.Address.Building.ImagePath />
+				}
+			</div>
+		</div>
+		<hr />
+
+		<div class="row">
+			<div class="col-xs-6" id="utilityData">
+				<img src=@Model.UtilitySupplierModel.UtilitySupplier.ImageIconPath id="utilitySupplierIcon" />
+				<br />
+				<font size="5"><strong>@Localization.Bill #@Model.Bill.Number </strong></font>
+				<h5><strong>@Localization.BillingDate: </strong>@Model.Bill.Date.Year.ToString()<text>-</text>@Model.Bill.Date.Month.ToString()<text>-</text>@Model.Bill.Date.Day.ToString()  </h5>
+				<h5 class="header-bold">@Localization.Period: <mark class="mark-yellow">@Model.Bill.Period</mark></h5>
+				<h5 class="header-bold">@Localization.Account @Localization.Balance.ToLower(): @Model.CustomerModel.Customer.Account.Balance @Model.Currency.Name</h5>
+
+				<br />
+				@for (int i = 0; i < Model.UtilityChargesChartData.Count; i++)
+				{
+					if (Model.UtilityChargesChartData[i].UtilityCharges != 0)
+					{
+						<h5><strong>@Model.CustomerModel.Meters[i].MeterType.Utility.ResourceName @Localization.Charges.ToLower(): @Model.UtilityChargesChartData[i].UtilityCharges @Model.Currency</strong></h5>
+					}
+				}
+				<br />
+
+				@if (@Model.Bill.Paid == true)
+				{
+					<h4 class="header-bold">@Localization.BillCharges: <mark class="mark-yellow"> @Model.Bill.Sum @Model.Currency.Name </mark></h4>
+					<h5 class="header-bold">@Localization.Paid: <mark class="mark-yellow">@Localization.Yes</mark></h5>
+				}
+				else
+				{
+					var totalToPay = Model.CustomerModel.Customer.Account.Balance + Model.Bill.Sum;
+					<h4 class="header-bold">@Localization.BillCharges: @Model.Bill.Sum @Model.Currency.Name</h4>
+					<h5 class="header-bold">@Localization.Paid: <mark class="mark-yellow">@Localization.No</mark></h5>
+					<h4 class="header-bold"> @Localization.TotalToPay: <mark class="mark-yellow">@totalToPay @Model.Currency.Name</mark></h4>
+				}
+			</div>
+			<div class="col-xs-6" id="containerUtilitiesCharges"></div>
+		</div>
+		<hr />
+		<div class="row">
+			@for (int i = 0; i < Model.CustomerModel.Meters.Count; i++, j++)
+			{
+				string nameContainer = "container" + i.ToString();
+
+				if (Model.CustomerModel.Meters[i].ConsumedMonthValue != 0)
+				{
+					decimal utilityCharges = (decimal)Model.CustomerModel.Meters[i].ConsumedMonthValue * (@Model.CustomerModel.Meters[i].MeterType.Utility.Price);
+					utilityCharges = Math.Round(utilityCharges, 2);
+
+					<div class="col-xs-4" id="utilityData">
+						<br />
+						<br />
+						<br />
+						@if (Model.CustomerModel.Meters[i].MeterType.Utility.ImagePath != "")
+						{
+							<img src=@Model.CustomerModel.Meters[i].MeterType.Utility.ImagePath class="utility-icon-height-40px" />
+						}
+
+						<font color="red" size="5"> <strong>@Model.CustomerModel.Meters[i].MeterType.Utility.ResourceName.ToUpper()</strong></font>
+						<h5>@Localization.MeterNumber: <strong>@Model.CustomerModel.Meters[i].SerialNumber</strong></h5>
+						<h5>@Localization.MeterType: @Model.CustomerModel.Meters[i].MeterType.Name</h5>
+						<h5>@Localization.Period: @Model.Bill.Period</h5>
+
+						@if (Model.CustomerModel.Meters[i].MeterType.Utility.Id == 1 && Model.CustomerModel.Meters[i].ConsumedMonthValue > (float)Model.CustomerModel.Meters[i].MeterType.Utility.UsageForStandartPrice)
+						{
+							var usageWithBiggerPrice = (decimal)Model.CustomerModel.Meters[i].ConsumedMonthValue - Model.CustomerModel.Meters[i].MeterType.Utility.UsageForStandartPrice;
+							var utilityChargesWithPrices = (decimal)Model.CustomerModel.Meters[i].MeterType.Utility.UsageForStandartPrice * @Model.CustomerModel.Meters[i].MeterType.Utility.Price + usageWithBiggerPrice * @Model.CustomerModel.Meters[i].MeterType.Utility.BigUsagePrice;
+							usageWithBiggerPrice = Math.Round(usageWithBiggerPrice, 2);
+							utilityChargesWithPrices = Math.Round(utilityChargesWithPrices, 2);
+
+							<p>
+								@Localization.Consumed: <strong>@Math.Round(Model.CustomerModel.Meters[i].MeterType.Utility.UsageForStandartPrice, 0) </strong> @Model.CustomerModel.Meters[i].MeterType.Utility.Unit.Name
+								x <strong>
+									@Model.CustomerModel.Meters[i].MeterType.Utility.Price
+								</strong> @Model.Currency.Name + <br /> + <strong>
+									@usageWithBiggerPrice
+								</strong> @Model.CustomerModel.Meters[i].MeterType.Utility.Unit.Name
+								x <strong> @Model.CustomerModel.Meters[i].MeterType.Utility.BigUsagePrice </strong> @Model.Currency.Name= <strong> @utilityChargesWithPrices </strong> @Model.Currency.Name;
+							</p>
+						}
+						else
+						{
+							var consumedMonthValue = @Model.CustomerModel.Meters[i].ConsumedMonthValue;
+							consumedMonthValue = (float)Math.Round(consumedMonthValue, 2);
+							<p>
+								@Localization.Consumed: <strong> @consumedMonthValue </strong> @Model.CustomerModel.Meters[i].MeterType.Utility.Unit.Name
+								x <strong> @Model.CustomerModel.Meters[i].MeterType.Utility.Price </strong> @Model.Currency.Name = <strong> @utilityCharges </strong> @Model.Currency.Name;
+							</p>
+						}
+						@if (!String.IsNullOrEmpty(Model.CustomerModel.Meters[i].VerificationNote))
+						{
+							<p>@Model.CustomerModel.Meters[i].VerificationNote</p>
+						}
+						@if (Model.CustomerModel.Meters[i].MeterType.Utility.Id == 3)
+						{
+							<img src=@Model.TempearatureIconPath class="temperature-icon-for-bill" />
+							<text>@Localization.MonthAverageTemperature: </text>
+							<br />
+							<p class="text-indent">@Model.Temperatures[0].MonthName: @Model.Temperatures[0].AverageValue °C</p>
+							<p class="text-indent">@Model.Temperatures[1].MonthName: @Model.Temperatures[1].AverageValue °C</p>
+						}
+					</div>
+					<div id=@nameContainer class="col-xs-8 map-canvasUtilityUsage"></div>
+					<script language="javascript" type="text/javascript">
+                        CreateUsageChart();
+
+                        function CreateUsageChart() {
+        var containerName = 'container' + '@j.ToString()';
+        Highcharts.chart(containerName, {
+            chart: {
+                type: 'bar'
+            },
+            title: {
+                text: '@Model.CustomerModel.Meters[j].MeterType.Utility.ResourceName'+ ' consumption history'
+            },
+            xAxis: {
+                categories: [
+                    '@Model.CustomerModel.Meters[j].ChartData[0].MonthName',
+                    '@Model.CustomerModel.Meters[j].ChartData[1].MonthName',
+                    '@Model.CustomerModel.Meters[j].ChartData[2].MonthName',
+                    '@Model.CustomerModel.Meters[j].ChartData[3].MonthName',
+                    '@Model.CustomerModel.Meters[j].ChartData[4].MonthName',
+                    '@Model.CustomerModel.Meters[j].ChartData[5].MonthName',
+                    '@Model.CustomerModel.Meters[j].ChartData[6].MonthName',
+                   ' @Model.CustomerModel.Meters[j].ChartData[7].MonthName',
+                    '@Model.CustomerModel.Meters[j].ChartData[8].MonthName',
+                    '@Model.CustomerModel.Meters[j].ChartData[9].MonthName',
+                    ' @Model.CustomerModel.Meters[j].ChartData[10].MonthName',
+                   ' @Model.CustomerModel.Meters[j].ChartData[11].MonthName',
+                   ' @Model.CustomerModel.Meters[j].ChartData[12].MonthName'
+                ],
+                title: {
+                        text: null
+                },
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: 'Value, ' + '@Model.CustomerModel.Meters[j].MeterType.Utility.Unit.Name',
+                    align: 'high'
+                },
+                labels: {
+                    overflow: 'justify'
+                }
+            },
+            tooltip: {
+                valueSuffix: ' @Model.CustomerModel.Meters[j].MeterType.Utility.Unit.Name'
+            },
+            plotOptions: {
+                bar: {
+                    dataLabels: {
+                        enabled: true
+                    }
+                }
+            },
+            legend: {
+                enabled: false,
+            },
+            credits: {
+                enabled: false
+            },
+            series: [{
+                name: 'Value',
+                data: [
+                    @Model.CustomerModel.Meters[j].ChartData[0].Value,
+                    @Model.CustomerModel.Meters[j].ChartData[1].Value,
+                    @Model.CustomerModel.Meters[j].ChartData[2].Value,
+                    @Model.CustomerModel.Meters[j].ChartData[3].Value,
+                    @Model.CustomerModel.Meters[j].ChartData[4].Value,
+                    @Model.CustomerModel.Meters[j].ChartData[5].Value,
+                    @Model.CustomerModel.Meters[j].ChartData[6].Value,
+                    @Model.CustomerModel.Meters[j].ChartData[7].Value,
+                    @Model.CustomerModel.Meters[j].ChartData[8].Value,
+                    @Model.CustomerModel.Meters[j].ChartData[9].Value,
+                    @Model.CustomerModel.Meters[j].ChartData[10].Value,
+                    @Model.CustomerModel.Meters[j].ChartData[11].Value,
+                    @Model.CustomerModel.Meters[j].ChartData[12].Value
+                ]
+            }]
+        });
+    }
+					</script>
+					<hr />
+				}
+			}
+		</div>
+	</div>
+	<a href="javascript:genPDF()" class="btn btn-link btn-large">
+		<span class=" glyphicon glyphicon-save"></span> <strong> @Localization.DownloadPdf</strong>
+	</a>
+	<br />
+	@Html.Partial("~/Views/Shared/_BackToPreviousPagePartial.cshtml")
+}
+
+<script src="~/Scripts/jspdf.min.js"></script>
+<script src="~/Scripts/html2canvas.js"></script>
+
+<script>
+	function genPDF() {
+	    html2canvas(document.getElementById("testDiv"), {
+	        onrendered: function (canvas) {
+	            var img = canvas.toDataURL("image/png");
+	            var doc = new jsPDF();
+	            var pdfDocName = "Bill_" + '@Model.Bill.Number' + "_" + '@Model.CustomerModel.Customer.Surname' + '@Model.CustomerModel.Customer.Name';
+	           doc.addImage(img, 'png', 10, 10, 200, 287);
+	           doc.save(pdfDocName);
+	        }
+	    });
+	}
+</script>
+
+<script>
+	$(document).ready(function ()
+	{
+		Highcharts.chart('containerUtilitiesCharges', {
+                        chart: {
+                            plotBackgroundColor: null,
+                            plotBorderWidth: 0,
+                            plotShadow: false
+                        },
+                        title: {
+                            text: 'Utilities<br>charges',
+                            align: 'center',
+                            verticalAlign: 'middle',
+                            y: 40
+                        },
+                        tooltip: {
+                            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                        },
+                        plotOptions: {
+                            pie: {
+                                dataLabels: {
+                                    enabled: true,
+                                    distance: -50,
+                                    style: {
+                                        fontWeight: 'bold',
+                                        color: 'white'
+                                    }
+                                },
+                                startAngle: -90,
+                                endAngle: 90,
+                                center: ['50%', '75%']
+                            }
+                        },
+                        series: [{
+                            type: 'pie',
+                            name: 'Value',
+                            innerSize: '50%',
+                            data: [
+                                ['@Model.CustomerModel.Meters[k].MeterType.Utility.ResourceName', @Model.UtilityChargesChartData[k++].UtilityCharges],
+                                ['@Model.CustomerModel.Meters[k].MeterType.Utility.ResourceName', @Model.UtilityChargesChartData[k++].UtilityCharges],
+                                ['@Model.CustomerModel.Meters[k].MeterType.Utility.ResourceName', @Model.UtilityChargesChartData[k++].UtilityCharges],
+                                ['@Model.CustomerModel.Meters[k].MeterType.Utility.ResourceName', @Model.UtilityChargesChartData[k++].UtilityCharges],
+                                {
+                                    name: 'Proprietary or Undetectable',
+                                    y: 0.2,
+                                    dataLabels: {
+                                        enabled: false
+                                    }
+                                }
+                            ]
+                        }]
+                        });
+                        })
+</script>
+
+
+
+

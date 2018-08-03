@@ -12,5 +12,16 @@ namespace TownUtilityBillSystemV2.Models.TemperatureModels
 		public int MinValue { get; set; }
 		public int MaxValue { get; set; }
 		public int TownId { get; set; }
+
+		public static Temperature Get(TEMPERATURE t)
+		{
+			return new Temperature
+			{
+				Id = t.ID,
+				Date = t.DATE,
+				MinValue = t.MINVALUE,
+				MaxValue = t.MAXVALUE
+			};
+		}
 	}
 }

@@ -26,7 +26,9 @@ $(document).ready(function ()
 				{
 					$("#customerData").append("<h4> <strong>" + customer +": " + data.CustomerModel.Customer.Name + "</strong></h4>")
 				}
-				$("#customerData").append("<h4><strong>" + billPeriod +": " + data.Bill.Period + "</strong></h4>")
+				$("#customerData").append("<h4><strong>" + billPeriod + ": " + data.Bill.Period + "</strong></h4>")
+				$("#customerData").append("<h4><strong>" + accountBalance + ": " + data.Bill.Account.Balance + " " + data.Currency.Name + "</strong></h4>")
+
 				$("#customerData").append("<h4><strong>" + billSum + ": " + data.Bill.Sum + " " + data.Currency.Name + "</strong></h4>")
 
 
@@ -38,7 +40,10 @@ $(document).ready(function ()
 				}
 				else
 				{
+					var totalSumToPay = data.Bill.Sum + data.Bill.Account.Balance;
+
 					$("#customerData").append("<h4><strong>" + paidNo + "</strong></h4>")
+					$("#customerData").append("<h4><strong>" + totalToPay + ': ' + "<mark class='mark-yellow'>" + totalSumToPay + "</mark> " + data.Currency.Name + "</strong></h4>")
 					payBillDiv.style.visibility = "visible";
 				}
 			}

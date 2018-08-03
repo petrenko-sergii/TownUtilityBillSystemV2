@@ -14,12 +14,11 @@ namespace TownUtilityBillSystemV2
     
     public partial class PAYMENT
     {
-        public int ID { get; set; }
-        public string NUMBER { get; set; }
+        public System.Guid ID { get; set; }
         public decimal SUM { get; set; }
         public System.DateTime DATE { get; set; }
-        public string NOTE { get; set; }
         public int ACCOUNT_ID { get; set; }
+        public string NOTE { get; set; }
     
         public virtual ACCOUNT ACCOUNT { get; set; }
     }

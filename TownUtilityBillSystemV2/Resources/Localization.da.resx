@@ -1004,4 +1004,52 @@ omdannelse og afhændelse af vores opstrøms olie- og gasvirksomhed, er det ikke
   <data name="TheBill" xml:space="preserve">
     <value>Faktura</value>
   </data>
+  <data name="BillNum" xml:space="preserve">
+    <value>Regning #</value>
+  </data>
+  <data name="Payment" xml:space="preserve">
+    <value>Betaling</value>
+  </data>
+  <data name="Bill" xml:space="preserve">
+    <value>Regning</value>
+  </data>
+  <data name="BillingDate" xml:space="preserve">
+    <value>Faktureringsdato</value>
+  </data>
+  <data name="Fax" xml:space="preserve">
+    <value>Fax</value>
+  </data>
+  <data name="ShowBill" xml:space="preserve">
+    <value>Vis regning</value>
+  </data>
+  <data name="Supplier" xml:space="preserve">
+    <value>Leverandør</value>
+  </data>
+  <data name="Charges" xml:space="preserve">
+    <value>Afgifter</value>
+  </data>
+  <data name="Consumed" xml:space="preserve">
+    <value>Forbrugt</value>
+  </data>
+  <data name="DownloadPdf" xml:space="preserve">
+    <value>Hent PDF</value>
+  </data>
+  <data name="MeterNumber" xml:space="preserve">
+    <value>Meter nummer</value>
+  </data>
+  <data name="MonthAverageTemperature" xml:space="preserve">
+    <value>Månedens gennemsnitstemperatur</value>
+  </data>
+  <data name="BalanceBeforeThisBill" xml:space="preserve">
+    <value>Balance før denne regning</value>
+  </data>
+  <data name="BillCharges" xml:space="preserve">
+    <value>Bill afgift</value>
+  </data>
+  <data name="MeterVerificationNote" xml:space="preserve">
+    <value>* Måleren vil blive verificeret næste måned. {0} år efter sidste kontrol (var på {1})</value>
+  </data>
+  <data name="TotalToPay" xml:space="preserve">
+    <value>Samlet at betale</value>
+  </data>
 </root>

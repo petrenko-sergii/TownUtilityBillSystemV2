@@ -4,6 +4,7 @@ using System.Data.Entity;
 using System.Data.Entity.Validation;
 using System.Linq;
 using System.Web;
+using TownUtilityBillSystemV2.Resources;
 
 namespace TownUtilityBillSystemV2.Models.PaymentModels
 {
@@ -30,10 +31,11 @@ namespace TownUtilityBillSystemV2.Models.PaymentModels
 
 						#region PAYMENT creation
 
-						string guidString = Guid.NewGuid().ToString();
-						//ID = Guid.NewGuid()
-
-						var newPayment = new PAYMENT() {NUMBER = billDB.NUMBER, SUM = billDB.SUM, DATE = billDB.DATE, ACCOUNT_ID = billDB.ACCOUNT_ID };
+						//TO DO
+						var newPayment = new PAYMENT() {ID = Guid.NewGuid(), SUM = billDB.SUM,
+							DATE = billDB.DATE, ACCOUNT_ID = billDB.ACCOUNT_ID,
+							NOTE = String.Format("{0} {1} {2}{3}", Localization.Payment,Localization.For, Localization.BillNum, billDB.NUMBER)
+						};
 
 						context.PAYMENTs.Add(newPayment);
 

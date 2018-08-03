@@ -1,14 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
-using System.Web;
 using System.Web.Mvc;
-using TownUtilityBillSystemV2.Models.AddressModels;
+using TownUtilityBillSystemV2.Models.AccountModels;
 using TownUtilityBillSystemV2.Models.BillModels;
-using TownUtilityBillSystemV2.Models.CustomerModels;
 using TownUtilityBillSystemV2.Models.Customized;
-using TownUtilityBillSystemV2.Models.HelperMethods;
 using TownUtilityBillSystemV2.Models.PaymentCardModels;
 using TownUtilityBillSystemV2.Models.PaymentModels;
 using TownUtilityBillSystemV2.Resources;
@@ -46,25 +42,6 @@ namespace TownUtilityBillSystemV2.Controllers
 			model.GetAllBillsForCustomer(customerId);
 
 			return View(model);
-
-			//using (var context = new TownUtilityBillSystemV2Entities())
-			//{
-			//	var model = new BillModel();
-			//	//var billsDB = context.BILLs.Where(b => b.CUSTOMER_ID == customerId).ToList();
-			//	var customerDB = context.CUSTOMERs.Find(customerId);
-			//	var accountDB = context.ACCOUNTs.Where(a => a.ID == customerDB.ACCOUNT_ID).FirstOrDefault();
-			//	var billsDB = context.BILLs.Where(b => b.ACCOUNT_ID == accountDB.ID).ToList();
-
-			//	if (customerDB != null)
-			//		GetCustomerDataForView(context, model, customerDB);
-			//	else
-			//		model.CustomerModel.Customer = null;
-
-			//	foreach (var b in billsDB)
-			//		model.Bills.Add(new Bill() { Id = b.ID, Date = b.DATE, Number = b.NUMBER, Period = HelperMethod.GetFullMonthName(b.PERIOD), Sum = b.SUM, Paid = b.PAID });
-
-			//	return View(model);
-			//}
 		}
 
 		public ActionResult PayOnLineBill() => View();
@@ -93,6 +70,10 @@ namespace TownUtilityBillSystemV2.Controllers
 
 				if (billDB != null)
 					model.Bill = Bill.Get(billDB);
+
+				decimal accountBalance = context.ACCOUNTs.Where(a => a.ID == billDB.ACCOUNT_ID).Select(a=>a.BALANCE).FirstOrDefault();
+
+				model.PayingSum = billDB.SUM + accountBalance;
 
 				return View(model);
 			}
@@ -142,6 +123,15 @@ namespace TownUtilityBillSystemV2.Controllers
 			var model = new BillModel();
 
 			model.GetBillData(bill_Id);
+
+			return View(model);
+		}
+
+		public ActionResult ShowBill(int bill_Id)
+		{
+			var model = new BillModel();
+
+			model.GetBillDataWithAllUtilities(bill_Id);
 
 			return View(model);
 		}
