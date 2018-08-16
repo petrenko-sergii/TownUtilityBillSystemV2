@@ -321,6 +321,8 @@
     <Compile Include="Models\PaymentModels\PaymentModel.cs" />
     <Compile Include="Models\TemperatureModels\Temperature.cs" />
     <Compile Include="Models\TemperatureModels\TemperatureModel.cs" />
+    <Compile Include="Models\UtilityModels\EFUtilityRepository.cs" />
+    <Compile Include="Models\UtilityModels\IUtilityRepository.cs" />
     <Compile Include="Models\UtilitySupplier\UtilitySupplier.cs" />
     <Compile Include="Models\UtilitySupplier\UtilitySupplierModel.cs" />
     <Compile Include="Models\UtilityModels\Unit.cs" />

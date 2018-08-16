@@ -56,7 +56,7 @@ namespace TownUtilityBillSystemV2.Models.BillModels
 
 		#region Methods
 
-		internal void GetBillsToShow()
+		public void GetBillsToShow()
 		{
 			using (var context = new TownUtilityBillSystemV2Entities())
 			{
@@ -345,7 +345,7 @@ namespace TownUtilityBillSystemV2.Models.BillModels
 			}
 		}
 
-		internal void FindBills(string searchString)
+		public void FindBills(string searchString)
 		{
 			using (var context = new TownUtilityBillSystemV2Entities())
 			{

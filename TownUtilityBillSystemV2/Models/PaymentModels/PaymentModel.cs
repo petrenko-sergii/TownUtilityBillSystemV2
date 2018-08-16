@@ -10,7 +10,7 @@ namespace TownUtilityBillSystemV2.Models.PaymentModels
 {
 	public class PaymentModel
 	{
-		internal void MakePaymentTransaction(int bill_Id)
+		internal void MakePaymentTransaction(int bill_Id, decimal payingSum)
 		{
 			using (var context = new TownUtilityBillSystemV2Entities())
 			{
@@ -21,9 +21,15 @@ namespace TownUtilityBillSystemV2.Models.PaymentModels
 						#region BILL update
 
 						var billDB = context.BILLs.Find(bill_Id);
+						ACCOUNT accountDB = null;
 
 						if (billDB != null)
-							billDB.PAID = true;
+						{
+							accountDB = context.ACCOUNTs.Where(a => a.ID == billDB.ACCOUNT_ID).FirstOrDefault();
+
+							if (accountDB != null && (payingSum >= billDB.SUM || payingSum >= (billDB.SUM + accountDB.BALANCE)))
+								billDB.PAID = true;
+						}
 
 						context.SaveChanges();
 
@@ -31,10 +37,13 @@ namespace TownUtilityBillSystemV2.Models.PaymentModels
 
 						#region PAYMENT creation
 
-						//TO DO
-						var newPayment = new PAYMENT() {ID = Guid.NewGuid(), SUM = billDB.SUM,
-							DATE = billDB.DATE, ACCOUNT_ID = billDB.ACCOUNT_ID,
-							NOTE = String.Format("{0} {1} {2}{3}", Localization.Payment,Localization.For, Localization.BillNum, billDB.NUMBER)
+						var newPayment = new PAYMENT()
+						{
+							ID = Guid.NewGuid(),
+							SUM = payingSum,
+							DATE = DateTime.Now,
+							ACCOUNT_ID = billDB.ACCOUNT_ID,
+							NOTE = String.Format("{0} {1} {2}{3}", Localization.Payment, Localization.For, Localization.BillNum, billDB.NUMBER)
 						};
 
 						context.PAYMENTs.Add(newPayment);
@@ -45,14 +54,16 @@ namespace TownUtilityBillSystemV2.Models.PaymentModels
 
 						#region Account update
 
-						var accountDB = context.ACCOUNTs.Where(a => a.ID == billDB.ACCOUNT_ID).FirstOrDefault();
-
 						if (accountDB != null)
 						{
-							//TO DO
-							//accountDB.BALANCE -= newPayment.SUM;
-							//accountDB.BALANCE = 
+							if (payingSum >= billDB.SUM)
+								accountDB.BALANCE += billDB.SUM - payingSum;
+							else if ((payingSum - accountDB.BALANCE) >= billDB.SUM && billDB.PAID)
+								accountDB.BALANCE = billDB.SUM + accountDB.BALANCE - payingSum;
+							else
+								accountDB.BALANCE -= payingSum;
 						}
+							
 
 						context.SaveChanges();
 

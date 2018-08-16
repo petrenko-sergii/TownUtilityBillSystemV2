@@ -10,7 +10,7 @@ namespace TownUtilityBillSystemV2.Models.PaymentCardModels
 {
 	public class PaymentCardType : ObjectWithName
 	{
-		[Required]
+		[Required(ErrorMessageResourceName = "FieldIsRequired", ErrorMessageResourceType = typeof(Localization))]
 		[Display(Name = "CardType", ResourceType = typeof(Localization))]
 		public new int Id { get; set; }
 	}

@@ -50,5 +50,47 @@ namespace TownUtilityBillSystemV2.Tests
 
 			meterModel.GetMeterTypesForUtility(wrongUtilityName);
 		}
+
+		[TestMethod]
+		public void CheckGetRandomMeters_For_Return_Instances()
+		{
+			var meterModel = new MeterModel();
+
+			meterModel.GetRandomMeters();
+
+			Assert.AreNotEqual(0,meterModel.Meters.Count);
+		}
+
+		[TestMethod]
+		public void CheckGetFoundMeters_With_Correct_City()
+		{
+			var meterModel = new MeterModel();
+
+			meterModel.GetFoundMeters("Kolding");
+
+			Assert.AreNotEqual(0, meterModel.Meters.Count);
+		}
+
+		[TestMethod]
+		public void CheckGetFoundMeters_With_Wrong_City()
+		{
+			var meterModel = new MeterModel();
+
+			meterModel.GetFoundMeters("New York");
+
+			Assert.AreEqual(0, meterModel.Meters.Count);
+		}
+
+		[TestMethod]
+		public void CheckGetRandomMeters_For_Return_Type()
+		{
+			var meterModel = new MeterModel();
+
+			meterModel.GetRandomMeters();
+
+			Assert.IsInstanceOfType(meterModel.Meters, typeof(List<Meter>));
+		}
+
+
 	}
 }

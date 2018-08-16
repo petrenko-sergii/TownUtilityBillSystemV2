@@ -113,6 +113,9 @@
     <Compile Include="MeterControllerUnitTest.cs" />
     <Compile Include="HelperMethodUnitTest.cs" />
     <Compile Include="CalculatorUnitTest.cs" />
+    <Compile Include="BillUnitTest.cs" />
+    <Compile Include="PaymentCardUnitTest.cs" />
+    <Compile Include="UtilityControllerUnitTest.cs" />
     <Compile Include="UtilityUnitTest.cs" />
   </ItemGroup>
   <ItemGroup>

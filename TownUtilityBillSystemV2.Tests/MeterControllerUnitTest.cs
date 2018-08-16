@@ -58,7 +58,6 @@ namespace TownUtilityBillSystemV2.Tests
 			Assert.AreEqual(4,actual.Count);
 		}
 
-
 		[Test]
 		public void GetStreetList_Returns_ProperValues()
 		{

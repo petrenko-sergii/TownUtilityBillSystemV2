@@ -39,8 +39,8 @@ namespace TownUtilityBillSystemV2.Models.PaymentCardModels
 			{
 				new PaymentCardType(){Id = 1, Name = "MasterCard" },
 				new PaymentCardType(){Id = 2, Name = "Maestro" },
-				new PaymentCardType(){Id = 2, Name = "Visa" },
-				new PaymentCardType(){Id = 2, Name = "Visa Electron" }
+				new PaymentCardType(){Id = 3, Name = "Visa" },
+				new PaymentCardType(){Id = 4, Name = "Visa Electron" }
 			};
 			Currency = new CurrencyMoney();
 		}

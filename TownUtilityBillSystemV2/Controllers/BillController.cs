@@ -89,7 +89,7 @@ namespace TownUtilityBillSystemV2.Controllers
 			{
 				var model = new PaymentModel();
 
-				model.MakePaymentTransaction(payment.Bill.Id);
+				model.MakePaymentTransaction(payment.Bill.Id, payment.PayingSum);
 
 				return RedirectToAction("ShowBillPaidInfo", "Bill", new { bill_Id = payment.Bill.Id });
 			}

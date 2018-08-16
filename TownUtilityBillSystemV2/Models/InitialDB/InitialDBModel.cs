@@ -67,7 +67,7 @@ namespace TownUtilityBillSystemV2.Models.InitialDB
 			//FillNews();
 			//FillNewsTitles();
 			//FillNewsChapters();
-			FillPayments();
+			//FillPayments();
 		}
 
 		public static void FillUnits()

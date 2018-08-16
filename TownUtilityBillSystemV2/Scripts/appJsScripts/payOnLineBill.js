@@ -40,7 +40,7 @@ $(document).ready(function ()
 				}
 				else
 				{
-					var totalSumToPay = data.Bill.Sum + data.Bill.Account.Balance;
+					var totalSumToPay = Math.round((data.Bill.Sum + data.Bill.Account.Balance) * 100) / 100;
 
 					$("#customerData").append("<h4><strong>" + paidNo + "</strong></h4>")
 					$("#customerData").append("<h4><strong>" + totalToPay + ': ' + "<mark class='mark-yellow'>" + totalSumToPay + "</mark> " + data.Currency.Name + "</strong></h4>")

@@ -7,6 +7,7 @@ using Ninject;
 using System.Web.Routing;
 using TownUtilityBillSystemV2.Models.MeterModels;
 using TownUtilityBillSystemV2.Models.AddressModels;
+using TownUtilityBillSystemV2.Models.UtilityModels;
 
 namespace TownUtilityBillSystemV2.App_Start
 {
@@ -31,6 +32,7 @@ namespace TownUtilityBillSystemV2.App_Start
 			ninjectKernel.Bind<IStreetRepository>().To<EFStreetRepository>();
 			ninjectKernel.Bind<IBuildingRepository>().To<EFBuildingRepository>();
 
+			ninjectKernel.Bind<IUtilityRepository>().To<EFUtilityRepository>();
 		}
 	}
 }

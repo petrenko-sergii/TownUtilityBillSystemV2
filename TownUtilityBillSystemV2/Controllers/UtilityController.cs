@@ -14,13 +14,18 @@ namespace TownUtilityBillSystemV2.Controllers
 	[Authorize]
 	public class UtilityController : Controller
 	{
-		TownUtilityBillSystemV2Entities context = new TownUtilityBillSystemV2Entities();
+		private readonly IUtilityRepository utilityRepo;
 
-		public ActionResult ShowUtilities()
+		public UtilityController(IUtilityRepository utilityRepo)
+		{
+			this.utilityRepo = utilityRepo;
+		}
+
+		public ViewResult ShowUtilities()
 		{
 			var model = new UtilityModel();
 
-			model.GetUtilitiesName();
+			model.Utilities = utilityRepo.UTILITYs.Select(Utility.GetUtilityWithIdAndNames).ToList();
 
 			return View(model);
 		}

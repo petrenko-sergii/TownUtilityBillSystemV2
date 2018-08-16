@@ -53,6 +53,16 @@ namespace TownUtilityBillSystemV2.Models.UtilityModels
 			};
 		}
 
+		public static Utility GetUtilityWithIdAndNames(UTILITY utility)
+		{
+			return new Utility
+			{
+				Id = utility.ID,
+				Name = utility.NAME,
+				ResourceName = UtilityModel.GetResourceNameForUtility(utility.NAME)
+			};
+		}
+
 		public static Utility GetUtilityWithOutBigUsagePrice(UTILITY utility)
 		{
 			return new Utility

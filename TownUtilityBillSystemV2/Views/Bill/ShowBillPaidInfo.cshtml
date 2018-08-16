@@ -5,8 +5,7 @@
 	ViewBag.Title = Localization.ShowBillPaidInfo;
 	int rowNumber = 1;
 }
-<h3 class="header-bold"> @Localization.TheBill #@Model.Bill.Number @Localization.IsPaid.ToLower()</h3>
-
+<h3 class="header-bold"> <mark class="mark-yellow"> @Localization.TheBill #@Model.Bill.Number @Localization.IsPaid.ToLower()</mark></h3>
 <table class="table">
 	<tr>
 		<th>#</th>
