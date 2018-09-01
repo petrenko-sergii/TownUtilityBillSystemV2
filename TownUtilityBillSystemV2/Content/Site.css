@@ -269,6 +269,10 @@ textarea {
 	text-indent: 40px;
 }
 
+.custom-text-danger {
+	font-size: 15px !important;
+}
+
 
 
 

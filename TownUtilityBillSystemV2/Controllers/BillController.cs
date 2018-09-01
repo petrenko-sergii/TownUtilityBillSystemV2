@@ -1,9 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
+using System.Web;
 using System.Web.Mvc;
 using TownUtilityBillSystemV2.Models.AccountModels;
 using TownUtilityBillSystemV2.Models.BillModels;
+using TownUtilityBillSystemV2.Models.Chart;
 using TownUtilityBillSystemV2.Models.Customized;
 using TownUtilityBillSystemV2.Models.PaymentCardModels;
 using TownUtilityBillSystemV2.Models.PaymentModels;
@@ -134,6 +137,15 @@ namespace TownUtilityBillSystemV2.Controllers
 			model.GetBillDataWithAllUtilities(bill_Id);
 
 			return View(model);
+		}
+
+		public ActionResult GetMeterDataHistoryForChart(int addressId, int bill_Id)
+		{
+			var model = new BillModel();
+
+			MetersDataForChartDTO dataForChart = model.GetMeterDataHistoryForChart(addressId, bill_Id);
+
+			return Json(data: new { dataForChart.MetersChartData, dataForChart.UtilityResourceNames, dataForChart.UnitNames}, behavior: JsonRequestBehavior.AllowGet);
 		}
 
 		#region Bill CRUD

@@ -7,12 +7,7 @@
 	ViewBag.Title = Localization.ShowBill;
 	Thread.CurrentThread.CurrentCulture.NumberFormat.NumberDecimalSeparator = ".";
 	var j = 0;
-	var k = 0;
 }
-
-<script src="https://code.highcharts.com/highcharts.js"></script>
-<script src="https://code.highcharts.com/modules/exporting.js"></script>
-<script src="~/Scripts/jquery-3.3.1.min.js"></script>
 
 @if (Model.Bill == null)
 {
@@ -162,85 +157,6 @@ else
 						}
 					</div>
 					<div id=@nameContainer class="col-xs-8 map-canvasUtilityUsage"></div>
-					<script language="javascript" type="text/javascript">
-                        CreateUsageChart();
-
-                        function CreateUsageChart() {
-        var containerName = 'container' + '@j.ToString()';
-        Highcharts.chart(containerName, {
-            chart: {
-                type: 'bar'
-            },
-            title: {
-                text: '@Model.CustomerModel.Meters[j].MeterType.Utility.ResourceName'+ ' consumption history'
-            },
-            xAxis: {
-                categories: [
-                    '@Model.CustomerModel.Meters[j].ChartData[0].MonthName',
-                    '@Model.CustomerModel.Meters[j].ChartData[1].MonthName',
-                    '@Model.CustomerModel.Meters[j].ChartData[2].MonthName',
-                    '@Model.CustomerModel.Meters[j].ChartData[3].MonthName',
-                    '@Model.CustomerModel.Meters[j].ChartData[4].MonthName',
-                    '@Model.CustomerModel.Meters[j].ChartData[5].MonthName',
-                    '@Model.CustomerModel.Meters[j].ChartData[6].MonthName',
-                   ' @Model.CustomerModel.Meters[j].ChartData[7].MonthName',
-                    '@Model.CustomerModel.Meters[j].ChartData[8].MonthName',
-                    '@Model.CustomerModel.Meters[j].ChartData[9].MonthName',
-                    ' @Model.CustomerModel.Meters[j].ChartData[10].MonthName',
-                   ' @Model.CustomerModel.Meters[j].ChartData[11].MonthName',
-                   ' @Model.CustomerModel.Meters[j].ChartData[12].MonthName'
-                ],
-                title: {
-                        text: null
-                },
-            },
-            yAxis: {
-                min: 0,
-                title: {
-                    text: 'Value, ' + '@Model.CustomerModel.Meters[j].MeterType.Utility.Unit.Name',
-                    align: 'high'
-                },
-                labels: {
-                    overflow: 'justify'
-                }
-            },
-            tooltip: {
-                valueSuffix: ' @Model.CustomerModel.Meters[j].MeterType.Utility.Unit.Name'
-            },
-            plotOptions: {
-                bar: {
-                    dataLabels: {
-                        enabled: true
-                    }
-                }
-            },
-            legend: {
-                enabled: false,
-            },
-            credits: {
-                enabled: false
-            },
-            series: [{
-                name: 'Value',
-                data: [
-                    @Model.CustomerModel.Meters[j].ChartData[0].Value,
-                    @Model.CustomerModel.Meters[j].ChartData[1].Value,
-                    @Model.CustomerModel.Meters[j].ChartData[2].Value,
-                    @Model.CustomerModel.Meters[j].ChartData[3].Value,
-                    @Model.CustomerModel.Meters[j].ChartData[4].Value,
-                    @Model.CustomerModel.Meters[j].ChartData[5].Value,
-                    @Model.CustomerModel.Meters[j].ChartData[6].Value,
-                    @Model.CustomerModel.Meters[j].ChartData[7].Value,
-                    @Model.CustomerModel.Meters[j].ChartData[8].Value,
-                    @Model.CustomerModel.Meters[j].ChartData[9].Value,
-                    @Model.CustomerModel.Meters[j].ChartData[10].Value,
-                    @Model.CustomerModel.Meters[j].ChartData[11].Value,
-                    @Model.CustomerModel.Meters[j].ChartData[12].Value
-                ]
-            }]
-        });
-    }
-					</script>
 					<hr />
 				}
 			}
@@ -253,78 +169,27 @@ else
 	@Html.Partial("~/Views/Shared/_BackToPreviousPagePartial.cshtml")
 }
 
+<script>
+	//variables for showBill.js file
+	var addressIdDTO = @Model.CustomerModel.Customer.Address.Id;
+	var bill_IdDTO = @Model.Bill.Id;
+	var utilityChargesDTO = [];
+
+	var consumptionHistory = '@Localization.ConsumptionHistory.ToLower()';
+	var value = '@Localization.Value';
+	var utilities = '@Localization.Utilities';
+	var charges = '@Localization.Charges.ToLower()';
+	var pdfDocName = '@Localization.Bill' + "_" + '@Model.Bill.Number' + "_" + '@Model.CustomerModel.Customer.Surname' + '@Model.CustomerModel.Customer.Name';
+
+	@foreach (var d in Model.UtilityChargesChartData)
+    {
+        @:utilityChargesDTO.push(+"@d.UtilityCharges");
+    }
+</script>
+
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
 <script src="~/Scripts/jspdf.min.js"></script>
 <script src="~/Scripts/html2canvas.js"></script>
-
-<script>
-	function genPDF() {
-	    html2canvas(document.getElementById("testDiv"), {
-	        onrendered: function (canvas) {
-	            var img = canvas.toDataURL("image/png");
-	            var doc = new jsPDF();
-	            var pdfDocName = "Bill_" + '@Model.Bill.Number' + "_" + '@Model.CustomerModel.Customer.Surname' + '@Model.CustomerModel.Customer.Name';
-	           doc.addImage(img, 'png', 10, 10, 200, 287);
-	           doc.save(pdfDocName);
-	        }
-	    });
-	}
-</script>
-
-<script>
-	$(document).ready(function ()
-	{
-		Highcharts.chart('containerUtilitiesCharges', {
-                        chart: {
-                            plotBackgroundColor: null,
-                            plotBorderWidth: 0,
-                            plotShadow: false
-                        },
-                        title: {
-                            text: 'Utilities<br>charges',
-                            align: 'center',
-                            verticalAlign: 'middle',
-                            y: 40
-                        },
-                        tooltip: {
-                            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-                        },
-                        plotOptions: {
-                            pie: {
-                                dataLabels: {
-                                    enabled: true,
-                                    distance: -50,
-                                    style: {
-                                        fontWeight: 'bold',
-                                        color: 'white'
-                                    }
-                                },
-                                startAngle: -90,
-                                endAngle: 90,
-                                center: ['50%', '75%']
-                            }
-                        },
-                        series: [{
-                            type: 'pie',
-                            name: 'Value',
-                            innerSize: '50%',
-                            data: [
-                                ['@Model.CustomerModel.Meters[k].MeterType.Utility.ResourceName', @Model.UtilityChargesChartData[k++].UtilityCharges],
-                                ['@Model.CustomerModel.Meters[k].MeterType.Utility.ResourceName', @Model.UtilityChargesChartData[k++].UtilityCharges],
-                                ['@Model.CustomerModel.Meters[k].MeterType.Utility.ResourceName', @Model.UtilityChargesChartData[k++].UtilityCharges],
-                                ['@Model.CustomerModel.Meters[k].MeterType.Utility.ResourceName', @Model.UtilityChargesChartData[k++].UtilityCharges],
-                                {
-                                    name: 'Proprietary or Undetectable',
-                                    y: 0.2,
-                                    dataLabels: {
-                                        enabled: false
-                                    }
-                                }
-                            ]
-                        }]
-                        });
-                        })
-</script>
-
-
-
-
+<script src="~/Scripts/appJsScripts/showBill.js"></script>

@@ -205,7 +205,7 @@
     <value>Efternavn</value>
   </data>
   <data name="Utilities" xml:space="preserve">
-    <value>Hjælpeprogrammer</value>
+    <value>Hjaelpeprogrammer</value>
   </data>
   <data name="ValueMustBeAtLeastCharactersLong" xml:space="preserve">
     <value>{0} værdien skal være mindst {2} tegn lang.</value>
@@ -1051,5 +1051,8 @@ omdannelse og afhændelse af vores opstrøms olie- og gasvirksomhed, er det ikke
   </data>
   <data name="TotalToPay" xml:space="preserve">
     <value>Samlet at betale</value>
+  </data>
+  <data name="ConsumptionHistory" xml:space="preserve">
+    <value>Forbrugshistorie</value>
   </data>
 </root>

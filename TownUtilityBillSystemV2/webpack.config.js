@@ -5,7 +5,7 @@ module.exports = {
 	devtool: 'source-map',
 	entry: ['./ts-src/app.ts'],
 	output: {
-		path: path.resolve(__dirname, './build'),
+		path: path.resolve(__dirname, './ts-src'),
 		filename: 'app.js'
 	},
 	module: {

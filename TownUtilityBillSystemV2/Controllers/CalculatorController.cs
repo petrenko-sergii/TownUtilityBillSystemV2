@@ -28,16 +28,17 @@ namespace TownUtilityBillSystemV2.Controllers
 		{
 			var model = new CalculatorItemModel();
 
+			model.AddUtilitiesToCalculatorItemModel();
+
 			if (ModelState.IsValid)
 			{
 				if (inputModel.ElectricUsage == 0 && inputModel.WaterUsage == 0 && inputModel.HeatUsage == 0 && inputModel.GasUsage == 0)
 				{
 					ViewBag.ErrorMessage = Localization.YouMustEnterAtLeastOneUtilityUsage;
 
-					return View(model);
+					return View("~/Views/Calculator/ShowCalculatorOnLine.cshtml", model);
 				}
-
-				model.AddUtilitiesToCalculatorItemModel();
+				
 				model.CalculateCharges(inputModel);
 
 				return View("~/Views/Calculator/ShowCharges.cshtml", model);

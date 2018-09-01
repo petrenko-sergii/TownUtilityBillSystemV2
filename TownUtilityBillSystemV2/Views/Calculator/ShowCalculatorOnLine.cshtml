@@ -19,12 +19,12 @@
 			<p class="p-red"> @ViewBag.ErrorMessage</p>
 		}
 		<div class="form-horizontal">
-			@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+			@Html.ValidationSummary(true, "", new { @class = "text-danger custom-text-danger" })
 			<div class="form-group">
 				<p class="control-label col-md-3"><strong>@Model.Utilities[i].ResourceName (@Model.Utilities[i].Unit.Name)</strong></p>
 				<div class="col-md-9">
 					@Html.EditorFor(model => model.ElectricUsage, new { htmlAttributes = new { @class = "form-control" } })
-					@Html.ValidationMessageFor(model => model.ElectricUsage, "", new { @class = "text-danger" })
+					@Html.ValidationMessageFor(model => model.ElectricUsage, "", new { @class = "text-danger custom-text-danger" })
 				</div>
 			</div>
 
@@ -32,7 +32,7 @@
 				<p class="control-label col-md-3"><strong>@Model.Utilities[++i].ResourceName (@Model.Utilities[i].Unit.Name)</strong></p>
 				<div class="col-md-9">
 					@Html.EditorFor(model => model.WaterUsage, new { htmlAttributes = new { @class = "form-control" } })
-					@Html.ValidationMessageFor(model => model.WaterUsage, "", new { @class = "text-danger" })
+					@Html.ValidationMessageFor(model => model.WaterUsage, "", new { @class = "text-danger custom-text-danger" })
 				</div>
 			</div>
 
@@ -40,7 +40,7 @@
 				<p class="control-label col-md-3"><strong>@Model.Utilities[++i].ResourceName (@Model.Utilities[i].Unit.Name)</strong></p>
 				<div class="col-md-9">
 					@Html.EditorFor(model => model.HeatUsage, new { htmlAttributes = new { @class = "form-control" } })
-					@Html.ValidationMessageFor(model => model.HeatUsage, "", new { @class = "text-danger" })
+					@Html.ValidationMessageFor(model => model.HeatUsage, "", new { @class = "text-danger custom-text-danger" })
 				</div>
 			</div>
 
@@ -48,7 +48,7 @@
 				<p class="control-label col-md-3"><strong>@Model.Utilities[++i].ResourceName (@Model.Utilities[i].Unit.Name)</strong></p>
 				<div class="col-md-9">
 					@Html.EditorFor(model => model.GasUsage, new { htmlAttributes = new { @class = "form-control" } })
-					@Html.ValidationMessageFor(model => model.GasUsage, "", new { @class = "text-danger" })
+					@Html.ValidationMessageFor(model => model.GasUsage, "", new { @class = "text-danger custom-text-danger" })
 				</div>
 			</div>
 

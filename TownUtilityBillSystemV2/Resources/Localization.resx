@@ -1052,4 +1052,7 @@ and generated a revenue in 2016 of DKK 61 billion (EUR 8.2 is one of Northern Eu
   <data name="TotalToPay" xml:space="preserve">
     <value>Total to pay</value>
   </data>
+  <data name="ConsumptionHistory" xml:space="preserve">
+    <value>Consumption history</value>
+  </data>
 </root>

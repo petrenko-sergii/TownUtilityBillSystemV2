@@ -124,3 +124,9 @@ C:\Users\Petrenko\Documents\Visual Studio 2017\Projects\TownUtilityBillSystemV2\
 C:\Users\Petrenko\Documents\Visual Studio 2017\Projects\TownUtilityBillSystemV2\TownUtilityBillSystemV2\obj\Debug\TownUtilityBillSystemV2.csproj.CopyComplete
 C:\Users\Petrenko\Documents\Visual Studio 2017\Projects\TownUtilityBillSystemV2\TownUtilityBillSystemV2\obj\Debug\TownUtilityBillSystemV2.dll
 C:\Users\Petrenko\Documents\Visual Studio 2017\Projects\TownUtilityBillSystemV2\TownUtilityBillSystemV2\obj\Debug\TownUtilityBillSystemV2.pdb
+C:\Users\Petrenko\Documents\Visual Studio 2017\Projects\TownUtilityBillSystemV2\TownUtilityBillSystemV2\obj\Debug\TownUtilityBillSystemV2.csprojResolveAssemblyReference.cache
+C:\Users\Petrenko\Documents\Visual Studio 2017\Projects\TownUtilityBillSystemV2\TownUtilityBillSystemV2\bin\System.ValueTuple.dll
+C:\Users\Petrenko\Documents\Visual Studio 2017\Projects\TownUtilityBillSystemV2\TownUtilityBillSystemV2\bin\System.ValueTuple.xml
+C:\Users\Petrenko\Documents\Visual Studio 2017\Projects\TownUtilityBillSystemV2\TownUtilityBillSystemV2\bin\de\TownUtilityBillSystemV2.resources.dll
+C:\Users\Petrenko\Documents\Visual Studio 2017\Projects\TownUtilityBillSystemV2\TownUtilityBillSystemV2\obj\Debug\TownUtilityBillSystemV2.Resources.Localization.de.resources
+C:\Users\Petrenko\Documents\Visual Studio 2017\Projects\TownUtilityBillSystemV2\TownUtilityBillSystemV2\obj\Debug\de\TownUtilityBillSystemV2.resources.dll

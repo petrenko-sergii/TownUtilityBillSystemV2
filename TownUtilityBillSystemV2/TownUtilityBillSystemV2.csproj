@@ -126,6 +126,9 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net461\System.ValueTuple.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -194,6 +197,11 @@
     </Compile>
     <Compile Include="ADDRESS.cs">
       <DependentUpon>TownUtilityBillSystemV2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\ErrorMessages.de.designer.cs">
+      <DependentUpon>ErrorMessages.de.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="App_GlobalResources\ErrorMessages.da.designer.cs">
       <DependentUpon>ErrorMessages.da.resx</DependentUpon>
@@ -282,6 +290,7 @@
     <Compile Include="Models\Calculator\CalculatorItemModel.cs" />
     <Compile Include="Models\Chart\ChartData.cs" />
     <Compile Include="Models\Chart\ChartModel.cs" />
+    <Compile Include="Models\Chart\MetersDataForChartDTO.cs" />
     <Compile Include="Models\Currency\CurrencyMoney.cs" />
     <Compile Include="Models\Currency\CurrencyModel.cs" />
     <Compile Include="Models\CustomerModels\Customer.cs" />
@@ -341,6 +350,11 @@
       <DependentUpon>TownUtilityBillSystemV2.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources\Localization.de.Designer.cs">
+      <DependentUpon>Localization.de.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Resources\Localization.da.Designer.cs">
       <DependentUpon>Localization.da.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -450,6 +464,7 @@
     <Content Include="Scripts\appJsScripts\googleMapScript.js" />
     <Content Include="Scripts\appJsScripts\payOnLineBill.js" />
     <Content Include="Scripts\appJsScripts\showAllUtilityCharts.js" />
+    <Content Include="Scripts\appJsScripts\showBill.js" />
     <Content Include="Scripts\appJsScripts\showCalculatorCharges.js" />
     <Content Include="Scripts\appJsScripts\showDetailsForCustomer.js" />
     <Content Include="Scripts\appJsScripts\showMeterData.js" />
@@ -618,6 +633,15 @@
       <Generator>GlobalResourceProxyGenerator</Generator>
       <LastGenOutput>ErrorMessages.da.designer.cs</LastGenOutput>
     </Content>
+    <Content Include="App_GlobalResources\ErrorMessages.de.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>ErrorMessages.de.designer.cs</LastGenOutput>
+    </Content>
+    <EmbeddedResource Include="Resources\Localization.de.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Localization.de.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Resources\Localization.da.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Localization.da.Designer.cs</LastGenOutput>
@@ -631,7 +655,6 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="ts-src\app.ts" />
-    <TypeScriptCompile Include="ts-src\Message.ts" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />

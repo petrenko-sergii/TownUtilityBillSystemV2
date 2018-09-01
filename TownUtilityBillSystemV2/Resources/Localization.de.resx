@@ -1,0 +1,1058 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="About" xml:space="preserve">
+    <value>Über</value>
+  </data>
+  <data name="Bills" xml:space="preserve">
+    <value>Rechnungen</value>
+  </data>
+  <data name="CalculatorOnLine" xml:space="preserve">
+    <value>Rechner online</value>
+  </data>
+  <data name="ConfirmPassword" xml:space="preserve">
+    <value>Bestätige das Passwort</value>
+  </data>
+  <data name="ConfirmPasswordWarning" xml:space="preserve">
+    <value>Das Passwort und das Bestätigungs-Passwort stimmen nicht überein</value>
+  </data>
+  <data name="Contact" xml:space="preserve">
+    <value>Kontakt</value>
+  </data>
+  <data name="CreateNewAccount" xml:space="preserve">
+    <value>Ein neues Konto erstellen</value>
+  </data>
+  <data name="Customers" xml:space="preserve">
+    <value>Kunden</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="EnterValidEmail" xml:space="preserve">
+    <value>Bitte geben Sie eine gültige E-Mail-Adresse ein</value>
+  </data>
+  <data name="EnterValidPhone" xml:space="preserve">
+    <value>Bitte geben Sie ein gültiges Telefon ein</value>
+  </data>
+  <data name="FieldIsRequired" xml:space="preserve">
+    <value>Das Feld {0} ist erforderlich</value>
+  </data>
+  <data name="Hello" xml:space="preserve">
+    <value>Hallo</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Zuhause</value>
+  </data>
+  <data name="Language" xml:space="preserve">
+    <value>Sprache</value>
+  </data>
+  <data name="LogIn" xml:space="preserve">
+    <value>Einloggen</value>
+  </data>
+  <data name="LoginForApp" xml:space="preserve">
+    <value>Anmeldung</value>
+  </data>
+  <data name="LogInSystem" xml:space="preserve">
+    <value>Melden Sie sich im System an</value>
+  </data>
+  <data name="LogOff" xml:space="preserve">
+    <value>Abmelden</value>
+  </data>
+  <data name="Log_In" xml:space="preserve">
+    <value>Anmeldung</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Passwort</value>
+  </data>
+  <data name="PayOnLine" xml:space="preserve">
+    <value>Online bezahlen</value>
+  </data>
+  <data name="PhoneNumber" xml:space="preserve">
+    <value>Telefonnummer</value>
+  </data>
+  <data name="Register" xml:space="preserve">
+    <value>Registrieren</value>
+  </data>
+  <data name="RegisterAsNewUser" xml:space="preserve">
+    <value>Registrieren Sie sich als neuer Benutzer</value>
+  </data>
+  <data name="RememberMe" xml:space="preserve">
+    <value>Erinnere dich an mich?</value>
+  </data>
+  <data name="Statistic" xml:space="preserve">
+    <value>Statistik</value>
+  </data>
+  <data name="Surname" xml:space="preserve">
+    <value>Nachname</value>
+  </data>
+  <data name="Utilities" xml:space="preserve">
+    <value>Dienstprogramme</value>
+  </data>
+  <data name="ValueMustBeAtLeastCharactersLong" xml:space="preserve">
+    <value>Die {0} muss mindestens {2} Zeichen lang sein.</value>
+  </data>
+  <data name="ValueMustHaveFromToCharactersLong" xml:space="preserve">
+    <value>Die {0} muss von {2} bis {1} Zeichen lang sein.</value>
+  </data>
+  <data name="ChooseNextFacility" xml:space="preserve">
+    <value>Wählen Sie die nächste Einrichtung</value>
+  </data>
+  <data name="InvalidLoginAttempt" xml:space="preserve">
+    <value>Ungültiger Anmeldeversuch</value>
+  </data>
+  <data name="News" xml:space="preserve">
+    <value>Nachrichten</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>Nächster</value>
+  </data>
+  <data name="PleaseLogInOrRegister" xml:space="preserve">
+    <value>Bitte einloggen oder anmelden</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>Bisherige</value>
+  </data>
+  <data name="TownUtilityBillSystem" xml:space="preserve">
+    <value>Town Utility Bill System</value>
+  </data>
+  <data name="ReadMore" xml:space="preserve">
+    <value>Weiterlesen...</value>
+  </data>
+  <data name="BackToHomePage" xml:space="preserve">
+    <value>Zurück zur Startseite</value>
+  </data>
+  <data name="BackToPreviousPage" xml:space="preserve">
+    <value>Zurück zur vorherigen Seite</value>
+  </data>
+  <data name="AllNews" xml:space="preserve">
+    <value>Alle Nachrichten</value>
+  </data>
+  <data name="ForAdditionalInfoPleaseContact" xml:space="preserve">
+    <value>Für weitere Informationen kontaktieren Sie bitte</value>
+  </data>
+  <data name="AboutData_ChairmanСitation" xml:space="preserve">
+    <value>. Thomas Thune Andersen, Präsident des Board of Directors, sagte: "DONG war ursprünglich eine Abkürzung für Danish Oil and Natural Gas. Mit unserer tiefgreifenden strategischen
+Transformation und die Veräußerung unseres Upstream-Öl- und Gasgeschäftes, das ist nicht mehr wer wir sind. Daher ist jetzt der richtige Zeitpunkt, unseren Namen zu ändern.</value>
+  </data>
+  <data name="AboutData_ChangeNameDate" xml:space="preserve">
+    <value>Am 6. November 2017</value>
+  </data>
+  <data name="AboutData_FirstReleaseDate" xml:space="preserve">
+    <value>7. August 2017</value>
+  </data>
+  <data name="AboutData_HasChangedNameTo" xml:space="preserve">
+    <value>hat den Namen in geändert</value>
+  </data>
+  <data name="AboutData_IsAWebAppThatHelps" xml:space="preserve">
+    <value>ist eine Webanwendung, die hilft, die Daten für die Stadtwerke wie Strom, Wasser, Heizung und Gas zu verwalten. Auch es funktioniert durch das Kundenabrechnungssystem.</value>
+  </data>
+  <data name="AboutData_IsOneOfNorthernEurope" xml:space="preserve">
+    <value>ist einer der führenden Energiekonzerne Nordeuropas und hat seinen Hauptsitz in Dänemark. Rund 6.500 ambitionierte Mitarbeiter entwickeln, bauen und betreiben Offshore-Windparks, erzeugen Strom und Wärme aus unseren Kraftwerken und beliefern und handeln mit Energie an Großhandels-, Geschäfts- und Privatkunden. Darüber hinaus produzieren wir Öl und Gas, und es wurde ein Prozess zur Veräußerung dieser Geschäftseinheit eingeleitet. Der fortgeführte Teil der Gruppe beschäftigt ca. 6.100 Mitarbeiter
+und erwirtschaftete 2016 einen Umsatz von 61 Mrd. DKK (8,2 EUR ist einer der führenden Energiekonzerne Nordeuropas und hat seinen Hauptsitz in Dänemark. Rund 6.500 ambitionierte Mitarbeiter entwickeln, bauen und betreiben Offshore-Windparks und erzeugen Strom und Wärme aus unseren Kraftwerken Englisch: www.lhsystems.com/topic3/topic38/35_2_2_p2.htm Energie - und Energielieferungen an Großhandels -, Geschäfts - und Privatkunden sowie Öl - und Gashandel, zur Veräusserung dieses Geschäftsbereichs wurde ein weiterer Teil des Konzerns mit rund 6.100 Mitarbeitern und einem Umsatz von ca 2016 in Höhe von 61 Mrd. DKK (8,2 Mrd. EUR).</value>
+  </data>
+  <data name="AboutData_TheFirstRelease" xml:space="preserve">
+    <value>Die erste Version der App war auf der</value>
+  </data>
+  <data name="DongEnergy" xml:space="preserve">
+    <value>DONG Energy</value>
+  </data>
+  <data name="Orsted" xml:space="preserve">
+    <value>Ørsted</value>
+  </data>
+  <data name="HigherPrice" xml:space="preserve">
+    <value>Höherer Preis</value>
+  </data>
+  <data name="Price" xml:space="preserve">
+    <value>Preis</value>
+  </data>
+  <data name="UsageForStandartPrice" xml:space="preserve">
+    <value>Nutzung für Standardpreis</value>
+  </data>
+  <data name="ValueMustBeBiggerThanZero" xml:space="preserve">
+    <value>Die {0} muss größer als 0 sein.</value>
+  </data>
+  <data name="CheckUtilityName" xml:space="preserve">
+    <value>Überprüfen Sie den Namen des Dienstprogramms</value>
+  </data>
+  <data name="Electricity" xml:space="preserve">
+    <value>Elektrizität</value>
+  </data>
+  <data name="FindMeterByDetails" xml:space="preserve">
+    <value>Finde Meter nach Details</value>
+  </data>
+  <data name="Gas" xml:space="preserve">
+    <value>Gas</value>
+  </data>
+  <data name="Heating" xml:space="preserve">
+    <value>Heizung</value>
+  </data>
+  <data name="Meters" xml:space="preserve">
+    <value>Meter</value>
+  </data>
+  <data name="MeterTypes" xml:space="preserve">
+    <value>Zählertypen</value>
+  </data>
+  <data name="ShowAllUtilities" xml:space="preserve">
+    <value>Zeige alle Dienstprogramme</value>
+  </data>
+  <data name="Water" xml:space="preserve">
+    <value>Wasser</value>
+  </data>
+  <data name="AllUtilities" xml:space="preserve">
+    <value>Alle Dienstprogramme</value>
+  </data>
+  <data name="CreateNewUtility" xml:space="preserve">
+    <value>Erstellen Sie das neue Dienstprogramm</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Löschen</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Bearbeiten</value>
+  </data>
+  <data name="Icon" xml:space="preserve">
+    <value>Symbol</value>
+  </data>
+  <data name="MeterTypesLowerCase" xml:space="preserve">
+    <value>Zählertypen</value>
+  </data>
+  <data name="Options" xml:space="preserve">
+    <value>Optionen</value>
+  </data>
+  <data name="Per" xml:space="preserve">
+    <value>pro</value>
+  </data>
+  <data name="Unit" xml:space="preserve">
+    <value>Einheit</value>
+  </data>
+  <data name="Utility" xml:space="preserve">
+    <value>Nützlichkeit</value>
+  </data>
+  <data name="EditUtilityParameters" xml:space="preserve">
+    <value>Dienstprogrammparameter bearbeiten</value>
+  </data>
+  <data name="TotalCustomersForThisUtility" xml:space="preserve">
+    <value>Gesamtkunden für dieses Dienstprogramm</value>
+  </data>
+  <data name="LessThan" xml:space="preserve">
+    <value>weniger als</value>
+  </data>
+  <data name="OtherUtilities" xml:space="preserve">
+    <value>Andere Dienstprogramme</value>
+  </data>
+  <data name="ShowTheNews" xml:space="preserve">
+    <value>Zeige die Nachrichten</value>
+  </data>
+  <data name="AllMeterTypes" xml:space="preserve">
+    <value>Alle Zählertypen</value>
+  </data>
+  <data name="CreateNewMeterType" xml:space="preserve">
+    <value>Erstellen Sie den neuen Zählertyp</value>
+  </data>
+  <data name="ShowAllMeterTypes" xml:space="preserve">
+    <value>Zeige alle Zählertypen</value>
+  </data>
+  <data name="ValueMustBeBiggerThan" xml:space="preserve">
+    <value>Die {0} muss größer als {1} sein.</value>
+  </data>
+  <data name="VarificationPeriod" xml:space="preserve">
+    <value>Überprüfungszeitraum</value>
+  </data>
+  <data name="Years" xml:space="preserve">
+    <value>Jahre</value>
+  </data>
+  <data name="NewValue" xml:space="preserve">
+    <value>Neuer Wert</value>
+  </data>
+  <data name="ReleaseDate" xml:space="preserve">
+    <value>Veröffentlichungsdatum</value>
+  </data>
+  <data name="SerialNumber" xml:space="preserve">
+    <value>Ordnungsnummer</value>
+  </data>
+  <data name="VarificationDate" xml:space="preserve">
+    <value>Bestätigungsdatum</value>
+  </data>
+  <data name="Building" xml:space="preserve">
+    <value>Gebäude</value>
+  </data>
+  <data name="CreateNewMeter" xml:space="preserve">
+    <value>Erstelle den neuen Zähler</value>
+  </data>
+  <data name="Data" xml:space="preserve">
+    <value>Daten</value>
+  </data>
+  <data name="FlatPart" xml:space="preserve">
+    <value>Wohnung / Teil</value>
+  </data>
+  <data name="Index" xml:space="preserve">
+    <value>Index</value>
+  </data>
+  <data name="Release" xml:space="preserve">
+    <value>Freisetzung</value>
+  </data>
+  <data name="Serial" xml:space="preserve">
+    <value>Seriell</value>
+  </data>
+  <data name="ShowAllMeters" xml:space="preserve">
+    <value>Zeige alle Zähler</value>
+  </data>
+  <data name="SomeRandomMeters" xml:space="preserve">
+    <value>Einige zufällige Meter</value>
+  </data>
+  <data name="Street" xml:space="preserve">
+    <value>Straße</value>
+  </data>
+  <data name="TotalQuantity" xml:space="preserve">
+    <value>Gesamtmenge</value>
+  </data>
+  <data name="Town" xml:space="preserve">
+    <value>Stadt</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>Art</value>
+  </data>
+  <data name="UtilityMeters" xml:space="preserve">
+    <value>Verbrauchszähler</value>
+  </data>
+  <data name="Verification" xml:space="preserve">
+    <value>Überprüfung</value>
+  </data>
+  <data name="AllUtilityMeters" xml:space="preserve">
+    <value>Alle Verbrauchszähler</value>
+  </data>
+  <data name="Create" xml:space="preserve">
+    <value>Erstellen</value>
+  </data>
+  <data name="ShowSomeMeters" xml:space="preserve">
+    <value>Zeige einige Meter</value>
+  </data>
+  <data name="Address" xml:space="preserve">
+    <value>Adresse</value>
+  </data>
+  <data name="FindMetersByDetails" xml:space="preserve">
+    <value>Finde Meter nach Details</value>
+  </data>
+  <data name="Number" xml:space="preserve">
+    <value>Nummer</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Suche</value>
+  </data>
+  <data name="BackToList" xml:space="preserve">
+    <value>Zurück zur Liste</value>
+  </data>
+  <data name="Found" xml:space="preserve">
+    <value>Gefunden</value>
+  </data>
+  <data name="FoundOneMeter" xml:space="preserve">
+    <value>Gefunden 1 Meter</value>
+  </data>
+  <data name="NoAnyMeterIsFound" xml:space="preserve">
+    <value>Kein Meter gefunden</value>
+  </data>
+  <data name="SearchFilter" xml:space="preserve">
+    <value>Suchfilter</value>
+  </data>
+  <data name="ShowFoundMeters" xml:space="preserve">
+    <value>Zeige gefundene Meter</value>
+  </data>
+  <data name="BuildingImage" xml:space="preserve">
+    <value>Gebäude Bild</value>
+  </data>
+  <data name="FlatNumber" xml:space="preserve">
+    <value>Eben #</value>
+  </data>
+  <data name="MetersForThisAddress" xml:space="preserve">
+    <value>Meter für diese Adresse</value>
+  </data>
+  <data name="PartHyphen" xml:space="preserve">
+    <value>Teil -</value>
+  </data>
+  <data name="SelectBuilding" xml:space="preserve">
+    <value>--Gebäude auswählen--</value>
+  </data>
+  <data name="SelectFlatPart" xml:space="preserve">
+    <value>--Wählen Sie Wohnung / Teil--</value>
+  </data>
+  <data name="SelectStreet" xml:space="preserve">
+    <value>--Straße wählen--</value>
+  </data>
+  <data name="SelectTown" xml:space="preserve">
+    <value>--Wähle Stadt--</value>
+  </data>
+  <data name="AccountNumber" xml:space="preserve">
+    <value>Konto nummer</value>
+  </data>
+  <data name="AllCustomers" xml:space="preserve">
+    <value>Alle Kunden</value>
+  </data>
+  <data name="Balance" xml:space="preserve">
+    <value>Balance</value>
+  </data>
+  <data name="FindCustomer" xml:space="preserve">
+    <value>Kunden finden</value>
+  </data>
+  <data name="LegalCustomers" xml:space="preserve">
+    <value>Juristische Kunden</value>
+  </data>
+  <data name="PrivateCustomers" xml:space="preserve">
+    <value>Privatkunden</value>
+  </data>
+  <data name="ShowCustomerMenu" xml:space="preserve">
+    <value>Kundenmenü anzeigen</value>
+  </data>
+  <data name="AdminWillBeNotified" xml:space="preserve">
+    <value>Der Administrator wird benachrichtigt.</value>
+  </data>
+  <data name="InvalidBuildingIdParam" xml:space="preserve">
+    <value>Ungültige Gebäude-ID: {0}</value>
+  </data>
+  <data name="InvalidStreetIdParam" xml:space="preserve">
+    <value>Ungültige Straßen-ID: {0}</value>
+  </data>
+  <data name="InvalidTownIdParam" xml:space="preserve">
+    <value>Ungültige Städte-ID: {0}</value>
+  </data>
+  <data name="AccountNum" xml:space="preserve">
+    <value>Konto #</value>
+  </data>
+  <data name="CreateNewCustomer" xml:space="preserve">
+    <value>Erstellen Sie den neuen Kunden</value>
+  </data>
+  <data name="Details" xml:space="preserve">
+    <value>Einzelheiten</value>
+  </data>
+  <data name="InvalidUtilityNameParam" xml:space="preserve">
+    <value>Ungültiger Name des Dienstprogramms: {0}.</value>
+  </data>
+  <data name="Phone" xml:space="preserve">
+    <value>Telefon</value>
+  </data>
+  <data name="ShowLegalCustomers" xml:space="preserve">
+    <value>Zeige legale Kunden</value>
+  </data>
+  <data name="ShowMeterTypesForUtility" xml:space="preserve">
+    <value>Show metertypen für Dienstprogramm</value>
+  </data>
+  <data name="ShowPrivateCustomers" xml:space="preserve">
+    <value>Zeige Privatkunden</value>
+  </data>
+  <data name="AdministrativeBuilding" xml:space="preserve">
+    <value>Verwaltungsgebäude</value>
+  </data>
+  <data name="Apartment" xml:space="preserve">
+    <value>Wohnung</value>
+  </data>
+  <data name="Cafe" xml:space="preserve">
+    <value>Cafe</value>
+  </data>
+  <data name="Church" xml:space="preserve">
+    <value>Kirche</value>
+  </data>
+  <data name="Company" xml:space="preserve">
+    <value>Unternehmen</value>
+  </data>
+  <data name="Factory" xml:space="preserve">
+    <value>Fabrik</value>
+  </data>
+  <data name="FindMeterByAddress" xml:space="preserve">
+    <value>Finde Meter für Adresse</value>
+  </data>
+  <data name="FuelStation" xml:space="preserve">
+    <value>Tankstelle</value>
+  </data>
+  <data name="Hospital" xml:space="preserve">
+    <value>Krankenhaus</value>
+  </data>
+  <data name="Hotel" xml:space="preserve">
+    <value>Hotel</value>
+  </data>
+  <data name="House" xml:space="preserve">
+    <value>Haus</value>
+  </data>
+  <data name="KinderGarden" xml:space="preserve">
+    <value>Kindergarten</value>
+  </data>
+  <data name="Museum" xml:space="preserve">
+    <value>Museum</value>
+  </data>
+  <data name="Nursery" xml:space="preserve">
+    <value>Kindergarten</value>
+  </data>
+  <data name="Other" xml:space="preserve">
+    <value>Andere</value>
+  </data>
+  <data name="Plant" xml:space="preserve">
+    <value>Pflanze</value>
+  </data>
+  <data name="Restaurant" xml:space="preserve">
+    <value>Restaurant</value>
+  </data>
+  <data name="Salon" xml:space="preserve">
+    <value>Salon</value>
+  </data>
+  <data name="School" xml:space="preserve">
+    <value>Schule</value>
+  </data>
+  <data name="ServiceStation" xml:space="preserve">
+    <value>Tankstelle</value>
+  </data>
+  <data name="Shop" xml:space="preserve">
+    <value>Geschäft</value>
+  </data>
+  <data name="SomeRandomCustomers" xml:space="preserve">
+    <value>Einige zufällige Kunden</value>
+  </data>
+  <data name="Theatre" xml:space="preserve">
+    <value>Theater</value>
+  </data>
+  <data name="WorkShop" xml:space="preserve">
+    <value>Werkstatt</value>
+  </data>
+  <data name="FoundOneCustomer" xml:space="preserve">
+    <value>Gefunden 1 Kunde</value>
+  </data>
+  <data name="NoAnyCustomerIsFound" xml:space="preserve">
+    <value>Es wurde kein Kunde gefunden</value>
+  </data>
+  <data name="ShowAllCustomers" xml:space="preserve">
+    <value>Zeige alle Kunden</value>
+  </data>
+  <data name="ShowFoundCustomers" xml:space="preserve">
+    <value>Zeige gefundene Kunden</value>
+  </data>
+  <data name="ShowStatisticMenu" xml:space="preserve">
+    <value>Statistikmenü anzeigen</value>
+  </data>
+  <data name="Temperature" xml:space="preserve">
+    <value>Temperatur</value>
+  </data>
+  <data name="Usage" xml:space="preserve">
+    <value>Verwendung</value>
+  </data>
+  <data name="April" xml:space="preserve">
+    <value>April</value>
+  </data>
+  <data name="August" xml:space="preserve">
+    <value>August</value>
+  </data>
+  <data name="AverageTemperaturePerYear" xml:space="preserve">
+    <value>Durchschnittstemperatur pro Jahr</value>
+  </data>
+  <data name="December" xml:space="preserve">
+    <value>Dezember</value>
+  </data>
+  <data name="February" xml:space="preserve">
+    <value>Februar</value>
+  </data>
+  <data name="For" xml:space="preserve">
+    <value>zum</value>
+  </data>
+  <data name="January" xml:space="preserve">
+    <value>Januar</value>
+  </data>
+  <data name="July" xml:space="preserve">
+    <value>Juli</value>
+  </data>
+  <data name="June" xml:space="preserve">
+    <value>Juni</value>
+  </data>
+  <data name="March" xml:space="preserve">
+    <value>März</value>
+  </data>
+  <data name="May" xml:space="preserve">
+    <value>Kann</value>
+  </data>
+  <data name="November" xml:space="preserve">
+    <value>November</value>
+  </data>
+  <data name="October" xml:space="preserve">
+    <value>Oktober</value>
+  </data>
+  <data name="September" xml:space="preserve">
+    <value>September</value>
+  </data>
+  <data name="ShowTemperatureChart" xml:space="preserve">
+    <value>Temperaturdiagramm anzeigen</value>
+  </data>
+  <data name="TemperatureChart" xml:space="preserve">
+    <value>Temperaturdiagramm</value>
+  </data>
+  <data name="UsageCanNotBeNegative" xml:space="preserve">
+    <value>Die Verwendung kann nicht negativ sein</value>
+  </data>
+  <data name="CalculateCharges" xml:space="preserve">
+    <value>Berechnen Sie die Gebühren</value>
+  </data>
+  <data name="Calculations" xml:space="preserve">
+    <value>Berechnungen</value>
+  </data>
+  <data name="EnterUtilityMonthUsage" xml:space="preserve">
+    <value>Geben Sie die Verwendung für den Monat ein</value>
+  </data>
+  <data name="ShowCalculatorOnLine" xml:space="preserve">
+    <value>Rechner online anzeigen</value>
+  </data>
+  <data name="ShowCharges" xml:space="preserve">
+    <value>Gebühren anzeigen</value>
+  </data>
+  <data name="TotalCharges" xml:space="preserve">
+    <value>Gesamtkosten</value>
+  </data>
+  <data name="UtilitiesPrices" xml:space="preserve">
+    <value>Preise für Versorgungsunternehmen</value>
+  </data>
+  <data name="UtilitiesCharges" xml:space="preserve">
+    <value>Nebenkosten</value>
+  </data>
+  <data name="Value" xml:space="preserve">
+    <value>Wert</value>
+  </data>
+  <data name="YouMustEnterAtLeastOneUtilityUsage" xml:space="preserve">
+    <value>Sie müssen mindestens 1 Utility-Nutzung eingeben</value>
+  </data>
+  <data name="Denmark" xml:space="preserve">
+    <value>Dänemark</value>
+  </data>
+  <data name="ShowMeterData" xml:space="preserve">
+    <value>Zeige Messdaten</value>
+  </data>
+  <data name="CreateNewMeterData" xml:space="preserve">
+    <value>Erstellen Sie die neuen Zählerdaten</value>
+  </data>
+  <data name="Date" xml:space="preserve">
+    <value>Datum</value>
+  </data>
+  <data name="EditData" xml:space="preserve">
+    <value>Daten bearbeiten</value>
+  </data>
+  <data name="MeterType" xml:space="preserve">
+    <value>Zählertyp</value>
+  </data>
+  <data name="MonthsUsageYearHistory" xml:space="preserve">
+    <value>Verwendung Monate (Jahreshistorie)</value>
+  </data>
+  <data name="ShowAllUtilityUsage" xml:space="preserve">
+    <value>Zeige alle Utility-Nutzung</value>
+  </data>
+  <data name="SorryNoData" xml:space="preserve">
+    <value>Entschuldigung, keine Daten</value>
+  </data>
+  <data name="InvalidMeterIdParam" xml:space="preserve">
+    <value>Ungültige Zähler-ID: {0}.</value>
+  </data>
+  <data name="Account" xml:space="preserve">
+    <value>Konto</value>
+  </data>
+  <data name="Customer" xml:space="preserve">
+    <value>Kunde</value>
+  </data>
+  <data name="ShowAllUtilityCharts" xml:space="preserve">
+    <value>Zeige alle Hilfspläne</value>
+  </data>
+  <data name="Square" xml:space="preserve">
+    <value>Platz</value>
+  </data>
+  <data name="SquareMeter" xml:space="preserve">
+    <value>q. m.</value>
+  </data>
+  <data name="Str" xml:space="preserve">
+    <value>Str</value>
+  </data>
+  <data name="UtilitiesUsage" xml:space="preserve">
+    <value>Dienstprogramme verwenden</value>
+  </data>
+  <data name="SorryNoDataForThisCustomerMeters" xml:space="preserve">
+    <value>Entschuldigung, keine Daten für diesen Kundenzähler</value>
+  </data>
+  <data name="EditUtility" xml:space="preserve">
+    <value>Dienstprogramm bearbeiten</value>
+  </data>
+  <data name="FieldMustBeNumeric" xml:space="preserve">
+    <value>Das Feld {0} muss eine Zahl sein.</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Sparen</value>
+  </data>
+  <data name="FieldMustBeNumberWith2DecimalDigits" xml:space="preserve">
+    <value>Das Feld {0} muss eine Zahl mit 2 Dezimalziffern sein</value>
+  </data>
+  <data name="FieldMustBeNonNegativeNumber2WithDecDigits" xml:space="preserve">
+    <value>Das Feld {0} muss eine nicht negative Zahl mit 2 Dezimalziffern sein.</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Stornieren</value>
+  </data>
+  <data name="EditMeterType" xml:space="preserve">
+    <value>Bearbeiten Sie den Zählertyp</value>
+  </data>
+  <data name="SelectType" xml:space="preserve">
+    <value>--Art auswählen--</value>
+  </data>
+  <data name="EditMeter" xml:space="preserve">
+    <value>Zähler bearbeiten</value>
+  </data>
+  <data name="CurrentValue" xml:space="preserve">
+    <value>Aktueller Wert</value>
+  </data>
+  <data name="EditMeterData" xml:space="preserve">
+    <value>Zählerdaten bearbeiten</value>
+  </data>
+  <data name="MeasureDate" xml:space="preserve">
+    <value>Datum messen</value>
+  </data>
+  <data name="MeterData" xml:space="preserve">
+    <value>Messdaten</value>
+  </data>
+  <data name="Sorry" xml:space="preserve">
+    <value>Es tut uns leid</value>
+  </data>
+  <data name="YouCanEditMeterDataOnlyAtEnglishSiteVersion" xml:space="preserve">
+    <value>Sie können Messdaten nur in der englischen Site-Version bearbeiten</value>
+  </data>
+  <data name="EditCustomer" xml:space="preserve">
+    <value>Bearbeiten Sie den Kunden</value>
+  </data>
+  <data name="ShowDetailsForCustomer" xml:space="preserve">
+    <value>Zeige Details für den Kunden</value>
+  </data>
+  <data name="ShowAllBills" xml:space="preserve">
+    <value>Zeige alle Rechnungen</value>
+  </data>
+  <data name="DeleteCustomer" xml:space="preserve">
+    <value>Kunden löschen</value>
+  </data>
+  <data name="DeleteMeter" xml:space="preserve">
+    <value>Löschen Sie das Messgerät</value>
+  </data>
+  <data name="DeleteMeterItem" xml:space="preserve">
+    <value>Löschen Sie das Messgerät</value>
+  </data>
+  <data name="DeleteMeterType" xml:space="preserve">
+    <value>Löscht den Zählertyp</value>
+  </data>
+  <data name="YouHaveNoAdministratorRights" xml:space="preserve">
+    <value>Sie haben keine Administratorrechte!</value>
+  </data>
+  <data name="DeleteUtility" xml:space="preserve">
+    <value>Dienstprogramm löschen</value>
+  </data>
+  <data name="BillDate" xml:space="preserve">
+    <value>Rechnungsdatum</value>
+  </data>
+  <data name="BillNumber" xml:space="preserve">
+    <value>Rechnungsnummer</value>
+  </data>
+  <data name="CreateNewBill" xml:space="preserve">
+    <value>Erstellen Sie die neue Rechnung</value>
+  </data>
+  <data name="FindBillByDetailsNumberCustomerPeriod" xml:space="preserve">
+    <value>Rechnung nach Details suchen (Nummer, Kunde, Zeitraum)</value>
+  </data>
+  <data name="Paid" xml:space="preserve">
+    <value>Bezahlt</value>
+  </data>
+  <data name="Period" xml:space="preserve">
+    <value>Zeitraum</value>
+  </data>
+  <data name="Show" xml:space="preserve">
+    <value>Show</value>
+  </data>
+  <data name="ShowBills" xml:space="preserve">
+    <value>Rechnungen anzeigen</value>
+  </data>
+  <data name="SomeRandomBills" xml:space="preserve">
+    <value>Einige zufällige Rechnungen</value>
+  </data>
+  <data name="Sum" xml:space="preserve">
+    <value>Summe</value>
+  </data>
+  <data name="DeleteBill" xml:space="preserve">
+    <value>Rechnung löschen</value>
+  </data>
+  <data name="FoundOneBill" xml:space="preserve">
+    <value>Gefunden 1 Rechnung</value>
+  </data>
+  <data name="NoAnyBillIsFound" xml:space="preserve">
+    <value>Keine Rechnung gefunden</value>
+  </data>
+  <data name="ShowFoundBills" xml:space="preserve">
+    <value>Zeige gefundene Rechnungen</value>
+  </data>
+  <data name="ShowAllBillsForCustomer" xml:space="preserve">
+    <value>Zeige alle Rechnungen für den Kunden</value>
+  </data>
+  <data name="PayOnLineBill" xml:space="preserve">
+    <value>Online-Rechnung bezahlen</value>
+  </data>
+  <data name="CardOwnerName" xml:space="preserve">
+    <value>Karteninhaber: Name</value>
+  </data>
+  <data name="CardOwnerSurname" xml:space="preserve">
+    <value>Karteninhaber: Nachname</value>
+  </data>
+  <data name="CardType" xml:space="preserve">
+    <value>Speicherkarten-Typ</value>
+  </data>
+  <data name="CVVnumber" xml:space="preserve">
+    <value>CVV-Nummer</value>
+  </data>
+  <data name="ExpireDate" xml:space="preserve">
+    <value>Ablaufdatum</value>
+  </data>
+  <data name="PayingSum" xml:space="preserve">
+    <value>Bezahlsumme</value>
+  </data>
+  <data name="PayingSumCanNotBeNegative" xml:space="preserve">
+    <value>Die zahlende Summe kann nicht negativ sein</value>
+  </data>
+  <data name="PaymentCardNumber" xml:space="preserve">
+    <value>Zahlungskartennummer</value>
+  </data>
+  <data name="ValueMustHaveCountDigits" xml:space="preserve">
+    <value>Die {0} muss {2} Ziffern haben.</value>
+  </data>
+  <data name="CardIExpired" xml:space="preserve">
+    <value>Die Karte ist abgelaufen.</value>
+  </data>
+  <data name="CreditCardNumberMustHave16Digits" xml:space="preserve">
+    <value>Die Kreditkartennummer muss 16 Ziffern haben.</value>
+  </data>
+  <data name="CVVnumberMustHave3Digits" xml:space="preserve">
+    <value>Die CVV-Nummer muss 3 Ziffern haben.</value>
+  </data>
+  <data name="PayTheBillOnLine" xml:space="preserve">
+    <value>Bezahlen Sie die Rechnung online</value>
+  </data>
+  <data name="BillData" xml:space="preserve">
+    <value>Rechnungsdaten</value>
+  </data>
+  <data name="BillPeriod" xml:space="preserve">
+    <value>Rechnungszeitraum</value>
+  </data>
+  <data name="BillSum" xml:space="preserve">
+    <value>Rechnungssumme</value>
+  </data>
+  <data name="EnterBillNumber" xml:space="preserve">
+    <value>Geben Sie die Rechnungsnummer ein</value>
+  </data>
+  <data name="Find" xml:space="preserve">
+    <value>Finden</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>Nein</value>
+  </data>
+  <data name="NoBillIsFoundWarning" xml:space="preserve">
+    <value>Keine Rechnung gefunden - überprüfen Sie die Nummer</value>
+  </data>
+  <data name="PaymentCardForm" xml:space="preserve">
+    <value>Zahlungskartenform</value>
+  </data>
+  <data name="PayTheBill" xml:space="preserve">
+    <value>Die Rechnung bezahlen</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>Ja</value>
+  </data>
+  <data name="YouCanNotPayThisBillAgain" xml:space="preserve">
+    <value>Sie können diese Rechnung nicht mehr bezahlen</value>
+  </data>
+  <data name="TrialImitation" xml:space="preserve">
+    <value>Probe Nachahmung</value>
+  </data>
+  <data name="SelectCardType" xml:space="preserve">
+    <value>--Wählen Sie den Kartentyp -</value>
+  </data>
+  <data name="Month" xml:space="preserve">
+    <value>Monat</value>
+  </data>
+  <data name="Year" xml:space="preserve">
+    <value>Jahr</value>
+  </data>
+  <data name="BackToMainMenu" xml:space="preserve">
+    <value>Zurück zum Hauptmenü</value>
+  </data>
+  <data name="IsPaid" xml:space="preserve">
+    <value>Ist bezahlt</value>
+  </data>
+  <data name="PayAnotherBill" xml:space="preserve">
+    <value>Bezahle eine andere Rechnung</value>
+  </data>
+  <data name="ShowBillPaidInfo" xml:space="preserve">
+    <value>Zeige Rechnung bezahlt Info</value>
+  </data>
+  <data name="TheBill" xml:space="preserve">
+    <value>Die Rechnung</value>
+  </data>
+  <data name="BillNum" xml:space="preserve">
+    <value>Rechnung #</value>
+  </data>
+  <data name="Payment" xml:space="preserve">
+    <value>Zahlung</value>
+  </data>
+  <data name="Bill" xml:space="preserve">
+    <value>Rechnung</value>
+  </data>
+  <data name="BillingDate" xml:space="preserve">
+    <value>Rechnungsdatum</value>
+  </data>
+  <data name="Fax" xml:space="preserve">
+    <value>Fax</value>
+  </data>
+  <data name="ShowBill" xml:space="preserve">
+    <value>Rechnung anzeigen</value>
+  </data>
+  <data name="Supplier" xml:space="preserve">
+    <value>Lieferant</value>
+  </data>
+  <data name="Charges" xml:space="preserve">
+    <value>Gebühren</value>
+  </data>
+  <data name="Consumed" xml:space="preserve">
+    <value>Verbraucht</value>
+  </data>
+  <data name="DownloadPdf" xml:space="preserve">
+    <value>PDF Herunterladen</value>
+  </data>
+  <data name="MeterNumber" xml:space="preserve">
+    <value>Zählernummer</value>
+  </data>
+  <data name="MonthAverageTemperature" xml:space="preserve">
+    <value>Monatliche Durchschnittstemperatur</value>
+  </data>
+  <data name="BalanceBeforeThisBill" xml:space="preserve">
+    <value>Balance vor dieser Rechnung</value>
+  </data>
+  <data name="BillCharges" xml:space="preserve">
+    <value>Rechnung berechnet</value>
+  </data>
+  <data name="MeterVerificationNote" xml:space="preserve">
+    <value>* Das Messgerät wird nächsten Monat überprüft. {0} Jahre nach der letzten Überprüfung vergangen (war am {1})</value>
+  </data>
+  <data name="TotalToPay" xml:space="preserve">
+    <value>Gesamtbetrag</value>
+  </data>
+  <data name="ConsumptionHistory" xml:space="preserve">
+    <value>Verbrauchsgeschichte</value>
+  </data>
+</root>

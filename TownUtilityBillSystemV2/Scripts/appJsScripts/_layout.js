@@ -1,5 +1,4 @@
 ﻿
-
 function ChangeLanguage(language)
 {
 	$.ajax({
@@ -19,6 +18,7 @@ function jsonDateFormatToJS(value)
 	var day = currentTime.getDate();
 	var year = currentTime.getFullYear();
 	var date = year + "-" + month + "-" + day;
+
 	return date;
 }
 
@@ -54,4 +54,3 @@ function prepareMetersDataTable(data, uDiv, columnHeaders, options)
 	});
 	$('#meters_table').empty().append(meter_data);
 }
-

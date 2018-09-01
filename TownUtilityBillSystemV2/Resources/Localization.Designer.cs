@@ -585,6 +585,15 @@ namespace TownUtilityBillSystemV2.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Consumption history.
+        /// </summary>
+        public static string ConsumptionHistory {
+            get {
+                return ResourceManager.GetString("ConsumptionHistory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Contact.
         /// </summary>
         public static string Contact {

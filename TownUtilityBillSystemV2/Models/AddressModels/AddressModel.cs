@@ -203,7 +203,7 @@ namespace TownUtilityBillSystemV2.Models.AddressModels
 					imagePath = "/Content/Images/TownBuildings/" + folderName + "/" + imageName;
 				}
 				else
-					imagePath = "/Images/NoImageIcon.jpg";
+					imagePath = "/Content/Images/EmptyImages/NoImageBuilding" + HelperMethod.UppercaseFirstLetter(HelperMethod.GetCurrentLanguage()) + ".jpg";
 
 				return imagePath;
 			}

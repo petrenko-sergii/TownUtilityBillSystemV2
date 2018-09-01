@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="TOWN_UTILITY_BILL_SYSTEM_V2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="TownUtilityBillSystemV2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="ACCOUNT">
           <Key>
             <PropertyRef Name="ID" />
@@ -515,7 +515,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="TOWN_UTILITY_BILL_SYSTEM_V2ModelStoreContainer">
+        <EntityContainer Name="TownUtilityBillSystemV2ModelStoreContainer">
           <EntitySet Name="ACCOUNT" EntityType="Self.ACCOUNT" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ADDRESS" EntityType="Self.ADDRESS" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="BILL" EntityType="Self.BILL" Schema="dbo" store:Type="Tables" />
@@ -644,7 +644,7 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="TOWN_UTILITY_BILL_SYSTEM_V2Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="TownUtilityBillSystemV2Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="ACCOUNT">
           <Key>
             <PropertyRef Name="ID" />
@@ -1335,9 +1335,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="TOWN_UTILITY_BILL_SYSTEM_V2ModelStoreContainer" CdmEntityContainer="TownUtilityBillSystemV2Entities">
+        <EntityContainerMapping StorageEntityContainer="TownUtilityBillSystemV2ModelStoreContainer" CdmEntityContainer="TownUtilityBillSystemV2Entities">
           <EntitySetMapping Name="ACCOUNTs">
-            <EntityTypeMapping TypeName="TOWN_UTILITY_BILL_SYSTEM_V2Model.ACCOUNT">
+            <EntityTypeMapping TypeName="TownUtilityBillSystemV2Model.ACCOUNT">
               <MappingFragment StoreEntitySet="ACCOUNT">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="NUMBER" ColumnName="NUMBER" />
@@ -1346,7 +1346,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ADDRESSes">
-            <EntityTypeMapping TypeName="TOWN_UTILITY_BILL_SYSTEM_V2Model.ADDRESS">
+            <EntityTypeMapping TypeName="TownUtilityBillSystemV2Model.ADDRESS">
               <MappingFragment StoreEntitySet="ADDRESS">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="INDEX_ID" ColumnName="INDEX_ID" />
@@ -1358,7 +1358,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="BILLs">
-            <EntityTypeMapping TypeName="TOWN_UTILITY_BILL_SYSTEM_V2Model.BILL">
+            <EntityTypeMapping TypeName="TownUtilityBillSystemV2Model.BILL">
               <MappingFragment StoreEntitySet="BILL">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="NUMBER" ColumnName="NUMBER" />
@@ -1371,7 +1371,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="BUILDINGs">
-            <EntityTypeMapping TypeName="TOWN_UTILITY_BILL_SYSTEM_V2Model.BUILDING">
+            <EntityTypeMapping TypeName="TownUtilityBillSystemV2Model.BUILDING">
               <MappingFragment StoreEntitySet="BUILDING">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="NUMBER" ColumnName="NUMBER" />
@@ -1382,7 +1382,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="CUSTOMERs">
-            <EntityTypeMapping TypeName="TOWN_UTILITY_BILL_SYSTEM_V2Model.CUSTOMER">
+            <EntityTypeMapping TypeName="TownUtilityBillSystemV2Model.CUSTOMER">
               <MappingFragment StoreEntitySet="CUSTOMER">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="SURNAME" ColumnName="SURNAME" />
@@ -1396,7 +1396,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="CUSTOMER_TYPE">
-            <EntityTypeMapping TypeName="TOWN_UTILITY_BILL_SYSTEM_V2Model.CUSTOMER_TYPE">
+            <EntityTypeMapping TypeName="TownUtilityBillSystemV2Model.CUSTOMER_TYPE">
               <MappingFragment StoreEntitySet="CUSTOMER_TYPE">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="NAME" ColumnName="NAME" />
@@ -1404,7 +1404,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="FLAT_PART">
-            <EntityTypeMapping TypeName="TOWN_UTILITY_BILL_SYSTEM_V2Model.FLAT_PART">
+            <EntityTypeMapping TypeName="TownUtilityBillSystemV2Model.FLAT_PART">
               <MappingFragment StoreEntitySet="FLAT_PART">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="NUMBER" ColumnName="NUMBER" />
@@ -1415,7 +1415,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="IMAGE_BUILDING">
-            <EntityTypeMapping TypeName="TOWN_UTILITY_BILL_SYSTEM_V2Model.IMAGE_BUILDING">
+            <EntityTypeMapping TypeName="TownUtilityBillSystemV2Model.IMAGE_BUILDING">
               <MappingFragment StoreEntitySet="IMAGE_BUILDING">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="PATH" ColumnName="PATH" />
@@ -1423,7 +1423,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="IMAGE_NEWS">
-            <EntityTypeMapping TypeName="TOWN_UTILITY_BILL_SYSTEM_V2Model.IMAGE_NEWS">
+            <EntityTypeMapping TypeName="TownUtilityBillSystemV2Model.IMAGE_NEWS">
               <MappingFragment StoreEntitySet="IMAGE_NEWS">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="PATH" ColumnName="PATH" />
@@ -1431,7 +1431,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="IMAGE_UTILITY">
-            <EntityTypeMapping TypeName="TOWN_UTILITY_BILL_SYSTEM_V2Model.IMAGE_UTILITY">
+            <EntityTypeMapping TypeName="TownUtilityBillSystemV2Model.IMAGE_UTILITY">
               <MappingFragment StoreEntitySet="IMAGE_UTILITY">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="PATH" ColumnName="PATH" />
@@ -1439,7 +1439,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Indices">
-            <EntityTypeMapping TypeName="TOWN_UTILITY_BILL_SYSTEM_V2Model.INDEX">
+            <EntityTypeMapping TypeName="TownUtilityBillSystemV2Model.INDEX">
               <MappingFragment StoreEntitySet="INDEX">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="VALUE" ColumnName="VALUE" />
@@ -1447,7 +1447,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="METERs">
-            <EntityTypeMapping TypeName="TOWN_UTILITY_BILL_SYSTEM_V2Model.METER">
+            <EntityTypeMapping TypeName="TownUtilityBillSystemV2Model.METER">
               <MappingFragment StoreEntitySet="METER">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="SERIAL_NUMBER" ColumnName="SERIAL_NUMBER" />
@@ -1459,7 +1459,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="METER_ITEM">
-            <EntityTypeMapping TypeName="TOWN_UTILITY_BILL_SYSTEM_V2Model.METER_ITEM">
+            <EntityTypeMapping TypeName="TownUtilityBillSystemV2Model.METER_ITEM">
               <MappingFragment StoreEntitySet="METER_ITEM">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="METER_ID" ColumnName="METER_ID" />
@@ -1469,7 +1469,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="METER_TYPE">
-            <EntityTypeMapping TypeName="TOWN_UTILITY_BILL_SYSTEM_V2Model.METER_TYPE">
+            <EntityTypeMapping TypeName="TownUtilityBillSystemV2Model.METER_TYPE">
               <MappingFragment StoreEntitySet="METER_TYPE">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="NAME" ColumnName="NAME" />
@@ -1479,7 +1479,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="NEWS">
-            <EntityTypeMapping TypeName="TOWN_UTILITY_BILL_SYSTEM_V2Model.NEWS">
+            <EntityTypeMapping TypeName="TownUtilityBillSystemV2Model.NEWS">
               <MappingFragment StoreEntitySet="NEWS">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="NAME" ColumnName="NAME" />
@@ -1489,7 +1489,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="NEWS_CHAPTER">
-            <EntityTypeMapping TypeName="TOWN_UTILITY_BILL_SYSTEM_V2Model.NEWS_CHAPTER">
+            <EntityTypeMapping TypeName="TownUtilityBillSystemV2Model.NEWS_CHAPTER">
               <MappingFragment StoreEntitySet="NEWS_CHAPTER">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="TEXT" ColumnName="TEXT" />
@@ -1499,7 +1499,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="NEWS_TITLE">
-            <EntityTypeMapping TypeName="TOWN_UTILITY_BILL_SYSTEM_V2Model.NEWS_TITLE">
+            <EntityTypeMapping TypeName="TownUtilityBillSystemV2Model.NEWS_TITLE">
               <MappingFragment StoreEntitySet="NEWS_TITLE">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="TITLE" ColumnName="TITLE" />
@@ -1509,7 +1509,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="PAYMENTs">
-            <EntityTypeMapping TypeName="TOWN_UTILITY_BILL_SYSTEM_V2Model.PAYMENT">
+            <EntityTypeMapping TypeName="TownUtilityBillSystemV2Model.PAYMENT">
               <MappingFragment StoreEntitySet="PAYMENT">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="SUM" ColumnName="SUM" />
@@ -1520,7 +1520,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="STREETs">
-            <EntityTypeMapping TypeName="TOWN_UTILITY_BILL_SYSTEM_V2Model.STREET">
+            <EntityTypeMapping TypeName="TownUtilityBillSystemV2Model.STREET">
               <MappingFragment StoreEntitySet="STREET">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="NAME" ColumnName="NAME" />
@@ -1530,7 +1530,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TEMPERATUREs">
-            <EntityTypeMapping TypeName="TOWN_UTILITY_BILL_SYSTEM_V2Model.TEMPERATURE">
+            <EntityTypeMapping TypeName="TownUtilityBillSystemV2Model.TEMPERATURE">
               <MappingFragment StoreEntitySet="TEMPERATURE">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="DATE" ColumnName="DATE" />
@@ -1541,7 +1541,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TOWNs">
-            <EntityTypeMapping TypeName="TOWN_UTILITY_BILL_SYSTEM_V2Model.TOWN">
+            <EntityTypeMapping TypeName="TownUtilityBillSystemV2Model.TOWN">
               <MappingFragment StoreEntitySet="TOWN">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="NAME" ColumnName="NAME" />
@@ -1549,7 +1549,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="UNITs">
-            <EntityTypeMapping TypeName="TOWN_UTILITY_BILL_SYSTEM_V2Model.UNIT">
+            <EntityTypeMapping TypeName="TownUtilityBillSystemV2Model.UNIT">
               <MappingFragment StoreEntitySet="UNIT">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="NAME" ColumnName="NAME" />
@@ -1557,7 +1557,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="UTILITies">
-            <EntityTypeMapping TypeName="TOWN_UTILITY_BILL_SYSTEM_V2Model.UTILITY">
+            <EntityTypeMapping TypeName="TownUtilityBillSystemV2Model.UTILITY">
               <MappingFragment StoreEntitySet="UTILITY">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="NAME" ColumnName="NAME" />

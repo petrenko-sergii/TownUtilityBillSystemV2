@@ -1,8 +1,6 @@
 ﻿import * as $ from 'jquery'
-import { } from '@types/googlemaps';
 
 $("img.header-flag").css('cursor', 'pointer');
-
 
 $(document).ready(function ()
 {
@@ -34,7 +32,6 @@ $(document).ready(function ()
 			}
 			case "de": {
 				flag = "germanFlag"; 
-				alert("GermanFlag pressed! At this moment -- not inplemented");
 				break;
 			}
 			default: {
@@ -46,68 +43,3 @@ $(document).ready(function ()
 		$('#' + flag).addClass('flag-highlighted');
 	});
 });
-
-
-//function ChangeLanguage(language)
-//{
-//	debugger;
-//	$.ajax({
-//		url: '/Language/Change',
-//		data: { languageAbbreviation: language }
-//	}).done(function ()
-//	{
-//		location.reload(true);
-//	});
-//}
-
-//$(document).ready(function ()
-//{
-//	alert("Current language: " + userLangAbbr);
-//});
-
-//method works  **************************************************************
-//$(function ()
-//{
-//	$("img.header-flag").on("click", function ()
-//	{
-//		debugger;
-//		let _self: HTMLElement = this;
-//		_self.classList.add('flag-highlighted');
-//	});
-//});
-
-//$(function ()
-//{
-//	$("#germanFlag").on("click", function ()
-//	{
-//		alert("GermanFlag pressed! At this moment -- not inplemented")
-//		$("#germanFlag").addClass('flag-highlighted');
-//	});
-//});
-
-//$(function ()
-//{
-//	$("#englishFlag").on("click", function ()
-//	{
-//		$("#englishFlag").addClass('flag-highlighted');
-//	});
-//});
-
-//$(function ()
-//{
-//	$("#germanFlag").on("click", function ()
-//	{
-//		$("#germanFlag").addClass('flag-highlighted');
-//	});
-//});
-
-
-
-//$(
-//	function HighlightFlagIcon(language: string): void
-//	{
-
-//	}	
-//);
-
-

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using TownUtilityBillSystemV2.Models.AccountModels;
 using TownUtilityBillSystemV2.Models.AddressModels;
 using TownUtilityBillSystemV2.Models.Chart;
@@ -13,6 +14,7 @@ using TownUtilityBillSystemV2.Models.UtilityModels;
 using TownUtilityBillSystemV2.Models.UtilitySupplier;
 using TownUtilityBillSystemV2.Resources;
 using static TownUtilityBillSystemV2.Models.InitialDB.InitialDBEnums;
+using static System.ValueTuple;
 
 namespace TownUtilityBillSystemV2.Models.BillModels
 {
@@ -158,7 +160,6 @@ namespace TownUtilityBillSystemV2.Models.BillModels
 				CUSTOMER customerDB = null;
 				float consumedMonthValue = 0;
 				float utilityCharges = 0;
-				List<MeterItem> meterItemList = new List<MeterItem>();
 
 				var billDB = context.BILLs.Find(bill_Id);
 
@@ -172,30 +173,20 @@ namespace TownUtilityBillSystemV2.Models.BillModels
 				}
 
 				if (customerDB != null)
-					GetCustomerDataForView(context, customerDB);
+				{
+					Thread getCustomerDataThread = new Thread(x => GetCustomerDataForView(context, customerDB));
+					getCustomerDataThread.Start();
+					getCustomerDataThread.Join();
+				}
 				else
 					CustomerModel.Customer = null;
 
 				#region Initialization dates and variables for charts
 
-				float valueDifference;
-				string monthName;
-				string verificationNote;
+				string verificationNote = string.Empty;
 
-				DateTime localDate = DateTime.Now;
-				DateTime startDate = new DateTime();
-				DateTime finishDate = new DateTime();
-				DateTime startDateForChart = new DateTime();
-				DateTime finishDateForChart = new DateTime();
-
-				startDate = Convert.ToDateTime(Bill.Period + "-01");
-				finishDate = startDate.AddMonths(1);
-
-				int monthDifferenceBillPeriodAndStartUsageChart = 1;
-				int presChartYear = startDate.Year;
-				int startChartDay = 1;
-				int prevChartYear = presChartYear - 1;
-				int presChartMonth = startDate.Month;
+				DateTime startDate = Convert.ToDateTime(Bill.Period + "-01");
+				DateTime finishDate = startDate.AddMonths(1);
 
 				#endregion
 
@@ -206,10 +197,6 @@ namespace TownUtilityBillSystemV2.Models.BillModels
 					#region Filling meterItems for Utility Usage Charts
 
 					List<ChartData> chartData = new List<ChartData>();
-					meterItemList.Clear();
-
-					startDateForChart = new DateTime(prevChartYear, presChartMonth + monthDifferenceBillPeriodAndStartUsageChart, startChartDay);
-					finishDateForChart = startDate.AddMonths(1);
 
 					var meterTypeDB = context.METER_TYPEs.Where(mt => mt.ID == m.METER_TYPE_ID).FirstOrDefault();
 					var utilityDB = context.UTILITYs.Where(u => u.ID == meterTypeDB.UTILITY_ID).FirstOrDefault();
@@ -221,11 +208,88 @@ namespace TownUtilityBillSystemV2.Models.BillModels
 						utility = Utility.GetUtilityWithOutBigUsagePrice(utilityDB);
 
 					if (utility.Id == (int)Utilities.Heating)
-						GetTemperatureHistory(this, m.ADDRESS.TOWN_ID);
+					{
+						Thread getTemperatureHistoryThread = new Thread(x => GetTemperatureHistory(this, m.ADDRESS.TOWN_ID));
+						getTemperatureHistoryThread.Start();
+						getTemperatureHistoryThread.Join();
+					}
+
+					#endregion
+
+					var meterType = new MeterType() { Id = meterTypeDB.ID, Name = meterTypeDB.NAME, VarificationPeriod = meterTypeDB.VARIFICATION_PERIOD_YEARS, Utility = utility };
+
+					Thread getCheckVerificationNoteForMeterThread = new Thread(() => { verificationNote = CheckVerificationNoteForMeter(m, meterType); });
+					getCheckVerificationNoteForMeterThread.Start();
+
+					consumedMonthValue = GetConsumedMonthValue(startDate, finishDate, m);
+
+					if (m.METER_TYPE.UTILITY_ID == (int)Utilities.Electricity && consumedMonthValue > (float)m.METER_TYPE.UTILITY.USAGEFORSTANDARTPRICE)
+						utilityCharges = (float)m.METER_TYPE.UTILITY.USAGEFORSTANDARTPRICE * (float)m.METER_TYPE.UTILITY.PRICE + (consumedMonthValue - (float)m.METER_TYPE.UTILITY.USAGEFORSTANDARTPRICE) * (float)m.METER_TYPE.UTILITY.BIGUSAGEPRICE;
+					else
+						utilityCharges = consumedMonthValue * (float)m.METER_TYPE.UTILITY.PRICE;
+
+					UtilityChargesChartData.Add(new ChartData() { UtilityCharges = (float)Math.Round(utilityCharges, 2) });
+
+					CustomerModel.Meters.Add(new Meter()
+					{
+						Id = m.ID,
+						SerialNumber = m.SERIAL_NUMBER,
+						ReleaseDate = m.RELEASE_DATE,
+						VarificationDate = m.VARIFICATION_DATE,
+						MeterType = meterType,
+						ConsumedMonthValue = consumedMonthValue,
+						ChartData = chartData,
+						VerificationNote = verificationNote
+					});
+
+					getCheckVerificationNoteForMeterThread.Join();
+				}
+			}
+		}
+
+		internal MetersDataForChartDTO GetMeterDataHistoryForChart(int addressId, int bill_Id)
+		{
+			using (var context = new TownUtilityBillSystemV2Entities())
+			{
+				var metersDB = context.METERs.Where(m => m.ADDRESS_ID == addressId).ToList();
+				var billDB = context.BILLs.FirstOrDefault(b => b.ID == bill_Id);
+
+				MetersDataForChartDTO metersDataDTO = new MetersDataForChartDTO();
+				List<MeterItem> meterItemList = new List<MeterItem>();
+
+				float valueDifference;
+				string monthName;
+
+				DateTime startDate = new DateTime();
+				DateTime startDateForChart = new DateTime();
+				DateTime finishDateForChart = new DateTime();
+
+				startDate = Convert.ToDateTime(billDB.PERIOD + "-01");
+
+				int monthDifferenceBillPeriodAndStartUsageChart = 1;
+				int presChartYear = startDate.Year;
+				int startChartDay = 1;
+				int prevChartYear = presChartYear - 1;
+				int presChartMonth = startDate.Month;
+
+				foreach (var m in metersDB)
+				{
+					List<ChartData> chartData = new List<ChartData>();
+					var meterTypeDB = context.METER_TYPEs.Where(mt => mt.ID == m.METER_TYPE_ID).FirstOrDefault();
+					var utilityDB = context.UTILITYs.Where(u => u.ID == meterTypeDB.UTILITY_ID).FirstOrDefault();
+					Utility utility;
+
+					if (utilityDB.USAGEFORSTANDARTPRICE != null && utilityDB.BIGUSAGEPRICE != null)
+						utility = Utility.GetUtilityWithBigUsagePrice(utilityDB);
+					else
+						utility = Utility.GetUtilityWithOutBigUsagePrice(utilityDB);
+
+					meterItemList.Clear();
+
+					startDateForChart = new DateTime(prevChartYear, presChartMonth + monthDifferenceBillPeriodAndStartUsageChart, startChartDay);
+					finishDateForChart = startDate.AddMonths(1);
 
 					meterItemList = context.METER_ITEMs.Where(mi => mi.METER_ID == m.ID).Select(MeterItem.GetMeterItemWithOutMeter).ToList();
-
-					#region Getting chartData for every customer's meter 
 
 					if (meterItemList.Count != 0)
 					{
@@ -241,39 +305,16 @@ namespace TownUtilityBillSystemV2.Models.BillModels
 						}
 					}
 
-					#endregion
-
-					#endregion
-
-					var meterType = new MeterType() { Id = meterTypeDB.ID, Name = meterTypeDB.NAME, VarificationPeriod = meterTypeDB.VARIFICATION_PERIOD_YEARS, Utility = utility };
-
-					consumedMonthValue = GetConsumedMonthValue(startDate, finishDate, m);
-
-					if (m.METER_TYPE.UTILITY_ID == (int)Utilities.Electricity && consumedMonthValue > (float)m.METER_TYPE.UTILITY.USAGEFORSTANDARTPRICE)
-						utilityCharges = (float)m.METER_TYPE.UTILITY.USAGEFORSTANDARTPRICE * (float)m.METER_TYPE.UTILITY.PRICE + (consumedMonthValue - (float)m.METER_TYPE.UTILITY.USAGEFORSTANDARTPRICE) * (float)m.METER_TYPE.UTILITY.BIGUSAGEPRICE;
-					else
-						utilityCharges = consumedMonthValue * (float)m.METER_TYPE.UTILITY.PRICE;
-
-					UtilityChargesChartData.Add(new ChartData() { UtilityCharges = (float)Math.Round(utilityCharges, 2) });
-
-					verificationNote = GetVerificationNoteForMeter(m, meterType);
-
-					CustomerModel.Meters.Add(new Meter()
-					{
-						Id = m.ID,
-						SerialNumber = m.SERIAL_NUMBER,
-						ReleaseDate = m.RELEASE_DATE,
-						VarificationDate = m.VARIFICATION_DATE,
-						MeterType = meterType,
-						ConsumedMonthValue = consumedMonthValue,
-						ChartData = chartData,
-						VerificationNote = verificationNote
-					});
+					metersDataDTO.MetersChartData.Add(chartData);
+					metersDataDTO.UtilityResourceNames.Add(utility.ResourceName);
+					metersDataDTO.UnitNames.Add(utility.Unit.Name);
 				}
+
+				return metersDataDTO;
 			}
 		}
 
-		private string GetVerificationNoteForMeter(METER meter, MeterType meterType)
+		private string CheckVerificationNoteForMeter(METER meter, MeterType meterType)
 		{
 			var age = Bill.Date.Year - meter.VARIFICATION_DATE.Year;
 
