@@ -1519,6 +1519,13 @@ namespace TownUtilityBillSystemV2.Models.InitialDB
 
 					context.NEWS_TITLEs.Add(new NEWS_TITLE()
 					{
+						TITLE = "Verkauf von 10.509.527 bestehenden Aktien an DONG Energy A / S durch New Energy Investment",
+						LANGUAGE = "de",
+						NEWS_ID = 1
+					});
+
+					context.NEWS_TITLEs.Add(new NEWS_TITLE()
+					{
 						TITLE = "Major Shareholder notification – New Energy Investment",
 						LANGUAGE = "en",
 						NEWS_ID = 2
@@ -1528,6 +1535,13 @@ namespace TownUtilityBillSystemV2.Models.InitialDB
 					{
 						TITLE = "Major Shareholder Notification - Ny Energi Investering",
 						LANGUAGE = "da",
+						NEWS_ID = 2
+					});
+
+					context.NEWS_TITLEs.Add(new NEWS_TITLE()
+					{
+						TITLE = "Mitteilung wichtiger Aktionäre - Neue Energieinvestitionen",
+						LANGUAGE = "de",
 						NEWS_ID = 2
 					});
 
@@ -1547,6 +1561,13 @@ namespace TownUtilityBillSystemV2.Models.InitialDB
 
 					context.NEWS_TITLEs.Add(new NEWS_TITLE()
 					{
+						TITLE = "Der Nominierungsausschuss von DONG Energy A / S empfiehlt ein neues Mitglied für den Verwaltungsrat",
+						LANGUAGE = "de",
+						NEWS_ID = 3
+					});
+
+					context.NEWS_TITLEs.Add(new NEWS_TITLE()
+					{
 						TITLE = "DONG Energy awarded three German offshore wind projects",
 						LANGUAGE = "en",
 						NEWS_ID = 4
@@ -1561,6 +1582,13 @@ namespace TownUtilityBillSystemV2.Models.InitialDB
 
 					context.NEWS_TITLEs.Add(new NEWS_TITLE()
 					{
+						TITLE = "DONG Energy hat drei deutsche Offshore-Windprojekte ausgezeichnet",
+						LANGUAGE = "de",
+						NEWS_ID = 4
+					});
+
+					context.NEWS_TITLEs.Add(new NEWS_TITLE()
+					{
 						TITLE = "Resolutions from the Annual General Meeting of DONG Energy A/S",
 						LANGUAGE = "en",
 						NEWS_ID = 5
@@ -1568,8 +1596,15 @@ namespace TownUtilityBillSystemV2.Models.InitialDB
 
 					context.NEWS_TITLEs.Add(new NEWS_TITLE()
 					{
-						TITLE = "Beslutninger fra DONG Energy A / S 'ordinære generalforsamling",
+						TITLE = "Beslutninger fra DONG Energy A/S 'ordinære generalforsamling",
 						LANGUAGE = "da",
+						NEWS_ID = 5
+					});
+
+					context.NEWS_TITLEs.Add(new NEWS_TITLE()
+					{
+						TITLE = "Beschlüsse der Hauptversammlung der DONG Energy A/S",
+						LANGUAGE = "de",
 						NEWS_ID = 5
 					});
 
@@ -2237,6 +2272,337 @@ namespace TownUtilityBillSystemV2.Models.InitialDB
 						NEWS_ID = 5,
 						TEXT = "Bestyrelsen og direktionen blev afgivet fra deres forpligtelser.",
 						LANGUAGE = "da"
+					});
+
+					#endregion
+
+					#endregion
+
+					#region NewsChaptersInGerman
+
+					#region News#1
+
+					context.NEWS_CHAPTERs.Add(new NEWS_CHAPTER()
+					{
+						NEWS_ID = 1,
+						TEXT = "DIE HIERIN BESCHRIEBENEN WERTPAPIERE WURDEN UND WERDEN NICHT NACH DEM U.S. SECURITIES ACT VON 1933, WIE GEÄNDERT, REGISTRIERT UND KÖNNEN NICHT IN DER ABSENZEN REGISTRIERUNG ODER EINER ANWENDBAREN BEFREIUNG VON REGISTRIERUNGSANFORDERUNGEN ANGEBOTEN ODER VERKAUFT WERDEN.",
+						LANGUAGE = "de"
+					});
+
+					context.NEWS_CHAPTERs.Add(new NEWS_CHAPTER()
+					{
+						NEWS_ID = 1,
+						TEXT = "In Bezug auf die Ankündigung vom 3. April 2018 hat DONG Energy A / S ('DONG Energy') (NASDAQ OMX: DENERG) folgende Informationen von New Energy Investment S.à.r.l erhalten. (NEI):",
+						LANGUAGE = "de"
+					});
+
+					context.NEWS_CHAPTERs.Add(new NEWS_CHAPTER()
+					{
+						NEWS_ID = 1,
+						TEXT = "NEI hat zugestimmt, 10.509.527 bestehende Aktien von DONG Energy, entsprechend 2,5% der bestehenden Aktien von DONG Energy, institutionellen Investoren zu einem Preis von DKK 270 pro Aktie im Rahmen eines Accelerated Bookbuilding-Angebots (die 'Transaktion') zu verkaufen. NEI ist ein luxemburgisches Unternehmen, das sich indirekt im Besitz von Unternehmen befindet, die unter der Kontrolle der Merchant Banking Division der Goldman Sachs Group, Inc. stehen.",
+						LANGUAGE = "de"
+					});
+
+					context.NEWS_CHAPTERs.Add(new NEWS_CHAPTER()
+					{
+						NEWS_ID = 1,
+						TEXT = "Nach Abschluss der Transaktion wird NEI 18.935.215 Aktien an DONG Energy halten, was 4,5% der bestehenden Anteile an DONG Energy entspricht.",
+						LANGUAGE = "de"
+					});
+
+					context.NEWS_CHAPTERs.Add(new NEWS_CHAPTER()
+					{
+						NEWS_ID = 1,
+						TEXT = "NEI hat einer gestrigen Sperrfrist von 90 Tagen zugestimmt, vorbehaltlich des Verzichts auf die vorherige schriftliche Zustimmung eines bestimmten Managers, der das Bookbuilding-Verfahren durchführt, und auf bestimmte übliche Ausnahmen.",
+						LANGUAGE = "de"
+					});
+
+					context.NEWS_CHAPTERs.Add(new NEWS_CHAPTER()
+					{
+						NEWS_ID = 1,
+						TEXT = "DONG Energy erhält keine Erlöse aus der Transaktion.",
+						LANGUAGE = "de"
+					});
+
+					#endregion
+
+					#region News#2
+					context.NEWS_CHAPTERs.Add(new NEWS_CHAPTER()
+					{
+						NEWS_ID = 2,
+						TEXT = "Gemäß § 29 des dänischen Wertpapierhandelsgesetzes ist New Energy Investment S.à r.l. (NEI) hat DONG Energy A / S (im Folgenden: DONG Energy) mitgeteilt, dass NEI nach einem beschleunigten Bookbuilding-Angebot vom 3. Februar 2018 zugestimmt hat, 26.500.000 Aktien von DONG Energy an bestimmte institutionelle Anleger zu veräußern mit einem Nennwert von 10 DKK.",
+						LANGUAGE = "de"
+					});
+
+					context.NEWS_CHAPTERs.Add(new NEWS_CHAPTER()
+					{
+						NEWS_ID = 2,
+						TEXT = "Nach Abwicklung des Bookbuild-Angebots wird NEI 29.444.742 Aktien und Stimmrechte an DONG Energy halten, was 7,0% der ausgegebenen Aktien und Stimmrechte von DONG Energy entspricht.",
+						LANGUAGE = "de"
+					});
+
+					context.NEWS_CHAPTERs.Add(new NEWS_CHAPTER()
+					{
+						NEWS_ID = 2,
+						TEXT = "NEI ist eine Gesellschaft mit beschränkter Haftung, die nach luxemburgischem Recht unter Reg. Nein. B181487. Die Adresse von NEI ist 2 Rue de Fossé, L-1536 Luxemburg, Großherzogtum Luxemburg.",
+						LANGUAGE = "de"
+					});
+
+					context.NEWS_CHAPTERs.Add(new NEWS_CHAPTER()
+					{
+						NEWS_ID = 2,
+						TEXT = "Zum jetzigen Zeitpunkt wird NEI von New Energy I S.à r.l. ('NE I') und New Energy II S.à r.l. ('NE II'). NE I, die die Mehrheit der Stimmrechte an NEI besitzt, und NE II sind Gesellschaften mit beschränkter Haftung, die nach luxemburgischem Recht organisiert sind und von Unternehmen kontrolliert werden, die unter der Kontrolle der Merchant Banking Division der Goldman Sachs Group, Inc. stehen. Zu diesen Unternehmen gehört Danish Energy Investors B, LP, eine Cayman Islands Limited Partnership, die die Mehrheit der Stimmrechte in NE I besitzt.",
+						LANGUAGE = "de"
+					});
+
+					context.NEWS_CHAPTERs.Add(new NEWS_CHAPTER()
+					{
+						NEWS_ID = 2,
+						TEXT = "Die in dieser Ankündigung enthaltenen Informationen ändern nicht die bisherige Finanzplanung von DONG Energy für das Geschäftsjahr 2018.",
+						LANGUAGE = "de"
+					});
+
+					#endregion
+
+					#region News#3
+
+					context.NEWS_CHAPTERs.Add(new NEWS_CHAPTER()
+					{
+						NEWS_ID = 3,
+						TEXT = "Der Nominierungsausschuss der DONG Energy A / S hat heute beschlossen, die Wahl von Dieter Wemmer als neues Mitglied des Verwaltungsrates zu empfehlen.",
+						LANGUAGE = "de"
+					});
+
+					context.NEWS_CHAPTERs.Add(new NEWS_CHAPTER()
+					{
+						NEWS_ID = 3,
+						TEXT = "Dieter Wemmer war mehr als zwei Jahrzehnte in führenden Finanzpositionen tätig, zuletzt als Chief Financial Officer der Allianz SE und als Verwaltungsrat der UBS Group AG. Er verfügt über große Erfahrung in den Bereichen Kapitalmärkte, Investitionen und Risikomanagement und verbindet einen klaren finanziellen Einblick mit einer strategischen und operativen Denkweise.",
+						LANGUAGE = "de"
+					});
+
+					context.NEWS_CHAPTERs.Add(new NEWS_CHAPTER()
+					{
+						NEWS_ID = 3,
+						TEXT = "Thomas Thune Andersen, Präsident des Verwaltungsrats und des Nominierungsausschusses von DONG Energy A / S, sagte:",
+						LANGUAGE = "de"
+					});
+
+					context.NEWS_CHAPTERs.Add(new NEWS_CHAPTER()
+					{
+						NEWS_ID = 3,
+						TEXT = "“Ich freue mich, dass der Nominierungsausschuss Dieter Wemmer als neues Mitglied des Verwaltungsrates empfohlen hat. Er verfügt über sehr gute finanzielle Fähigkeiten und verfügt über umfangreiche Erfahrung in den Bereichen Kapitalmärkte, Investitionen und Risikomanagement. Ich bin zuversichtlich, dass er ein Gewinn für den Vorstand sein wird. ",
+						LANGUAGE = "de"
+					});
+
+					context.NEWS_CHAPTERs.Add(new NEWS_CHAPTER()
+					{
+						NEWS_ID = 3,
+						TEXT = "Dieter Wemmer wird voraussichtlich im ersten Quartal 2018 an der Generalversammlung in den Verwaltungsrat gewählt.",
+						LANGUAGE = "de"
+					});
+
+					context.NEWS_CHAPTERs.Add(new NEWS_CHAPTER()
+					{
+						NEWS_ID = 3,
+						TEXT = "Der Verwaltungsrat von DONG Energy A / S besteht derzeit aus sechs von der Hauptversammlung gewählten Mitgliedern. Wie bereits angekündigt, besteht das langfristige Ziel darin, acht Mitglieder des Verwaltungsrates durch die Generalversammlung wählen zu lassen.",
+						LANGUAGE = "de"
+					});
+
+					context.NEWS_CHAPTERs.Add(new NEWS_CHAPTER()
+					{
+						NEWS_ID = 3,
+						TEXT = "Weitere Informationen zu Dieter Wemmer finden Sie unten.",
+						LANGUAGE = "de"
+					});
+
+					#endregion
+
+					#region News#4
+
+					context.NEWS_CHAPTERs.Add(new NEWS_CHAPTER()
+					{
+						NEWS_ID = 4,
+						TEXT = "In der ersten von zwei deutschen Auktionsrunden hat die Bundesnetzagentur heute DONG Energy das Recht eingeräumt, drei Offshore-Windprojekte in der deutschen Nordsee zu bauen. DONG Energy reichte sechs Projekte in das Angebot ein und gewann mit den folgenden drei Projekten, die eine Gesamtkapazität von 590 MW haben: OWP West (240 MW), Borkum Riffgrund West 2 (240 MW), Gode Wind 3 (110 MW).",
+						LANGUAGE = "de"
+					});
+
+					context.NEWS_CHAPTERs.Add(new NEWS_CHAPTER()
+					{
+						NEWS_ID = 4,
+						TEXT = "Die drei Projekte sollen 2024 in Auftrag gegeben werden, vorbehaltlich der abschließenden Investitionsentscheidung von DONG Energy im Jahr 2021.",
+						LANGUAGE = "de"
+					});
+
+					context.NEWS_CHAPTERs.Add(new NEWS_CHAPTER()
+					{
+						NEWS_ID = 4,
+						TEXT = "Samuel Leupold, Executive Vice President und CEO von Wind Power bei DONG Energy, sagt: 'Wir freuen uns über drei Projekte in der ersten von zwei deutschen Auktionsrunden, und wir haben gute Möglichkeiten, unsere ausgezeichneten Projekte in nächstes Jahr Deutsche Auktion.Die heutigen Ergebnisse tragen zu unserem ehrgeizigen Ziel bei, bis 2025 rund 5 GW zusätzliche Kapazität für profitables Wachstum zu schaffen. '",
+						LANGUAGE = "de"
+					});
+
+					context.NEWS_CHAPTERs.Add(new NEWS_CHAPTER()
+					{
+						NEWS_ID = 4,
+						TEXT = "Für zwei der Projekte - OWP West und Borkum Riffgrund West 2 - hat DONG Energy Gebote von null Euro pro MWh abgegeben, d. H. Diese Projekte erhalten keine Subvention zusätzlich zum Stromgroßhandelspreis. Das Projekt Gode Wind 3 wurde mit einem Angebotspreis von 60 EUR pro MWh vergeben.",
+						LANGUAGE = "de"
+					});
+
+					context.NEWS_CHAPTERs.Add(new NEWS_CHAPTER()
+					{
+						NEWS_ID = 4,
+						TEXT = "Samuel Leupold sagt: 'Das Nullsubventionsgebot ist ein Durchbruch für die Kostenwettbewerbsfähigkeit von Offshore - Wind und es demonstriert das enorme globale Wachstumspotenzial der Technologie als einen Eckpfeiler in der wirtschaftlich lebensfähigen Umstellung auf grüne Energiesysteme.Billige saubere Energie wird Regierungen und Verbrauchern zugute kommen - und nicht zuletzt dazu beitragen,	die COP21 - Ziele von Paris im Kampf gegen den Klimawandel zu erreichen.Dennoch ist es wichtig zu beachten,	dass das Nullgebot durch eine Reihe von Umständen in dieser Auktion ermöglicht wird.Vor allem wird das Realisierungsfenster auf 2024 erweitert.Dies ermöglicht Entwicklern,	die Turbinentechnologie der nächsten Generation anzuwenden,	was zu einer erheblichen Kostensenkung führt.Außerdem spiegelt das Angebot die Tatsache wider, dass die Netzverbindung nicht enthalten ist.'",
+						LANGUAGE = "de"
+					});
+
+					context.NEWS_CHAPTERs.Add(new NEWS_CHAPTER()
+					{
+						NEWS_ID = 4,
+						TEXT = "Samuel Leupold fährt fort: 'Finanzielle Disziplin ist der Schlüssel zu uns.Wir spiegeln natürlich das Marktrisiko - Risiko des Projekts in den angewandten Kapitalkosten wider.Wir sehen in diesem deutschen Projektportfolio ein solides Wertschöpfungspotenzial und werden nun die Projekte im Jahr 2021 zu einer Final Investment Decision(FID) weiterentwickeln. '",
+						LANGUAGE = "de"
+					});
+
+					context.NEWS_CHAPTERs.Add(new NEWS_CHAPTER()
+					{
+						NEWS_ID = 4,
+						TEXT = @"Volker Malmen, Country Manager bei DONG Energy Deutschland, sagt: 'Grüne Energie zu einem billigeren Preis als Schwarz zu machen,
+						gehört seit Jahren zu den strategischen Zielen von DONG Energy.Der Offshore - Wind kann ausgeschiedene Kraftwerke vollständig ersetzen und zum Rückgrat der deutschen Energiewende werden.Ich hoffe,
+						dass die ermutigenden Ergebnisse von heute zu einem beschleunigten und volumenstärkeren Offshore - Windausbau in Deutschland führen und die Elektrifizierung von Transport und Heizung motivieren werden.'",
+						LANGUAGE = "de"
+					});
+
+					context.NEWS_CHAPTERs.Add(new NEWS_CHAPTER()
+					{
+						NEWS_ID = 4,
+						TEXT = "DONG Energy wird für die Turbinen, Array-Kabel und das Offshore-Umspannwerk verantwortlich sein, während der Netzbetreiber TenneT für den Bau, den Betrieb und den Besitz des Onshore-Umspannwerks und des Exportkabels verantwortlich sein wird.",
+						LANGUAGE = "de"
+					});
+
+					context.NEWS_CHAPTERs.Add(new NEWS_CHAPTER()
+					{
+						NEWS_ID = 4,
+						TEXT = "DONG Energy hat derzeit 902 MW Offshore-Wind in deutschen Gewässern mit Gode Wind 1 & 2 und Borkum Riffgrund 1 und weitere 450 MW in Borkum Riffgrund 2 im Bau, die 2019 in Betrieb gehen sollen. Insgesamt betreibt DONG Energy 3.600 MW Offshore-Wind Kapazität in Deutschland, Großbritannien und Dänemark und hat weitere 3.800GW im Bau.",
+						LANGUAGE = "de"
+					});
+
+					context.NEWS_CHAPTERs.Add(new NEWS_CHAPTER()
+					{
+						NEWS_ID = 4,
+						TEXT = "Plattformwechsel: Bis 2024 werden deutlich größere Anlagen - voraussichtlich 13-15 MW - auf dem Markt sein. Mit größeren Turbinen kann der Entwickler die Stromerzeugung steigern und gleichzeitig die Anzahl der Turbinenpositionen reduzieren. Dies trägt erheblich zur Kostenreduzierung während des Baus (weniger Türme und Array-Kabel und geringere Kosten für Installationsschiffe und Arbeitskräfte) sowie während einer Lebensdauer von Betrieb und Wartung bei.",
+						LANGUAGE = "de"
+					});
+
+					context.NEWS_CHAPTERs.Add(new NEWS_CHAPTER()
+					{
+						NEWS_ID = 4,
+						TEXT = "Scale: OWP West und Borkum Riffgrund West 2 werden zu einem Großprojekt zusammengelegt, mit der Option, im nächsten Jahr zusätzliches Volumen hinzuzufügen, um die Gesamtgröße des Projekts weiter zu erhöhen.",
+						LANGUAGE = "de"
+					});
+
+					context.NEWS_CHAPTERs.Add(new NEWS_CHAPTER()
+					{
+						NEWS_ID = 4,
+						TEXT = "Standort: Die Projekte profitieren von durchschnittlichen Windgeschwindigkeiten von mehr als 10 m / s. Dies ist eine der höchsten Windstärken, die im Windpark-Portfolio von DONG Energy gemessen werden. Außerdem befinden sich die Projekte neben Borkum Riffgrund 1 & 2 von DONG Energy, was bedeutet, dass Betrieb und Wartung von DONG Energy's bestehendem O & M-Hub in Norddeich durchgeführt werden können.",
+						LANGUAGE = "de"
+					});
+
+					context.NEWS_CHAPTERs.Add(new NEWS_CHAPTER()
+					{
+						NEWS_ID = 4,
+						TEXT = "Verlängerte Lebensdauer: Die deutschen Behörden haben der Möglichkeit zugestimmt, die Betriebsdauer des Vermögenswerts von 25 auf 30 Jahre zu verlängern.",
+						LANGUAGE = "de"
+					});
+
+					context.NEWS_CHAPTERs.Add(new NEWS_CHAPTER()
+					{
+						NEWS_ID = 4,
+						TEXT = "Nicht in vollem Umfang: Entwickler haben in der deutschen Auktion nicht für die Netzanbindung geboten, so dass die Netzanbindung nicht im Angebotspreis enthalten ist.",
+						LANGUAGE = "de"
+					});
+
+					context.NEWS_CHAPTERs.Add(new NEWS_CHAPTER()
+					{
+						NEWS_ID = 4,
+						TEXT = "Die oben genannten Faktoren liefern Stromkosten, die unter unseren prognostizierten Großhandelsstrompreisen liegen, und ermöglichen es uns, einen Mehrwert zu schaffen und unsere Renditeanforderungen zu den erwarteten Marktpreisen ohne Subventionen zu erfüllen. Im Vergleich zu den deutschen Strompreisprognosen führender Forschungsunternehmen halten wir unsere Preisprognose für relativ konservativ. Wir haben höhere Kapitalkosten als bei früheren Projekten angewendet, um dem potenziellen Anstieg des Marktpreisrisikos Rechnung zu tragen.",
+						LANGUAGE = "de"
+					});
+
+					context.NEWS_CHAPTERs.Add(new NEWS_CHAPTER()
+					{
+						NEWS_ID = 4,
+						TEXT = "Die für ein deutsches Projekt ohne Subventionen erforderlichen Kostensenkungen sind sowohl technisch als auch kommerziell durchführbar. Im Hinblick auf eine endgültige Investitionsentscheidung im Jahr 2021 wird DONG Energy die Schlüsselfaktoren überwachen, die die langfristigen Strompreise in Deutschland bestimmen werden. Zu diesen Faktoren gehören die Auswirkungen von EU-Maßnahmen zur Neubelebung des europäischen Emissionshandelssystems; der Ausstieg aus konventionellen und nuklearen Kapazitäten; die zukünftige Rolle der Kohle in Europa; und der Ausbau von Onshore-Übertragungsnetzen.",
+						LANGUAGE = "de"
+					});
+
+					context.NEWS_CHAPTERs.Add(new NEWS_CHAPTER()
+					{
+						NEWS_ID = 4,
+						TEXT = "Die in dieser Mitteilung enthaltenen Informationen ändern nicht die bisherige Finanzplanung von DONG Energy für das Geschäftsjahr 2018 oder das für 2018 erwartete Investitionsvolumen.",
+						LANGUAGE = "de"
+					});
+
+					#endregion
+
+					#region News#5
+
+					context.NEWS_CHAPTERs.Add(new NEWS_CHAPTER()
+					{
+						NEWS_ID = 5,
+						TEXT = "Heute hielt DONG Energy A / S seine Jahreshauptversammlung ab, auf der Folgendes angenommen wurde:",
+						LANGUAGE = "de"
+					});
+
+					context.NEWS_CHAPTERs.Add(new NEWS_CHAPTER()
+					{
+						NEWS_ID = 5,
+						TEXT = "Der geprüfte Jahresbericht 2017 von DONG Energy wurde genehmigt.",
+						LANGUAGE = "de"
+					});
+
+
+					context.NEWS_CHAPTERs.Add(new NEWS_CHAPTER()
+					{
+						NEWS_ID = 5,
+						TEXT = "Die Gewinnverteilung nach dem angenommenen Jahresbericht 2017 wurde genehmigt. Die Dividende beträgt 6 DKK pro Aktie.",
+						LANGUAGE = "de"
+					});
+
+
+					context.NEWS_CHAPTERs.Add(new NEWS_CHAPTER()
+					{
+						NEWS_ID = 5,
+						TEXT = "Thomas Thune Andersen wurde als Präsident des Verwaltungsrats wiedergewählt, Lene Skole wurde als stellvertretender Vorsitzender des Verwaltungsrates wiedergewählt und Lynda Armstrong, Pia Gjellerup und Benny D. Loft wurden als Mitglieder des Verwaltungsrats wiedergewählt von Direktoren.",
+						LANGUAGE = "de"
+					});
+
+
+					context.NEWS_CHAPTERs.Add(new NEWS_CHAPTER()
+					{
+						NEWS_ID = 5,
+						TEXT = "Peter Korsholm wurde als neues Mitglied in den Verwaltungsrat gewählt.",
+						LANGUAGE = "de"
+					});
+
+
+					context.NEWS_CHAPTERs.Add(new NEWS_CHAPTER()
+					{
+						NEWS_ID = 5,
+						TEXT = "PricewaterhouseCoopers wurde erneut zum Abschlussprüfer bestellt.",
+						LANGUAGE = "de"
+					});
+
+
+					context.NEWS_CHAPTERs.Add(new NEWS_CHAPTER()
+					{
+						NEWS_ID = 5,
+						TEXT = "Die Vorstandsvergütung für 2018 wurde genehmigt.",
+						LANGUAGE = "de"
+					});
+
+					context.NEWS_CHAPTERs.Add(new NEWS_CHAPTER()
+					{
+						NEWS_ID = 5,
+						TEXT = "Der Verwaltungsrat und die Geschäftsleitung wurden von ihren Verpflichtungen entbunden.",
+						LANGUAGE = "de"
 					});
 
 					#endregion

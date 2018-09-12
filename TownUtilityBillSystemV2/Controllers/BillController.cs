@@ -14,7 +14,8 @@ using TownUtilityBillSystemV2.Resources;
 
 namespace TownUtilityBillSystemV2.Controllers
 {
-    public class BillController : Controller
+	[Authorize]
+	public class BillController : Controller
     {
 		TownUtilityBillSystemV2Entities contextDB = new TownUtilityBillSystemV2Entities();
 

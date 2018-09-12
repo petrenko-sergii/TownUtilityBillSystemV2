@@ -11,7 +11,8 @@ using static TownUtilityBillSystemV2.Models.InitialDB.InitialDBEnums;
 
 namespace TownUtilityBillSystemV2.Controllers
 {
-    public class ChartController : Controller
+	[Authorize]
+	public class ChartController : Controller
     {
 		public ActionResult ShowTemperatureChart()
 		{

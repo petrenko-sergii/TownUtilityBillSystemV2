@@ -6,7 +6,8 @@ using System.Web.Mvc;
 
 namespace TownUtilityBillSystemV2.Controllers
 {
-    public class StatisticController : Controller
+	[Authorize]
+	public class StatisticController : Controller
     {
 		// GET: Statistic
 		public ActionResult ShowStatisticMenu()

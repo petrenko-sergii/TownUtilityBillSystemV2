@@ -403,6 +403,7 @@
     <Content Include="Content\Images\DongEnergy\DONGenergy.jpg" />
     <Content Include="Content\Images\DongEnergy\IconApp.jpg" />
     <Content Include="Content\Images\DongEnergy\WebHeaderV2.jpg" />
+    <Content Include="Content\Images\EmptyImages\NoImageBuildingDe.jpg" />
     <Content Include="Content\Images\Flags\DanishFlag.jpg" />
     <Content Include="Content\Images\Flags\EnglishFlag.jpg" />
     <Content Include="Content\Images\Flags\GermanFlag.jpg" />
@@ -413,7 +414,6 @@
     <Content Include="Content\Images\News\WindMills.jpg" />
     <Content Include="Content\Images\EmptyImages\NoImageBuildingDa.jpg" />
     <Content Include="Content\Images\EmptyImages\NoImageBuildingEn.jpg" />
-    <Content Include="Content\Images\NoImageIcon.jpg" />
     <Content Include="Content\Images\Temperature\TemperatureIcon.jpg" />
     <Content Include="Content\Images\TownBuildings\Kolding\Kolding_Haderslevvej_10.JPG" />
     <Content Include="Content\Images\TownBuildings\Kolding\Kolding_Haderslevvej_100.JPG" />

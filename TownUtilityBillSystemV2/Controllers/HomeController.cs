@@ -15,7 +15,7 @@ namespace TownUtilityBillSystemV2.Controllers
 		{
 			var model = new NewsModel();
 
-			//model.GetNewsTitlesForSlideShow();
+			model.GetNewsTitlesForSlideShow();
 
 			return View(model);
 		}

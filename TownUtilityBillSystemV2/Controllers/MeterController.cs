@@ -19,7 +19,7 @@ using TownUtilityBillSystemV2.Models.Customized;
 
 namespace TownUtilityBillSystemV2.Controllers
 {
-	//[Authorize]
+	[Authorize]
 	public class MeterController : Controller
 	{
 		TownUtilityBillSystemV2Entities context = new TownUtilityBillSystemV2Entities();

@@ -11,6 +11,7 @@ using static TownUtilityBillSystemV2.Models.InitialDB.InitialDBEnums;
 
 namespace TownUtilityBillSystemV2.Controllers
 {
+	[Authorize]
 	public class CalculatorController : Controller
 	{
 		public ActionResult ShowCalculatorOnLine()

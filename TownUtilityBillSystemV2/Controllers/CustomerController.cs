@@ -13,6 +13,7 @@ using TownUtilityBillSystemV2.Models.Customized;
 
 namespace TownUtilityBillSystemV2.Controllers
 {
+	[Authorize]
 	public class CustomerController : Controller
 	{
 		public ActionResult ShowCustomerMenu() => View();

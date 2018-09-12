@@ -157,7 +157,7 @@
     <value>Hallo</value>
   </data>
   <data name="Home" xml:space="preserve">
-    <value>Zuhause</value>
+    <value>Heim</value>
   </data>
   <data name="Language" xml:space="preserve">
     <value>Sprache</value>
@@ -220,7 +220,7 @@
     <value>Ungültiger Anmeldeversuch</value>
   </data>
   <data name="News" xml:space="preserve">
-    <value>Nachrichten</value>
+    <value>Nachrich.</value>
   </data>
   <data name="Next" xml:space="preserve">
     <value>Nächster</value>
@@ -1026,7 +1026,7 @@ und erwirtschaftete 2016 einen Umsatz von 61 Mrd. DKK (8,2 EUR ist einer der fü
     <value>Lieferant</value>
   </data>
   <data name="Charges" xml:space="preserve">
-    <value>Gebühren</value>
+    <value>Gebuhren</value>
   </data>
   <data name="Consumed" xml:space="preserve">
     <value>Verbraucht</value>
