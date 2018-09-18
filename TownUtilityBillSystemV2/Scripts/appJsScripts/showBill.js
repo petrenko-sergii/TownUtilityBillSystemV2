@@ -14,79 +14,82 @@ $(document).ready(function ()
 		{
 			for (var n = 0; n < 4; n++)
 			{
-				var containerName = 'container' + n;
-				Highcharts.chart(containerName, {
-					chart: {
-						type: 'bar'
-					},
-					title: {
-						text: data["UtilityResourceNames"][n] + ' ' + consumptionHistory
-					},
-					xAxis: {
-						categories: [
-							data["MetersChartData"][n][0].MonthName,
-							data["MetersChartData"][n][1].MonthName,
-							data["MetersChartData"][n][2].MonthName,
-							data["MetersChartData"][n][3].MonthName,
-							data["MetersChartData"][n][4].MonthName,
-							data["MetersChartData"][n][5].MonthName,
-							data["MetersChartData"][n][6].MonthName,
-							data["MetersChartData"][n][7].MonthName,
-							data["MetersChartData"][n][8].MonthName,
-							data["MetersChartData"][n][9].MonthName,
-							data["MetersChartData"][n][10].MonthName,
-							data["MetersChartData"][n][11].MonthName,
-							data["MetersChartData"][n][12].MonthName
-						],
-						title: {
-							text: null
+				if (utilityChargesDTO[n] != 0)
+				{
+					var containerName = 'container' + n;
+					Highcharts.chart(containerName, {
+						chart: {
+							type: 'bar'
 						},
-					},
-					yAxis: {
-						min: 0,
 						title: {
-							text: value + ', ' + data["UnitNames"][n],
-							align: 'high'
+							text: data["UtilityResourceNames"][n] + ' ' + consumptionHistory
 						},
-						labels: {
-							overflow: 'justify'
-						}
-					},
-					tooltip: {
-						valueSuffix: data["UnitNames"][n]
-					},
-					plotOptions: {
-						bar: {
-							dataLabels: {
-								enabled: true
+						xAxis: {
+							categories: [
+								data["MetersChartData"][n][0].MonthName,
+								data["MetersChartData"][n][1].MonthName,
+								data["MetersChartData"][n][2].MonthName,
+								data["MetersChartData"][n][3].MonthName,
+								data["MetersChartData"][n][4].MonthName,
+								data["MetersChartData"][n][5].MonthName,
+								data["MetersChartData"][n][6].MonthName,
+								data["MetersChartData"][n][7].MonthName,
+								data["MetersChartData"][n][8].MonthName,
+								data["MetersChartData"][n][9].MonthName,
+								data["MetersChartData"][n][10].MonthName,
+								data["MetersChartData"][n][11].MonthName,
+								data["MetersChartData"][n][12].MonthName
+							],
+							title: {
+								text: null
+							},
+						},
+						yAxis: {
+							min: 0,
+							title: {
+								text: value + ', ' + data["UnitNames"][n],
+								align: 'high'
+							},
+							labels: {
+								overflow: 'justify'
 							}
-						}
-					},
-					legend: {
-						enabled: false,
-					},
-					credits: {
-						enabled: false
-					},
-					series: [{
-						name: value,
-						data: [
-							data["MetersChartData"][n][0].Value,
-							data["MetersChartData"][n][1].Value,
-							data["MetersChartData"][n][2].Value,
-							data["MetersChartData"][n][3].Value,
-							data["MetersChartData"][n][4].Value,
-							data["MetersChartData"][n][5].Value,
-							data["MetersChartData"][n][6].Value,
-							data["MetersChartData"][n][7].Value,
-							data["MetersChartData"][n][8].Value,
-							data["MetersChartData"][n][9].Value,
-							data["MetersChartData"][n][10].Value,
-							data["MetersChartData"][n][11].Value,
-							data["MetersChartData"][n][12].Value
-						]
-					}]
-				});
+						},
+						tooltip: {
+							valueSuffix: data["UnitNames"][n]
+						},
+						plotOptions: {
+							bar: {
+								dataLabels: {
+									enabled: true
+								}
+							}
+						},
+						legend: {
+							enabled: false,
+						},
+						credits: {
+							enabled: false
+						},
+						series: [{
+							name: value,
+							data: [
+								data["MetersChartData"][n][0].Value,
+								data["MetersChartData"][n][1].Value,
+								data["MetersChartData"][n][2].Value,
+								data["MetersChartData"][n][3].Value,
+								data["MetersChartData"][n][4].Value,
+								data["MetersChartData"][n][5].Value,
+								data["MetersChartData"][n][6].Value,
+								data["MetersChartData"][n][7].Value,
+								data["MetersChartData"][n][8].Value,
+								data["MetersChartData"][n][9].Value,
+								data["MetersChartData"][n][10].Value,
+								data["MetersChartData"][n][11].Value,
+								data["MetersChartData"][n][12].Value
+							]
+						}]
+					});
+				}
 			}
 
 			Highcharts.chart('containerUtilitiesCharges', {
