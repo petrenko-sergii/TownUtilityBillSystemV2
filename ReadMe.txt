@@ -4,7 +4,7 @@ such as an electricity, a water, a heating and a gas. Also it operates by the cu
 
 Web App "TownUtilityBillSystem V2" is developed by using 
 -- C#/.NET MVC, Entity Framework, 
--- SQL (+DB Table indexes)
+-- SQL (+DB Table indexes, transactions)
 -- HTML, CSS,  Bootstrap, Razor, AJAX, JSON, 
 -- Javascript/Typescript (+ WebPack using)
 -- Google Maps APIs, highcharts.js
